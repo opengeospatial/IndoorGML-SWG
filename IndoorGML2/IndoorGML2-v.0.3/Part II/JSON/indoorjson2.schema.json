@@ -1,0 +1,311 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.indoorgml.org/schemas/indoorjson/0.1/indoorjson2.schema.json",
+  "title": "IndoorJSON2 v0.1",
+  "description": "IndoorJSON2 specifications v0.1",
+  "definitions": {
+
+    "ThematicLayer": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["ThematicLayer"] },
+        "semantic": { "type": "boolean" },
+        "theme": { "enum": ["Topographic", "Sensor", "Logical", "Property", "Unknown"] },
+        "primalSpace": { "$ref": "#/definitions/PrimalSpaceLayer" },
+        "dualSpace": { "$ref": "#/definitions/DualSpaceLayer" }
+      },
+      "additionalProperties": false,
+      "required": ["type", "semantic", "theme"]
+    },
+
+    "PrimalSpaceLayer": {
+      "$anchor": "PrimalSpaceLayer",
+      "type": "object",
+      "properties": {
+        "creationDatetime": { "type": "string", "format": "date-time" },
+        "terminationDatetime": { "type": "string", "format": "date-time" },
+        "function": { "type": "string" },
+        "cellSpaceMember": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/CellSpace" }
+        },
+        "cellBoundaryMember": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/CellBoundary" }
+        }
+      },
+      "required": ["cellSpaceMember"]
+    },
+
+    "CellSpace": {
+      "$anchor": "CellSpace",
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["CellSpace"] },
+        "name": { "type": "string" },
+        "level": { "type": "string" },
+        "poi": { "type":  "boolean" },
+        "duality" : { "type": "string" },
+        "cellSpaceGeom" : {
+          "oneOf": [
+            { "$ref": "#/definitions/Solid" },
+            { "$ref": "#/definitions/CompositeSolid" },
+            { "$ref": "#/definitions/CompositeSurface" }
+          ] 
+        },
+        "boundedBy": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "attributes": { "type": "object" }
+      },
+      "additionalProperties": false,
+      "required": ["poi"]
+    },
+
+    "CellBoundary": {
+      "$anchor": "CellBoundary",
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["CellBoundary"] },
+        "isVirtual": { "type":  "boolean" },
+        "duality" : { "type": "string" },
+        "cellBoundaryGeom" : {
+          "oneOf": [
+            {"$ref": "#/definitions/Surface"},
+            {"$ref": "#/definitions/CompositeSurface"},
+            {"$ref": "#/definitions/Curve"}
+          ]
+        },
+        "attributes": {"type": "object"}
+      },
+      "additionalProperties": false,
+      "required": ["type", "isVirtual"]
+    },
+
+    "DualSpaceLayer": {
+      "$anchor": "DualSpaceLayer",
+      "type": "object",
+      "properties": {
+        "creationDatetime": { "type": "string", "format": "date-time" },
+        "terminationDatetime": { "type": "string", "format": "date-time" },
+        "isLogical": { "type": "boolean" },
+        "nodeMember": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/Node" }
+        },
+        "edgeMember": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/Edge" }
+        }
+      },
+      "required": ["isLogical", "nodeMember"]
+    },
+
+    "Node": {
+      "$anchor": "Node",
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["Node"] },
+        "duality" : { "type": "string" },
+        "geometry" : { "$ref": "#/definitions/Point" },
+        "connects" : {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type"]
+    },
+
+    "Edge": {
+      "$anchor": "Edge",
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["Edge"] },
+        "duality" : { "type": "string" },
+        "weight" : { "type": "number" },
+        "geometry" : { "$ref": "#/definitions/Curve" },
+        "connects" : {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2,
+          "maximum": 2,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type", "weight", "connects"]
+    },
+
+    "InterLayerConnection": {
+      "$anchor": "InterLayerConnection",
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["InterLayerConnection"] },
+        "connectedLayer1": { "type": "string" },
+        "connectedLayer2": { "type": "string" },
+        "connectedNode1" : { "type": "string" },
+        "connectedNode2" : { "type": "string" },
+        "connectedCell1" : { "type": "string" },
+        "connectedCell2" : { "type": "string" },
+        "typeOfTopoExpression" : { "enum": ["CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", "OTHERS"] },
+        "comment" : {"type": "string"}
+      },
+      "additionalProperties": false,
+      "required": ["type", "connectedLayer1", "connectedLayer2", "typeOfTopoExpression"]
+    },
+
+    "Solid": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["Solid"] },
+        "boundaries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "array",
+                "items": { "type": "integer" },
+                "minItems": 3
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type", "boundaries"]
+    },
+
+    "CompositeSolid": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["CompositeSolid"] },
+        "boundaries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "array",
+                  "items": {"type": "integer"},
+                  "minItems": 3
+                }
+              }
+            }
+          }
+        }
+      }, 
+      "additionalProperties": false,       
+      "required": ["type", "boundaries"]
+    },
+
+    "CompositeSurface": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["CompositeSurface"] },
+        "boundaries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "array",
+              "items": { "type": "integer" },
+              "minItems": 3
+            }
+          }
+        }
+      }, 
+      "additionalProperties": false,       
+      "required": ["type", "boundaries"]
+    },
+
+    "Surface": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["Surface"] },
+        "boundaries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 3
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": ["type", "boundaries"]
+    },
+
+    "Curve": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["Curve"] },
+        "boundaries": {
+          "type": "array",
+          "items": {"type": "integer"},
+          "minItems": 2
+        }
+      }, 
+      "additionalProperties": false,       
+      "required": ["type", "boundaries"]
+    },
+
+    "Point": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["Point"] },
+        "boundaries": { "type": "integer" }
+      },
+      "additionalProperties": false,
+      "required": ["type", "boundaries"]
+    }
+
+  },
+
+  "type": "object",
+  "properties": {
+    "type": { "enum": ["IndoorJSON2"] },
+    "version": { 
+      "type": "string",
+      "pattern": "\\d.\\d",
+      "default": "0.1"
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/ThematicLayer" }
+    },
+    "layerConnections": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/InterLayerConnection" }
+    },    
+    "vertices": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": { "type": "number" },
+        "minItems": 3,
+        "maxItems": 3
+      }
+    }
+  },
+  "required": ["type", "version", "layers", "vertices"]
+}
+
