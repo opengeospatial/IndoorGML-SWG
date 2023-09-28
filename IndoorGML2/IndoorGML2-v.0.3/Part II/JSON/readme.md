@@ -1,0 +1,1 @@
+The IndoorJSON schema for IndoorGML 2.0 (named IndoorJSON2) is based on the [IndoorJSON](https://github.com/tudelft3d/indoorjson)

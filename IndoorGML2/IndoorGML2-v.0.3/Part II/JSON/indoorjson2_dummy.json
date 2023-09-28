@@ -1,0 +1,91 @@
+{
+  "type": "IndoorJSON2",
+  "version": "0.1",
+  "layers": {
+    "TopographicLayer": {
+      "type": "ThematicLayer",
+      "semantic": false,
+      "theme": "Topographic",
+      "primalSpace": {
+        "creationDatetime": "2023-09-28T08:30:00+00:00",
+        "cellSpaceMember": {
+          "C1": {
+            "type": "CellSpace",
+            "duality": "R1",
+            "poi": false,
+            "name": "001",
+            "level": "1",
+            "cellSpaceGeom": {
+              "type": "Solid",
+              "boundaries": [
+                [ [[0, 3, 2, 1]], [[4, 5, 6, 7]], [[0, 1, 5, 4]], [[1, 2, 6, 5]], [[2, 3, 7, 6]], [[3, 0, 4, 7]] ]
+              ]
+            }
+          },
+          "C2": {
+            "type": "CellSpace",
+            "duality": "R2",
+            "poi": false,
+            "name": "002",
+            "level": "1",
+            "cellSpaceGeom": {
+              "type": "Solid",
+              "boundaries": [
+                [ [[0, 3, 2, 1]], [[4, 5, 6, 7]], [[0, 1, 5, 4]], [[1, 2, 6, 5]], [[2, 3, 7, 6]], [[3, 0, 4, 7]] ]
+              ]
+            }
+          }
+        },
+        "cellBoundaryMember": {
+          "B1": {
+            "type": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E1",
+            "cellBoundaryGeom": {
+              "type": "Surface",
+              "boundaries": [
+                [0, 3, 2, 1]
+              ]
+            }
+          }
+        }
+      },
+      "dualSpace": {
+        "creationDatetime": "2023-09-28T08:30:00+00:00",
+        "isLogical": false,
+        "nodeMember": {
+          "R1": {
+            "type": "Node",
+            "duality": "C1",
+            "geometry": {
+              "type": "Point",
+              "boundaries": 2
+            },
+            "connects": ["E1"]
+          },
+          "R2": {
+            "type": "Node",
+            "duality": "C2",
+            "geometry": {
+              "type": "Point",
+              "boundaries": 3
+            },
+            "connects": ["E1"]
+          }
+        },
+        "edgeMember": {
+          "E1": {
+            "type": "Edge",
+            "weight": 1.0,
+            "geometry": {
+              "type": "Curve",
+              "boundaries": [2,3]
+            },
+            "connects": ["C1", "C2"]
+          }
+        }
+      }
+    }
+  },
+  "vertices": []
+}
