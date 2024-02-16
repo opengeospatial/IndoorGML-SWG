@@ -1,0 +1,317 @@
+[[section-general-concepts]]
+== General Concepts of IndoorGML
+
+IndoorGML is a space-centred standard.
+As so, it focuses on the three main types of information of spaces (2D or 3D): geometry, topology and semantic.
+In order to define the space and its suitable properties under the consideration of those three types of information, the standard relies on the following concepts:
+
+* Cellular space,
+* Poincaré Duality,
+* Semantic extension,
+* Thematic layering.
+
+The cellular space provides the geometric description of an IndoorGML model.
+The Poincaré duality describes the topological relations such as adjacency and connectivity between the spaces.
+Together, they form the key concept of Primal-Dual model that defines the core part of an IndoorGML model.
+The semantic extension mechanism, as its name suggests, allows to add more details to the basic semantics of the core module.
+Thematic layering mechanism allows to organise an IndoorGML model as a collection of layers with different themes.
+Those concepts are elaborated in the following subsections.
+
+[[section-space]]
+=== Space
+
+The notion of space is widely explored in spatial science and urban applications in general (<<zlatanova2020spaces,Zlatanova, et al., 2020>>).
+Among its diverse definitions that can be found in dictionaries and related literature, one definition of the space encapsulates most of the concepts attached it:
+
+"_Space is either unlimited expand or an empty area usually bounded in some way between things (e.g., the architect left space in front of the building) or an area reserved for some particular purpose (e.g., the laboratory's floor space)"_ _(<<wordnet,Princeton University, 2010>>)_.
+
+That definition acknowledges three main aspects of the space:
+
+[loweralpha]
+. its ability to expand infinitely,
+. its intuition to be generally empty and eventually bounded (particularly in the built environment) and
+. its functional property.
+
+In IndoorGML, the space is characterized by all those properties, except IndoorGML space is not necessarily empty.
+Depending on the IndoorGML extension (indoor navigation, sensors coverage, ownership, etc.) spaces can be empty, non-empty or partially empty.
+
+The indoor space is commonly perceived as a space within a building.
+It incorporates architectural components such as walls, slabs, doors, etc., furniture such as chairs, tables, desks and the remaining empty spaces as in rooms, corridors, halls, etc.
+IndoorGML 2.0 focuses on the empty spaces where objects can be located, and activities can be hosted for indoor navigation or LBS.
+Consequently, the relationships between spaces are of critical importance.
+
+Spaces in the built environment are not always sharply distinguishable.
+Many spaces cannot be strictly categorised as indoor or outdoor, but rather as semi-spaces often linking indoor and outdoor environments (<<yan2019generic,Yan, Diakité, & Zlatanova, 2019>>; <<zlatanova2020spaces,Zlatanova, et al., 2020>>).
+For example, an inner court, a veranda, a balcony, or an open bridge can belong to a building, without being entirely enclosed within the shell of the building.
+Nevertheless, for a matter of completeness, IndoorGML can account for all types of space within the built environment, as long as they can be represented with the IndoorGML Cellular space concept.
+
+[[section-cellularspace]]
+=== Cellular space
+
+A _cellular space_ is a set of _cells_ (or _CellSpaces_) defined as the smallest organizational or structural unit (Princeton University, 2010) and grouped according to thematic criteria (e.g. topographic space, sensor coverage space, etc.).
+A cellular space _S_ of thematic layer _T_, noted _S_^_T_^ is defined as follows:
+
+_S_^_T_^= {_c_~1~, _c_~2~, …, _c_~_n_~}
+
+where _c_~_i_~ is _i_^th^ cell. Every cell in a cellular space can have the following properties:
+
+* a unique identifier ;
+* a name (e.g. a room number);
+* a geometry (e.g. solids in 3D or surfaces in 2D)
+
+<<fig-cellular-space>> illustrates a cellular space consisting of cells, which represent rooms, corridors, doors and windows in a building.
+
+[[fig-cellular-space]]
+.a) A building and b) the corresponding cellular space, containing all empty cells and c) corresponding cells of a room, a corridor and their openings.
+image::./figures/FIG4.png[align="center"]
+
+Within a cellular space, only the adjacency relationship is allowed between cells, that is, no overlap may occur. Overlapping cells must be organised in a new cellular space.
+A cellular space may be incomplete coverage, i.e. it is possible to have gaps between cells (<<fig-cellular-space-2>>).
+
+[[fig-cellular-space-2]]
+.Cellular space containg disconnected cells, i.e., all offices in an university building (Allatas et al. 2017)
+image::./figures/FIG5.png[align="center"]
+
+In IndoorGML, a cellular space can be subdivided into smaller cells or aggregated into larger ones.
+Those operations detailed in <<subsection-subdivision>> allow for both a tailored geometric granularity and functional specification of spaces.
+
+[[subsection-geometry]]
+==== Geometry
+
+Every cell defining an item in indoor space owns a shape, size and location that can be collected and modeled.
+It can represent physical features such a room, door, wall, or virtual spaces such as legal rights and access or sensors coverages.
+Depending on the application, the geometry of a cell can be simplified and generalised into a minmax bounding box.
+Such approach can be applied when considering highly irregular shapes like furniture.
+Geometric information can be included in IndoorGML either directly or via an external link.
+Geometry of cells can be omitted as well.
+
+Geometry of cells is defined in Euclidean space and provides the means for the quantitative description of the spatial characteristics of cell.
+Metrics is defined as in (<<topologywithouttears,Morris, 2023>>).
+IndoorGML cells are modeled as features and follow ISO 19107 (Spatial Schema)(<<ISO_19107,ISO, 2019>>) provides conceptual schemas to describe and model real world objects as features.
+
+[[fig-geometry]]
+.Three options to represent geometry in IndoorGML
+image::./figures/FIG6.png[align="center"]
+
+As illustrated in <<fig-geometry>>, there are three options for representing geometry of a cell in indoor space:
+
+. Geometry in IndoorGML (Option 1): geometric representation of cell may be included within an IndoorGML document. It is GM_Solid in 3D space and GM_Surface in 2D space as defined in ISO 19107. Note that solid with holes or surface with holes are allowed in this standard.
+. External Reference (Option 2): instead of explicit representation of geometry, an IndoorGML document can only contain external links to objects defined in other data sets such as IFC or CityGML, where the referenced objects in external data set include geometric information. Then there must be 1:1 or _n_:1 mapping from cells in IndoorGML to corresponding objects in other datasets.
+. No Geometry (Option 3): no geometric information is included in IndoorGML. This means that the shape, extend and location are unknown. The cell is defined by its identifier.
+
+Note that Option 2 can always be used in combination with the other options.
+When Option 1 is used, three fundamental operations can be applied to cell spaces: subdivision, aggregation, and selection.
+
+[[subsection-topology]]
+==== Topology
+
+Beside the geometry of a cellular space, it is also possible to represent cells in the Topological space by a topological model, representing the relationships between points, lines and polygons constructing the geometry (<<gerhard2012geometry,Gröger and George, 2012>>).
+Such topological models are dedicated to representing spatial relationships thus their shape and size is not described (<<egenhofer1989formal,Egenhofer et al. 1989>>).
+This is to say, geometric predicates such as volumes, areas, distances cannot be computed.
+As mentioned above IndoorGML deals only with cells in 3D and 2D, which are presented as solids or polygons.
+Consequently, the topological model contains only 3D and 2D objects in 3D cellular space and 2D and 1D objects in 2D cellular space.
+More information about topology of cells can be found in <<subsection-primalspacelayer>>
+
+[[subsection-subdivision]]
+==== Subdivision, aggregation, and selection
+
+The indoor environment is complex and indoor spaces often have hierarchical structures. For several indoor applications, a careful decomposition of an indoor space is required to reflect these hierarchical structures.
+To support the representation of such configurations, the subdivision, aggregation, and selection processes on the CellSpaces can help achieve them.
+
+[[fig-subdivision-and-aggregation]]
+.a) A furnished indoor space. b) Subdivision of the indoor space into two separate rooms with exclusion of furnishing elements' spaces. c) Selection of specific CellSpaces (green) suitable for walking and rolling. d) CellSpaces (green) suitable for flying.
+image::./figures/FIG7.png[align="center"]
+
+As illustrated in <<fig-subdivision-and-aggregation>>, the subdivision consists in splitting the original cells into several subspaces of different geometry, according to their function.
+For example, in <<fig-subdivision-and-aggregation>>.b, the indoor space is subdivided into several.
+This subdivision allows to segment <<fig-subdivision-and-aggregation>>.a in subspaces of different functions, e.g., a kitchen and a living room, as well as discriminating the spaces physically occupied by items.
+The subdivision process could be based on any application-based criteria and all resulting subspaces are CellSpaces of a cellular space.
+For the purpose of navigation applications, subdivisions may be required because of:
+
+* geometry simplification, e.g., working with spaces that have only convex shapes
+* increase of granularity, e.g., in for improving the localisation of people and items.
+* need to identify specific functional/perception spaces, e.g., waiting or smoking areas.
+* defining free spaces, e.g., spaces free of obstacles.
+
+The aggregation process is the reverse of the subdivision, which leads subspaces to be merged instead of being split.
+Therefore, the merging of all subspaces of<<fig-subdivision-and-aggregation>>.a allows to retrieve the original cell spaces of <<fig-subdivision-and-aggregation>>.a.
+Similarly, any new cell resulting from this process is a CellSpace of a cellular space.
+For the purpose of indoor navigation, aggregation may be required when:
+
+* There are CellSpaces of no interest for an application, e.g., induvial toilets or service areas in a building
+* There are CellSpaces, which are not accessible for specific users, e.g., restricted areas at hospitals and airports.
+
+Finally, the selection allows to discriminate the CellSpaces of interest from the rest. <<fig-subdivision-and-aggregation>>.c and d show a scenario where only CellSpaces that can support a certain type of locomotion mode are considered in the cellular space (see the green CellSpaces).
+The selection of spaces for indoor navigation applications can take place for many different reasons:
+
+* to reduce the overall number of spaces, e.g., select only empty spaces, such as rooms and corridors and avoid non-empty spaces such as walls, slabs, or too crowded areas.
+* to eliminate spaces, which will not be used for a specific user: e.g., select only common spaces for a visitor of a public building
+* to eliminate spaces of danger: e.g., in emergency cases, select only spaces which are still safe for users to be in.
+
+[[section-poincareduality]]
+=== Poincaré Duality
+
+Topological relations between cells is crucial in IndoorGML.
+They allow establishing links between cell in the same or different thematic layers, which is critical information for several applications such as navigation and LBS.
+As mentioned above, a topological model of cellular space is partial and represents only relations between cells and their boundaries.
+The Poincaré duality (<<munkres1984lements,Munkres, 1984>>) is further employed to explicitly describe the relationships between the cells.
+It provides a theoretical background for mapping cellular space to a graph or network to represent allowed topological relationships.
+It simplifies the complex spatial relationships, which may occur especially in 3D by a topological model (<<lee2004spatial,Lee, 2004>>).
+
+The Poincaré duality refers to two spaces namely _Primal Space_ and _Dual Space_.
+A _k_-dimensional object in _N_-dimensional Primal Space is mapped to (_N-k_) dimensional object in Dual Space.
+Thus, solid 3D objects in 3D Primal space, e.g., rooms within a building, are mapped to nodes (0D object) in dual space.
+2D surface shared by two 3D objects is transformed into an edge (1D) linking the two nodes in Dual space.
+The nodes and edges in Dual space form an adjacency graph.
+The nodes and the edges of Dual space represent abstractions of cells and their adjacency relationships in Primal space.
+
+[[fig-poincare-duality]]
+.Principles of Poincaré duality. a) 3D Primal space case and b) 2D case. (Mathematical definition of Poincaré duality in (<<munkres1984lements,Munkres, 1984>>))
+image::./figures/FIG8.png[align="center"]
+
+<<fig-poincare-duality>> illustrates this duality transformation for the case where the primal space is 3D and 2D respectively.
+Note that the transformations from 1D object (curve) or 0D object (point) in 3D Primal space are not included in IndoorGML since they are not considered as cells in most applications.
+But the transformation may be applied to 1D or 0D objects of 3D primal space in a similar way if it is required.
+Then the adjacency graph _G_~_adj_~ is defined as follows:
+
+_G_~_adj_~ = (_V_, _E_~_adj_~)
+
+where _V_ and _E_~_adj_~ are sets of nodes and edges in dual space mapped from cells and surfaces in 3D primal space, respectively.
+The connectivity graph _G_~_con_~ is a subset of the adjacency graph and represent only adjacency that make the spaces connected.
+For navigation cases connectivity between spaces (i.e., room) is provided via the notion of doors between the rooms. It is defined as:
+
+_G_~_con_~ = (_V_, _E_~_con_~)
+
+where _V_ and _E_~_con_~ are sets of nodes and edges in dual space mapped from cells and surfaces in 3D primal space, respectively. <<fig-poincare-duality-2>> illustrates cellular space and its connectivity graph.
+
+[[fig-poincare-duality-2]]
+.a) Poincaré duality on 3D cells of a building; b) Corresponding adjacency graph in the dual space; c) Combined primal and dual space view.
+image::./figures/FIG9.png[align="center"]
+
+The adjacency graph can be represented as a _logical network_ or _geometric network_. While the logical network represents only the relationships between the cells, the geometric network holds geometry for nodes and edges.
+
+[[section-structuredspacemodel]]
+=== Structured space model
+
+The Primal and Dual spaces and the Euclidean and Topological spaces are interlinked in a Structured Space Model as illustrated in <<fig-structured-space>>.
+The Primal space refers to either Euclidean or Topological space and the Dual space refers to either Geometric network or Logical network.
+Geometry of Cellular Space and Geometric Network are embedded in the Euclidean space, while Topology of Cellular Space and Logical Network are defined in the Topological space.
+IndoorGML supports the Primal and Dual models in the Euclidean space and the Logical Network in the Topological space.
+As mentioned above, the Geometry for Cellular space is not compulsory, as the cellular space can be identified.
+IndoorGML is valid with at least one of the Primal spaces.
+See examples in <<<section-datadictionary>>.
+
+The Euclidean space (Geometry) is estimated to be the most useful for applications such as navigation and LBS.
+IndoorGML may then containing both Geometry and Geometry Network, or only Geometry, or only Geometric Network.
+Other types of applications, such as dealing with ownership or sensor coverage, may be better supporter by IndoorGML containing Geometry and Logical Network or Topology and Logical Network.
+
+[[fig-structured-space]]
+.Structured space model: mapping between Euclidean and Topological spaces, and Primal and Dual Spaces
+image::./figures/FIG10.png[align="center"]
+
+[[section-semantics]]
+=== Semantics
+IndoorGML offers a basic semantic for the Primal and Dual spaces of the core module.
+The semantics of the core model is generic for all applications as it does not specify any other information about the Primal and Dual Spaces, except some characteristics such as name, level, and PoI.
+If no extension module is involved, the cells carry the semantics of the core module only.
+
+Further semantic specifications are provided via the Extension modules as specified in <<section-indoorgml-navigation>>. Every cell is further classified according to the semantic introduced by the extension module.
+IndoorGML 2.0 maintains semantics for Indoor navigation which is provided within Navigation extension module.
+The semantics, developed through the Navigation extension module is intended for two purposes to: 1) provide a classification of a cell, and 2) determine adjacency relationships that ensure connectivity between cells. Semantics thus allows to define cells that are important for navigation.
+Thus, a cell can be classified as navigable (room, corridor, hall), non-navigable (wall, slab, furniture), opening (door, window), etc. (see <<section-indoorgml-navigation>>).
+The subdivision and classification of Cellular space relies on the architectural layout of a building.
+
+While this may be enough for some cases based on connectivity graph analysis, it can rapidly be limiting for more specialized applications such as sensor managements, legal aspects or security, where advanced, specific semantic needs to be associated to the geometric and topological elements.
+Examples can be a Legal Extension module, in which a cell might be classified as 'ownership', 'restriction', 'responsibility' etc. or a Security extension module that may offer semantics that would indicate 'check-in', 'boarding', 'crew entrance', etc.
+
+Semantic extension mechanism allows to add more semantic on primal or dual spaces, as long as they follow the modularization principle.
+Cells can be organised in a hierarchical structure according to their semantics, corresponding properties, and semantic interrelations (specialisation and generalisation).
+For example, 'room' is a specialization of 'navigable cell' and 'non-navigable cell' is a generalization of 'walls' and 'obstacles'.
+Cells created for one space representation may be aggregated or subdivided for the purpose of another one.
+More details about the Navigation extension module are given in <<section-indoorgml-navigation>>.
+
+[[section-thematiclayers]]
+=== Thematic layers
+
+A single indoor environment can be organised in many kinds of cellular spaces with distinct subdivision and semantic specifications.
+Within each Extension module, it is possible to have many different subdivisions and each cellular space is targeted towards specific applications and needs.
+A cellular space with a specific semantics and/or geometric subdivision, aiming to reflect a group of application can be organised in a _Thematic Layer_.
+Thematic layers can be defined using the Extension modules and/or Core module.
+Thematic layers making use of the semantics of Core module only, can be derived applying the principles of space partitioning, i.e., subdivision, aggregation and selection.
+Examples of such thematic layers are subdivision according to Wi-Fi or RFID coverage (see example below).
+The Navigation extension module provides additional notions for navigability and connectivity.
+Therefore, thematic layers that rely of these properties, should include Navigation extension module.
+Navigation-based themes can be defined using a particular space partitioning with respect to:
+
+* tasks: visitor, staff, facility manager, emergency responder (see Figure 11)
+* user characteristics: age, gender
+* mode: walking, driving, flying (see Figure 7.c and Figure 7.d)
+
+IndoorGML 2.0 is organised as a collection of interconnected layers representing different themes of the same physical space.
+<<fig-cellular-space-visitor>> represents a thematic layer 'Visitors', which contains all cells, which are accessible to visitors in a university faculty (Alattas et al 2017).
+Similarly, cellular spaces can be created for students or facility management.
+All spaces use the semantics of the Navigation extension module, but a selection of spaces is made according to the user tasks.
+Similarly, cellular spaces from different extension modules can be organised in thematic layers.
+
+[[fig-cellular-space-visitor]]
+.Cellular space for visitors (<<alattas2017supporting,Alattas et al 2017>>)
+image::./figures/FIG11.png[align="center"]
+
+In <<fig-cellular-space-same-physical>>, a physical indoor space is organized according to the Navigation extension module Navigation, named Topographic layer.
+In addition, two cellular subdivisions called Wi-Fi and RFID are specified, which rely on the semantics of the core model only.
+The Topographic layer, created under the Navigation extension module, follows the architectural layout of a building, and is composed of rooms, corridors, and stairs.
+Wi-Fi and RFID cells follow the outlines of the corresponding sensor coverages.
+The three cellular spaces, although related to distinct semantics and subdivision approaches, form each a thematic layer.
+These three thematic layers may be appropriate for an application that provides tracking and navigation.
+
+Following the modularization mechanisms, every layer in IndoorGML contains the core module, which is composed of Primal space and Dual space.
+A valid thematic layer should contain at least one of the four space representations, i.e., Geometry, Topology, Geometric network or Logical network.
+
+[[fig-cellular-space-same-physical]]
+.Three different cellular spaces for the same physical space
+image::./figures/FIG12.svg[align="center"]
+
+[[subsection-multiplelayeredspace]]
+==== Multiple-Layered Space representation
+
+IndoorGML provides mechanisms for maintaining and linking multiple Thematic layers for a same indoor environment.
+<<fig-corresponding-primal-dual-space>> represents the three thematic layers discussed above.
+
+[[fig-corresponding-primal-dual-space]]
+.Corresponding Primal and Dual spaces of different thematic layers
+image::./figures/FIG13.png[align="center"]
+
+This representation method with multiple cellular space layers is called _Multiple Layered Space Representation_ (MLS Representation).
+The MLS representation is useful for many purposes.
+For example, we can represent the hierarchical structure of indoor space by MLS representation, where each level is represented as a single space layer.
+Another application example of MLS representation is indoor tracking with presence sensors such as RFID, as shown in <<fig-cellular-space-same-physical>>.
+Given an indoor space represented as topographic cellular space layer and RFID sensor coverage layer respectively, we can deduce the movement of a mobile object with a RFID tag by the sequence of RFID coverage cells and corresponding inter-layer space edges.
+
+[[subsection-interlayerrelation]]
+==== Inter-Layer Relations
+
+To handle the interaction between several layers, it is necessary to represent the relationships between them.
+IndoorGML does this through the Inter-Layer connection which describes the spatial relationships (topology) between two layers.
+Unlike the topological relationships between cells of a same layer which are ruled by the Poincaré Duality (adjacency only), the inter-layer relations are ruled by the 9-intersection model (<<egenhofer1989formal,Egenhofer 1989>>).
+IndoorGML 2.0 concentrates on six relationships namely _contains, within, covers, coveredBy_, _overlaps and equals_ between cells in the Primal space and nodes in Dual space and their combinations
+
+As illustrated in <<fig-corresponding-primal-dual-space>>, there are three space layers, where each layer has its own primal and dual space representation.
+Following the same indoor tracking example, <<fig-inter-layer>> illustrates the inter-layer relations between the dual spaces of the layers in <<fig-cellular-space-same-physical>>.
+In a topographic layer, the nodes represent the possible states of a navigating object and correspond to cells with volumetric extent in primal space (e.g., rooms) while the edges represent state transitions, i.e., the movement of an object from one space to another.
+They correspond to connectivity relations between the cells in primal space (e.g., neighboured rooms connected with a door).
+In the sensor space, the graph has a slightly different structure.
+The nodes represent again the cells with volumetric extend (e.g., the entire coverage space of a Wi-Fi transmitter), while the edges represent the transition from one space to another based on the neighboring Wi-Fi coverage spaces.
+Since the layers cover the same real-world space, the separated dual graphs can be combined into a multi-layered graph.
+
+[[fig-inter-layer]]
+.Inter-Layer relations between three different layers of a same environment
+image::./figures/FIG14.png[align="center"]
+
+<<fig-inter-layer>> represents relationships in the Dual space between the three Primal spaces given in <<fig-corresponding-primal-dual-space>>: topographic and two sensors' spaces Wi-Fi and RFID.
+A novelty in IndoorGML 2.0 is the possibility to represent an inter-layer connection between two primal spaces. This is illustrated in <<fig-inter-layer-2>> where the inter-layer mechanism is used to represent a furnished room with a combination of two layers: a first one describing solely the cells of the room and opening (<<fig-inter-layer-2>>.b) and a second one describing the CellSpaces of the furniture (<<fig-inter-layer-2>>.c).
+The relationship between the two layers can be qualified as a containment (layer 1 _contains_ layer 2, or layer 2 is _within_ layer 1).
+This allows describing complex scenes while respecting the non-overlapping constraint of Poincare duality.
+
+[[fig-inter-layer-2]]
+.Inter-layer connection between two primal spaces: a) furnished room; b) cells of the room and door only; c) cells of furnishing elements only represented by minmax boxes.
+image::./figures/FIG15.png[align="center"]

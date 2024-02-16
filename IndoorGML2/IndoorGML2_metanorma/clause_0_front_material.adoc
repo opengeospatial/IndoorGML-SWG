@@ -1,0 +1,111 @@
+////
+== Keywords
+
+Keywords inserted here automatically by Metanorma
+////
+
+
+.Preface
+
+The goal of IndoorGML is to represent and allow for exchange of geoinformation that is required to build and operate systems that rely on spaces and topological relationships between them such as path computation, sensor coverage, property accessibility, etc. Several standards such as <<OGC_12-019,CityGML (OGC, 2012)>>, <<OGC_12-007r2,KML (OGC, 2015)>>, <<ISO_19152,LADM (ISO, 2012)>> and <<ISO_16739-1,IFC (ISO,2018)>> have been published to describe 3D geometry and semantics of building features, but they are not readily appropriate to derive spaces and their topological relationships. The navigation standard <<OGC_20-094,IMDF (OGC, 2021)>> provide a comprehensive model to compute path between features located on a map, but the derived network is application specific. This standard aims to provide unified, standardised and flexible approach for indoor spatial information required for space-graph based applications such as indoor navigation.
+
+This version of the OGC standard consists of two components: 1) a core data model to describe topological connectivity and different contexts of indoor space, and 2) a data model for navigation in indoor space.
+
+This version of IndoorGML covers geometric and semantic properties of indoor spaces relevant for indoor navigation. These indoor spaces may differ from the spaces described by other standards such as CityGML, KML, IFC, LADM and IMDF. In this respect, IndoorGML is a complementary standard to CityGML, KML, IFC, LADM and IMDF to support location-based services for indoor navigation.
+
+// [NOTE]
+// ====
+// Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work.
+//
+// There are two ways to specify the Preface: "simple clause" or "full clasuse"
+//
+// If the Preface does not contain subclauses, it is considered a simple preface clause. This one is entered as text after the `.Preface` label and must be placed between the AsciiDoc document attributes and the first AsciiDoc section title. It should not be give a section title of its own.
+//
+// If the Preface contains subclauses, it needs to be encoded as a full preface clause. This one is recognized as a full Metanorma AsciiDoc section with te title "Preface", i.e. `== Preface`. (Simple preface content can also be encoded like full preface.)
+//
+// ====
+
+////
+*OGC Declaration*
+////
+
+////
+[THIS TEXT IS ALREADY ADDED AUTOMATICALLY IN THE FRONTISPIECE OF ALL OGC DOUCMENTS]
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
+
+Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
+////
+
+////
+NOTE: Uncomment ISO section if necessary
+
+*ISO Declaration*
+
+ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies). The work of preparing International Standards is normally carried out through ISO technical committees. Each member body interested in a subject for which a technical committee has been established has the right to be represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also take part in the work. ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of electrotechnical standardization.
+
+International Standards are drafted in accordance with the rules given in the ISO/IEC Directives, Part 2.
+
+The main task of technical committees is to prepare International Standards. Draft International Standards adopted by the technical committees are circulated to the member bodies for voting. Publication as an International Standard requires approval by at least 75 % of the member bodies casting a vote.
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
+////
+
+[abstract]
+== Abstract
+
+This OGC^®^ IndoorGML standard specifies an open data model for indoor information in UML and technical implementation schemas in GML, SQL and JSON. While there are several 3D building modeling standards such as CityGML, KML, IFC, LADM and IMDF which deal with interiors of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML focuses on modeling indoor spaces and their neighbourhood relationships to support indoor location-based services. This version of IndoorGML addresses spaces and networks for indoor navigation.
+
+[.preface]
+== Security Considerations
+
+//If no security considerations have been made for this Standard, use the following text.
+
+No security considerations have been made for this Standard.
+
+////
+If security considerations have been made for this Standard, follow the examples found in IANA or IETF documents. Please see the following example.
+
+“VRRP is designed for a range of internetworking environments that may employ different security policies. The protocol includes several authentication methods ranging from no authentication, simple clear text passwords, and strong authentication using IP Authentication with MD5 HMAC. The details on each approach including possible attacks and recommended environments follows.
+
+Independent of any authentication type VRRP includes a mechanism (setting TTL=255, checking on receipt) that protects against VRRP packets being injected from another remote network. This limits most vulnerabilities to local attacks.
+NOTE: The security measures discussed in the following sections only provide various kinds of authentication. No confidentiality is provided at all. This should be explicitly described as outside the scope....”
+////
+
+////
+== Submitting organizations
+
+Submitting organisations added automatically by Metanorma from document attributes
+////
+
+[.preface]
+== Submitters
+All questions regarding this submission should be directed to the editor or the submitters:
+
+// TODO: Need to check Abdou's Affiliation
+|===
+h|Name h|Affiliation h|Contact
+
+|Sisi Zlatanova | University of New South Wales | s.zlatanova at unsw.edu.au
+|Ki-Joune Li    | Pusan National University     | lik at pnu.edu
+|Abdoulaye Diakite  | The University of New South Wales | diakite.abdoulaye at gmail.com
+|Taehoon Kim  | National Institute of Advanced Industrial Science and Technology | kim.taehoon at aist.go.jp
+|Jeremy Morley  | Ordnance Survey | Jeremy.Morley at os.uk
+|===
+
+
+// [.preface]
+// == Contributors
+//
+// //This clause is optional.
+//
+// Additional contributors to this Standard include the following:
+//
+// Individual name(s), Organization
+//
+// [NOTE]
+// ====
+// If you need to place any further sections in the preface area
+// use the `[.preface]` attribute.
+// ====
+

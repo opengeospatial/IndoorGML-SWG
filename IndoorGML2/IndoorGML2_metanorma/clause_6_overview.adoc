@@ -1,0 +1,60 @@
+[[section-overview]]
+== Overview of IndoorGML
+
+IndoorGML has been designed to support applications developers in providing Location-based services applications.
+<<fig-overview-indoorgml>> illustrates the place of IndoorGML in the ecosystem of standards, models and files formats and end-user applications.
+IndoorGML provides simplified yet standardized notations for indoor spaces and networks, which can be used in different application contexts such as navigation, monitoring, asset and property management.
+IndoorGML can be linked to and derived from any geometric model that a building owner may have (floor plans, CAD models, BIM models, laser scans, measurements).
+The semantics notations of IndoorGML are generic and therefore allowing to protect some sensitive building information.
+
+[[fig-overview-indoorgml]]
+.IndoorGML in the overall application development ecosystem
+image::./figures/FIG2.png[align="center"]
+
+[[section-motivation]]
+=== Motivation for defining IndoorGML
+
+Indoor environments differ from outdoor in many aspects.
+The indoor spaces have less structures lanes and directions to move; they are multi-levelled and reachable via different vertical connectors such as stairs, elevators, escalators, and ramps; they have large number of obstacles such as furniture columns, fences, decorations.
+The spaces are enclosed and accessible via different types of openings (normal doors, emergency doors, sliding doors, one-way doors, portals).
+The height of the indoor spaces might vary to such extend that some spaces become not accessible for certain type of users. This has led to the existence of variety of approaches for modeling indoor environments and providing services.
+Therefore, well-known concepts, data models, and standards need to the be refined and unified to reflect specifics of indoor environments.
+
+In general, indoor spatial information can be classified into two large categories as follows:
+
+* Architectural components (walls, stairs, slabs) and interior facilities (furniture).
+* Cavities (rooms and corridors) or virtual subdivision (sensors coverage and legal spaces)
+
+Building and facility management application require mostly information from the first category.
+Indoor location-based services (LBS), indoor route analysis or indoor geo-tagging services require mostly information from the second category.
+
+IndoorGML is intended provide a unified modeling approach that is necessary to support indoor applications using information from those two categories.
+The leading concepts in IndoorGML are the Indoor spaces and the topological relationships between them (<<section-space>>), which are grounded in the Poincaré duality.
+The space notations are kept as generic as possible to reflect the variety and complexity of indoor environments.
+The entire indoor environment - objects and spaces - constitutes the Cellular space (<<section-cellularspace>>).
+Cells have attributes, one of which is their geometry.
+The cell units can be subdivided or aggregated (<<section-cellularspace>>).
+The Cell Spaces are the basis for deriving an adjacency/connectivity/accessibility network (<<section-poincareduality>>).
+Cell Spaces of the same characteristics are non-overlapping and form a thematic layer (<<section-thematiclayers>>).
+For example, architectural components (walls, slabs, stairs) and the corresponding cavities (rooms, corridors) form a Topographic thematic layer.
+
+IndoorGML 2.0 follows a model-driven approach.
+All concepts are organised in a UML class diagram (<<section-data-model>>), from which the implementation schemas for GML is provided (<<annex_ATS,Annex A>>).
+
+[[section-modularisation]]
+=== Modularisation
+
+Following the guidance in the OGC's policy (<<OGC_08-131r3,OGC, The Specification Model – A Standard for Modular specifications, 2009>>), IndoorGML is organised into a Core module and Extension modules that have mandatory dependency on the core (see <<fig-modular>>).
+The IndoorGML core module comprises the basic concept and each extension module covers a specific application, which requires extension of the core module semantics.
+IndoorGML 2.0 contains one extension named _Navigation_.
+Each IndoorGML module is specified by an implementation schema definition (XML, SQL, and JSON).
+
+The dependency relationships among IndoorGML's modules are illustrated in <<fig-modular>>.
+Each module is represented by a package in UML.
+The package name corresponds to the module name.
+A dash arrow in the figure indicates that the schema at the tail of the arrow depends upon the schema at the head of the arrow.
+In the following sections the modules are described in detail.
+
+[[fig-modular]]
+.Modular organisation of IndoorGML
+image::./figures/FIG3.svg[align="center"]
