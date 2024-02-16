@@ -1,0 +1,198 @@
+[[annex_ATS]]
+[appendix,obligation="normative"]
+== Conformance Class Abstract Test Suite
+
+// [NOTE]
+// Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
+
+=== Introduction
+
+This normative annex specifies the test suite, which will be used for the conformance test of OGC IndoorGML 2.0 Part I.
+As OGC IndoorGML 2.0 Part I is a conceptual model, this test suite is an abstract one and its executable test suite shall depend on the implementation of OGC IndoorGML 2.0 Part I, more precisely the encoding system of OGC IndoorGML 2.0 such as XML, JSON, or SQL.
+
+=== General Tests
+Since OGC IndoorGML 2 is based on <<ISO_19103,ISO 19103:2015>>, <<ISO_19107,ISO 19107:2019>>, <<ISO_19109,ISO 19109:2015>>, <<ISO_19110,ISO 19110:2016>>, and <<ISO_19111,ISO 19111:2019>>, the abstract tests of these precedent standards shall be applied to OGC IndoorGML 2.
+
+=== UML Common Tests
+[requirements_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml/2.0/req/common
+subject:: Implementation Specification
+// inherit::
+requirement:: /req/common/cardinalities
+requirement:: /req/common/properties
+requirement:: /req/common/codelist
+====
+
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/common
+target:: http://www.opengis.net/spec/indoorgml/2.0/req/common
+classification:: Target Type:Implementation Specification
+// dependency::
+abstract-test:: /conf/common/cardinalities
+abstract-test:: /conf/common/properties
+abstract-test:: /conf/common/codelist
+====
+
+==== Cardinalities
+[requirement]
+====
+[%metadata]
+identifier:: /req/common/cardinalities
+part:: The cardinalities defined in the UML diagrams in the core and navigation modules shall be correctly applied to any implementation of IndoorGML 2.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/common/cardinalities
+target:: /req/common/cardinalities
+// test-purpose::
+test-method:: Manual or automated inspection
+====
+
+==== Properties
+[requirement]
+====
+[%metadata]
+identifier:: /req/common/properties
+part:: The properties of classes defined in the UML diagrams in the core and navigation modules shall be correctly applied to any implementation of IndoorGML 2.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/common/properties
+target:: /req/common/properties
+// test-purpose::
+test-method:: Manual or automated inspection
+====
+
+==== Code List
+[requirement]
+====
+[%metadata]
+identifier:: /req/common/codelist
+part:: The value of class properties shall be in the code list if the value type is defined as an enumeration in the UML diagrams in the core and navigation modules of IndoorGML 2.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/common/codelist
+target:: /req/common/codelist
+// test-purpose::
+test-method:: Manual or automated inspection
+====
+
+=== Conformance Class Core
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/core
+target:: http://www.opengis.net/spec/indoorgml/2.0/req/core
+classification:: Target Type:Implementation Specification
+// dependency::
+abstract-test:: /conf/core/thematiclayer
+abstract-test:: /conf/core/cellspace
+abstract-test:: /conf/core/cellboundary
+abstract-test:: /conf/core/node
+abstract-test:: /conf/core/edge
+abstract-test:: /conf/core/interlayerconnection
+====
+
+==== Class ThematicLayer
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/thematiclayer
+target:: /req/core/thematiclayer
+// test-purpose::
+test-method:: Manual or automated inspection
+====
+
+==== Class CellSpace
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/cellspace
+target:: /req/core/cellspace
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====
+
+==== Class CellBoundary
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/cellboundary
+target:: /req/core/cellboundary
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====
+
+==== Class Node
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/node
+target:: /req/core/node
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====
+
+==== Class Edge
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/edge
+target:: /req/core/edge
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====
+
+==== Class InterLayerConnection
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/interlayerconnection
+target:: /req/core/interlayerconnection
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====
+
+=== Conformance Class Navigation
+
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/navigation
+target:: http://www.opengis.net/spec/indoorgml/2.0/req/navigation
+classification:: Target Type:Implementation Specification
+// dependency::
+abstract-test:: /conf/navigation/objectspace
+abstract-test:: /conf/navigation/route
+====
+
+==== Class ObjectSpace
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navigation/objectspace
+target:: /req/navigation/objectspace
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====
+
+==== Class Route
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navigation/route
+target:: /req/navigation/route
+// test-purpose::
+test-method:: Automated inspection by geometric computation
+====

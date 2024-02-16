@@ -1,0 +1,40 @@
+[bibliography]
+[[Bibliography]]
+== Bibliography
+
+// [NOTE]
+// .Example Bibliography (Delete this note).
+// ===============================================
+// The TC has approved Springer LNCS as the official document citation type.
+//
+// Springer LNCS is widely used in technical and computer science journals and other publications
+//
+// * For citations in the text please use square brackets and consecutive numbers: [1], [2], [3]
+//
+// – Actual References:
+//
+// [n] Journal: Author Surname, A.: Title. Publication Title. Volume number, Issue number, Pages Used (Year Published)
+//
+// [n] Web: Author Surname, A.: Title, http://Website-Url
+//
+// ===============================================
+//
+// * [[[OGC2015,OGCTB12]]], _OGC: OGC Testbed 12 Annex B: Architecture_ (2015).
+
+* [[[alattas2017supporting,1]]] Alattas, A., Zlatanova, S., Van Oosterom, P., Chatzinikolaou, E., Lemmen, C., Li, K. J.: Supporting Indoor Navigation Using Access Rights to Spaces Based on Combined Use of IndoorGML and LADM Models. ISPRS International Journal of Geoinformation. 6, 12, 384 (2017)
+* [[[diakite2018spatial,2]]] Diakité, A. A., Zlatanova, S.: Spatial subdivision of complex indoor environments for 3D indoor navigation. International Journal of Geographical Information Science. 32, 2, 213-235 (2018)
+* [[[egenhofer1989formal,3]]] Egenhofer M.J.: A formal definition of binary topological relationships. In: Litwin W., Schek HJ. (eds) Foundations of Data Organization and Algorithms, FODO 1989, Lecture Notes in Computer Science. 367, 457–472 (1989)
+* [[[gerhard2012geometry,4]]] Gröger, G., B. George: Geometry and Topology. In: Kresse, W., Danko, D. (eds) Springer Handbook of Geographic Information. 303-321 (2012)
+* [[[topologywithouttears,5]]] Morris, S.: Topology Without Tears, http://www.topologywithouttears.net/topbook2023.pdf
+* [[[munkres1984lements,6]]] Munkres, J. R.: Elements Of Algebraic Topology (1st ed.). CRC Press. https://doi.org/10.1201/9780429493911 (1984)
+* [[[lee2004spatial,7]]] Lee, J.: A spatial access-oriented implementation of a 3D GIS topological data model for urban entities. GeoInformatica, 8, 237-264 (2004)
+* [[[wordnet]]] Princeton University.: WordNet, https://wordnet.princeton.edu/
+* [[[yan2019generic]]] Yan, J., Diakité, A. A., Zlatanova, S.: A generic space definition framework to support seamless indoor/outdoor navigation systems. Transactions in GIS, 23, 6, 1273-1295 (2019)
+* [[[zlatanova2020spaces]]] Zlatanova, S., Yan, J., Wang, Y., Diakité, A., Isikdag, U., Sithole, G., Barton, J.: Spaces in Spatial Science and Urban Applications—State of the Art Review. ISPRS International Journal of Geoinformation, 9, 1, 58 (2020)
+* [[[ISO_19152,ISO 19152]]],
+* [[[ISO_16739-1,ISO 16739-1]]],
+* [[[OGC_08-131r3,OGC 08-131r3]]],
+* [[[OGC_12-019,OGC 12-019]]],
+* [[[OGC_12-007r2,OGC 12-007r2]]],
+* [[[OGC_19-011r4,OGC 19-011r4]]],
+* [[[OGC_20-094,OGC 20-094]]],

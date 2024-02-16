@@ -1,0 +1,49 @@
+== Terms and definitions
+
+// This document uses the terms defined in Sub-clause 5.3 of <<OGC_06-121r9>>, which is based on the ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards. In particular, the word "`shall`" (not "`must`") is the verb form used to indicate a requirement to be strictly followed to conform to this standard.
+//
+// For the purposes of this document, the following additional terms and definitions apply.
+
+// === example term
+//
+// term used for exemplary purposes
+//
+// [.source]
+// <<ISO19101-1>>
+//
+// NOTE: An example note.
+//
+// [example]
+// Here's an example of an example term.
+
+=== Indoor Space
+
+A space within one or multiple buildings.
+
+=== Cellular Space
+
+A cellular space _S_ is a set of identifiable sells _c_~_i_~ grouped according to theme _T_ and is noted _S_^_T_^ is _S_^_T_^ = {_c_~1~, _c_~2~, …, _c_~_n_~}
+
+=== Graph
+
+A graph _G_ (_V_, _E_) where _V_ is a set of nodes representing cells and _E_ is the set of edges indicating topological relationships.
+
+=== Adjacency Graph
+
+A graph _G_~_adj_~ (_V_, _E_~_adj_~) where _V_ is a set of nodes representing cells and _E_~_adj_~ is the set of edges indicating the adjacency relationship.
+
+=== Connectivity Graph
+
+A graph G~con~(_V_, _E_~con~) where _V_ is a set of nodes representing cells in indoor space and _E_~_con_~ is the set of edges indicating the connectivity relationship.
+
+=== Logical Network
+
+A graph _G_ (_V_, _E_), where node _v_ in _V_ and edge _e_ in _E_ do not contain any geometric properties.
+
+=== Geometric Network
+
+A graph _G_ (_V_, _E_) where node _v_ in _V_ and edge _e_ in _E_ contain both geometric properties.
+
+=== Multi-Layered Space Model
+
+A model representing multiple themes of cellular spaces and/or graphs and inter-layer connections between them.

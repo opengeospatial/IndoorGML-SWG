@@ -1,0 +1,67 @@
+= OGC IndoorGML 2.0 Part I – Conceptual Model
+:comment: Change "standard" to "draft-standard" for draft standards
+:comment: The front page notice will update automatically to reflect the document type
+:doctype: standard
+:encoding: utf-8
+:lang: en
+:status: draft
+:committee: technical
+:draft: 1.0
+:external-id: http://www.opengis.net/doc/IS/indoorgml/2.0
+:docnumber: 22-045
+:received-date: 2029-03-30
+:issued-date: 2029-03-30
+:published-date: 2029-03-30
+:fullname: Sisi Zlatanova
+:fullname_2: Ki-Joune Li
+:fullname_3: Abdoulaye Diakite
+:docsubtype: implementation
+:keywords: ogcdoc, ogc documents, indoor, navigation, indoorgml, gml, sql, json
+:submitting-organizations: The University of New South Wales; Pusan National University; Ordnance Survey; University of Seoul; All4Land; Delft University of Technology; National Institute of Advanced Industrial Science and Technology;
+// TODO: submitting-organizations shall be updated
+:mn-document-class: ogc
+:mn-output-extensions: xml,html,doc,pdf
+:local-cache-only:
+:data-uri-image:
+:pdf-uri: ./document.pdf
+:xml-uri: ./document.xml
+:doc-uri: ./document.doc
+:edition: 1.0
+
+////
+Make sure to complete each included document
+////
+include::clause_0_front_material.adoc[]
+
+include::clause_1_scope.adoc[]
+
+include::clause_2_conformance.adoc[]
+
+include::clause_3_references.adoc[]
+
+include::clause_4_terms_and_definitions.adoc[]
+
+include::clause_5_conventions.adoc[]
+
+include::clause_6_overview.adoc[]
+
+include::clause_7_general_concepts.adoc[]
+
+include::clause_8_data_model.adoc[]
+
+include::clause_9_data_dictionary.adoc[]
+
+////
+add or remove annexes after "A" as necessary
+////
+include::annex-a.adoc[]
+
+// include::sections/annex-n.adoc[]
+
+////
+Revision History should be the last annex before the Bibliography
+Bibliography should be the last annex
+////
+// include::annex-history.adoc[]
+
+include::annex-bibliography.adoc[]
