@@ -1,0 +1,9043 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Feature Catalogue'IndoorGML2 Application Schema'</title>
+<style type="text/css">
+          body
+          {
+            background-color:#f4f6fe;
+          }
+          h1
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:24px;
+            color:#151B8D;
+            text-align:center;
+          }
+          h2,
+          h3,
+          h4
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            color:#151B8D;
+          }
+          a:link
+          {
+            color:#325595;
+            text-decoration:none;
+            border-bottom:1px dotted;
+            outline:none;
+          }
+          a:hover
+          {
+            border-bottom:1px solid;
+            color:#325595;
+          }
+          p,
+          li
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:12px;
+            margin-top:0px;
+            margin-bottom:4px;
+          }
+          .rightalign
+          {
+            font-size:10px;
+            text-align:right;
+          }
+          .small
+          {
+            font-size:10px;
+          }
+          table.att
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            width:100%;
+            border-style:none;
+            border-collapse:collapse;
+            border:0px;
+            padding:0px;
+          }
+          table.link
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            width:100%;
+            border-style:none;
+            border-collapse:collapse;
+            border:0px;
+            padding:0px;
+          }
+          table.overview
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            border-style:none;
+            border-collapse:collapse;
+            border:0px;
+            padding:0px;
+          }
+          table
+          {
+            font-family:Arial, Helvetica, sans-serif;
+            border-collapse:collapse;
+            border:1px solid #98bf21;
+            padding:2px 2px 2px 2px;
+          }
+          tr
+          {
+            vertical-align:top;
+          }
+          td.feature,
+          td.values,
+          td.overview
+          {
+            border:1px solid #98bf21;
+            padding:2px 2px 2px 2px;
+          }
+          p.title2
+          {
+            font-size:12px;
+            font-weight:bold;
+            font-family:Arial, Helvetica, sans-serif;
+          }
+          p.title
+          {
+            font-size:14px;
+            font-weight:bold;
+            font-family:Arial, Helvetica, sans-serif;
+          }</style>
+</head>
+<body>
+<h1>Feature Catalogue'IndoorGML2 Application Schema'</h1>
+<p>
+<b>Version:</b>
+</p>
+<p style="margin-left:20px">n/a</p>
+<p>
+<b>Date:</b>
+</p>
+<p style="margin-left:20px">n/a</p>
+<p>
+<b>Scope:</b>
+</p>
+<p style="margin-left:20px">This feature catalogue ...</p>
+<p>
+<b>Responsible organisation:</b>
+</p>
+<p style="margin-left:20px">n/a</p>
+<a name="overview">
+<h2>Table of contents</h2>
+</a>
+<table class="overview" border="0">
+<div>
+<tr border="0">
+<td class="package" border="0">
+<p>
+<b><a name="_P31_toc">Application schema: </a><a href="#_P31">IndoorGML2_core</a></b>
+</p>
+</td><td class="package" border="0"></td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1356">AbstractFreature</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C943">CellBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C942">CellSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C941">DualSpaceLayer</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C945">Edge</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C937">IndoorFeatures</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C940">InterLayerConnection</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C948">NavigableBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C944">Node</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C939">PrimalSpaceLayer</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C938">ThematicLayer</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+</div>
+<div>
+<tr border="0">
+<td class="package" border="0">
+<p>
+<b><a name="_P44_toc">Application schema: </a><a href="#_P44">IndoorGML2_full</a></b>
+</p>
+</td><td class="package" border="0"></td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1337">CellBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1308">CellSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1312">DualSpaceLayer</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1326">Edge</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1319">GeneralSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1311">IndoorFeatures</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1310">InterLayerConnection</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1314">NavigableBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1345">NavigableSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1332">Node</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1344">NonNavigableBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1323">NonNavigableSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1321">PrimalSpaceLayer</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1325">Route</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1330">ThematicLayer</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1347">TransferSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+</div>
+<div>
+<tr border="0">
+<td class="package" border="0">
+<p>
+<b><a name="_P40_toc">Application schema: </a><a href="#_P40">IndoorGML2_navi</a></b>
+</p>
+</td><td class="package" border="0"></td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1354">AbstractFreature</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1250">CellBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1351">CellSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1239">Edge</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1232">GeneralSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1227">NavigableBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1259">NavigableSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1245">Node</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1258">NonNavigableBoundary</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1236">NonNavigableSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1255">ObjectSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1238">Route</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+<tr border="0">
+<td class="type" border="0">
+<p style="margin-left:20px">
+<a href="#_C1261">TransferSpace</a>
+</p>
+</td><td border="0">
+<p>Feature type</p>
+</td>
+</tr>
+</div>
+</table>
+<hr>
+<h2>
+<a name="_P31">Application schema: IndoorGML2_core</a>
+</h2>
+<div>
+<p>
+<b>Version:</b>
+</p>
+<p style="margin-left:20px">2.0</p>
+</div>
+<div></div>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#overview"></a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1356">
+<h3>Feature type: AbstractFreature</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">AbstractFreature</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C943">
+<h3>Feature type: CellBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C948">NavigableBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellBoundaryGeom</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1237">CellBoundaryGeometryType</a> (data type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding cell boundary in the primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C945">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalReference</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1249">ExternalReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isVirtual</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C972">
+<h3>Data type: CellBoundaryGeometryType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellBoundaryGeometryType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Data type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry1D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1342">GM_Curve</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry2D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1333">GM_Surface</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C942">
+<h3>Feature type: CellSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>boundedBy</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell boundaries that are bounding a cell space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C943">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellSpaceGeom</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1244">CellSpaceGeometryType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellSpaceName</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding cell space in the primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C944">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalReference</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1249">ExternalReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>level</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>PoI</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C974">
+<h3>Object type: CellSpaceGeometryType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellSpaceGeometryType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry2D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1333">GM_Surface</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry3D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1316">GM_Solid</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C973">
+<h3>Object type: DateTime</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">DateTime</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C941">
+<h3>Feature type: DualSpaceLayer</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">DualSpaceLayer</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>creationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C973">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>edgeMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Edges of a dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isDirected</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isLogical</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>nodeMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Nodes of a dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>terminationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C973">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C945">
+<h3>Feature type: Edge</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Edge</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connects</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>The two nodes connected by an edge</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C944">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding edge in the dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C943">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>geometry</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C965">GM_Curve</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>weight</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Real</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1363">
+<h3>Object type: ExternalObjectReferenceType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ExternalObjectReferenceType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>name</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>uri</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>URI</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C966">
+<h3>Object type: ExternalReferenceType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ExternalReferenceType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalObject</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1364">ExternalObjectReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>informationSystem</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1335">URL</a> (data type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C965">
+<h3>Object type: GM_Curve</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Curve</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C963">
+<h3>Object type: GM_Point</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Point</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>position</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>DirectPosition</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C964">
+<h3>Object type: GM_Solid</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Solid</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C970">
+<h3>Object type: GM_Surface</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Surface</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C937">
+<h3>Feature type: IndoorFeatures</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">IndoorFeatures</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>layerConnections</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C940">InterLayerConnection</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>layers</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C938">ThematicLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C940">
+<h3>Feature type: InterLayerConnection</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">InterLayerConnection</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Definition:</p>
+<p style="margin-left:20px">Describes the connection between two thematic layers.</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>comment</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connectedCells</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Indicates the interconnected primal spaces</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C942">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connectedLayers</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C938">ThematicLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connectedNodes</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Indicates the interconnected dual spaces</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C944">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>typeOfTopoExpression</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Describes the topological relationship between two layers (e.g. overlaps, contains, etc.).</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>TopoExpressionValue (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Contains</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Overlaps</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Equals</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Within</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Crosses</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Other</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C948">
+<h3>Feature type: NavigableBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NavigableBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C943">CellBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>boundaryOrientation</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>NavigableBoudaryClass</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>NavigableBoundaryClassType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Virtual</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Real</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>NavigableBoundaryFunction</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>NavigableBoundaryFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>AncorBoundary</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>ConnectionBoundary</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C944">
+<h3>Feature type: Node</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Node</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connects</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Edges connected to the node</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C945">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding node in the dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C942">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>geometry</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1309">GM_Point</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C939">
+<h3>Feature type: PrimalSpaceLayer</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">PrimalSpaceLayer</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellBoundaryMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell boundaries of a primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C943">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellSpaceMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell spaces of a primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C942">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>creationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C973">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>function</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>GenericName</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>terminationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C973">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C938">
+<h3>Feature type: ThematicLayer</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ThematicLayer</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Definition:</p>
+<p style="margin-left:20px">A layer of specific theme aggregating a primal and/or a dual space of a given environment.</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>dualSpace</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Relates the dual spaces to the thematicLayer.</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C941">DualSpaceLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>primalSpace</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Relates the primal spaces to the thematicLayer</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C939">PrimalSpaceLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>semanticExtension</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Indicates whether semantic information is associated (true) or not (false) to the primal space of the thematic layer.</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>theme</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Determines the theme of the layer (e.g topographic, logical, etc.).</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>ThemeLayerValue (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Topographic</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Sensor</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Logical</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Unknown</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Property</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P31">back to package: IndoorGML2_core</a>
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<h2>
+<a name="_P44">Application schema: IndoorGML2_full</a>
+</h2>
+<div>
+<p>
+<b>Version:</b>
+</p>
+<p style="margin-left:20px">2.0</p>
+</div>
+<div></div>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#overview"></a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1338">
+<h3>Feature type: AbstractFeature</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">AbstractFeature</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1337">CellBoundary</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1351">CellSpace</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1308">CellSpace</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1312">DualSpaceLayer</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1326">Edge</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1311">IndoorFeatures</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1332">Node</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1321">PrimalSpaceLayer</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1325">Route</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1330">ThematicLayer</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1337">
+<h3>Feature type: CellBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1314">NavigableBoundary</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1344">NonNavigableBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>bounds</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell spaces that are bounded by the cell boundary</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1308">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellBoundaryGeom</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1237">CellBoundaryGeometryType</a> (data type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding cell boundary in the primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1326">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalReference</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1249">ExternalReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isVirtual</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1324">
+<h3>Data type: CellBoundaryGeometryType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellBoundaryGeometryType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Data type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry1D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1342">GM_Curve</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry2D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1333">GM_Surface</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1308">
+<h3>Feature type: CellSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1345">NavigableSpace</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1323">NonNavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>boundedBy</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell boundaries that are bounding a cell space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1337">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellSpaceGeom</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1244">CellSpaceGeometryType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding cell space in the primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1332">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalReference</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1249">ExternalReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>level</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>name</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>PoI</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1331">
+<h3>Object type: CellSpaceGeometryType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellSpaceGeometryType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry2D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1333">GM_Surface</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry3D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1316">GM_Solid</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1357">
+<h3>Data type: Class1</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Class1</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Data type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1334">
+<h3>Object type: DateTime</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">DateTime</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1312">
+<h3>Feature type: DualSpaceLayer</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">DualSpaceLayer</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>creationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1334">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>edgeMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Edges of a dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isDirected</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isLogical</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>nodeMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Nodes of a dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>terminationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1334">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1326">
+<h3>Feature type: Edge</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Edge</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connects</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>The two nodes connected by an edge</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1332">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding edge in the dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1337">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>geometry</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1342">GM_Curve</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>weight</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Real</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1358">
+<h3>Object type: ExternalObjectReferenceType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ExternalObjectReferenceType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>name</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>uri</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>URI</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1336">
+<h3>Object type: ExternalReferenceType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ExternalReferenceType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalObject</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1364">ExternalObjectReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>informationSystem</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1335">URL</a> (data type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1319">
+<h3>Feature type: GeneralSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GeneralSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1345">NavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>function</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>GeneralSpaceFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Administration</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Business, trade</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Education, training</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Recreation</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Laboratory</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Storage</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Security</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1342">
+<h3>Object type: GM_Curve</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Curve</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1309">
+<h3>Object type: GM_Point</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Point</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>position</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>DirectPosition</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1316">
+<h3>Object type: GM_Solid</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Solid</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1333">
+<h3>Object type: GM_Surface</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GM_Surface</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1311">
+<h3>Feature type: IndoorFeatures</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">IndoorFeatures</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>layerConnections</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1310">InterLayerConnection</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>layers</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1330">ThematicLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1310">
+<h3>Feature type: InterLayerConnection</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">InterLayerConnection</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Definition:</p>
+<p style="margin-left:20px">Describes the connection between two thematic layers.</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>comment</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connectedCells</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Indicates the interconnected primal spaces</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1308">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connectedLayers</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1330">ThematicLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connectedNodes</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Indicates the interconnected dual spaces</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1332">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>typeOfTopoExpression</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Describes the topological relationship between two layers (e.g. overlaps, contains, etc.).</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>TopoExpressionValue (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Contains</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Overlaps</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Equals</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Within</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Crosses</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Other</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1314">
+<h3>Feature type: NavigableBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NavigableBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1337">CellBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>boundaryOrientation</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>navigableBoundaryFunction</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>NavigableBoundaryFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>AncorBoundary</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>ConnectionBoundary</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1345">
+<h3>Feature type: NavigableSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NavigableSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1308">CellSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1319">GeneralSpace</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1347">TransferSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>locomotionType</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>LocomotionAccessType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Walking</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Flying</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Rolling</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Unspecified</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1332">
+<h3>Feature type: Node</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Node</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connects</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Edges connected to the node</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1326">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Corresponding node in the dual space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1308">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>geometry</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1309">GM_Point</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1344">
+<h3>Feature type: NonNavigableBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NonNavigableBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1337">CellBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1323">
+<h3>Feature type: NonNavigableSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NonNavigableSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1308">CellSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1321">
+<h3>Feature type: PrimalSpaceLayer</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">PrimalSpaceLayer</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>CellBoundaryMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell boundaries of a primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1337">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellSpaceMember</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell spaces of a primal space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1308">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>creationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1334">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>function</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>GenericName</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>terminationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1334">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1325">
+<h3>Feature type: Route</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Route</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>creationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1247">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>routeEdge</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Portion of route composed of one or several edges.</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1326">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>routeNode</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Nodes that are part of the route</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1332">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1330">
+<h3>Feature type: ThematicLayer</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ThematicLayer</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Definition:</p>
+<p style="margin-left:20px">A layer of specific theme aggregating a primal and/or a dual space of a given environment.</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>dualSpace</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Relates the dual spaces to the thematicLayer.</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1312">DualSpaceLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>primalSpace</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Relates the primal spaces to the thematicLayer</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1321">PrimalSpaceLayer</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>semanticExtension</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Indicates whether semantic information is associated (true) or not (false) to the primal space of the thematic layer.</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>theme</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Determines the theme of the layer (e.g topographic, logical, etc.).</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>ThemeLayerValue (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Topographic</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Sensor</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Logical</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Unknown</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Property</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1347">
+<h3>Feature type: TransferSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">TransferSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1345">NavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>function</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>TransferSpaceFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>ConnectionSpace</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>AnchorSpace</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>type</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>TransferSpaceType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Door</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Window</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1335">
+<h3>Data type: URL</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">URL</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Data type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P44">back to package: IndoorGML2_full</a>
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<h2>
+<a name="_P40">Application schema: IndoorGML2_navi</a>
+</h2>
+<div>
+<p>
+<b>Version:</b>
+</p>
+<p style="margin-left:20px">2.0</p>
+</div>
+<div></div>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#overview"></a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1354">
+<h3>Feature type: AbstractFreature</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">AbstractFreature</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1250">
+<h3>Feature type: CellBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1227">NavigableBoundary</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1258">NonNavigableBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellBoundaryGeom</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1237">CellBoundaryGeometryType</a> (data type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1239">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalReference</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1249">ExternalReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>isVirtual</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1237">
+<h3>Data type: CellBoundaryGeometryType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellBoundaryGeometryType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Data type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry1D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1342">GM_Curve</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry2D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1333">GM_Surface</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1351">
+<h3>Feature type: CellSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1338">AbstractFeature</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1259">NavigableSpace</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1236">NonNavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>boundedBy</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Cell boundaries that are bounding a cell space</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1250">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>cellSpaceGeom</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1244">CellSpaceGeometryType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1245">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalReference</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1249">ExternalReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>level</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>name</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>PoI</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1244">
+<h3>Object type: CellSpaceGeometryType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">CellSpaceGeometryType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry2D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1333">GM_Surface</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>Geometry3D</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1316">GM_Solid</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1247">
+<h3>Object type: DateTime</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">DateTime</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1239">
+<h3>Feature type: Edge</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Edge</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connects</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>The two nodes connected by an edge</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1245">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1250">CellBoundary</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>geometry</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1342">GM_Curve</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>weight</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Real</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1364">
+<h3>Object type: ExternalObjectReferenceType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ExternalObjectReferenceType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>name</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>uri</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>URI</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1249">
+<h3>Object type: ExternalReferenceType</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ExternalReferenceType</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Object type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>externalObject</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1364">ExternalObjectReferenceType</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>informationSystem</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1335">URL</a> (data type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1232">
+<h3>Feature type: GeneralSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">GeneralSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1259">NavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>function</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>GeneralSpaceFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Administration</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Business, trade</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Education, training</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Recreation</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Laboratory</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Storage</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Security</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1227">
+<h3>Feature type: NavigableBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NavigableBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1250">CellBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>boundaryOrientation</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Boolean</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>NavigableBoundaryFunction</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>NavigableBoundaryFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>AncorBoundary</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>ConnectionBoundary</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1259">
+<h3>Feature type: NavigableSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NavigableSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1351">CellSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1232">GeneralSpace</a>
+</p>
+<p style="margin-left:20px">
+<a href="#_C1261">TransferSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>locomotionType</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>LocomotionAccessType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Walking</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Flying</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Rolling</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Unspecified</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1245">
+<h3>Feature type: Node</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Node</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>connects</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Definition:</p>
+</td><td border="0">
+<p>Edges connected to the node</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1239">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>duality</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1351">CellSpace</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>geometry</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1309">GM_Point</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1258">
+<h3>Feature type: NonNavigableBoundary</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NonNavigableBoundary</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1250">CellBoundary</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1236">
+<h3>Feature type: NonNavigableSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">NonNavigableSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1351">CellSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td class="feature" border="0">
+<p class="title2">Supertype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1255">ObjectSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1255">
+<h3>Feature type: ObjectSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">ObjectSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1236">NonNavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>containedFeatures</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>Integer</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>description</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>CharacterString</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1238">
+<h3>Feature type: Route</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">Route</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>creationDate</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>0..1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1247">DateTime</a>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>routeEdge</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1239">Edge</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Association role:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>routeNode</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>2..*</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>
+<a href="#_C1245">Node</a> (feature type)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<br>
+<a name="_C1261">
+<h3>Feature type: TransferSpace</h3>
+</a>
+<table class="feature">
+<tr border="0">
+<td class="feature" border="0">
+<p class="title">TransferSpace</p>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<table class="att">
+<tr border="0">
+<td border="0">
+<p class="title2">Subtype of:</p>
+<p style="margin-left:20px">
+<a href="#_C1259">NavigableSpace</a>
+</p>
+</td>
+</tr>
+<tr border="0">
+<td border="0">
+<p class="title2">Type:</p>
+<p style="margin-left:20px">Feature type</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>function</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>TransferSpaceFunctionType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>ConnectionSpace</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>AnchorSpace</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="feature">
+<p class="title2">Attribute:</p>
+<table class="att">
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Name:</p>
+</td><td border="0">
+<p>type</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Voidable:</p>
+</td><td border="0">
+<p>false</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Multiplicity:</p>
+</td><td border="0">
+<p>1</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Value type:</p>
+</td><td border="0">
+<p>TransferSpaceType (code list)</p>
+</td>
+</tr>
+<tr border="0">
+<td width="100px" border="0">
+<p style="margin-left:18px" class="title2">Values:</p>
+</td><td border="0">
+<table class="values">
+<tr>
+<td class="values">
+<p>Door</p>
+</td><td class="values"></td>
+</tr>
+<tr>
+<td class="values">
+<p>Window</p>
+</td><td class="values"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="link" border="0">
+<tr border="0">
+<td width="100%" border="0">
+<p class="small" align="right">
+<a href="#_P40">back to package: IndoorGML2_navi</a>
+</p>
+</td>
+</tr>
+</table>
+<hr>
+<p align="center">
+<small>This feature catalogue was generated by <a href="http://shapechange.net">ShapeChange</a></small>
+</p>
+</body>
+</html>

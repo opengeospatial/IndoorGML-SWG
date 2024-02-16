@@ -37,7 +37,7 @@ docker pull metanorma/metanorma
 ```
 git clone https://github.com/opengeospatial/IndoorGML-SWG.git
 
-cd IndoorGML2/IndoorGML2_metanorma
+cd cd IndoorGML2/IndoorGML2_metanorma/Part\ I
 
 docker run -v "$(pwd)":/metanorma -v ${HOME}/.fontist/fonts/:/config/fonts  metanorma/metanorma metanorma compile --agree-to-terms -t ogc -x html,pdf document.adoc
 ```

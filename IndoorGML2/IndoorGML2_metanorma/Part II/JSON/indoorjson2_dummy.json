@@ -4,7 +4,7 @@
   "layers": {
     "TopographicLayer": {
       "type": "ThematicLayer",
-      "semantic": false,
+      "semanticExtension": false,
       "theme": "Topographic",
       "primalSpace": {
         "creationDatetime": "2023-09-28T08:30:00+00:00",

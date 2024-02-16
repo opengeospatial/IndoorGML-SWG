@@ -9,7 +9,7 @@
       "type": "object",
       "properties": {
         "type": { "enum": ["ThematicLayer"] },
-        "semantic": { "type": "boolean" },
+        "semanticExtension": { "type": "boolean" },
         "theme": { "enum": ["Topographic", "Sensor", "Logical", "Property", "Unknown"] },
         "primalSpace": { "$ref": "#/definitions/PrimalSpaceLayer" },
         "dualSpace": { "$ref": "#/definitions/DualSpaceLayer" }
@@ -151,7 +151,9 @@
         "connectedNode2" : { "type": "string" },
         "connectedCell1" : { "type": "string" },
         "connectedCell2" : { "type": "string" },
-        "typeOfTopoExpression" : { "enum": ["CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", "OTHERS"] },
+        "typeOfTopoExpression" : {
+          "enum": ["CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", "OTHERS"]
+        },
         "comment" : {"type": "string"}
       },
       "additionalProperties": false,
