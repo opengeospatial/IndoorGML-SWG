@@ -231,7 +231,7 @@ The _semanticExtension_ attribute is set as a boolean as it is simply an indicat
 IndoorGML 2.0 maintains only the Navigation extension module (see <<section-indoorgml-navigation>>), a boolean is considered enough to indicate its presence.
 This is however susceptible to evolve in the future (e.g., into a codeList).
 The _theme_ attribute determines what type of representation of the model can be expected in the corresponding layer (e.g., topographic).
-It comes in the form of a code list which tells whether the layer is of type Physical, Virtual, Tags or Unknown.
+It comes in the form of a code list which tells whether the layer is of type _Physical_, _Virtual_, _Tags_ or _Unknown_.
 
 A _Physical_ layer is a layer that describes the indoor space on the basis of its physical constraints (e.g. the topographic cellular space in <<fig-cellular-space-same-physical>>).
 It is the most common type of layers for applications like indoor navigation, where the physical elements are highly constraining the use of the space.

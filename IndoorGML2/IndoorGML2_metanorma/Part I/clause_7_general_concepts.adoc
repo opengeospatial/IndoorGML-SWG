@@ -49,11 +49,11 @@ Nevertheless, for a matter of completeness, IndoorGML can account for all types 
 === Cellular space
 
 A _cellular space_ is a set of _cells_ (or _CellSpaces_) defined as the smallest organizational or structural unit (Princeton University, 2010) and grouped according to thematic criteria (e.g. topographic space, sensor coverage space, etc.).
-A cellular space _S_ of thematic layer _T_, noted _S_^_T_^ is defined as follows:
+A cellular space _S_ of thematic layer _T_, noted _S^T^_ is defined as follows:
 
-_S_^_T_^= {_c_~1~, _c_~2~, …, _c_~_n_~}
+_S^T^_= {_c~1~_, _c~2~_, …, _c~n~_}
 
-where _c_~_i_~ is _i_^th^ cell. Every cell in a cellular space can have the following properties:
+where _c~i~_ is _i_^th^ cell. Every cell in a cellular space can have the following properties:
 
 * a unique identifier ;
 * a name (e.g. a room number);
@@ -134,7 +134,7 @@ For the purpose of navigation applications, subdivisions may be required because
 * defining free spaces, e.g., spaces free of obstacles.
 
 The aggregation process is the reverse of the subdivision, which leads subspaces to be merged instead of being split.
-Therefore, the merging of all subspaces of<<fig-subdivision-and-aggregation>>.a allows to retrieve the original cell spaces of <<fig-subdivision-and-aggregation>>.a.
+Therefore, the merging of all subspaces of <<fig-subdivision-and-aggregation>>.a allows to retrieve the original cell spaces of <<fig-subdivision-and-aggregation>>.a.
 Similarly, any new cell resulting from this process is a CellSpace of a cellular space.
 For the purpose of indoor navigation, aggregation may be required when:
 
@@ -199,7 +199,7 @@ Geometry of Cellular Space and Geometric Network are embedded in the Euclidean s
 IndoorGML supports the Primal and Dual models in the Euclidean space and the Logical Network in the Topological space.
 As mentioned above, the Geometry for Cellular space is not compulsory, as the cellular space can be identified.
 IndoorGML is valid with at least one of the Primal spaces.
-See examples in <<<section-datadictionary>>.
+See examples in <<section-datadictionary>>.
 
 The Euclidean space (Geometry) is estimated to be the most useful for applications such as navigation and LBS.
 IndoorGML may then containing both Geometry and Geometry Network, or only Geometry, or only Geometric Network.
@@ -243,12 +243,12 @@ The Navigation extension module provides additional notions for navigability and
 Therefore, thematic layers that rely of these properties, should include Navigation extension module.
 Navigation-based themes can be defined using a particular space partitioning with respect to:
 
-* tasks: visitor, staff, facility manager, emergency responder (see Figure 11)
+* tasks: visitor, staff, facility manager, emergency responder (see <<fig-cellular-space-visitor>>)
 * user characteristics: age, gender
-* mode: walking, driving, flying (see Figure 7.c and Figure 7.d)
+* mode: walking, driving, flying (see <<fig-subdivision-and-aggregation>>.c and <<fig-subdivision-and-aggregation>>.d)
 
 IndoorGML 2.0 is organised as a collection of interconnected layers representing different themes of the same physical space.
-<<fig-cellular-space-visitor>> represents a thematic layer 'Visitors', which contains all cells, which are accessible to visitors in a university faculty (Alattas et al 2017).
+<<fig-cellular-space-visitor>> represents a thematic layer 'Visitors', which contains all cells, which are accessible to visitors in a university faculty (<<alattas2017supporting,Alattas et al. 2017>>).
 Similarly, cellular spaces can be created for students or facility management.
 All spaces use the semantics of the Navigation extension module, but a selection of spaces is made according to the user tasks.
 Similarly, cellular spaces from different extension modules can be organised in thematic layers.
