@@ -6,8 +6,8 @@ The base template was taken from the GitHub project below:
 
 The OGC IndoorGML 2.0 build results can be shown as below links:
 
-* https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/document.html[OGC_22-045.html]
-* https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/document.pdf[OGC_22-045.pdf]
+* https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.html[OGC_22-045.html]
+* https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.pdf[OGC_22-045.pdf]
 
 == Content
 
