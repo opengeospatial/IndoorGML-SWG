@@ -298,7 +298,7 @@ image::./figures/FIG28.png[align="center"]
 The GeneralSpace class is one of the two subclasses of NavigableSpace (<<fig-uml-generalspace>>).
 GeneralSpace is identified as any navigable cells such as rooms, lobbies, kitchen, etc., which agents can use for a longer period of time and can serve as starting and target cell in navigation.
 It carries the attribute _function_ which give details about the function of the cell.
-In IndoorGML, those functions are described in a code list derived from OmniClass Table 13 (OmniClass, 2021) (see Annex B).
+In IndoorGML, those functions are described in a code list derived from OmniClass Table 13 (OmniClass, 2021).
 // TODO: OmniClass is described in Annex B?
 
 [[subsection-transferspace]]

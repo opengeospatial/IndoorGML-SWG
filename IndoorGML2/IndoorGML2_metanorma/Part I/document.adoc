@@ -1,10 +1,10 @@
-= OGC IndoorGML 2.0 Part I – Conceptual Model
+= OGC IndoorGML Part I – Conceptual Model
 :comment: Change "standard" to "draft-standard" for draft standards
 :comment: The front page notice will update automatically to reflect the document type
-:doctype: standard
+:doctype: draft-standard
 :encoding: utf-8
 :lang: en
-:status: draft
+:status: oab-review
 :committee: technical
 :draft: 1.0
 :external-id: http://www.opengis.net/doc/IS/indoorgml/2.0
@@ -15,7 +15,7 @@
 :fullname: Sisi Zlatanova
 :fullname_2: Ki-Joune Li
 :fullname_3: Abdoulaye Diakite
-:docsubtype: implementation
+:docsubtype: conceptual-model
 :keywords: ogcdoc, ogc documents, indoor, navigation, indoorgml, gml, sql, json
 :submitting-organizations: The University of New South Wales; Pusan National University; Ordnance Survey; University of Seoul; All4Land; Delft University of Technology; National Institute of Advanced Industrial Science and Technology;
 // TODO: submitting-organizations shall be updated
