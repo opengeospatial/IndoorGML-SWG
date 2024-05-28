@@ -22,6 +22,21 @@ This repository contains the content for an OGC standard.
 * `abstract_tests` - the Abstract Test Suite comprising one test for every requirement, optional
 * `UML` - UML diagrams, if applicable
 
+== Authoring (in your local system)
+Documentation follows Asciidoc's syntax by default.
+
+* See https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc Language Documentation]
+
+Several authoring tools are available, but we recommend Visual Studio Code and AsciiDoc's extensions, which are free to use.
+
+* https://code.visualstudio.com/[Visual Studio Code]
+* https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[AsciiDoc VS Code Extension]
+
+Finally, the special syntax and variables used in Metanorma can be found in the authoring guide at the following link.
+
+* https://www.metanorma.org/author/ogc/[OGC document with Metanorma]
+
+
 == Building (in your local system)
 
 . (If you haven't installed Docker) Install the https://www.docker.com/products/docker-desktop/[Docker Desktop].
@@ -37,14 +52,7 @@ docker pull metanorma/metanorma
 ```
 git clone https://github.com/opengeospatial/IndoorGML-SWG.git
 
-cd cd IndoorGML2/IndoorGML2_metanorma/Part\ I
+cd IndoorGML2/IndoorGML2_metanorma/Part\ I
 
 docker run -v "$(pwd)":/metanorma -v ${HOME}/.fontist/fonts/:/config/fonts  metanorma/metanorma metanorma compile --agree-to-terms -t ogc -x html,pdf document.adoc
 ```
-
-// TODO-1: add more detailed information
-// TODO-1.1: How to edit (with tools)
-// TODO-2: UML Figure regenerated (needs refine)
-// TODO-3: For requirement and conformance classes, needs to define dependencies
-// TODO-3.1: For ATS, do we need to add "test purpose"?
-// TODO-4: Make GitHub Action for automate building document
