@@ -15,12 +15,12 @@
 //
 // All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
 
-Conformance targets of this OGC^®^ Standard are IndoorGML instance documents. Conformance with this standard shall be checked whether IndoorGML instance documents achieve the criteria as defined in clause 7 to 9.
+Conformance targets of IndoorGML Part 1 are IndoorGML instance documents. Conformance with this Standard shall be checked whether IndoorGML instance documents achieve the criteria as defined in clause 7 to 9.
 
-In order to conform to IndoorGML, and schema document should:
+In order to conform to IndoorGML requirements and schema document implementations SHALL:
 
 [loweralpha]
-. conform to the rules, specifications, and requirements in clauses 7 to 9; and
-. pass all relevant test cases of the abstract test suite given in <<annex_ATS,Annex A>>.
+. Conform to the rules, specifications, and requirements in clauses 7 to 9; and
+. pass all relevant test cases of the Abstract Test Suite (ATS) given in <<annex_ATS,Annex A>>.
 
-The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing website.
+The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web sitefootnote:disclaimer[https://portal.ogc.org/public_ogc/directives/directives.php].

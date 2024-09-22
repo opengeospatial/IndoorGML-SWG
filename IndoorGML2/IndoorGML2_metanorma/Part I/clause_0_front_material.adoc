@@ -7,11 +7,16 @@ Keywords inserted here automatically by Metanorma
 
 .Preface
 
-The goal of IndoorGML is to represent and allow for exchange of geoinformation that is required to build and operate systems that rely on spaces and topological relationships between them such as path computation, sensor coverage, property accessibility, etc. Several standards such as <<OGC_12-019,CityGML (OGC, 2012)>>, <<OGC_12-007r2,KML (OGC, 2015)>>, <<ISO_19152,LADM (ISO, 2012)>> and <<ISO_16739-1,IFC (ISO,2018)>> have been published to describe 3D geometry and semantics of building features, but they are not readily appropriate to derive spaces and their topological relationships. The navigation standard <<OGC_20-094,IMDF (OGC, 2021)>> provide a comprehensive model to compute path between features located on a map, but the derived network is application specific. This standard aims to provide unified, standardised and flexible approach for indoor spatial information required for space-graph based applications such as indoor navigation.
+The goal of the OGC IndoorGML Standard is to represent and support interoperable exchange of geoinformation that is required to build and operate systems that rely on spaces and topological relationships between them such as path computation, sensor coverage, property accessibility, etc. Several standards such as <<OGC_12-019,CityGML (OGC, 2012)>>, and <<ISO_16739-1,IFC (ISO,2018)>> have been published to describe 3D geometry and semantics of building features. However, these standards are not readily appropriate to derive spaces and their topological relationships. The <<OGC_20-094,OGC IMDF Community Standard (OGC, 2021)>> provides a comprehensive model to compute path(s) between features located on a map, but the derived network is application specific. The IndoorGML Standard aims to provide a unified, standardized and flexible approach for indoor spatial information required for space-graph based applications such as indoor navigation.
 
-This version of the OGC standard consists of two components: 1) a core data model to describe topological connectivity and different contexts of indoor space, and 2) a data model for navigation in indoor space.
+Version 2.0 of the IndoorGML Part 1 - Conceptual Model Standard consists of two components: 1) a core data model to describe topological connectivity and different contexts of indoor space, and 2) a data model for navigation in indoor space. While the core data model, as its name suggests, is the main conceptual model that IndoorGML is built upon, the navigation model extends it to support navigation applications. This allows illustrating the practical strength of the core model as well as how other application extensions could be built around it.
 
-This version of IndoorGML covers geometric and semantic properties of indoor spaces relevant for indoor navigation. These indoor spaces may differ from the spaces described by other standards such as CityGML, KML, IFC, LADM and IMDF. In this respect, IndoorGML is a complementary standard to CityGML, KML, IFC, LADM and IMDF to support location-based services for indoor navigation.
+This version of IndoorGML covers geometric and semantic properties of indoor spaces relevant for indoor navigation. These indoor spaces may differ from the spaces described by other standards such as CityGML, IFC, LADM, and IMDF. In this respect, IndoorGML is a complementary standard to CityGML, IFC, LADM, and IMDF to support location-based services for indoor navigation.
+
+// Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights. However, to date, no such rights have been claimed or identified.
+//
+// Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
+
 
 // [NOTE]
 // ====
@@ -20,15 +25,15 @@ This version of IndoorGML covers geometric and semantic properties of indoor spa
 // There are two ways to specify the Preface: "simple clause" or "full clasuse"
 //
 // If the Preface does not contain subclauses, it is considered a simple preface clause. This one is entered as text after the `.Preface` label and must be placed between the AsciiDoc document attributes and the first AsciiDoc section title. It should not be give a section title of its own.
+*OGC Declaration*
+////
+
 //
 // If the Preface contains subclauses, it needs to be encoded as a full preface clause. This one is recognized as a full Metanorma AsciiDoc section with te title "Preface", i.e. `== Preface`. (Simple preface content can also be encoded like full preface.)
 //
 // ====
 
 ////
-*OGC Declaration*
-////
-
 ////
 [THIS TEXT IS ALREADY ADDED AUTOMATICALLY IN THE FRONTISPIECE OF ALL OGC DOUCMENTS]
 
@@ -54,7 +59,10 @@ Attention is drawn to the possibility that some of the elements of this document
 [abstract]
 == Abstract
 
-This OGC^®^ IndoorGML standard specifies an open data model for indoor information in UML and technical implementation schemas in GML, SQL and JSON. While there are several 3D building modeling standards such as CityGML, KML, IFC, LADM and IMDF which deal with interiors of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML focuses on modeling indoor spaces and their neighbourhood relationships to support indoor location-based services. This version of IndoorGML addresses spaces and networks for indoor navigation.
+The OGC IndoorGML Part I – Conceptual Model Standard (this Standard) specifies an UML model for indoor information.
+Part 2 of the standard specifies technical implementation schemas in GML, SQL and JSON.
+While there are several standards supporting 3D modelling concepts such as CityGML, KML, IFC, LADM and IMDF that deal with interiors of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML focuses on modeling indoor spaces and their neighborhood relationships to support indoor location-based services.
+This document describes the conceptual model (Part 1) of IndoorGML that addresses spaces and networks for indoor navigation.
 
 [.preface]
 == Security Considerations
@@ -72,25 +80,34 @@ Independent of any authentication type VRRP includes a mechanism (setting TTL=25
 NOTE: The security measures discussed in the following sections only provide various kinds of authentication. No confidentiality is provided at all. This should be explicitly described as outside the scope....”
 ////
 
-////
-== Submitting organizations
-
-Submitting organisations added automatically by Metanorma from document attributes
-////
+// [.preface]
+// == Submitting Organizations
+//
+// The following organizations submitted this Document to the Open Geospatial Consortium (OGC):
+//
+// * The University of New South Wales
+// * Pusan National University
+// * Ordnance Survey
+// * University of Seoul
+// * CityGeometrix
+// * National Institute of Advanced Industrial Science and Technology (AIST)
+//
+// The initial concepts defined in this Standard were developed with the support of:
+//
+// * Technical University of Berlin
+// * Technical University of Munich
 
 [.preface]
 == Submitters
-All questions regarding this submission should be directed to the editor or the submitters:
+Questions regarding this submission should be directed to the editor or the submitters:
 
-// TODO: Need to check Abdou's Affiliation
 |===
 h|Name h|Affiliation h|Contact
-
-|Sisi Zlatanova | University of New South Wales | s.zlatanova at unsw.edu.au
-|Ki-Joune Li    | Pusan National University     | lik at pnu.edu
-|Abdoulaye Diakite  | The University of New South Wales | diakite.abdoulaye at gmail.com
-|Taehoon Kim  | National Institute of Advanced Industrial Science and Technology | kim.taehoon at aist.go.jp
-|Jeremy Morley  | Ordnance Survey | Jeremy.Morley at os.uk
+|Sisi Zlatanova     | University of New South Wales | s.zlatanova at unsw.edu.au
+|Ki-Joune Li        | Pusan National University     | lik at pnu.edu
+|Abdoulaye Diakite  | CityGeometrix     | abdou at citygeometrix.com
+|Jeremy Morley      | Ordnance Survey   | Jeremy.Morley at os.uk
+|Taehoon Kim        | National Institute of Advanced Industrial Science and Technology | kim.taehoon at aist.go.jp
 |===
 
 

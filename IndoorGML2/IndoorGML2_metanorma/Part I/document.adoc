@@ -1,23 +1,24 @@
-= OGC IndoorGML 2.0 Part I – Conceptual Model
+= OGC IndoorGML Part I – Conceptual Model
 :comment: Change "standard" to "draft-standard" for draft standards
 :comment: The front page notice will update automatically to reflect the document type
 :doctype: standard
 :encoding: utf-8
 :lang: en
-:status: draft
+:status: tc-vote
 :committee: technical
 :draft: 1.0
 :external-id: http://www.opengis.net/doc/IS/indoorgml/2.0
-:docnumber: 22-045
-:received-date: 2029-03-30
-:issued-date: 2029-03-30
-:published-date: 2029-03-30
+:docnumber: 22-045r4
+:received-date: 2024-10-15
+:issued-date: 20xx-xx-xx
+:published-date: 20xx-xx-xx
 :fullname: Sisi Zlatanova
-:fullname_2: Ki-Joune Li
-:fullname_3: Abdoulaye Diakite
-:docsubtype: implementation
-:keywords: ogcdoc, ogc documents, indoor, navigation, indoorgml, gml, sql, json
-:submitting-organizations: The University of New South Wales; Pusan National University; Ordnance Survey; University of Seoul; All4Land; Delft University of Technology; National Institute of Advanced Industrial Science and Technology;
+:fullname_2: Abdoulaye Diakite
+:fullname_3: Taehoon Kim
+:fullname_4: Ki-Joune Li
+:docsubtype: conceptual-model
+:keywords: OGCDoc, OGC documents, indoor, navigation, IndoorGML, GML, SQL, JSON
+:submitting-organizations: The University of New South Wales; Pusan National University; Ordnance Survey; University of Seoul; CityGeometrix; National Institute of Advanced Industrial Science and Technology;
 // TODO: submitting-organizations shall be updated
 :mn-document-class: ogc
 :mn-output-extensions: xml,html,doc,pdf
@@ -26,7 +27,7 @@
 :pdf-uri: ./document.pdf
 :xml-uri: ./document.xml
 :doc-uri: ./document.doc
-:edition: 1.0
+:edition: 2.0
 
 ////
 Make sure to complete each included document

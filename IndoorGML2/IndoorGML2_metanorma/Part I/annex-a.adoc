@@ -1,6 +1,6 @@
 [[annex_ATS]]
 [appendix,obligation="normative"]
-== Conformance Class Abstract Test Suite
+== Abstract Test Suite
 
 // [NOTE]
 // Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
@@ -11,106 +11,118 @@ This normative annex specifies the test suite, which will be used for the confor
 As OGC IndoorGML 2.0 Part I is a conceptual model, this test suite is an abstract one and its executable test suite shall depend on the implementation of OGC IndoorGML 2.0 Part I, more precisely the encoding system of OGC IndoorGML 2.0 such as XML, JSON, or SQL.
 
 === General Tests
-Since OGC IndoorGML 2 is based on <<ISO_19103,ISO 19103:2015>>, <<ISO_19107,ISO 19107:2019>>, <<ISO_19109,ISO 19109:2015>>, <<ISO_19110,ISO 19110:2016>>, and <<ISO_19111,ISO 19111:2019>>, the abstract tests of these precedent standards shall be applied to OGC IndoorGML 2.
+Since OGC IndoorGML 2.0 is based on <<ISO_19103,ISO 19103:2015>>, <<ISO_19107,ISO 19107:2019>>, <<ISO_19109,ISO 19109:2015>>, and <<ISO_19111,ISO 19111:2019>>, the abstract tests of these precedent standards shall be applied to OGC IndoorGML 2.0.
 
-=== UML Common Tests
-[requirements_class]
-====
-[%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml/2.0/req/common
-subject:: Implementation Specification
-// inherit::
-requirement:: /req/common/cardinalities
-requirement:: /req/common/properties
-requirement:: /req/common/codelist
-====
+// === UML Common Tests
+// [requirements_class]
+// ====
+// [%metadata]
+// identifier:: http://www.opengis.net/spec/indoorgml/2.0/req/common
+// subject:: Implementation Specification
+// // inherit::
+// requirement:: /req/common/cardinalities
+// requirement:: /req/common/properties
+// requirement:: /req/common/codelist
+// ====
+//
+// [conformance_class]
+// ====
+// [%metadata]
+// identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/common
+// target:: http://www.opengis.net/spec/indoorgml/2.0/req/common
+// classification:: Target Type:Implementation Specification
+// // dependency::
+// abstract-test:: /conf/common/cardinalities
+// abstract-test:: /conf/common/properties
+// abstract-test:: /conf/common/codelist
+// ====
+//
+// ==== Cardinalities
+// [requirement]
+// ====
+// [%metadata]
+// identifier:: /req/common/cardinalities
+// part:: The cardinalities defined in the UML diagrams in the core and navigation modules shall be correctly applied to any implementation of IndoorGML 2.
+// ====
+//
+// [abstract_test]
+// ====
+// [%metadata]
+// identifier:: /conf/common/cardinalities
+// target:: /req/common/cardinalities
+// // test-purpose::
+// test-method:: Manual or automated inspection
+// ====
+//
+// ==== Properties
+// [requirement]
+// ====
+// [%metadata]
+// identifier:: /req/common/properties
+// part:: The properties of classes defined in the UML diagrams in the core and navigation modules shall be correctly applied to any implementation of IndoorGML 2.
+// ====
+//
+// [abstract_test]
+// ====
+// [%metadata]
+// identifier:: /conf/common/properties
+// target:: /req/common/properties
+// // test-purpose::
+// test-method:: Manual or automated inspection
+// ====
+//
+// ==== Code List
+// [requirement]
+// ====
+// [%metadata]
+// identifier:: /req/common/codelist
+// part:: The value of class properties shall be in the code list if the value type is defined as an enumeration in the UML diagrams in the core and navigation modules of IndoorGML 2.
+// ====
+//
+// [abstract_test]
+// ====
+// [%metadata]
+// identifier:: /conf/common/codelist
+// target:: /req/common/codelist
+// // test-purpose::
+// test-method:: Manual or automated inspection
+// ====
 
+=== Conformance Class
 [conformance_class]
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/common
-target:: http://www.opengis.net/spec/indoorgml/2.0/req/common
+identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf
+target:: http://www.opengis.net/spec/indoorgml/2.0/req
 classification:: Target Type:Implementation Specification
 // dependency::
-abstract-test:: /conf/common/cardinalities
-abstract-test:: /conf/common/properties
-abstract-test:: /conf/common/codelist
+abstract-test:: /ats/umldatamadel
+abstract-test:: /ats/thematiclayer
+abstract-test:: /ats/cellspace
+abstract-test:: /ats/cellboundary
+abstract-test:: /ats/node
+abstract-test:: /ats/edge
+abstract-test:: /ats/interlayerconnection
+abstract-test:: /ats/objectspace
 ====
 
-==== Cardinalities
-[requirement]
-====
-[%metadata]
-identifier:: /req/common/cardinalities
-part:: The cardinalities defined in the UML diagrams in the core and navigation modules shall be correctly applied to any implementation of IndoorGML 2.
-====
-
+==== UML Data Model
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/common/cardinalities
-target:: /req/common/cardinalities
-// test-purpose::
+identifier:: /ats/umldatamadel
+target:: /req/umlclassdiagram
+test-purpose:: UML class diagram defined in <<section-data-model>> SHALL be correctly applied to any implementation of IndoorGML Part 2 – Conceptual Model
 test-method:: Manual or automated inspection
-====
-
-==== Properties
-[requirement]
-====
-[%metadata]
-identifier:: /req/common/properties
-part:: The properties of classes defined in the UML diagrams in the core and navigation modules shall be correctly applied to any implementation of IndoorGML 2.
-====
-
-[abstract_test]
-====
-[%metadata]
-identifier:: /conf/common/properties
-target:: /req/common/properties
-// test-purpose::
-test-method:: Manual or automated inspection
-====
-
-==== Code List
-[requirement]
-====
-[%metadata]
-identifier:: /req/common/codelist
-part:: The value of class properties shall be in the code list if the value type is defined as an enumeration in the UML diagrams in the core and navigation modules of IndoorGML 2.
-====
-
-[abstract_test]
-====
-[%metadata]
-identifier:: /conf/common/codelist
-target:: /req/common/codelist
-// test-purpose::
-test-method:: Manual or automated inspection
-====
-
-=== Conformance Class Core
-[conformance_class]
-====
-[%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/core
-target:: http://www.opengis.net/spec/indoorgml/2.0/req/core
-classification:: Target Type:Implementation Specification
-// dependency::
-abstract-test:: /conf/core/thematiclayer
-abstract-test:: /conf/core/cellspace
-abstract-test:: /conf/core/cellboundary
-abstract-test:: /conf/core/node
-abstract-test:: /conf/core/edge
-abstract-test:: /conf/core/interlayerconnection
 ====
 
 ==== Class ThematicLayer
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/thematiclayer
-target:: /req/core/thematiclayer
-// test-purpose::
+identifier:: /ats/thematiclayer
+target:: /req/thematiclayer
+test-purpose:: Any feature of a thematic layer SHALL belong to the same theme.
 test-method:: Manual or automated inspection
 ====
 
@@ -118,9 +130,9 @@ test-method:: Manual or automated inspection
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/cellspace
-target:: /req/core/cellspace
-// test-purpose::
+identifier:: /ats/cellspace
+target:: /req/cellspace
+test-purpose:: Cell belonging to the same primal space layer SHALL not intersect.
 test-method:: Automated inspection by geometric computation
 ====
 
@@ -128,9 +140,14 @@ test-method:: Automated inspection by geometric computation
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/cellboundary
-target:: /req/core/cellboundary
-// test-purpose::
+identifier:: /ats/cellboundary
+target:: /req/cellboundary
+test-purpose::
++
+--
+* Cell boundaries belonging to the same primal space layer SHALL not intersect.
+* The geometry of cell boundary SHALL not exceed the extent of the corresponding cell space.
+--
 test-method:: Automated inspection by geometric computation
 ====
 
@@ -138,9 +155,9 @@ test-method:: Automated inspection by geometric computation
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/node
-target:: /req/core/node
-// test-purpose::
+identifier:: /ats/node
+target:: /req/node
+test-purpose:: When the isLogical property of a DualSpaceLayer is set to TRUE, the geometries of its Node instances SHALL be spatially located inside of their corresponding CellSpaces.
 test-method:: Automated inspection by geometric computation
 ====
 
@@ -148,9 +165,14 @@ test-method:: Automated inspection by geometric computation
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/edge
-target:: /req/core/edge
-// test-purpose::
+identifier:: /ats/edge
+target:: /req/edge
+test-purpose::
++
+--
+* No self-intersection is allowed when its geometry is given.
+* If dualspaceLayer.directed=true, then the order of nodes represents the direction.
+--
 test-method:: Automated inspection by geometric computation
 ====
 
@@ -158,41 +180,25 @@ test-method:: Automated inspection by geometric computation
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/core/interlayerconnection
-target:: /req/core/interlayerconnection
-// test-purpose::
+identifier:: /ats/interlayerconnection
+target:: /req/interlayerconnection
+test-purpose::
++
+--
+* Two target cell spaces (or nodes) SHALL not belong to a same primal space layer (or dual space layer).
+* Connected nodes or connected cells SHALL be consistent with connected layers. This means that the target cell spaces (or nodes) SHALL belong to primal space layer (or dual space layer) of the connected layer.
+* The cardinalities of Node and CellSpace SHALL either be 0 or 2 but can never be 1.
+* Two connectedNodes are not commutative. For example, "node _A_ contains node B” does not mean “node _B_ contains node A”.
+--
 test-method:: Automated inspection by geometric computation
-====
-
-=== Conformance Class Navigation
-
-[conformance_class]
-====
-[%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml/2.0/conf/navigation
-target:: http://www.opengis.net/spec/indoorgml/2.0/req/navigation
-classification:: Target Type:Implementation Specification
-// dependency::
-abstract-test:: /conf/navigation/objectspace
-abstract-test:: /conf/navigation/route
 ====
 
 ==== Class ObjectSpace
 [abstract_test]
 ====
 [%metadata]
-identifier:: /conf/navigation/objectspace
-target:: /req/navigation/objectspace
-// test-purpose::
-test-method:: Automated inspection by geometric computation
-====
-
-==== Class Route
-[abstract_test]
-====
-[%metadata]
-identifier:: /conf/navigation/route
-target:: /req/navigation/route
-// test-purpose::
+identifier:: /ats/objectspace
+target:: /req/objectspace
+test-purpose:: ObjectSpace instances also fall under the non-overlapping constraint of CellSpaces. As such, they SHOULD not overlap with any other CellSpace or its specialized classes. Therefore, ObjectSpace can either be carved out of the space containing them or they can be defined in different layers (to avoid complex Boolean operations for example).
 test-method:: Automated inspection by geometric computation
 ====

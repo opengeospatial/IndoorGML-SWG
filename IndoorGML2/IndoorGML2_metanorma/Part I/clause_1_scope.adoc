@@ -1,11 +1,11 @@
 == Scope
-[NOTE]
+// [NOTE]
 // ====
 // Insert Scope text here. Give the subject of the document and the aspects of that scope covered by the document.
 // ====
-IndoorGML is an OGC^*®*^ standard for the representation and exchange of indoor navigation network models. IndoorGML is a UML conceptual schema and implementation schema of the Geography Markup Language version 3.2.1.
+The OGC IndoorGML Standard is for the representation and interoperable exchange of indoor navigation network models. IndoorGML Part 1 is a conceptual schema documented using UML and Part 2 is an implementation schema of the Geography Markup Language version 3.2.1.
 
-This version of IndoorGML establishes a common schema for indoor navigation applications. It models topology and semantics of indoor spaces, which are needed for the components of navigation networks. IndoorGML contains a minimum set of generic, unified modelling concepts for indoor environments as follows:
+IndoorGML Part 1 establishes a common schema for indoor space model and indoor navigation applications. Part 1 models topology and semantics of indoor spaces, which are needed for the components of navigation networks. The IndoorGML Standard defines a minimum set of generic, unified modelling concepts for indoor environments as follows:
 
 * Spaces and space subdivision contexts;
 * Geometric and semantic properties of spaces;

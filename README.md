@@ -5,8 +5,8 @@
 ### Part I - Concept Model
 A draft version of OGC IndoorGML 2.0 Part I - Concept Model can be checked below links:
 
-- [OGC_22-045.html](https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.html)
-- [OGC_22-045.pdf](https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.pdf)
+- [OGC_22-045r4.html](https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML-22-045r4/22-045r4.html)
+- [OGC_22-045r4.pdf](https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML-22-045r4/22-045r4.pdf)
 
 ### Part II - Encoding Schema
 

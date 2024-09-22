@@ -17,12 +17,14 @@ h| *Abbreviation* h| *Word or Phrase*
 | GML       | Geographic Markup Language
 | IndoorGML | Indoor Geographic Markup Language
 | IFC       | Industry Foundation Classes
+| IPS       | Indoor Positioning Systems
 | ISO       | International Organization for Standardization
 | KML       | Keyhole Markup Language
 | LOD       | Level of Detail
 | MLSM      | Multi-Layered Space Model
 | OGC       | Open Geospatial Consortium
 | RFID      | Radio Frequency IDentifier
+| RTLS      | Real-Time Locating Systems
 | UML       | Unified Modeling Language
 | XML       | eXtended Markup Language
 | 1D        | One Dimensional
@@ -40,17 +42,16 @@ image::./figures/FIG1.png[align="center"]
 
 In this standard, the following three stereotypes of UML classes are used.
 
-* \<<Interface>> A definition of a set of operations that is supported by objects having this interface. An Interface class cannot contain any attributes.
-* \<<DataType>> A descriptor of a set of values that lack identity (independent existence and the possibility of side effects). A DataType is a class with no operations whose primary purpose is to hold the information.
+* \<<FeatureType>> is a feature as defined in <<ISO_19109, ISO 19109>>. Features are abstractions of real-world phenomena and have an identity.
+* \<<DataType>> is a set of values that lack identity (independent existence and the possibility of side effects). A DataType is a class with no operations whose primary purpose is to hold the information.
 * \<<CodeList>> is a flexible enumeration that uses string values for expressing a list of potential values.
 
 In this standard, the following standard data types are used:
 
 * CharacterString – A sequence of characters;
 * Boolean – A binary value of either 1 (true) or 0 (false);
-* Integer – An integer number;
-* Double – A double precision floating point number; and
-* Float – A single precision floating point number.
+* Integer – An integer number; and
+* Real – A floating point number.
 
 === Identifiers
 The normative provisions in this standard are denoted by the URI

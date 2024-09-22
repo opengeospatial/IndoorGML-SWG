@@ -1,36 +1,21 @@
 [[section-datadictionary]]
 == Data Dictionary and Requirements
 
-In this section, we present the data dictionary of the feature types defined in IndoorGML 2.0 UML class diagram.
-It aims to clarify the concepts of each feature type and help the implementation of this standard.
-The data dictionary is defined based on ISO standards from TC 211, particularly <<ISO_19109,ISO 19109>> for the rules for application schema, <<ISO_19107,ISO 19107>> for spatial schema, and <<ISO_19136-1,ISO 19136-1>> for GML.
-As IndoorGML 2.0 is an application schema from these base standards, we will not include the data dictionary for the feature types defined by these standards in section.
-For example, the properties of GML AbstractFeature such as gmlID, and name are not described in the data dictionary.
-The data dictionary of the feature types defined in <<section-data-model>> is given in the following subsections.
+In this section, the data dictionary of the feature types defined in IndoorGML 2.0 UML class diagram are defined.
+The aim is to clarify the concepts of each feature type and help the implementation of this standard.
+The data dictionary is defined based on ISO TC 211 Standards, particularly <<ISO_19109,ISO 19109>> for the rules for application schema, <<ISO_19107,ISO 19107>> for spatial schema, and <<ISO_19136-1,ISO 19136>> for GML.
+As IndoorGML 2.0 is a model based on these base standards, the data dictionary for the feature types defined by these standards is not included in this section.
+For example, the properties of GML AbstractFeature such as *gmlID*, and *name* are not described in the data dictionary.
+The data dictionary of the feature types defined in <<section-data-model>> is provided in the following subsections.
 
 [[section-features-in-core]]
 === Feature Types in Core Module
 
-[requirements_class]
-====
-[%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml/2.0/req/core
-subject:: Implementation Specification
-// inherit::
-requirement:: /req/core/thematiclayer
-requirement:: /req/core/cellspace
-requirement:: /req/core/cellboundary
-requirement:: /req/core/node
-requirement:: /req/core/edge
-requirement:: /req/core/interlayerconnection
-====
-
 [[dd-indoorfeatures]]
 ==== IndoorFeatures
-.Data dictionary of IndoorFeatures
-[]
+[%unnumbered]
 |===
-h| *Name*         2+h| *IndoorFeatures*
+| *Name*          2+| *IndoorFeatures*
 | *Definition*     2+| Set of all features and their relationships to describe a given indoor space.
 | *Super classes* 2+| GML AbstractFeature
 .3+| *Composition*  | *Role name*       | *Type and Cardinality*
@@ -39,132 +24,110 @@ h| *Name*         2+h| *IndoorFeatures*
 .2+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | none              |
 .2+| *Constraints*  | *Constraint ID*   | *Constraint*
-                    | none              |
+                  2+| none
 |===
 
 [[dd-thematiclayer]]
 ==== ThematicLayer
-.Data dictionary of ThematicLayer
-[]
+[%unnumbered]
 |===
-h| *Name*          2+h| *ThematicLayer*
+| *Name*           2+| *ThematicLayer*
 | *Definition*      2+| Aggregation of features for a specific theme consisting of primal space layer and dual space layer.
 | *Super classes*  2+| GML AbstractFeature
-.2+| *Association*  | *Role name*       | *Type and Cardinality*
-                    | connectedLayers   | InterLayerConnection [1..1]
-.3+| *Properties*   | *Property name*   | *Type and Cardinality*
-                    | semanticExtension | Boolean [1..1]
-                    | theme             | ThematicLayerValue[1..1]
-| *Constraints*   2+| <<req-thematiclayer,/req/core/thematiclayer>>
+.2+| *Association*   | *Role name*       | *Type and Cardinality*
+                     | connectedLayers   | InterLayerConnection [1..1]
+.3+| *Properties*    | *Property name*   | *Type and Cardinality*
+                     | semanticExtension | Boolean [1..1]
+                     | theme             | ThematicLayerValue[1..1]
+.2+| *Constraints*   | *Constraint ID*   | *Constraint*
+                     | Indoorgml2/constraints/ thematiclayer
+                     | Any feature of a thematic layer SHALL belong to the same theme (Requirement ID: <<req-thematiclayer,/req/thematiclayer>>)
 |===
-
-[[req-thematiclayer]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/core/thematiclayer
-part:: Any feature of a thematic layer shall belong to the same theme.
-====
 
 [[dd-primalspacelayer]]
 ==== PrimalSpaceLayer
-.Data dictionary of PrimalSpaceLayer
-[]
+[%unnumbered]
 |===
-h| *Name*          2+h| *PrimalSpaceLayer*
+| *Name*           2+| *PrimalSpaceLayer*
 | *Definition*      2+| Aggregation of cell spaces and cell boundaries describing the topography of a given theme in indoor space.
 | *Super classes*  2+| GML AbstractFeature
-.3+| *Aggregation*  | *Members*         | *Class and Cardinality*
-                    | cellSpaceMember   | CellSpace [1..*]
-                    | cellBoundaryMember| CellBoundary [0..*]
-.4+| *Properties*   | *Property name*   | *Type and Cardinality*
-                    | function          | GenericName [0..1]
-                    | creationDate      | DateTime [0..1]
-                    | terminationDate   | DateTime [0..1]
-| *Constraints*   2+| none
+.3+| *Aggregation*   | *Members*          | *Class and Cardinality*
+                     | cellSpaceMember    | CellSpace [1..*]
+                     | cellBoundaryMember | CellBoundary [0..*]
+.3+| *Properties*    | *Property name*    | *Type and Cardinality*
+                     | creationDate       | DateTime [0..1]
+                     | terminationDate    | DateTime [0..1]
+.2+| *Constraints*   | *Constraint ID*    | *Constraint*
+                   2+| none
 |===
 
 [[dd-cellspace]]
 ==== CellSpace
-.Data dictionary of CellSpace
-[]
+[%unnumbered]
 |===
-h| *Name*           2+h| *CellSpace*
-| *Definition*       2+| the basic unit of indoor space, such as room and corridor, the union of which makes the entire indoor space.
+| *Name*            2+| *CellSpace*
+| *Definition*       2+| The basic unit of indoor space, such as room and corridor, the union of which makes the entire indoor space
 | *Super classes*   2+| GML AbstractFeature
-.3+| *Association*  | *Role name*   | *Type and Cardinality*
-                    | boundedBy     | CellBoundary [0..*]
-                    | duality       | Node [0..1]
-.6+| *Properties* | *Property name* | *Type and Cardinality*
+.3+| *Association*    | *Role name*    | *Type and Cardinality*
+                      | boundedBy      | CellBoundary [0..*]
+                      | duality        | Node [0..1]
+.6+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | cellSpaceGeometry | CellSpaceGeometryType[0..1]
+                    | cellSpaceName     | CharacterString [0..1]
                     | externalReference | ExternalReferenceType [0..1]
                     | level             | CharacterString [0..1]
-                    | name              | CharacterString [0..1]
                     | PoI               | Boolean [1..1]
-| *Constraints*   2+| <<req-cellspace,/req/core/cellspace>>
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                    | Indoorgml2/constraints/ cellspace
+                    | Cell spaces belonging to the same primal space layer SHALL not overlap. (Requirement ID: <<req-cellspace,/req/cellspace>>)
 |===
-
-[[req-cellspace]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/core/cellspace
-part:: Cell spaces belonging to the same primal space layer shall not overlap.
-====
 
 [[dd-cellboundary]]
 ==== CellBoundary
-.Data dictionary of CellBoundary
-[]
+[%unnumbered]
 |===
-h| *Name*           2+h| *CellBoundary*
-| *Definition*       2+| explicit boundary of cell space, to which we may assign additional properties such as material, texture, etc.
+| *Name*            2+| *CellBoundary*
+| *Definition*       2+| Explicit boundary of cell space, to which we may assign additional properties such as material, texture, etc.
 | *Super classes*   2+| GML AbstractFeature
-.3+| *Association*  | *Role name*   | *Type and Cardinality*
-                    | bounds        | CellSpace [1..2]
-                    | duality       | Edge [0..1]
-.4+| *Properties*   | *Property name*       | *Type and Cardinality*
-                    | cellBoundaryGeometry  | CellBoundaryGeometryType [0..1]
-                    | externalReference     | ExternalReferenceType [0..1]
-                    | isVirtual             | Boolean
-| *Constraints*   2+| <<req-cellboundary,/req/core/cellboundary>>
+.3+| *Association*    | *Role name*    | *Type and Cardinality*
+                      | bounds         | CellSpace [1..2]
+                      | duality        | Edge [0..1]
+.4+| *Properties*     | *Property name*        | *Type and Cardinality*
+                      | cellBoundaryGeometry   | CellBoundaryGeometryType [0..1]
+                      | externalReference      | ExternalReferenceType [0..1]
+                      | isVirtual              | Boolean
+.3+| *Constraints*    | *Constraint ID*        | *Constraint*
+                      | Indoorgml2/constraints/ cellboundary-1
+                      | Cell boundaries belonging to the same primal space layer should not intersect. (Requirement ID: <<req-cellboundary,/req/cellboundary-A>>)
+                      | Indoorgml2/constraints/ cellboundary-2
+                      | The geometry of cell boundary SHALL not exceed the extent of the corresponding cell space. (Requirement ID: <<req-cellboundary,/req/cellboundary-B>>)
 |===
-
-[[req-cellboundary]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/core/cellboundary
-part:: Cell boundaries belonging to the same primal space layer shall not intersect.
-part:: The geometry of cell boundary shall not exceed the extent of the corresponding cell space.
-====
 
 [[dd-dualspacelayer]]
 ==== DualSpaceLayer
-.Data dictionary of DualSpaceLayer
-[]
+[%unnumbered]
 |===
-h| *Name*           2+h| *Node*
+| *Name*            2+| *Node*
 | *Definition*       2+| Dual space layer corresponds to primal space layer and mainly describes adjacency or connectivity relationship between nodes, where node is an abstraction of cell space and edge is a relationship between two nodes. It is a graph composed of nodes and edges.
 | *Super classes*   2+| GML AbstractFeature
-.3+| *Aggregation*  | *Role name*   | *Aggregated Class and Cardinality*
-                    | nodeMember    | Node [1..*]
-                    | edgeMember    | Edge [0..*]
-.5+| *Property*     | *Property name*   | *Type and Cardinality*
-                    | isLogical         | GM_Curve [0..1]
-                    | creationDate      | DateTime [10..1]
-                    | terminationDate   | DateTime [10..1]
-                    | isDirected        | Boolean [1..1]
-| *Constraints*   2+| none
+.3+| *Aggregation*    | *Role name*    | *Aggregated Class and Cardinality*
+                      | nodeMember     | Node [1..*]
+                      | edgeMember     | Edge [0..*]
+.5+| *Property*       | *Property name*    | *Type and Cardinality*
+                      | creationDate       | DateTime [0..1]
+                      | terminationDate    | DateTime [0..1]
+                      | isLogical          | GM_Curve [0..1]
+                      | isDirected         | Boolean [1..1]
+.2+| *Constraints*    | *Constraint ID*    | *Constraint*
+                    2+| none
 |===
 
 [[dd-node]]
 ==== Node
-.Data dictionary of Node
-[]
+[%unnumbered]
 |===
-h| *Name*           2+h| *Node*
-| *Definition*       2+| space abstraction of cell space in dual space to a point or virtual point, which is defined as 0-dimentional topological primitive in ISO 19107.
+| *Name*            2+| *Node*
+| *Definition*       2+| Space abstraction of cell space in dual space to a point or virtual point, which is defined as 0-dimensional topological primitive in ISO 19107.
 | *Super classes*   2+| GML AbstractFeature
 .4+| *Association*  | *Role name*       | *Type and Cardinality*
                     | connectedNodes    | InterLayerConnection [0..*]
@@ -172,49 +135,37 @@ h| *Name*           2+h| *Node*
                     | connects          | Edge [0..*]
 .2+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | geometry          | GM_Point [0..1]
-| *Constraints*   2+| <<req-node,/req/core/node>>
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                    | Indoorgml2/constraints/ node
+                    | When the isLogical property of a DualSpaceLayer is set to FALSE, the geometries of its Node instances SHALL be spatially located inside of their corresponding CellSpaces. (Requirement ID: <<req-node,/req/node>>)
 |===
-
-[[req-node]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/core/node
-part:: When the isLogical attribute of a DualSpaceLayer is set to TRUE, the geometries of its Node instances shall be spatially located inside of their corresponding Cell Spaces.
-====
 
 [[dd-edge]]
 ==== Edge
-.Data dictionary of Edge
-[]
+[%unnumbered]
 |===
-h| *Name*           2+h| *Edge*
-| *Definition*       2+| adjacency or connectivity relationship between nodes, which is defined as 1-dimensional topological primitive in ISO 19107.
-| *Super classes*   2+| GMLAbstractFeature
+| *Name*            2+| *Edge*
+| *Definition*       2+| Adjacency or connectivity relationship between nodes, which is defined as 1-dimensional topological primitive in ISO 19107.
+| *Super classes*   2+| GML AbstractFeature
 .3+| *Association*  | *Role name*   | *Type and Cardinality*
                     | connects      | Node [2..2]
                     | duality       | CellBoundary [0..1]
 .3+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | geometry          | GM_Curve [0..1]
                     | weight            | Real [1..1]
-| *Constraints*   2+| <<req-edge,/req/core/edge>>
+.3+| *Constraints*    | *Constraint ID*        | *Constraint*
+                      | Indoorgml2/constraints/ edge-1
+                      | No self-intersection is allowed when its geometry is given. (Requirement ID: <<req-edge,/req/edge-A>>)
+                      | Indoorgml2/constraints/ edge-2
+                      | If dualspaceLayer.directed=true, then the order of nodes represents the direction. (Requirement ID: <<req-edge,/req/edge-B>>)
 |===
 
-[[req-edge]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/core/edge
-part:: Self-intersection shall not be allowed when its geometry is given.
-part:: If dualspaceLayer.directed=true, then the order of nodes shall be representing the direction.
-====
 
 [[dd-interlayerconnection]]
 ==== InterLayerConnection
-.Data dictionary of InterLayerConnection
-[]
+[%unnumbered]
 |===
-h| *Name*           2+h| *InterLayerConnection*
+| *Name*            2+| *InterLayerConnection*
 | *Definition*       2+| Relationship between cell spaces and nodes in two different thematic layers
 | *Super classes*   2+| None
 .4+| *Association*  | *Role name*       | *Type and Cardinality*
@@ -224,87 +175,74 @@ h| *Name*           2+h| *InterLayerConnection*
 .3+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | comment           | CharacterString [1..1]
                     | typeOfTopoExpression | TopoExpressiveValue [1..1]
-| *Constraints*   2+| <<req-interlayerconnection,/req/core/interlayerconnection>>
+.5+| *Constraints*  | *Constraint ID*        | *Constraint*
+                    | Indoorgml2/constraints/ interlayerconnection-1
+                    | Two target cell spaces (or nodes) SHALL not belong to a same primal space layer (or dual space layer) (Requirement ID: <<req-interlayerconnection,/req/interlayerconnection-A>>)
+                    | Indoorgml2/constraints/ interlayerconnection-2
+                    | Connected nodes or connected cells SHALL be consistent with connected layers. This means that the target cell spaces (or nodes) SHALL belong to primal space layer (or dual space layer) of the connected layer. (Requirement ID: <<req-interlayerconnection,/req/interlayerconnection-B>>)
+                    | Indoorgml2/constraints/ interlayerconnection-3
+                    | The cardinalities of Node and CellSpace SHALL either be 0 or 2 but can never be 1. (Requirement ID: <<req-interlayerconnection,/req/interlayerconnection-C>>)
+                    | Indoorgml2/constraints/ interlayerconnection-4
+                    | Two connectedNodes are not commutative. For example, "node _A_ contains node B” does not mean “node _B_ contains node A”. (Requirement ID: <<req-interlayerconnection,/req/interlayerconnection-D>>)
 |===
-
-[[req-interlayerconnection]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/core/interlayerconnection
-part:: Two target cell spaces (or nodes) shall not belong to a same primal space layer (or dual space layer).
-part:: Connected nodes or connected cells shall be consistent with connected layers. It means that the target cell spaces (or nodes) shall belong to primal space layer (or dual space layer) of the connected layer.
-part:: The cardinalities of Node and CellSpace can either be 0 or 2, but can never be 1.
-====
 
 [[section-features-in-navigation]]
 === Feature Types in Navigation Module
 
-[requirements_class]
-====
-[%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml/2.0/req/navigation
-subject:: Implementation Specification
-// inherit::
-requirement:: /req/navigation/objectspace
-requirement:: /req/navigation/route
-====
-
 [[dd-navigablespace]]
 ==== NavigableSpace
-.Data dictionary of NavigableSpace
-[]
+[%unnumbered]
 |===
-h| *Name*         2+h| *NavigableSpace*
-| *Definition*     2+| a cell space in which users can move freely
+| *Name*          2+| *NavigableSpace*
+| *Definition*     2+| A cell space in which users can move freely
 | *Super classes* 2+| CellSpace
 .2+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | locomotionType    | LocomotionAccessType [1..1]
-| *Constraints*   2+| none
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
 
 [[dd-nonnavigablespace]]
 ==== NonNavigableSpace
-.Data dictionary of NonNavigableSpace
-[]
+[%unnumbered]
 |===
 h| *Name*         2+h| *NavigableSpace*
-| *Definition*     2+| a cell space in which users cannot move
+| *Definition*     2+| A cell space in which users cannot move
 | *Super classes* 2+| CellSpace
-.2+| *Constraints*  | *Constraint ID*  | *Constraint*
-                    | none             |
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
 
 [[dd-generalspace]]
 ==== GeneralSpace
-.Data dictionary of GeneralSpace
-[]
+[%unnumbered]
 |===
-h| *Name*         2+h| *GeneralSpace*
-| *Definition*     2+| A type of NavigableSpace such as rooms, lobbies, kitchen, etc., where agents can stay or use for a longer period of time and can serve as starting and target cell in navigation.
+| *Name*          2+| *GeneralSpace*
+| *Definition*     2+| A type of NavigableSpace such as rooms, lobbies, kitchen, etc., where agents can stay or use
+for a longer period of time and can serve as starting and target cell in navigation.
 | *Super classes* 2+| NavigableSpace
 .2+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | function          | GeneralSpaceFunctionType [1..1]
-| *Constraints*   2+| none
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
 
 [[dd-transferspace]]
 ==== TransferSpace
-.Data dictionary of TransferSpace
-[]
+[%unnumbered]
 |===
 h| *Name*         2+h| *TransferSpace*
 | *Definition*     2+| A type of NavigableSpace that provides passages between GeneralSpaces
 | *Super classes* 2+| NavigableSpace
 .2+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | function          | TransferSpaceFunctionType [1..1]
-| *Constraints*   2+| none
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
 
 [[dd-objectspace]]
 ==== ObjectSpace
-.Data dictionary of ObjectSpace
-[]
+[%unnumbered]
 |===
 h| *Name*         2+h| *ObjectSpace*
 | *Definition*     2+| A type of NonNavigableSpace containing objects that make it non-navigable
@@ -312,67 +250,52 @@ h| *Name*         2+h| *ObjectSpace*
 .2+| *Association*  | *Role name*   | *Associated Class*
                     | none          | none
 .3+| *Properties*   | *Property name*   | *Type and Cardinality*
-                    | containedFeature  | integer[0..1]
-                    | description       | string [0..1]
-| *Constraints*   2+| <<req-objectspace,/req/navigation/objectspace>>
+                    | containedFeature  | Integer[0..1]
+                    | description       | CharacterString [0..1]
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                    | Indoorgml2/constraints/ objectspace
+                    | ObjectSpace instances also fall under the non-overlapping constraint of CellSpaces. As such, they SHOULD not overlap with any other CellSpace or its specialized classes. Therefore, ObjectSpace can either be carved out of the space containing them or they can be defined in different layers (to avoid complex Boolean operations for example). (Requirement ID: <<req-objectspace,/req/objectspace>>)
 |===
-
-[[req-objectspace]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/navigation/objectspace
-part:: ObjectSpace has to be separated from cell spaces to form another space layer as no cell space shall overlap with others.
-part:: ObjectSpace instances also fall under the non-overlapping constraint of CellSpaces. As such, they shall not overlap with any other CellSpace or its specialized classes. Therefore, ObjectSpace can either be carved out of the space containing them or they can be defined in different layers (to avoid complex Boolean operations for example).
-====
 
 [[dd-navigableboundary]]
 ==== NavigableBoundary
-.Data dictionary of NavigableBoundary
-[]
+[%unnumbered]
 |===
-h| *Name*         2+h| NavigableBoundary
+| *Name*          2+| NavigableBoundary
 | *Definition*     2+| A type of CellBoundary, which agents can pass through.
 | *Super classes* 2+| CellBoundary
 .3+| *Properties*   | *Property name*           | *Type and Cardinality*
                     | boundaryOrientation       | Boolean [0..1]
-                    | navigableBoundaryFunction | NavigableBoundaryFunctuinType [1..1]
-| *Constraints*   2+| none
+                    | navigableBoundaryFunction | NavigableBoundaryFunctionType [1..1]
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
 
 [[dd-nonnavigableboundary]]
 ==== NonNavigableBoundary
-.Data dictionary of NonNavigableBoundary
-[]
+[%unnumbered]
 |===
-h| *Name*         2+h| NavigableBoundary
+| *Name*          2+| NavigableBoundary
 | *Definition*     2+| A type of CellBoundary, which does not allow passage.
 | *Super classes* 2+| CellBoundary
-| *Properties*    2+| none
-| *Constraints*   2+| none
+.2+| *Properties*   | *Property name*   | *Type and Cardinality*
+                  2+| none
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
 
 [[dd-route]]
 ==== Route
-// TODO: verify it
-.Data dictionary of Route
-[]
+[%unnumbered]
 |===
-h| *Name*         2+h| Route
-| *Definition*     2+| A path to navigate between two nodes (look at any other OGC or ISO TC 204?)
+| *Name*          2+| Route
+| *Definition*     2+| A path to navigate between two nodes
 | *Super classes* 2+| GML AbstractFeature
 .3+| *Association*  | *Role name*   | *Associated Class and Cardinality*
                     | routeNode     | Node [2..*]
                     | routeEdge     | Edge [1..*]
 .2+| *Properties*   | *Property name*   | *Type and Cardinality*
                     | creationDate      | DateTime [01..1]
-| *Constraints*   2+| <<req-route,/req/navigation/route>>
+.2+| *Constraints*  | *Constraint ID*   | *Constraint*
+                  2+| none
 |===
-
-[[req-route]]
-[requirement]
-====
-[%metadata]
-identifier:: /req/navigation/route
-part:: Self-intersection shall not be allowed.
-====
