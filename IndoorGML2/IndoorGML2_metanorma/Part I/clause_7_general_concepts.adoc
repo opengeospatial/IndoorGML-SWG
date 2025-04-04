@@ -23,7 +23,7 @@ Those concepts are elaborated in the following subsections.
 The notion of space is widely explored in spatial science and urban applications in general (<<zlatanova2020spaces,Zlatanova, et al., 2020>>).
 Among the diverse definitions that can be found in dictionaries and related literature, one definition of the space encapsulates most of the concepts attached it:
 
-"_Space is either unlimited expand or an empty area usually bounded in some way between things (e.g., the architect left space in front of the building) or an area reserved for some particular purpose (e.g., the laboratory’s floor space)"_ (<<wordnet,Princeton University, 2010>>).
+"_Space is either unlimited expanse or an empty area usually bounded in some way between things (e.g., the architect left space in front of the building) or an area reserved for some particular purpose (e.g., the laboratory’s floor space)"_ (<<wordnet,Princeton University, 2010>>).
 
 That definition acknowledges three main aspects of the space:
 (a) its ability to expand infinitely,

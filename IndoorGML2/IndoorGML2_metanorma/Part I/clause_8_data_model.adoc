@@ -42,7 +42,7 @@ A _CellSpaceGeometryType_ is a geometry class type with two possible properties:
 They provide the 3D and 2D description of a CellSpace instance.
 The _Geometry3D_ property describes a representation of type solid, similar to the _GM_Solid_ (<<ISO_19107,ISO 19107>>) type.
 It is the default type for describing a 3D CellSpace as one single valid entity.
-The _Geometry2D_ properties describes a representation of type surface, similar to the _GM_Surface_ type.
+The _Geometry2D_ property describes a representation of type surface, similar to the _GM_Surface_ type.
 This property describes a CellSpace in 2D as one single surface (in the case of a 2D IndoorGML model).
 The geometry should be valid according to the ISO 19107 Standard terms.
 If a CellSpace cannot meet those requirements, e.g., be valid 2D or 3D geometry, the option to describe its geometry as a set of CellBoundary entities can be considered.
@@ -93,9 +93,8 @@ The _Geometry2D_ property is the same as that of _CellSpaceGeometryType_.
 Note, in this context, _cellBoundaryGeom_ is embedded in 3D, i.e., has 3D coordinates and represents a part of the boundary of a CellSpace.
 The _Geometry1D_ property describes a representation of type curve, _GM_Curve_ type.
 Note, this property is intended for describing a CellBoundary in 2D as one single line/curve and has 2D coordinates.
-This is an adequate representations of _cellBoundaryGeom_ based on 2D floor plans.
-The _cellBoundaryGeom_ is not required.
-In this case, _cellBoundaryGeom_ indicates only if a specific cell boundary is virtual.
+This is an adequate representation of _cellBoundaryGeom_ based on 2D floor plans.
+_cellBoundaryGeom_ is not required (e.g., when CellBoundary simply indicates a virtual boundary).
 
 The property _externalReference_ is used for the reference of a geometric object to its corresponding object in an external data set and can be given by the url of the file containing the geometry.
 The _isVirtual_ property is a Boolean value used to indicate whether a CellBoundary corresponds to a virtual surface (true) or a physical one (false), which should be the default value.

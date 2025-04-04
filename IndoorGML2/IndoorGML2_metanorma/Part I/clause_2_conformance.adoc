@@ -15,7 +15,7 @@
 //
 // All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
 
-Conformance targets of IndoorGML Part 1 are IndoorGML instance documents. Conformance with this Standard shall be checked whether IndoorGML instance documents achieve the criteria as defined in clause 7 to 9.
+Conformance targets of IndoorGML 2.0 Part 1 are IndoorGML instance documents. Conformance with this Standard shall be checked whether IndoorGML instance documents achieve the criteria as defined in clause 7 to 9.
 
 In order to conform to IndoorGML requirements and schema document implementations SHALL:
 

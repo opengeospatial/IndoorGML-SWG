@@ -12,14 +12,15 @@ The following symbols and abbreviated are used in this standard.
 h| *Abbreviation* h| *Word or Phrase*
 | BIM       | Building Information Modeling
 | CityGML   | City Geographic Markup Language
-| GPS       | Global Positioning Systems
 | CRS       | Coordinate Reference System
 | GML       | Geographic Markup Language
+| GPS       | Global Positioning Systems
 | IndoorGML | Indoor Geographic Markup Language
 | IFC       | Industry Foundation Classes
 | IPS       | Indoor Positioning Systems
 | ISO       | International Organization for Standardization
 | KML       | Keyhole Markup Language
+| LBS       | Location-Based Service(s)
 | LOD       | Level of Detail
 | MLSM      | Multi-Layered Space Model
 | OGC       | Open Geospatial Consortium

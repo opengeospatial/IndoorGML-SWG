@@ -1,14 +1,14 @@
-= OGC IndoorGML Part I – Conceptual Model
+= OGC IndoorGML 2.0 Part I – Conceptual Model
 :comment: Change "standard" to "draft-standard" for draft standards
 :comment: The front page notice will update automatically to reflect the document type
 :doctype: standard
 :encoding: utf-8
 :lang: en
-:status: tc-vote
+:status: approved
 :committee: technical
 :draft: 1.0
 :external-id: http://www.opengis.net/doc/IS/indoorgml/2.0
-:docnumber: 22-045r4
+:docnumber: 22-045r5
 :received-date: 2024-10-15
 :issued-date: 20xx-xx-xx
 :published-date: 20xx-xx-xx
