@@ -132,7 +132,7 @@ test-method:: Manual or automated inspection
 [%metadata]
 identifier:: /ats/cellspace
 target:: /req/cellspace
-test-purpose:: Cells belonging to the same primal space layer SHALL not intersect.
+test-purpose:: Cells belonging to the same primal space layer SHALL not intersect with each other.
 test-method:: Automated inspection by geometric computation
 ====
 

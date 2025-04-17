@@ -297,7 +297,7 @@ the class instances inherit the geometry of its parent CellSpace entity and can 
 The GeneralSpace class is one of the two subclasses of NavigableSpace (<<fig-uml-generalspace>>).
 GeneralSpace is identified as any navigable cells such as rooms, lobbies, kitchen, etc., which agents can use for a longer period of time and can serve as starting and target cell in navigation.
 It carries the property _function_ which specifies details about the function of the cell.
-In IndoorGML, those functions are described in a code list derived from OmniClass Table 13 (OmniClass, 2021)
+// In IndoorGML, those functions are described in a code list derived from OmniClass Table 13 (OmniClass, 2021)
 
 [[fig-uml-generalspace]]
 .GeneralSpace and its related class: NavigableSpace
@@ -433,7 +433,7 @@ part:: Any feature of a thematic layer SHALL belong to the same theme.
 ====
 [%metadata]
 identifier:: /req/cellspace
-part:: Cell belonging to the same primal space layer SHALL not intersect.
+part:: Cells belonging to the same primal space layer SHALL not intersect with each other.
 ====
 
 [[req-cellboundary]]
