@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:IndoorGML="http://www.opengis.net/indoorgml/1.0/core" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" targetNamespace="http://www.opengis.net/indoorgml/1.0/core" version="2.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	xmlns="http://www.opengis.net/indoorgml/2.0/navi"
+	xmlns:IndoorCore="http://www.opengis.net/indoorgml/2.0/core"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:gmd="http://www.isotc211.org/2005/gmd"
+	xmlns:gml="http://www.opengis.net/gml/3.2"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.opengis.net/indoorgml/2.0/navi"
+	version="2.0">
   <annotation>
     <appinfo>
       <gmlProfileSchema xmlns="http://www.opengis.net/gml/3.2">IndoorGML</gmlProfileSchema>
@@ -27,19 +36,8 @@
     <complexContent>
       <extension base="gml:AbstractFeatureType">
         <sequence>
-          <element minOccurs="0" name="cellBoundaryGeom" type="IndoorGML:CellBoundaryGeometryTypePropertyType"/>
-          <element minOccurs="0" name="externalReference">
-            <complexType>
-              <complexContent>
-                <extension base="gml:AbstractMemberType">
-                  <sequence minOccurs="0">
-                    <element ref="IndoorGML:ExternalReferenceType"/>
-                  </sequence>
-                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
-                </extension>
-              </complexContent>
-            </complexType>
-          </element>
+          <element minOccurs="0" name="cellBoundaryGeom" type="IndoorGML:CellBoundaryGeometryPropertyType"/>
+          <element minOccurs="0" name="externalReference" type="IndoorGML:ExternalReferencePropertyType"/>
           <element name="isVirtual" type="boolean"/>
           <element minOccurs="0" name="duality" type="IndoorGML:EdgePropertyType">
             <annotation>
@@ -59,16 +57,16 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <element name="CellBoundaryGeometryType" substitutionGroup="gml:AbstractObject" type="IndoorGML:CellBoundaryGeometryTypeType"/>
-  <complexType name="CellBoundaryGeometryTypeType">
+  <element name="CellBoundaryGeometry" substitutionGroup="gml:AbstractObject" type="IndoorGML:CellBoundaryGeometryType"/>
+  <complexType name="CellBoundaryGeometryType">
     <sequence>
       <element minOccurs="0" name="Geometry2D" type="gml:SurfacePropertyType"/>
       <element minOccurs="0" name="Geometry1D" type="gml:CurvePropertyType"/>
     </sequence>
   </complexType>
-  <complexType name="CellBoundaryGeometryTypePropertyType">
+  <complexType name="CellBoundaryGeometryPropertyType">
     <sequence>
-      <element ref="IndoorGML:CellBoundaryGeometryType"/>
+      <element ref="IndoorGML:CellBoundaryGeometry"/>
     </sequence>
   </complexType>
   <element name="CellSpace" substitutionGroup="IndoorGML:AbstractFeature" type="IndoorGML:CellSpaceType"/>
@@ -76,30 +74,8 @@
     <complexContent>
       <extension base="IndoorGML:AbstractFeatureType">
         <sequence>
-          <element minOccurs="0" name="cellSpaceGeom">
-            <complexType>
-              <complexContent>
-                <extension base="gml:AbstractMemberType">
-                  <sequence minOccurs="0">
-                    <element ref="IndoorGML:CellSpaceGeometryType"/>
-                  </sequence>
-                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
-                </extension>
-              </complexContent>
-            </complexType>
-          </element>
-          <element minOccurs="0" name="externalReference">
-            <complexType>
-              <complexContent>
-                <extension base="gml:AbstractMemberType">
-                  <sequence minOccurs="0">
-                    <element ref="IndoorGML:ExternalReferenceType"/>
-                  </sequence>
-                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
-                </extension>
-              </complexContent>
-            </complexType>
-          </element>
+          <element minOccurs="0" name="cellSpaceGeom" type="IndoorGML:CellSpaceGeometryPropertyType"/>
+          <element minOccurs="0" name="externalReference" type="IndoorGML:ExternalReferencePropertyType"/>
           <element minOccurs="0" name="level" type="string"/>
           <element name="PoI" type="boolean"/>
           <element minOccurs="0" name="name" type="string"/>
@@ -126,38 +102,17 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <element name="CellSpaceGeometryType" substitutionGroup="gml:AbstractGML" type="IndoorGML:CellSpaceGeometryTypeType"/>
-  <complexType name="CellSpaceGeometryTypeType">
-    <complexContent>
-      <extension base="gml:AbstractGMLType">
-        <sequence>
-          <element minOccurs="0" name="Geometry3D" type="gml:SolidPropertyType"/>
-          <element minOccurs="0" name="Geometry2D" type="gml:SurfacePropertyType"/>
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <complexType name="CellSpaceGeometryTypePropertyType">
-    <sequence minOccurs="0">
-      <element ref="IndoorGML:CellSpaceGeometryType"/>
+  <element name="CellSpaceGeometry" substitutionGroup="gml:AbstractObject" type="IndoorGML:CellSpaceGeometryType"/>
+  <complexType name="CellSpaceGeometryType">
+    <sequence>
+      <element minOccurs="0" name="Geometry3D" type="gml:SolidPropertyType"/>
+      <element minOccurs="0" name="Geometry2D" type="gml:SurfacePropertyType"/>
     </sequence>
-    <attributeGroup ref="gml:AssociationAttributeGroup"/>
-    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <element name="DateTime" substitutionGroup="gml:AbstractGML" type="IndoorGML:DateTimeType"/>
-  <complexType name="DateTimeType">
-    <complexContent>
-      <extension base="gml:AbstractGMLType">
-        <sequence/>
-      </extension>
-    </complexContent>
-  </complexType>
-  <complexType name="DateTimePropertyType">
-    <sequence minOccurs="0">
-      <element ref="IndoorGML:DateTime"/>
+  <complexType name="CellSpaceGeometryPropertyType">
+    <sequence>
+      <element ref="IndoorGML:CellSpaceGeometry"/>
     </sequence>
-    <attributeGroup ref="gml:AssociationAttributeGroup"/>
-    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
   <element name="Edge" substitutionGroup="gml:AbstractFeature" type="IndoorGML:EdgeType"/>
   <complexType name="EdgeType">
@@ -192,52 +147,40 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <element name="ExternalObjectReferenceType" substitutionGroup="gml:AbstractGML" type="IndoorGML:ExternalObjectReferenceTypeType"/>
-  <complexType name="ExternalObjectReferenceTypeType">
-    <complexContent>
-      <extension base="gml:AbstractGMLType">
-        <sequence>
-          <element name="uri" type="anyURI"/>
-          <element name="name" type="string"/>
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <complexType name="ExternalObjectReferenceTypePropertyType">
-    <sequence minOccurs="0">
-      <element ref="IndoorGML:ExternalObjectReferenceType"/>
+  <element name="ExternalObjectReference" substitutionGroup="gml:AbstractObject" type="IndoorGML:ExternalObjectReferenceType"/>
+  <complexType name="ExternalObjectReferenceType">
+    <sequence>
+      <element name="uri" type="anyURI"/>
+      <element name="name" type="string"/>
     </sequence>
-    <attributeGroup ref="gml:AssociationAttributeGroup"/>
-    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <element name="ExternalReferenceType" substitutionGroup="gml:AbstractGML" type="IndoorGML:ExternalReferenceTypeType"/>
-  <complexType name="ExternalReferenceTypeType">
-    <complexContent>
-      <extension base="gml:AbstractGMLType">
-        <sequence>
-          <element name="externalObject">
-            <complexType>
-              <complexContent>
-                <extension base="gml:AbstractMemberType">
-                  <sequence minOccurs="0">
-                    <element ref="IndoorGML:ExternalObjectReferenceType"/>
-                  </sequence>
-                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
-                </extension>
-              </complexContent>
-            </complexType>
-          </element>
-          <element name="informationSystem" type="gmd:URL_PropertyType"/>
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <complexType name="ExternalReferenceTypePropertyType">
-    <sequence minOccurs="0">
-      <element ref="IndoorGML:ExternalReferenceType"/>
+  <complexType name="ExternalObjectReferencePropertyType">
+    <sequence>
+      <element ref="IndoorGML:ExternalObjectReference"/>
     </sequence>
-    <attributeGroup ref="gml:AssociationAttributeGroup"/>
-    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="ExternalReference" substitutionGroup="gml:AbstractObject" type="IndoorGML:ExternalReferenceType"/>
+  <complexType name="ExternalReferenceType">
+    <sequence>
+      <element name="externalObject">
+        <complexType>
+          <complexContent>
+            <extension base="gml:AbstractMemberType">
+              <sequence minOccurs="0">
+                <element ref="IndoorGML:ExternalObjectReferenceType"/>
+              </sequence>
+              <attributeGroup ref="gml:AssociationAttributeGroup"/>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="informationSystem" type="gmd:URL_PropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="ExternalReferencePropertyType">
+    <sequence>
+      <element ref="IndoorGML:ExternalReference"/>
+    </sequence>
   </complexType>
   <element name="GeneralSpace" substitutionGroup="IndoorGML:NavigableSpace" type="IndoorGML:GeneralSpaceType"/>
   <complexType name="GeneralSpaceType">
@@ -256,10 +199,10 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <simpleType name="GeneralSpaceFunctionTypeType">
-    <union memberTypes="IndoorGML:GeneralSpaceFunctionTypeEnumerationType IndoorGML:GeneralSpaceFunctionTypeOtherType"/>
+  <simpleType name="GeneralSpaceFunctionType">
+    <union memberTypes="IndoorGML:GeneralSpaceFunctionEnumerationType IndoorGML:GeneralSpaceFunctionOtherType"/>
   </simpleType>
-  <simpleType name="GeneralSpaceFunctionTypeEnumerationType">
+  <simpleType name="GeneralSpaceFunctionEnumerationType">
     <restriction base="string">
       <enumeration value="Administration"/>
       <enumeration value="Business, trade"/>
@@ -270,15 +213,15 @@
       <enumeration value="Security"/>
     </restriction>
   </simpleType>
-  <simpleType name="GeneralSpaceFunctionTypeOtherType">
+  <simpleType name="GeneralSpaceFunctionOtherType">
     <restriction base="string">
       <pattern value="other: \w{2,}"/>
     </restriction>
   </simpleType>
-  <simpleType name="LocomotionAccessTypeType">
-    <union memberTypes="IndoorGML:LocomotionAccessTypeEnumerationType IndoorGML:LocomotionAccessTypeOtherType"/>
+  <simpleType name="LocomotionAccessType">
+    <union memberTypes="IndoorGML:LocomotionAccessEnumerationType IndoorGML:LocomotionAccessOtherType"/>
   </simpleType>
-  <simpleType name="LocomotionAccessTypeEnumerationType">
+  <simpleType name="LocomotionAccessEnumerationType">
     <restriction base="string">
       <enumeration value="Walking"/>
       <enumeration value="Flying"/>
@@ -286,7 +229,7 @@
       <enumeration value="Unspecified"/>
     </restriction>
   </simpleType>
-  <simpleType name="LocomotionAccessTypeOtherType">
+  <simpleType name="LocomotionAccessOtherType">
     <restriction base="string">
       <pattern value="other: \w{2,}"/>
     </restriction>
@@ -309,16 +252,16 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <simpleType name="NavigableBoundaryFunctionTypeType">
-    <union memberTypes="IndoorGML:NavigableBoundaryFunctionTypeEnumerationType IndoorGML:NavigableBoundaryFunctionTypeOtherType"/>
+  <simpleType name="NavigableBoundaryFunctionType">
+    <union memberTypes="IndoorGML:NavigableBoundaryFunctionEnumerationType IndoorGML:NavigableBoundaryFunctionOtherType"/>
   </simpleType>
-  <simpleType name="NavigableBoundaryFunctionTypeEnumerationType">
+  <simpleType name="NavigableBoundaryFunctionEnumerationType">
     <restriction base="string">
       <enumeration value="AncorBoundary"/>
       <enumeration value="ConnectionBoundary"/>
     </restriction>
   </simpleType>
-  <simpleType name="NavigableBoundaryFunctionTypeOtherType">
+  <simpleType name="NavigableBoundaryFunctionOtherType">
     <restriction base="string">
       <pattern value="other: \w{2,}"/>
     </restriction>
@@ -328,7 +271,7 @@
     <complexContent>
       <extension base="IndoorGML:CellSpaceType">
         <sequence>
-          <element name="locomotionType" type="IndoorGML:LocomotionAccessTypeType"/>
+          <element name="locomotionType" type="IndoorGML:LocomotionAccessType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -340,20 +283,6 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <simpleType name="NetworkTypeType">
-    <union memberTypes="IndoorGML:NetworkTypeEnumerationType IndoorGML:NetworkTypeOtherType"/>
-  </simpleType>
-  <simpleType name="NetworkTypeEnumerationType">
-    <restriction base="string">
-      <enumeration value="geometric"/>
-      <enumeration value="logical"/>
-    </restriction>
-  </simpleType>
-  <simpleType name="NetworkTypeOtherType">
-    <restriction base="string">
-      <pattern value="other: \w{2,}"/>
-    </restriction>
-  </simpleType>
   <element name="Node" substitutionGroup="gml:AbstractFeature" type="IndoorGML:NodeType"/>
   <complexType name="NodeType">
     <complexContent>
@@ -453,13 +382,27 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
+  <simpleType name="TransferSpaceType">
+    <union memberTypes="IndoorGML:TransferSpaceEnumerationType IndoorGML:TransferSpaceOtherType"/>
+  </simpleType>
+  <simpleType name="TransferSpaceEnumerationType">
+    <restriction base="string">
+      <enumeration value="Door"/>
+      <enumeration value="Window"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="TransferSpaceOtherType">
+    <restriction base="string">
+      <pattern value="other: \w{2,}"/>
+    </restriction>
+  </simpleType>
   <element name="TransferSpace" substitutionGroup="IndoorGML:NavigableSpace" type="IndoorGML:TransferSpaceType"/>
   <complexType name="TransferSpaceType">
     <complexContent>
       <extension base="IndoorGML:NavigableSpaceType">
         <sequence>
           <element name="function" type="IndoorGML:TransferSpaceFunctionTypeType"/>
-          <element name="type" type="IndoorGML:TransferSpaceTypeType"/>
+          <element name="type" type="IndoorGML:TransferSpaceType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -471,30 +414,16 @@
     <attributeGroup ref="gml:AssociationAttributeGroup"/>
     <attributeGroup ref="gml:OwnershipAttributeGroup"/>
   </complexType>
-  <simpleType name="TransferSpaceFunctionTypeType">
-    <union memberTypes="IndoorGML:TransferSpaceFunctionTypeEnumerationType IndoorGML:TransferSpaceFunctionTypeOtherType"/>
+  <simpleType name="TransferSpaceFunctionType">
+    <union memberTypes="IndoorGML:TransferSpaceFunctionEnumerationType IndoorGML:TransferSpaceFunctionOtherType"/>
   </simpleType>
-  <simpleType name="TransferSpaceFunctionTypeEnumerationType">
+  <simpleType name="TransferSpaceFunctionEnumerationType">
     <restriction base="string">
       <enumeration value="ConnectionSpace"/>
       <enumeration value="AnchorSpace"/>
     </restriction>
   </simpleType>
-  <simpleType name="TransferSpaceFunctionTypeOtherType">
-    <restriction base="string">
-      <pattern value="other: \w{2,}"/>
-    </restriction>
-  </simpleType>
-  <simpleType name="TransferSpaceTypeType">
-    <union memberTypes="IndoorGML:TransferSpaceTypeEnumerationType IndoorGML:TransferSpaceTypeOtherType"/>
-  </simpleType>
-  <simpleType name="TransferSpaceTypeEnumerationType">
-    <restriction base="string">
-      <enumeration value="Door"/>
-      <enumeration value="Window"/>
-    </restriction>
-  </simpleType>
-  <simpleType name="TransferSpaceTypeOtherType">
+  <simpleType name="TransferSpaceFunctionOtherType">
     <restriction base="string">
       <pattern value="other: \w{2,}"/>
     </restriction>
