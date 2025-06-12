@@ -6,25 +6,26 @@
   "definitions": {
 
     "ThematicLayer": {
+      "$anchor": "ThematicLayer",
       "type": "object",
       "properties": {
         "type": { "enum": ["ThematicLayer"] },
         "semanticExtension": { "type": "boolean" },
-        "theme": { "enum": ["Topographic", "Sensor", "Logical", "Property", "Unknown"] },
+        "theme": { "enum": ["Virtual", "Physical", "Tags", "Unknown"] },
         "primalSpace": { "$ref": "#/definitions/PrimalSpaceLayer" },
         "dualSpace": { "$ref": "#/definitions/DualSpaceLayer" }
       },
       "additionalProperties": false,
-      "required": ["type", "semantic", "theme"]
+      "required": ["type", "semanticExtension", "theme"]
     },
 
     "PrimalSpaceLayer": {
       "$anchor": "PrimalSpaceLayer",
       "type": "object",
       "properties": {
+        "type": { "enum": ["PrimalSpaceLayer"] },
         "creationDatetime": { "type": "string", "format": "date-time" },
         "terminationDatetime": { "type": "string", "format": "date-time" },
-        "function": { "type": "string" },
         "cellSpaceMember": {
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/CellSpace" }
@@ -34,7 +35,7 @@
           "additionalProperties": { "$ref": "#/definitions/CellBoundary" }
         }
       },
-      "required": ["cellSpaceMember"]
+      "required": ["type","cellSpaceMember"]
     },
 
     "CellSpace": {
@@ -42,7 +43,7 @@
       "type": "object",
       "properties": {
         "type": { "enum": ["CellSpace"] },
-        "name": { "type": "string" },
+        "cellSpaceName": { "type": "string" },
         "level": { "type": "string" },
         "poi": { "type":  "boolean" },
         "duality" : { "type": "string" },
@@ -61,7 +62,7 @@
         "attributes": { "type": "object" }
       },
       "additionalProperties": false,
-      "required": ["poi"]
+      "required": ["type","poi"]
     },
 
     "CellBoundary": {
@@ -88,9 +89,11 @@
       "$anchor": "DualSpaceLayer",
       "type": "object",
       "properties": {
+        "type": { "enum": ["DualSpaceLayer"] },
         "creationDatetime": { "type": "string", "format": "date-time" },
         "terminationDatetime": { "type": "string", "format": "date-time" },
         "isLogical": { "type": "boolean" },
+        "isDirected": { "type": "boolean" },
         "nodeMember": {
           "type": "object",
           "additionalProperties": { "$ref": "#/definitions/Node" }
@@ -100,7 +103,7 @@
           "additionalProperties": { "$ref": "#/definitions/Edge" }
         }
       },
-      "required": ["isLogical", "nodeMember"]
+      "required": ["type","isLogical", "isDirected","nodeMember"]
     },
 
     "Node": {
@@ -117,7 +120,7 @@
         }
       },
       "additionalProperties": false,
-      "required": ["type"]
+      "required": ["type", "duality"]
     },
 
     "Edge": {
@@ -145,19 +148,34 @@
       "type": "object",
       "properties": {
         "type": { "enum": ["InterLayerConnection"] },
-        "connectedLayer1": { "type": "string" },
-        "connectedLayer2": { "type": "string" },
-        "connectedNode1" : { "type": "string" },
-        "connectedNode2" : { "type": "string" },
-        "connectedCell1" : { "type": "string" },
-        "connectedCell2" : { "type": "string" },
+        "connectedLayers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2,
+          "maximum": 2,
+          "uniqueItems": true
+        },
+        "connectedNodes" : {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2,
+          "maximum": 2,
+          "uniqueItems": true
+        },
+        "connectedCells" : {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2,
+          "maximum": 2,
+          "uniqueItems": true
+        },
         "typeOfTopoExpression" : {
           "enum": ["CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", "OTHERS"]
         },
         "comment" : {"type": "string"}
       },
       "additionalProperties": false,
-      "required": ["type", "connectedLayer1", "connectedLayer2", "typeOfTopoExpression"]
+      "required": ["type", "connectedLayers", "typeOfTopoExpression"]
     },
 
     "Solid": {
