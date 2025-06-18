@@ -11,7 +11,7 @@ The goal of the OGC IndoorGML Standard is to represent and support interoperable
 
 Part 1 - Conceptual Model Standard of IndoorGML Version 2.0 consists of two components: 1) a core data model to describe topological connectivity and different contexts of indoor space, and 2) a data model for navigation in indoor space. While the core data model, as its name suggests, is the main conceptual model that IndoorGML is built upon, the navigation model extends it to support navigation applications. This allows illustrating the practical strength of the core model as well as how other application extensions could be built around it.
 
-This version of IndoorGML covers geometric and semantic properties of indoor spaces relevant for indoor navigation. These indoor spaces may differ from the spaces described by other standards such as CityGML, IFC, LADM, and IMDF. In this respect, IndoorGML is a complementary standard to CityGML, IFC, LADM, and IMDF to support location-based services for indoor navigation.
+This version of IndoorGML covers geometric and semantic properties of indoor spaces relevant for indoor navigation. These indoor spaces may differ from the spaces described by other standards such as CityGML, Industry Foundation Classes (IFC), Land Administration Domain Model (LADM), and Indoor Mapping Data Format (IMDF). In this respect, IndoorGML is a complementary standard to CityGML, IFC, LADM, and IMDF to support location-based services for indoor navigation.
 
 // Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights. However, to date, no such rights have been claimed or identified.
 //
@@ -61,7 +61,7 @@ Attention is drawn to the possibility that some of the elements of this document
 
 The OGC IndoorGML Part I – Conceptual Model Standard (this Standard) specifies an UML model for indoor information.
 Part 2 of the standard specifies technical implementation schemas in GML, SQL and JSON.
-While there are several standards supporting 3D modelling concepts such as CityGML, KML, IFC, LADM and IMDF that deal with interiors of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML focuses on modeling indoor spaces and their neighborhood relationships to support indoor location-based services.
+While there are several standards supporting 3D modelling concepts such as CityGML, KML, IFC, LADM, and IMDF that deal with interiors of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML focuses on modeling indoor spaces and their neighborhood relationships to support indoor location-based services.
 This document describes the conceptual model (Part 1) of IndoorGML that addresses spaces and networks for indoor navigation.
 
 [.preface]

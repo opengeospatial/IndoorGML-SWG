@@ -9,7 +9,7 @@ This section presents the IndoorGML conceptual data model as UML class diagrams.
 The core module is composed of three main parts:
 
 * The primal space which describes the cellular space (see <<section-cellularspace>>);
-* The dual space which carries the network information (see <<section-poincareduality>>);
+* The dual space which carries the network information (see <<section-poincareduality>>); and
 * The inter-layer connection which makes the link between thematic layers (see <<subsection-interlayerrelation>>).
 
 
@@ -171,7 +171,7 @@ Finally, an Edge always connects two Nodes.
 
 DualSpaceLayer is a feature class for representing the dual space features (e.g., room network) of a given thematic layer.
 The DualSpaceLayer class is composed of Nodes and Edges for representing the topology of objects from the primal space.
-It has the following properties:
+The DualSpaceLayer class has the following properties:
 
 * _creationDate (DateTime)_
 * _terminationDate (DateTime)_
@@ -217,7 +217,6 @@ Finally, the _comment_ property can contain an additional description for the In
 The ThematicLayer is a core module class introduced in IndoorGML2.0.
 ThematicLayer is an aggregation of PrimalSpaceLayer and DualSpaceLayer instances to allow definition of Thematic layers separately (<<fig-uml-thematiclayer>>).
 Note, <<OGC_19-011r4,IndoorGML 1.1>> enables the multi-layer mechanism only for the dual space (the networks).
-
 The ThematicLayer class is composed of the following properties:
 
 * _semanticExtension (Boolean)_
@@ -231,7 +230,7 @@ The _semanticExtension_ property is a Boolean that indicates whether there is Ex
 The IndoorGML 2.0 Standard only specifies the Navigation extension module (see <<section-indoorgml-navigation>>).
 The use of a Boolean is considered enough to indicate the presence of the Navigation extension.
 However, this is expected to evolve in the future (into a codeList).
-The _theme_ property determines what type of representation of the model can be expected in the corresponding layer (e.g topographic).
+The _theme_ property determines what type of representation of the model can be expected in the corresponding layer (e.g., topographic).
 The _theme_ property comes in the form of a code list which tells whether the layer is of type _Physical, Virtual, Tags_ or _Unknown_.
 
 A _Physical_ layer is a layer that describes the indoor space on the basis of its physical constraints (e.g., the topographic cellular space in <<fig-cellular-space-same-physical>>) (<<nagel2009multilayered, Nagel et al., 2009>>).
@@ -249,7 +248,7 @@ Finally, any layer the does not fall in those previous categories will take the 
 
 The Navigation extension module provides semantic information for indoor space to support indoor navigation applications (<<fig-uml-navigation-module>>).
 The IndoorGML 2.0 semantics includes concepts related to navigability and connectivity between cells, obstacles and objects, as well as, routes for specific users.
-Further specialisation of cell is made available by introducing properties that can be used for additional navigation constraints such as temporal access related to as opening hours, or constraints resulting from properties of the navigation path.
+Further specialization of cell is made available by introducing properties that can be used for additional navigation constraints such as temporal access related to as opening hours, or constraints resulting from properties of the navigation path.
 
 [[fig-uml-navigation-module]]
 .UML diagram of the Navigation Extension Module (classes in green)
@@ -280,7 +279,7 @@ It has two subclasses GeneralSpace and TransferSpace (<<fig-uml-navigablespace>>
 The subclasses are classified depending on the purpose of the space.
 The compartmentalized spaces such as corridor, door, lobby, hallway, big room are represented as NavigableSpace.
 Note, door is represented as NavigableSpace as shown in <<fig-navigable-space>>, especially in the 3D case.
-In 2D, doors are commonly represented as boundaries of rooms and must be considered NavigableBoundaries (see <<subsection-navigableboundary>>)
+In 2D, doors are commonly represented as boundaries of rooms and must be considered NavigableBoundaries (see <<subsection-navigableboundary>>).
 
 [[fig-uml-navigablespace]]
 .NavigableSpace and its related class: CellSpace

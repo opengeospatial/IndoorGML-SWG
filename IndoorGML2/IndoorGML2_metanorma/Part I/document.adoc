@@ -1,4 +1,4 @@
-= OGC IndoorGML 2.0 Part I – Conceptual Model
+= OGC IndoorGML 2.0 Part 1 – Conceptual Model
 :comment: Change "standard" to "draft-standard" for draft standards
 :comment: The front page notice will update automatically to reflect the document type
 :doctype: standard
@@ -10,7 +10,7 @@
 :external-id: http://www.opengis.net/doc/IS/indoorgml/2.0
 :docnumber: 22-045r5
 :received-date: 2024-10-15
-:issued-date: 20xx-xx-xx
+:issued-date: 2025-03-10
 :published-date: 20xx-xx-xx
 :fullname: Sisi Zlatanova
 :fullname_2: Abdoulaye Diakite

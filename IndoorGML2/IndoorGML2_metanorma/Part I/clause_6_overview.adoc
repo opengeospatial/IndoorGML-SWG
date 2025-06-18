@@ -24,8 +24,8 @@ Therefore, well-known concepts, data models, and standards need to be refined an
 
 In general, indoor spatial information can be classified into two large categories as follows:
 
-* Architectural components (walls, stairs, slabs) and interior facilities (furniture).
-* Cavities (rooms and corridors) or virtual subdivision (sensors coverage and legal spaces)
+* Architectural components (walls, stairs, slabs) and interior facilities (furniture); and
+* Cavities (rooms and corridors) or virtual subdivision (sensors coverage and legal spaces).
 
 Building and facility management applications require mostly information from the first category.
 Indoor location-based services (LBS), indoor route analysis or indoor geo-tagging services require mostly information from the second category.
@@ -46,7 +46,7 @@ All concepts are organized in a UML class diagram (<<section-data-model>>), from
 [[section-modularisation]]
 === Modularization
 
-Following the <<OGC_08-131r3,OGC ModSpec guidance (OGC, 2009)>>, IndoorGML Part 1 – Conceptual Model is organised into a Core module and Extension modules that have one or more mandatory dependencies on the Core (see <<fig-modular>>).
+Following the <<OGC_08-131r3,OGC ModSpec guidance (OGC, 2009)>>, IndoorGML Part 1 – Conceptual Model is organized into a Core module and Extension modules that have one or more mandatory dependencies on the Core (see <<fig-modular>>).
 The IndoorGML Core module defines generic aspects of Primal-Dual spaces (see below) and each extension module introduces thematic semantics for a specific application. IndoorGML 2.0 Part 1 contains one extension named _Navigation_.
 IndoorGML 2.0 Part 2 provides the implementation of IndoorGML 2.0 Part 1 Conceptual model in GML, JSON, and SQL.
 
@@ -57,5 +57,5 @@ A dash arrow in the figure indicates that the schema at the tail of the arrow de
 In the following sections the modules are described in detail.
 
 [[fig-modular]]
-.Modular organisation of IndoorGML
+.Modular organization of IndoorGML
 image::./figures/FIG3.svg[align="center"]
