@@ -309,7 +309,7 @@ The class TransferSpace is specialization of NavigableSpace.
 It is used to model a space that provides passages between GeneralSpaces.
 Thereby, it typically describes openings (mainly doors but also windows) for horizontal transfer and entrances to staircase or lift cells for vertical transfers.
 Similarly to the GeneralSpace class, TransferSpace carries a _function_ property that describes whether the space is an AnchorSpace (a space allowing to connect the indoor and the outdoor) or a BoundarySpace (a space connecting two indoor or two outdoor spaces).
-Another of its property is _type_ which specified through a codeList the TransferSpaceType (Door or Window).
+Another of its property is _category_ which specified through a codeList the TransferSpaceCategoryType (Door or Window).
 
 [[fig-uml-transferspace]]
 .TransferSpace and its related class: NavigableSpace
