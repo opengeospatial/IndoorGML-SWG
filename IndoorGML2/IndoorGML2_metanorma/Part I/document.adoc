@@ -11,7 +11,7 @@
 :docnumber: 22-045r5
 :received-date: 2024-10-15
 :issued-date: 2025-03-10
-:published-date: 20xx-xx-xx
+:published-date: 2025-06-26
 :fullname: Sisi Zlatanova
 :fullname_2: Abdoulaye Diakite
 :fullname_3: Taehoon Kim

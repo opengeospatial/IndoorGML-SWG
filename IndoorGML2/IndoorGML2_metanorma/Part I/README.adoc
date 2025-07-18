@@ -4,10 +4,10 @@ The base template was taken from the GitHub project below:
 
 * https://github.com/metanorma/mn-templates-ogc
 
-The OGC IndoorGML 2.0 build results can be shown as below links:
-
-* https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.html[OGC_22-045.html]
-* https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.pdf[OGC_22-045.pdf]
+// The OGC IndoorGML 2.0 build results can be shown as below links:
+//
+// * https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.html[OGC_22-045.html]
+// * https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML2_metanorma/Part%20I/document.pdf[OGC_22-045.pdf]
 
 == Content
 
@@ -37,7 +37,7 @@ docker pull metanorma/metanorma
 ```
 git clone https://github.com/opengeospatial/IndoorGML-SWG.git
 
-cd cd IndoorGML2/IndoorGML2_metanorma/Part\ I
+cd IndoorGML2/IndoorGML2_metanorma/Part\ I
 
 docker run -v "$(pwd)":/metanorma -v ${HOME}/.fontist/fonts/:/config/fonts  metanorma/metanorma metanorma compile --agree-to-terms -t ogc -x html,pdf document.adoc
 ```

@@ -1,22 +1,28 @@
-# IndoorGML-SWG
+# OGC IndoorGML-SWG
 
-## IndoorGML 2.0 (on-going work)
+If you are interested in OGC IndoorGML, please refer to the link below.
 
-### Part I - Concept Model
-A draft version of OGC IndoorGML 2.0 Part I - Concept Model can be checked below links:
+* [OGC IndoorGML official page](https://www.ogc.org/standards/indoorgml/)
+* [IndoorGML dot net](https://www.indoorgml.net/)
 
-- [OGC_22-045r5.html](https://htmlpreview.github.io/?https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML-22-045r5/22-045r5.html)
-- [OGC_22-045r5.pdf](https://github.com/opengeospatial/IndoorGML-SWG/blob/master/IndoorGML2/IndoorGML-22-045r5/22-045r5.pdf)
+## IndoorGML 2.0
 
-### Part II - Encoding Schema
+### Part I — Concept Model (Published)
+
+OGC IndoorGML 2.0 Part 1 — Conceptual Model can be found at the link below:
+
+- [OGC_22-045r5.html](https://docs.ogc.org/is/22-045r5/22-045r5.html)
+- [OGC_22-045r5.pdf](https://docs.ogc.org/is/22-045r5/22-045r5.pdf)
+
+### Part II - Encoding Schema (on-going work)
 
 #### XML Encoding Schema
 
-- Go to [XML](https://github.com/opengeospatial/IndoorGML-SWG/tree/master/IndoorGML2/IndoorGML2_metanorma/Part%20II/XML) folder
+- Go to the [XML](https://github.com/opengeospatial/IndoorGML-SWG/tree/master/IndoorGML2/IndoorGML2_metanorma/Part%20II/XML) folder
 
 #### JSON Encoding Schema
 
-- Go to [JSON](https://github.com/opengeospatial/IndoorGML-SWG/tree/master/IndoorGML2/IndoorGML2_metanorma/Part%20II/JSON) folder
+- Go to the [JSON](https://github.com/opengeospatial/IndoorGML-SWG/tree/master/IndoorGML2/IndoorGML2_metanorma/Part%20II/JSON) folder
 
 #### SQL Encoding Schema
 
