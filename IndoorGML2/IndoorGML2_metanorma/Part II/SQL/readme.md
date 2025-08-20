@@ -1,0 +1,1 @@
+The work directory for IndoorGML2 SQL encoding. 

@@ -26,4 +26,4 @@ OGC IndoorGML 2.0 Part 1 — Conceptual Model can be found at the link below:
 
 #### SQL Encoding Schema
 
-- TBD
+- Go to the [SQL](https://github.com/opengeospatial/IndoorGML-SWG/tree/master/IndoorGML2/IndoorGML2_metanorma/Part%20II/SQL) folder
