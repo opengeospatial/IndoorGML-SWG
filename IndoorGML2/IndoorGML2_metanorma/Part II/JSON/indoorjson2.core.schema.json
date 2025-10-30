@@ -1,9 +1,30 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.indoorgml.org/schemas/indoorjson/0.1/indoorjson2.schema.json",
+  "$id": "https://www.indoorgml.org/schemas/indoorjson/0.1/indoorjson2.core.schema.json",
   "title": "IndoorJSON for IndoorGML 2.0 core part",
   "description": "IndoorJSON",
-  "definitions": {
+  "$defs": {
+
+    "IndoorFeatures": {
+      "$anchor": "IndoorFeatures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "featureType": { "enum": ["IndoorFeatures"] },
+        "layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/ThematicLayer" },
+          "uniqueItems": true
+        },
+        "layerConnections": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/InterLayerConnection" },
+          "uniqueItems": true
+        }
+      },
+      "required": ["featureType","layers"]
+    },
 
     "ThematicLayer": {
       "$anchor": "ThematicLayer",
@@ -13,10 +34,9 @@
         "featureType": { "enum": ["ThematicLayer"] },
         "semanticExtension": { "type": "boolean" },
         "theme": { "enum": ["Virtual", "Physical", "Tags", "Unknown"] },
-        "primalSpace": { "$ref": "#/definitions/PrimalSpaceLayer" },
-        "dualSpace": { "$ref": "#/definitions/DualSpaceLayer" }
+        "primalSpace": { "$ref": "#/$defs/PrimalSpaceLayer" },
+        "dualSpace": { "$ref": "#/$defs/DualSpaceLayer" }
       },
-      "additionalProperties": false,
       "required": ["id","featureType","semanticExtension","theme"]
     },
 
@@ -31,11 +51,13 @@
         "cellSpaceMember": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/definitions/CellSpace" }
+          "items": { "$ref": "#/$defs/CellSpace" },
+          "uniqueItems": true
         },
         "cellBoundaryMember": {
           "type": "array",
-          "items": { "$ref": "#/definitions/CellBoundary" }
+          "items": { "$ref": "#/$defs/CellBoundary" },
+          "uniqueItems": true
         }
       },
       "required": ["featureType","cellSpaceMember"]
@@ -49,20 +71,20 @@
         "featureType": { "enum": ["CellSpace"] },
         "level": { "type": "string" },
         "poi": { "type":  "boolean" },
-        "duality" : { "type": "string" },
+        "duality" : { "type": "string", "format": "uri-reference"},
         "cellSpaceGeom" : {
-          "oneOf": [
-            { "$ref": "geometry-object.json#/$defs/Polyhedron" },
-            { "$ref": "geometry-object.json#/$defs/Prism" },
-            { "$ref": "geometry-object.json#/$defs/Polygon" },
-            { "$ref": "geometry-object.json#/$defs/CurvePolygon" }
-          ]
+          "type": "object",
+          "properties": {
+            "geometry2D": { "$ref": "geometry-object.json#/$defs/Polygon" },
+            "geometry3D": { "$ref": "geometry-object.json#/$defs/Polyhedron" }
+          }
         },
         "boundedBy": {
           "type": "array",
           "items": { "type": "string" },
           "uniqueItems": true
-        }
+        },
+        "externalReference": { "$ref": "#/$defs/ExternalReference" }
       },
       "required": ["id","featureType","poi"]
     },
@@ -74,16 +96,15 @@
         "id": { "type": "string" },
         "featureType": { "enum": ["CellBoundary"] },
         "isVirtual": { "type":  "boolean" },
-        "duality" : { "type": "string" },
+        "duality" : { "type": "string", "format": "uri-reference"},
         "cellBoundaryGeom" : {
-          "oneOf": [
-            { "$ref": "geometry-object.json#/$defs/Polygon" },
-            { "$ref": "geometry-object.json#/$defs/CurvePolygon" },
-            { "$ref": "geometry-object.json#/$defs/LineString" },
-            { "$ref": "geometry-object.json#/$defs/CircularString" },
-            { "$ref": "geometry-object.json#/$defs/CompoundCurve" }
-          ]
-        }
+          "type": "object",
+          "properties": {
+            "geometry2D": { "$ref": "geometry-object.json#/$defs/LineString" },
+            "geometry3D": { "$ref": "geometry-object.json#/$defs/Polygon" }
+          }
+        },
+        "externalReference": { "$ref": "#/$defs/ExternalReference" }
       },
       "required": ["id","featureType","isVirtual"]
     },
@@ -101,14 +122,16 @@
         "nodeMember": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/definitions/Node" }
+          "items": { "$ref": "#/$defs/Node" },
+          "uniqueItems": true
         },
         "edgeMember": {
           "type": "array",
-          "items": { "$ref": "#/definitions/Edge" }
+          "items": { "$ref": "#/$defs/Edge" },
+          "uniqueItems": true
         }
       },
-      "required": ["featureType","isLogical","isDirected","nodeMember"]
+      "required": ["id","featureType","isLogical","isDirected","nodeMember"]
     },
 
     "Node": {
@@ -117,11 +140,11 @@
       "properties": {
         "id": { "type": "string" },
         "featureType": { "enum": ["Node"] },
-        "duality" : { "type": "string" },
+        "duality" : { "type": "string", "format": "uri-reference" },
         "geometry" : { "$ref": "geometry-object.json#/$defs/Point" },
         "connects" : {
           "type": "array",
-          "items": { "type": "string" },
+          "items": { "type": "string", "format": "uri-reference" },
           "uniqueItems": true
         }
       },
@@ -134,18 +157,12 @@
       "properties": {
         "id": { "type": "string" },
         "featureType": { "enum": ["Edge"] },
-        "duality" : { "type": "string" },
+        "duality" : { "type": "string", "format": "uri-reference" },
         "weight" : { "type": "number" },
-        "geometry" : {
-          "oneOf": [
-            { "$ref": "geometry-object.json#/$defs/LineString" },
-            { "$ref": "geometry-object.json#/$defs/CircularString" },
-            { "$ref": "geometry-object.json#/$defs/CompoundCurve" }
-          ]
-        },
+        "geometry" : { "$ref": "geometry-object.json#/$defs/LineString" },
         "connects" : {
           "type": "array",
-          "items": { "type": "string" },
+          "items": { "type": "string", "format": "uri-reference" },
           "minItems": 2,
           "maximum": 2,
           "uniqueItems": true
@@ -162,21 +179,21 @@
         "featureType": { "enum": ["InterLayerConnection"] },
         "connectedLayers": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": { "type": "string", "format": "uri-reference" },
           "minItems": 2,
           "maximum": 2,
           "uniqueItems": true
         },
         "connectedNodes" : {
           "type": "array",
-          "items": { "type": "string" },
+          "items": { "type": "string", "format": "uri-reference" },
           "minItems": 2,
           "maximum": 2,
           "uniqueItems": true
         },
         "connectedCells" : {
           "type": "array",
-          "items": { "type": "string" },
+          "items": { "type": "string", "format": "uri-reference" },
           "minItems": 2,
           "maximum": 2,
           "uniqueItems": true
@@ -186,26 +203,27 @@
         },
         "comment" : {"type": "string"}
       },
-      "additionalProperties": false,
       "required": ["featureType","connectedLayers","typeOfTopoExpression"]
-    }
-  },
-
-
-  "type": "object",
-  "properties": {
-    "id": { "type": "string" },
-    "featureType": { "enum": ["IndoorFeatures"] },
-    "layers": {
-      "type": "array",
-      "minItems": 1,
-      "items": { "$ref": "#/definitions/ThematicLayer" }
     },
-    "layerConnections": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/InterLayerConnection" }
+
+    "ExternalReference": {
+      "$anchor": "ExternalReference",
+      "type": "object",
+      "properties": {
+        "externalObject": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "uri": { "type": "string", "format": "uri" }
+          },
+          "required": ["name","uri"]
+        },
+        "informationSystem": { "type": "string", "format": "uri" }
+      },
+      "required": ["externalObject", "informationSystem"]
     }
   },
-  "required": ["featureType","layers"]
+
+  "$ref": "#/$defs/IndoorFeatures"
 }
 

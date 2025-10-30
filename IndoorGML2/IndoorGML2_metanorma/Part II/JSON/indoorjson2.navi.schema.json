@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.indoorgml.org/schemas/indoorjson/0.1/indoorjson2.navi.schema.json",
+  "title": "IndoorJSON for IndoorGML 2.0 navi part",
+  "description": "IndoorJSON",
+  "$defs": {
+
+    "NavigableSpace": {
+      "$anchor": "NavigableSpace",
+      "allOf": [
+        {"$ref": "indoorjson2.core.schema.json#/$defs/CellSpace"},
+        {
+          "type": "object",
+          "properties": {
+            "locomotionType": { "enum": ["Flying","Rolling","Walking","Unspecified"]}
+          },
+          "required": ["locomotionType"]
+        }
+      ]
+    },
+
+    "NonNavigableSpace": {
+      "$anchor": "NonNavigableSpace",
+      "allOf": [
+        {"$ref": "indoorjson2.core.schema.json#/$defs/CellSpace"}
+      ]
+    },
+
+    "GeneralSpace": {
+      "$anchor": "GeneralSpace",
+      "allOf": [
+        {"$ref": "#/$defs/NavigableSpace"},
+        {
+          "type": "object",
+          "properties": {
+            "function": { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"]}
+          },
+          "required": ["function"]
+        }
+      ]
+    },
+
+    "TransferSpace": {
+      "$anchor": "TransferSpace",
+      "allOf": [
+        {"$ref": "#/$defs/NavigableSpace"},
+        {
+          "type": "object",
+          "properties": {
+            "category": { "enum": ["Door","Window"]},
+            "function": { "enum": ["AnchorSpace","ConnectionSpace"]}
+          },
+          "required": ["category","function"]
+        }
+      ]
+    },
+
+    "ObjectSpace": {
+      "$anchor": "ObjectSpace",
+      "allOf": [
+        {"$ref": "#/$defs/NonNavigableSpace"},
+        {
+          "type": "object",
+          "properties": {
+            "containedFeatures": { "type": "integer"},
+            "description": { "type": "string"}
+          }
+        }
+      ]
+    },
+
+    "NavigableBoundary": {
+      "$anchor": "NavigableBoundary",
+      "allOf": [
+        {"$ref": "indoorjson2.core.schema.json#/$defs/CellBoundary"},
+        {
+          "type": "object",
+          "properties": {
+            "boundaryOrientation": { "type": "boolean"},
+            "navigableBoundaryFunction": { "enum": ["AnchorBoundary","ConnectionBoundary"]}
+          },
+          "required": ["navigableBoundaryFunction"]
+        }
+      ]
+    },
+
+    "NonNavigableBoundary": {
+      "$anchor": "NonNavigableBoundary",
+      "allOf": [
+        {"$ref": "indoorjson2.core.schema.json#/$defs/CellBoundary"}
+      ]
+    },
+
+    "Route": {
+      "$anchor": "Route",
+      "type": "object",
+      "properties": {
+        "creationDate": { "type": "string", "format": "date-time"},
+        "routeNode": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "indoorjson2.core.schema.json#/$defs/Node"}
+        },
+        "routeEdge": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "indoorjson2.core.schema.json#/$defs/Edge"}
+        }
+      },
+      "required": ["routeNode","routeEdge"]
+    }
+  }
+}
+
+
