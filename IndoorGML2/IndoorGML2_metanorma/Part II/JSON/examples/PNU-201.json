@@ -1,6 +1,6 @@
 {
   "id": "u64465b1-3012-0c9e-82e4-cf37470411b5",
-  "featureType": "IndoorFeature",
+  "featureType": "IndoorFeatures",
   "layers": [
     {
       "id": "TL1",
@@ -46485,7 +46485,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.0011298811176,
             "connects": [
               "S5",
               "S4"
@@ -46509,7 +46509,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.004104518373087,
             "connects": [
               "S2",
               "S3"
@@ -46533,7 +46533,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.003546205488927,
             "connects": [
               "S1",
               "S2"
@@ -46557,7 +46557,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.009201881041932,
             "connects": [
               "S35",
               "S34"
@@ -46597,7 +46597,7 @@
               ]
             },
             "duality": "B60",
-            "weight": "0.0",
+            "weight": 83.98255716938563,
             "connects": [
               "S6",
               "S82"
@@ -46637,7 +46637,7 @@
               ]
             },
             "duality": "B61",
-            "weight": "0.0",
+            "weight": 58.514950885283255,
             "connects": [
               "S7",
               "S82"
@@ -46672,7 +46672,7 @@
               ]
             },
             "duality": "B64-REVERSE",
-            "weight": "0.0",
+            "weight": 35.911365538656554,
             "connects": [
               "S8",
               "S82"
@@ -46707,7 +46707,7 @@
               ]
             },
             "duality": "B62-REVERSE",
-            "weight": "0.0",
+            "weight": 39.655867342803035,
             "connects": [
               "S9",
               "S82"
@@ -46742,7 +46742,7 @@
               ]
             },
             "duality": "B67-REVERSE",
-            "weight": "0.0",
+            "weight": 59.60550230264436,
             "connects": [
               "S10",
               "S82"
@@ -46782,7 +46782,7 @@
               ]
             },
             "duality": "B84",
-            "weight": "0.0",
+            "weight": 73.12906887355832,
             "connects": [
               "S27",
               "S32"
@@ -46827,7 +46827,7 @@
               ]
             },
             "duality": "B86",
-            "weight": "0.0",
+            "weight": 123.93475545363437,
             "connects": [
               "S28",
               "S32"
@@ -46877,7 +46877,7 @@
               ]
             },
             "duality": "B87",
-            "weight": "0.0",
+            "weight": 181.034425815189,
             "connects": [
               "S29",
               "S32"
@@ -46912,7 +46912,7 @@
               ]
             },
             "duality": "B76-REVERSE",
-            "weight": "0.0",
+            "weight": 57.19081528566868,
             "connects": [
               "S18",
               "S19"
@@ -46952,7 +46952,7 @@
               ]
             },
             "duality": "B77",
-            "weight": "0.0",
+            "weight": 46.73974752914227,
             "connects": [
               "S20",
               "S19"
@@ -46987,7 +46987,7 @@
               ]
             },
             "duality": "B79",
-            "weight": "0.0",
+            "weight": 43.39398045234153,
             "connects": [
               "S19",
               "S21"
@@ -47022,7 +47022,7 @@
               ]
             },
             "duality": "B75",
-            "weight": "0.0",
+            "weight": 52.38601809846941,
             "connects": [
               "S17",
               "S15"
@@ -47057,7 +47057,7 @@
               ]
             },
             "duality": "B74-REVERSE",
-            "weight": "0.0",
+            "weight": 37.23835870712339,
             "connects": [
               "S14",
               "S15"
@@ -47092,7 +47092,7 @@
               ]
             },
             "duality": "B72-REVERSE",
-            "weight": "0.0",
+            "weight": 38.070544138130074,
             "connects": [
               "S13",
               "S15"
@@ -47132,7 +47132,7 @@
               ]
             },
             "duality": "B71-REVERSE",
-            "weight": "0.0",
+            "weight": 76.01883118360197,
             "connects": [
               "S12",
               "S15"
@@ -47177,7 +47177,7 @@
               ]
             },
             "duality": "B68-REVERSE",
-            "weight": "0.0",
+            "weight": 61.53919332667055,
             "connects": [
               "S10",
               "S11"
@@ -47212,7 +47212,7 @@
               ]
             },
             "duality": "B27",
-            "weight": "0.0",
+            "weight": 44.64592778813409,
             "connects": [
               "S63",
               "S64"
@@ -47247,7 +47247,7 @@
               ]
             },
             "duality": "B28-REVERSE",
-            "weight": "0.0",
+            "weight": 47.86320920078491,
             "connects": [
               "S64",
               "S62"
@@ -47282,7 +47282,7 @@
               ]
             },
             "duality": "B29-REVERSE",
-            "weight": "0.0",
+            "weight": 32.80926916643045,
             "connects": [
               "S64",
               "S38"
@@ -47317,7 +47317,7 @@
               ]
             },
             "duality": "B33-REVERSE",
-            "weight": "0.0",
+            "weight": 41.33047323523892,
             "connects": [
               "S4",
               "S40"
@@ -47357,7 +47357,7 @@
               ]
             },
             "duality": "B36-REVERSE",
-            "weight": "0.0",
+            "weight": 84.4989875303765,
             "connects": [
               "S41",
               "S42"
@@ -47392,7 +47392,7 @@
               ]
             },
             "duality": "B39",
-            "weight": "0.0",
+            "weight": 31.10711116834439,
             "connects": [
               "S44",
               "S49"
@@ -47422,7 +47422,7 @@
               ]
             },
             "duality": "B40-REVERSE",
-            "weight": "0.0",
+            "weight": 17.79522040798458,
             "connects": [
               "S49",
               "S45"
@@ -47457,7 +47457,7 @@
               ]
             },
             "duality": "B41-REVERSE",
-            "weight": "0.0",
+            "weight": 40.389009742929616,
             "connects": [
               "S46",
               "S49"
@@ -47497,7 +47497,7 @@
               ]
             },
             "duality": "B42",
-            "weight": "0.0",
+            "weight": 46.15187368193893,
             "connects": [
               "S47",
               "S49"
@@ -47537,7 +47537,7 @@
               ]
             },
             "duality": "B44-REVERSE",
-            "weight": "0.0",
+            "weight": 35.99017635302282,
             "connects": [
               "S48",
               "S49"
@@ -47572,7 +47572,7 @@
               ]
             },
             "duality": "B45",
-            "weight": "0.0",
+            "weight": 58.378655116918175,
             "connects": [
               "S52",
               "S50"
@@ -47607,7 +47607,7 @@
               ]
             },
             "duality": "B47-REVERSE",
-            "weight": "0.0",
+            "weight": 53.379630458499186,
             "connects": [
               "S54",
               "S52"
@@ -47647,7 +47647,7 @@
               ]
             },
             "duality": "B49",
-            "weight": "0.0",
+            "weight": 42.389102530323335,
             "connects": [
               "S53",
               "S54"
@@ -47677,7 +47677,7 @@
               ]
             },
             "duality": "B51",
-            "weight": "0.0",
+            "weight": 25.502383089986317,
             "connects": [
               "S56",
               "S55"
@@ -47712,7 +47712,7 @@
               ]
             },
             "duality": "B53-REVERSE",
-            "weight": "0.0",
+            "weight": 44.66628772456074,
             "connects": [
               "S57",
               "S55"
@@ -47752,7 +47752,7 @@
               ]
             },
             "duality": "B54",
-            "weight": "0.0",
+            "weight": 52.1055921976263,
             "connects": [
               "S55",
               "S34"
@@ -47792,7 +47792,7 @@
               ]
             },
             "duality": "B55",
-            "weight": "0.0",
+            "weight": 39.257351310997144,
             "connects": [
               "S58",
               "S57"
@@ -47832,7 +47832,7 @@
               ]
             },
             "duality": "B21-REVERSE",
-            "weight": "0.0",
+            "weight": 47.34988992185089,
             "connects": [
               "S35",
               "S69"
@@ -47867,7 +47867,7 @@
               ]
             },
             "duality": "B22",
-            "weight": "0.0",
+            "weight": 65.60519704982573,
             "connects": [
               "S69",
               "S68"
@@ -47907,7 +47907,7 @@
               ]
             },
             "duality": "B18-REVERSE",
-            "weight": "0.0",
+            "weight": 97.03342348591316,
             "connects": [
               "S70",
               "S71"
@@ -47942,7 +47942,7 @@
               ]
             },
             "duality": "B16",
-            "weight": "0.0",
+            "weight": 66.069745114072,
             "connects": [
               "S71",
               "S72"
@@ -47982,7 +47982,7 @@
               ]
             },
             "duality": "B11",
-            "weight": "0.0",
+            "weight": 76.17356418595695,
             "connects": [
               "S75",
               "S76"
@@ -48017,7 +48017,7 @@
               ]
             },
             "duality": "B8-REVERSE",
-            "weight": "0.0",
+            "weight": 34.24363160231541,
             "connects": [
               "S79",
               "S81"
@@ -48052,7 +48052,7 @@
               ]
             },
             "duality": "B6",
-            "weight": "0.0",
+            "weight": 35.088152555120985,
             "connects": [
               "S79",
               "S80"
@@ -48097,7 +48097,7 @@
               ]
             },
             "duality": "B63",
-            "weight": "0.0",
+            "weight": 172.95096872154667,
             "connects": [
               "S82",
               "S33"
@@ -48137,7 +48137,7 @@
               ]
             },
             "duality": "B66-REVERSE",
-            "weight": "0.0",
+            "weight": 157.93696752831167,
             "connects": [
               "S24",
               "S33"
@@ -48182,7 +48182,7 @@
               ]
             },
             "duality": "B65",
-            "weight": "0.0",
+            "weight": 237.39090849407665,
             "connects": [
               "S33",
               "S23"
@@ -48222,7 +48222,7 @@
               ]
             },
             "duality": "B69-REVERSE",
-            "weight": "0.0",
+            "weight": 119.76072197998387,
             "connects": [
               "S11",
               "S33"
@@ -48262,7 +48262,7 @@
               ]
             },
             "duality": "B70-REVERSE",
-            "weight": "0.0",
+            "weight": 110.4141758573822,
             "connects": [
               "S12",
               "S33"
@@ -48297,7 +48297,7 @@
               ]
             },
             "duality": "B73-REVERSE",
-            "weight": "0.0",
+            "weight": 109.02433466660428,
             "connects": [
               "S15",
               "S33"
@@ -48337,7 +48337,7 @@
               ]
             },
             "duality": "B78-REVERSE",
-            "weight": "0.0",
+            "weight": 180.08235764533427,
             "connects": [
               "S19",
               "S33"
@@ -48402,7 +48402,7 @@
               ]
             },
             "duality": "B80",
-            "weight": "0.0",
+            "weight": 317.8352564724985,
             "connects": [
               "S33",
               "S25"
@@ -48442,7 +48442,7 @@
               ]
             },
             "duality": "B81",
-            "weight": "0.0",
+            "weight": 172.98951131194372,
             "connects": [
               "S26",
               "S33"
@@ -48482,7 +48482,7 @@
               ]
             },
             "duality": "B82-REVERSE",
-            "weight": "0.0",
+            "weight": 157.4306953998283,
             "connects": [
               "S33",
               "S32"
@@ -48522,7 +48522,7 @@
               ]
             },
             "duality": "B83",
-            "weight": "0.0",
+            "weight": 121.96987671724138,
             "connects": [
               "S32",
               "S33"
@@ -48572,7 +48572,7 @@
               ]
             },
             "duality": "B85-REVERSE",
-            "weight": "0.0",
+            "weight": 160.37231150574922,
             "connects": [
               "S33",
               "S32"
@@ -48612,7 +48612,7 @@
               ]
             },
             "duality": "B88",
-            "weight": "0.0",
+            "weight": 173.22652015294116,
             "connects": [
               "S31",
               "S33"
@@ -48642,7 +48642,7 @@
               ]
             },
             "duality": "B50-REVERSE",
-            "weight": "0.0",
+            "weight": 23.032271123370354,
             "connects": [
               "S36",
               "S55"
@@ -48677,7 +48677,7 @@
               ]
             },
             "duality": "B48-REVERSE",
-            "weight": "0.0",
+            "weight": 59.71747579053132,
             "connects": [
               "S36",
               "S54"
@@ -48722,7 +48722,7 @@
               ]
             },
             "duality": "B46-REVERSE",
-            "weight": "0.0",
+            "weight": 109.95987180475015,
             "connects": [
               "S36",
               "S51"
@@ -48782,7 +48782,7 @@
               ]
             },
             "duality": "B43-REVERSE",
-            "weight": "0.0",
+            "weight": 249.7312669905741,
             "connects": [
               "S36",
               "S49"
@@ -48817,7 +48817,7 @@
               ]
             },
             "duality": "B56-REVERSE",
-            "weight": "0.0",
+            "weight": 102.71246478363209,
             "connects": [
               "S36",
               "S59"
@@ -48862,7 +48862,7 @@
               ]
             },
             "duality": "B57-REVERSE",
-            "weight": "0.0",
+            "weight": 160.3789568178828,
             "connects": [
               "S36",
               "S60"
@@ -48907,7 +48907,7 @@
               ]
             },
             "duality": "B58",
-            "weight": "0.0",
+            "weight": 295.741092767385,
             "connects": [
               "S61",
               "S36"
@@ -48957,7 +48957,7 @@
               ]
             },
             "duality": "B59",
-            "weight": "0.0",
+            "weight": 346.4970531807958,
             "connects": [
               "S61",
               "S36"
@@ -49017,7 +49017,7 @@
               ]
             },
             "duality": "B89-REVERSE",
-            "weight": "0.0",
+            "weight": 621.3678251383761,
             "connects": [
               "S64",
               "S36"
@@ -49072,7 +49072,7 @@
               ]
             },
             "duality": "B32",
-            "weight": "0.0",
+            "weight": 532.1001350730769,
             "connects": [
               "S4",
               "S36"
@@ -49137,7 +49137,7 @@
               ]
             },
             "duality": "B31",
-            "weight": "0.0",
+            "weight": 728.5526817049019,
             "connects": [
               "S39",
               "S36"
@@ -49207,7 +49207,7 @@
               ]
             },
             "duality": "B34-REVERSE",
-            "weight": "0.0",
+            "weight": 708.5397012324202,
             "connects": [
               "S41",
               "S36"
@@ -49277,7 +49277,7 @@
               ]
             },
             "duality": "B35-REVERSE",
-            "weight": "0.0",
+            "weight": 789.1590025071824,
             "connects": [
               "S41",
               "S36"
@@ -49337,7 +49337,7 @@
               ]
             },
             "duality": "B37",
-            "weight": "0.0",
+            "weight": 586.2239904602105,
             "connects": [
               "S43",
               "S36"
@@ -49397,7 +49397,7 @@
               ]
             },
             "duality": "B38",
-            "weight": "0.0",
+            "weight": 459.0804944695908,
             "connects": [
               "S43",
               "S36"
@@ -49427,7 +49427,7 @@
               ]
             },
             "duality": "B90-REVERSE",
-            "weight": "0.0",
+            "weight": 15.394694926530692,
             "connects": [
               "S2",
               "S36"
@@ -49482,7 +49482,7 @@
               ]
             },
             "duality": "B91-REVERSE",
-            "weight": "0.0",
+            "weight": 210.31247513093186,
             "connects": [
               "S33",
               "S1"
@@ -49512,7 +49512,7 @@
               ]
             },
             "duality": "B92-REVERSE",
-            "weight": "0.0",
+            "weight": 16.107114157778145,
             "connects": [
               "S3",
               "S37"
@@ -49552,7 +49552,7 @@
               ]
             },
             "duality": "B19",
-            "weight": "0.0",
+            "weight": 52.652907500287434,
             "connects": [
               "S37",
               "S70"
@@ -49587,7 +49587,7 @@
               ]
             },
             "duality": "B20",
-            "weight": "0.0",
+            "weight": 48.38676244603275,
             "connects": [
               "S37",
               "S35"
@@ -49632,7 +49632,7 @@
               ]
             },
             "duality": "B17-REVERSE",
-            "weight": "0.0",
+            "weight": 115.49241959446333,
             "connects": [
               "S37",
               "S71"
@@ -49677,7 +49677,7 @@
               ]
             },
             "duality": "B15-REVERSE",
-            "weight": "0.0",
+            "weight": 106.55215316790274,
             "connects": [
               "S37",
               "S73"
@@ -49732,7 +49732,7 @@
               ]
             },
             "duality": "B14",
-            "weight": "0.0",
+            "weight": 150.16023103588057,
             "connects": [
               "S73",
               "S37"
@@ -49797,7 +49797,7 @@
               ]
             },
             "duality": "B13",
-            "weight": "0.0",
+            "weight": 272.52050705681205,
             "connects": [
               "S74",
               "S37"
@@ -49862,7 +49862,7 @@
               ]
             },
             "duality": "B12",
-            "weight": "0.0",
+            "weight": 412.1559218497137,
             "connects": [
               "S75",
               "S37"
@@ -49937,7 +49937,7 @@
               ]
             },
             "duality": "B10",
-            "weight": "0.0",
+            "weight": 702.0032147111461,
             "connects": [
               "S76",
               "S37"
@@ -50022,7 +50022,7 @@
               ]
             },
             "duality": "B9-REVERSE",
-            "weight": "0.0",
+            "weight": 970.3541806815442,
             "connects": [
               "S77",
               "S37"
@@ -50062,7 +50062,7 @@
               ]
             },
             "duality": "B23",
-            "weight": "0.0",
+            "weight": 126.4280215901072,
             "connects": [
               "S37",
               "S68"
@@ -50112,7 +50112,7 @@
               ]
             },
             "duality": "B24",
-            "weight": "0.0",
+            "weight": 187.5439373584051,
             "connects": [
               "S37",
               "S67"
@@ -50167,7 +50167,7 @@
               ]
             },
             "duality": "B25",
-            "weight": "0.0",
+            "weight": 286.130549304234,
             "connects": [
               "S37",
               "S67"
@@ -50227,7 +50227,7 @@
               ]
             },
             "duality": "B26",
-            "weight": "0.0",
+            "weight": 394.72400070619256,
             "connects": [
               "S37",
               "S66"
@@ -50292,7 +50292,7 @@
               ]
             },
             "duality": "B1-REVERSE",
-            "weight": "0.0",
+            "weight": 617.1296372998561,
             "connects": [
               "S66",
               "S37"
@@ -50362,7 +50362,7 @@
               ]
             },
             "duality": "B2",
-            "weight": "0.0",
+            "weight": 775.7397764285793,
             "connects": [
               "S37",
               "S65"
@@ -50427,7 +50427,7 @@
               ]
             },
             "duality": "B3",
-            "weight": "0.0",
+            "weight": 718.7793193250251,
             "connects": [
               "S37",
               "S5"
@@ -50502,7 +50502,7 @@
               ]
             },
             "duality": "B4",
-            "weight": "0.0",
+            "weight": 888.5569641309717,
             "connects": [
               "S37",
               "S78"
@@ -50567,7 +50567,7 @@
               ]
             },
             "duality": "B7-REVERSE",
-            "weight": "0.0",
+            "weight": 656.8381473324132,
             "connects": [
               "S79",
               "S37"
@@ -50591,7 +50591,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.003546205488927,
             "connects": [
               "S2",
               "S1"
@@ -50631,7 +50631,7 @@
               ]
             },
             "duality": "B60-REVERSE",
-            "weight": "0.0",
+            "weight": 83.98255716938563,
             "connects": [
               "S82",
               "S6"
@@ -50671,7 +50671,7 @@
               ]
             },
             "duality": "B61-REVERSE",
-            "weight": "0.0",
+            "weight": 58.514950885283255,
             "connects": [
               "S82",
               "S7"
@@ -50706,7 +50706,7 @@
               ]
             },
             "duality": "B64",
-            "weight": "0.0",
+            "weight": 35.91136553865655,
             "connects": [
               "S82",
               "S8"
@@ -50741,7 +50741,7 @@
               ]
             },
             "duality": "B62",
-            "weight": "0.0",
+            "weight": 39.655867342803035,
             "connects": [
               "S82",
               "S9"
@@ -50776,7 +50776,7 @@
               ]
             },
             "duality": "B67",
-            "weight": "0.0",
+            "weight": 59.60550230264436,
             "connects": [
               "S82",
               "S10"
@@ -50816,7 +50816,7 @@
               ]
             },
             "duality": "B84-REVERSE",
-            "weight": "0.0",
+            "weight": 73.12906887355831,
             "connects": [
               "S32",
               "S27"
@@ -50861,7 +50861,7 @@
               ]
             },
             "duality": "B86-REVERSE",
-            "weight": "0.0",
+            "weight": 123.93475545363437,
             "connects": [
               "S32",
               "S28"
@@ -50911,7 +50911,7 @@
               ]
             },
             "duality": "B87-REVERSE",
-            "weight": "0.0",
+            "weight": 181.034425815189,
             "connects": [
               "S32",
               "S29"
@@ -50946,7 +50946,7 @@
               ]
             },
             "duality": "B76",
-            "weight": "0.0",
+            "weight": 57.19081528566867,
             "connects": [
               "S19",
               "S18"
@@ -50986,7 +50986,7 @@
               ]
             },
             "duality": "B77-REVERSE",
-            "weight": "0.0",
+            "weight": 46.739747529142264,
             "connects": [
               "S19",
               "S20"
@@ -51021,7 +51021,7 @@
               ]
             },
             "duality": "B79-REVERSE",
-            "weight": "0.0",
+            "weight": 43.39398045234154,
             "connects": [
               "S21",
               "S19"
@@ -51056,7 +51056,7 @@
               ]
             },
             "duality": "B75-REVERSE",
-            "weight": "0.0",
+            "weight": 52.38601809846941,
             "connects": [
               "S15",
               "S17"
@@ -51091,7 +51091,7 @@
               ]
             },
             "duality": "B74",
-            "weight": "0.0",
+            "weight": 37.23835870712339,
             "connects": [
               "S15",
               "S14"
@@ -51126,7 +51126,7 @@
               ]
             },
             "duality": "B72",
-            "weight": "0.0",
+            "weight": 38.070544138130074,
             "connects": [
               "S15",
               "S13"
@@ -51166,7 +51166,7 @@
               ]
             },
             "duality": "B71",
-            "weight": "0.0",
+            "weight": 76.01883118360197,
             "connects": [
               "S15",
               "S12"
@@ -51211,7 +51211,7 @@
               ]
             },
             "duality": "B68",
-            "weight": "0.0",
+            "weight": 61.53919332667055,
             "connects": [
               "S11",
               "S10"
@@ -51256,7 +51256,7 @@
               ]
             },
             "duality": "B63-REVERSE",
-            "weight": "0.0",
+            "weight": 172.9509687215467,
             "connects": [
               "S33",
               "S82"
@@ -51296,7 +51296,7 @@
               ]
             },
             "duality": "B66",
-            "weight": "0.0",
+            "weight": 157.9369675283117,
             "connects": [
               "S33",
               "S24"
@@ -51341,7 +51341,7 @@
               ]
             },
             "duality": "B65-REVERSE",
-            "weight": "0.0",
+            "weight": 237.39090849407663,
             "connects": [
               "S23",
               "S33"
@@ -51381,7 +51381,7 @@
               ]
             },
             "duality": "B69",
-            "weight": "0.0",
+            "weight": 119.76072197998387,
             "connects": [
               "S33",
               "S11"
@@ -51421,7 +51421,7 @@
               ]
             },
             "duality": "B70",
-            "weight": "0.0",
+            "weight": 110.4141758573822,
             "connects": [
               "S33",
               "S12"
@@ -51456,7 +51456,7 @@
               ]
             },
             "duality": "B73",
-            "weight": "0.0",
+            "weight": 109.02433466660428,
             "connects": [
               "S33",
               "S15"
@@ -51496,7 +51496,7 @@
               ]
             },
             "duality": "B78",
-            "weight": "0.0",
+            "weight": 180.0823576453343,
             "connects": [
               "S33",
               "S19"
@@ -51561,7 +51561,7 @@
               ]
             },
             "duality": "B80-REVERSE",
-            "weight": "0.0",
+            "weight": 317.83525647249854,
             "connects": [
               "S25",
               "S33"
@@ -51601,7 +51601,7 @@
               ]
             },
             "duality": "B81-REVERSE",
-            "weight": "0.0",
+            "weight": 172.98951131194372,
             "connects": [
               "S33",
               "S26"
@@ -51641,7 +51641,7 @@
               ]
             },
             "duality": "B82",
-            "weight": "0.0",
+            "weight": 157.4306953998283,
             "connects": [
               "S32",
               "S33"
@@ -51681,7 +51681,7 @@
               ]
             },
             "duality": "B83-REVERSE",
-            "weight": "0.0",
+            "weight": 121.96987671724136,
             "connects": [
               "S33",
               "S32"
@@ -51731,7 +51731,7 @@
               ]
             },
             "duality": "B85",
-            "weight": "0.0",
+            "weight": 160.3723115057492,
             "connects": [
               "S32",
               "S33"
@@ -51771,7 +51771,7 @@
               ]
             },
             "duality": "B88-REVERSE",
-            "weight": "0.0",
+            "weight": 173.22652015294116,
             "connects": [
               "S33",
               "S31"
@@ -51826,7 +51826,7 @@
               ]
             },
             "duality": "B91",
-            "weight": "0.0",
+            "weight": 210.31247513093186,
             "connects": [
               "S1",
               "S33"
@@ -51850,7 +51850,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.004104518373087,
             "connects": [
               "S3",
               "S2"
@@ -51885,7 +51885,7 @@
               ]
             },
             "duality": "B27-REVERSE",
-            "weight": "0.0",
+            "weight": 44.64592778813409,
             "connects": [
               "S64",
               "S63"
@@ -51920,7 +51920,7 @@
               ]
             },
             "duality": "B28",
-            "weight": "0.0",
+            "weight": 47.86320920078491,
             "connects": [
               "S62",
               "S64"
@@ -51955,7 +51955,7 @@
               ]
             },
             "duality": "B29",
-            "weight": "0.0",
+            "weight": 32.80926916643045,
             "connects": [
               "S38",
               "S64"
@@ -51990,7 +51990,7 @@
               ]
             },
             "duality": "B33",
-            "weight": "0.0",
+            "weight": 41.33047323523892,
             "connects": [
               "S40",
               "S4"
@@ -52030,7 +52030,7 @@
               ]
             },
             "duality": "B36",
-            "weight": "0.0",
+            "weight": 84.4989875303765,
             "connects": [
               "S42",
               "S41"
@@ -52065,7 +52065,7 @@
               ]
             },
             "duality": "B39-REVERSE",
-            "weight": "0.0",
+            "weight": 31.10711116834439,
             "connects": [
               "S49",
               "S44"
@@ -52095,7 +52095,7 @@
               ]
             },
             "duality": "B40",
-            "weight": "0.0",
+            "weight": 17.79522040798458,
             "connects": [
               "S45",
               "S49"
@@ -52130,7 +52130,7 @@
               ]
             },
             "duality": "B41",
-            "weight": "0.0",
+            "weight": 40.389009742929616,
             "connects": [
               "S49",
               "S46"
@@ -52170,7 +52170,7 @@
               ]
             },
             "duality": "B42-REVERSE",
-            "weight": "0.0",
+            "weight": 46.15187368193893,
             "connects": [
               "S49",
               "S47"
@@ -52210,7 +52210,7 @@
               ]
             },
             "duality": "B44",
-            "weight": "0.0",
+            "weight": 35.99017635302282,
             "connects": [
               "S49",
               "S48"
@@ -52245,7 +52245,7 @@
               ]
             },
             "duality": "B45-REVERSE",
-            "weight": "0.0",
+            "weight": 58.378655116918175,
             "connects": [
               "S50",
               "S52"
@@ -52280,7 +52280,7 @@
               ]
             },
             "duality": "B47",
-            "weight": "0.0",
+            "weight": 53.379630458499186,
             "connects": [
               "S52",
               "S54"
@@ -52320,7 +52320,7 @@
               ]
             },
             "duality": "B49-REVERSE",
-            "weight": "0.0",
+            "weight": 42.389102530323335,
             "connects": [
               "S54",
               "S53"
@@ -52350,7 +52350,7 @@
               ]
             },
             "duality": "B51-REVERSE",
-            "weight": "0.0",
+            "weight": 25.50238308998632,
             "connects": [
               "S55",
               "S56"
@@ -52385,7 +52385,7 @@
               ]
             },
             "duality": "B53",
-            "weight": "0.0",
+            "weight": 44.66628772456074,
             "connects": [
               "S55",
               "S57"
@@ -52425,7 +52425,7 @@
               ]
             },
             "duality": "B54-REVERSE",
-            "weight": "0.0",
+            "weight": 52.1055921976263,
             "connects": [
               "S34",
               "S55"
@@ -52465,7 +52465,7 @@
               ]
             },
             "duality": "B55-REVERSE",
-            "weight": "0.0",
+            "weight": 39.257351310997144,
             "connects": [
               "S57",
               "S58"
@@ -52495,7 +52495,7 @@
               ]
             },
             "duality": "B50",
-            "weight": "0.0",
+            "weight": 23.032271123370354,
             "connects": [
               "S55",
               "S36"
@@ -52530,7 +52530,7 @@
               ]
             },
             "duality": "B48",
-            "weight": "0.0",
+            "weight": 59.717475790531324,
             "connects": [
               "S54",
               "S36"
@@ -52575,7 +52575,7 @@
               ]
             },
             "duality": "B46",
-            "weight": "0.0",
+            "weight": 109.95987180475015,
             "connects": [
               "S51",
               "S36"
@@ -52635,7 +52635,7 @@
               ]
             },
             "duality": "B43",
-            "weight": "0.0",
+            "weight": 249.7312669905741,
             "connects": [
               "S49",
               "S36"
@@ -52670,7 +52670,7 @@
               ]
             },
             "duality": "B56",
-            "weight": "0.0",
+            "weight": 102.71246478363209,
             "connects": [
               "S59",
               "S36"
@@ -52715,7 +52715,7 @@
               ]
             },
             "duality": "B57",
-            "weight": "0.0",
+            "weight": 160.37895681788282,
             "connects": [
               "S60",
               "S36"
@@ -52760,7 +52760,7 @@
               ]
             },
             "duality": "B58-REVERSE",
-            "weight": "0.0",
+            "weight": 295.741092767385,
             "connects": [
               "S36",
               "S61"
@@ -52810,7 +52810,7 @@
               ]
             },
             "duality": "B59-REVERSE",
-            "weight": "0.0",
+            "weight": 346.4970531807958,
             "connects": [
               "S36",
               "S61"
@@ -52870,7 +52870,7 @@
               ]
             },
             "duality": "B89",
-            "weight": "0.0",
+            "weight": 621.3678251383762,
             "connects": [
               "S36",
               "S64"
@@ -52925,7 +52925,7 @@
               ]
             },
             "duality": "B32-REVERSE",
-            "weight": "0.0",
+            "weight": 532.1001350730769,
             "connects": [
               "S36",
               "S4"
@@ -52990,7 +52990,7 @@
               ]
             },
             "duality": "B31-REVERSE",
-            "weight": "0.0",
+            "weight": 728.5526817049022,
             "connects": [
               "S36",
               "S39"
@@ -53060,7 +53060,7 @@
               ]
             },
             "duality": "B34",
-            "weight": "0.0",
+            "weight": 708.5397012324202,
             "connects": [
               "S36",
               "S41"
@@ -53130,7 +53130,7 @@
               ]
             },
             "duality": "B35",
-            "weight": "0.0",
+            "weight": 789.1590025071825,
             "connects": [
               "S36",
               "S41"
@@ -53190,7 +53190,7 @@
               ]
             },
             "duality": "B37-REVERSE",
-            "weight": "0.0",
+            "weight": 586.2239904602105,
             "connects": [
               "S36",
               "S43"
@@ -53250,7 +53250,7 @@
               ]
             },
             "duality": "B38-REVERSE",
-            "weight": "0.0",
+            "weight": 459.08049446959086,
             "connects": [
               "S36",
               "S43"
@@ -53280,7 +53280,7 @@
               ]
             },
             "duality": "B90",
-            "weight": "0.0",
+            "weight": 15.394694926530692,
             "connects": [
               "S36",
               "S2"
@@ -53304,7 +53304,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.0011298811176,
             "connects": [
               "S4",
               "S5"
@@ -53328,7 +53328,7 @@
                 ]
               ]
             },
-            "weight": "0.0",
+            "weight": 20.009201881041932,
             "connects": [
               "S34",
               "S35"
@@ -53368,7 +53368,7 @@
               ]
             },
             "duality": "B21",
-            "weight": "0.0",
+            "weight": 47.34988992185089,
             "connects": [
               "S69",
               "S35"
@@ -53403,7 +53403,7 @@
               ]
             },
             "duality": "B22-REVERSE",
-            "weight": "0.0",
+            "weight": 65.60519704982573,
             "connects": [
               "S68",
               "S69"
@@ -53443,7 +53443,7 @@
               ]
             },
             "duality": "B18",
-            "weight": "0.0",
+            "weight": 97.03342348591318,
             "connects": [
               "S71",
               "S70"
@@ -53478,7 +53478,7 @@
               ]
             },
             "duality": "B16-REVERSE",
-            "weight": "0.0",
+            "weight": 66.069745114072,
             "connects": [
               "S72",
               "S71"
@@ -53518,7 +53518,7 @@
               ]
             },
             "duality": "B11-REVERSE",
-            "weight": "0.0",
+            "weight": 76.17356418595695,
             "connects": [
               "S76",
               "S75"
@@ -53553,7 +53553,7 @@
               ]
             },
             "duality": "B8",
-            "weight": "0.0",
+            "weight": 34.2436316023154,
             "connects": [
               "S81",
               "S79"
@@ -53588,7 +53588,7 @@
               ]
             },
             "duality": "B6-REVERSE",
-            "weight": "0.0",
+            "weight": 35.08815255512098,
             "connects": [
               "S80",
               "S79"
@@ -53618,7 +53618,7 @@
               ]
             },
             "duality": "B92",
-            "weight": "0.0",
+            "weight": 16.107114157778145,
             "connects": [
               "S37",
               "S3"
@@ -53658,7 +53658,7 @@
               ]
             },
             "duality": "B19-REVERSE",
-            "weight": "0.0",
+            "weight": 52.65290750028743,
             "connects": [
               "S70",
               "S37"
@@ -53693,7 +53693,7 @@
               ]
             },
             "duality": "B20-REVERSE",
-            "weight": "0.0",
+            "weight": 48.386762446032755,
             "connects": [
               "S35",
               "S37"
@@ -53738,7 +53738,7 @@
               ]
             },
             "duality": "B17",
-            "weight": "0.0",
+            "weight": 115.49241959446333,
             "connects": [
               "S71",
               "S37"
@@ -53783,7 +53783,7 @@
               ]
             },
             "duality": "B15",
-            "weight": "0.0",
+            "weight": 106.55215316790273,
             "connects": [
               "S73",
               "S37"
@@ -53838,7 +53838,7 @@
               ]
             },
             "duality": "B14-REVERSE",
-            "weight": "0.0",
+            "weight": 150.16023103588057,
             "connects": [
               "S37",
               "S73"
@@ -53903,7 +53903,7 @@
               ]
             },
             "duality": "B13-REVERSE",
-            "weight": "0.0",
+            "weight": 272.52050705681205,
             "connects": [
               "S37",
               "S74"
@@ -53968,7 +53968,7 @@
               ]
             },
             "duality": "B12-REVERSE",
-            "weight": "0.0",
+            "weight": 412.15592184971365,
             "connects": [
               "S37",
               "S75"
@@ -54043,7 +54043,7 @@
               ]
             },
             "duality": "B10-REVERSE",
-            "weight": "0.0",
+            "weight": 702.0032147111463,
             "connects": [
               "S37",
               "S76"
@@ -54128,7 +54128,7 @@
               ]
             },
             "duality": "B9",
-            "weight": "0.0",
+            "weight": 970.3541806815439,
             "connects": [
               "S37",
               "S77"
@@ -54168,7 +54168,7 @@
               ]
             },
             "duality": "B23-REVERSE",
-            "weight": "0.0",
+            "weight": 126.4280215901072,
             "connects": [
               "S68",
               "S37"
@@ -54218,7 +54218,7 @@
               ]
             },
             "duality": "B24-REVERSE",
-            "weight": "0.0",
+            "weight": 187.5439373584051,
             "connects": [
               "S67",
               "S37"
@@ -54273,7 +54273,7 @@
               ]
             },
             "duality": "B25-REVERSE",
-            "weight": "0.0",
+            "weight": 286.1305493042341,
             "connects": [
               "S67",
               "S37"
@@ -54333,7 +54333,7 @@
               ]
             },
             "duality": "B26-REVERSE",
-            "weight": "0.0",
+            "weight": 394.7240007061926,
             "connects": [
               "S66",
               "S37"
@@ -54398,7 +54398,7 @@
               ]
             },
             "duality": "B1",
-            "weight": "0.0",
+            "weight": 617.129637299856,
             "connects": [
               "S37",
               "S66"
@@ -54468,7 +54468,7 @@
               ]
             },
             "duality": "B2-REVERSE",
-            "weight": "0.0",
+            "weight": 775.739776428579,
             "connects": [
               "S65",
               "S37"
@@ -54533,7 +54533,7 @@
               ]
             },
             "duality": "B3-REVERSE",
-            "weight": "0.0",
+            "weight": 718.7793193250251,
             "connects": [
               "S5",
               "S37"
@@ -54608,7 +54608,7 @@
               ]
             },
             "duality": "B4-REVERSE",
-            "weight": "0.0",
+            "weight": 888.5569641309718,
             "connects": [
               "S78",
               "S37"
@@ -54673,7 +54673,7 @@
               ]
             },
             "duality": "B7",
-            "weight": "0.0",
+            "weight": 656.8381473324132,
             "connects": [
               "S37",
               "S79"
