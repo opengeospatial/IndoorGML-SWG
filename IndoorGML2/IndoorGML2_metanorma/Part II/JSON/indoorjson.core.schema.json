@@ -1,8 +1,19 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.indoorgml.org/schemas/indoorjson/0.1/indoorjson2.core.schema.json",
+  "$id": "https://www.opengis.net/spec/indoorgml/2.0/json/indoorjson.core.schema.json",
   "title": "IndoorJSON for IndoorGML 2.0 core part",
-  "description": "IndoorJSON",
+  "description": "IndoorJSON Core",
+  "oneOf": [
+    {"$ref": "#/$defs/IndoorFeatures"       },
+    {"$ref": "#/$defs/ThematicLayer"        },
+    {"$ref": "#/$defs/InterLayerConnection" },
+    {"$ref": "#/$defs/PrimalSpaceLayer"     },
+    {"$ref": "#/$defs/CellSpace"            },
+    {"$ref": "#/$defs/CellBoundary"         },
+    {"$ref": "#/$defs/DualSpaceLayer"       },
+    {"$ref": "#/$defs/Node"                 },
+    {"$ref": "#/$defs/Edge"                 }
+  ],
   "$defs": {
 
     "IndoorFeatures": {
@@ -23,7 +34,7 @@
           "uniqueItems": true
         }
       },
-      "required": ["featureType","layers"]
+      "required": ["id","featureType","layers"]
     },
 
     "ThematicLayer": {
@@ -204,7 +215,7 @@
         },
         "comment" : { "type": "string" }
       },
-      "required": ["featureType","connectedLayers","typeOfTopoExpression"]
+      "required": ["id","featureType","connectedLayers","typeOfTopoExpression"]
     },
 
     "ExternalReferenceType": {
@@ -223,8 +234,7 @@
       },
       "required": ["externalObject", "informationSystem"]
     }
-  },
 
-  "$ref": "#/$defs/IndoorFeatures"
+  }
 }
 
