@@ -26,7 +26,7 @@ IndoorJSON Navigation preserve the IndoorGML 2.0 navigation conceptual model str
 .IndoorGML 2.0 navigation module structure
 image::../figures/indoorgml_navi_structure.svg[align="center"]
 
-The IndoorJSON Navigation schema follows <<fig-core-indoorgml>>.
+The IndoorJSON Navigation schema follows <<fig-navi-indoorgml>>.
 In the figure, the arrows represent inheritance.
 Each class is defined individually.
 Depending on the inheritance relationship, a child class inherits the properties of its parent class.
