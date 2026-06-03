@@ -27,7 +27,7 @@ model that defines concepts of a universe of discourse
 
 === conceptual schema
 
-formal description of a <<conceptual model>>
+formal description of a <<conceptual model,conceptual model>>
 
 [.source]
 <<iso19101-1>>
