@@ -1,0 +1,15 @@
+{
+  "ThematicLayer": {
+    "$anchor": "ThematicLayer",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "featureType": { "enum": ["ThematicLayer"] },
+      "semanticExtension": { "type": "boolean" },
+      "theme": { "enum": ["Virtual", "Physical", "Tags", "Unknown"] },
+      "primalSpace": { "$ref": "#/$defs/PrimalSpaceLayer" },
+      "dualSpace": { "$ref": "#/$defs/DualSpaceLayer" }
+    },
+    "required": ["id","featureType","semanticExtension","theme"]
+  }
+}

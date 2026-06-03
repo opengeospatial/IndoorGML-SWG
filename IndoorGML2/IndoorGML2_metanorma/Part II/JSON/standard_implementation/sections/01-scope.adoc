@@ -1,0 +1,19 @@
+
+== Scope
+
+The OGC IndoorGML 2.0 Part 2b – JSON Encoding Standard defines a JSON encoding for IndoorGML 2.0 Part 1 - Conceptual Model.
+The encoding is referred to as IndoorJSON.
+
+The IndoorJSON Standard specifies:
+
+- JSON schema for IndooGML 2.0 core module;
+- JSON schema for IndoorGML 2.0 navigation module;
+- the geometry encoding rules based on JSON-FG geometry objects; and
+- a statement to which IndoorJSON conformance classes a IndoorGML 2.0 conforms to.
+
+IndoorJSON is an implementation encoding of IndoorGML 2.0 Part 1. Therefore, IndoorJSON instances shall be interpreted according to the semantics defined in the IndoorGML 2.0 conceptual model.
+
+// [NOTE]
+// ====
+// Give the subject of the document and the aspects of that scope covered by the document.
+// ====

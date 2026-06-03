@@ -1,0 +1,15 @@
+{
+  "ObjectSpace": {
+    "$anchor": "ObjectSpace",
+    "allOf": [
+      {"$ref": "#/$defs/NonNavigableSpace"},
+      {
+        "type": "object",
+        "properties": {
+          "containedFeatures": { "type": "integer"},
+          "description": { "type": "string"}
+        }
+      }
+    ]
+  }
+}

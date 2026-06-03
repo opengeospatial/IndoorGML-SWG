@@ -1,0 +1,9 @@
+{
+  "primalSpace": {
+    "id": "PS-1",
+    "featureType": "PrimalSpaceLayer",
+    "creationDatetime": "2025-10-30T13:00:00",
+    "cellSpaceMember": [...],
+    "cellBoundaryMember": [...]
+  }
+}

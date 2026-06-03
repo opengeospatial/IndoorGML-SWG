@@ -1,0 +1,14 @@
+[appendix,obligation="normative"]
+== Schemas
+
+=== JSON Schema of a IndoorJSON Core
+[source,json]
+----
+include::../schema/indoorjson.core.schema.json[]
+----
+
+=== JSON Schema of a IndoorJSON Navigation
+[source,json]
+----
+include::../schema/indoorjson.navi.schema.json[]
+----

@@ -1,0 +1,486 @@
+[[section-indoorjson]]
+== IndoorJSON Object
+
+[requirements_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/json/req
+subject:: Implementation Specification
+// inherit::
+requirement:: /req/indoorjson
+requirement:: /req/indoorfeature
+requirement:: /req/thematiclayer
+requirement:: /req/primalspacelayer
+requirement:: /req/cellspace
+requirement:: /req/cellboundary
+requirement:: /req/dualspace
+requirement:: /req/node
+requirement:: /req/edge
+requirement:: /req/interlayerconnection
+====
+
+IndoorJSON object represents one of feature class of IndoorGML 2.0 conceptual model.
+
+The IndoorJSON Object:
+
+* *must* have one member with the name `id`. The value must be a string that serves as a unique identifier for the IndoorJSON object and can be used to represent cross-references between IndoorJSON objects.
+
+* *must* have one member with the name `featuretype`. The value is one of the possibilities in the figure <<fig-core-indoorgml>>.
+
+[[req-indoorjson]]
+[requirement]
+.Requirement for IndoorJSON object
+====
+[%metadata]
+identifier:: /req/indoorjson
+part:: An IndoorJSON object SHALL contain `id` and `featuretype` members.
+====
+
+[[section-indoorfeatures]]
+=== IndoorFeatures
+
+`*IndoorFeature*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeature], the container for the indoor dataset.
+It aggregates one or more thematic layers and may include inter-layer connections.
+
+The `*IndoorFeature*` object shall contain:
+
+* `id`
+* `featureType`
+* `layers` for representing <<section-thematiclayer,`*ThematicLayer*`>> object as item
+* optionally, `layerConnections` for <<section-interlayerconnection, `*InterLayerConnection*`>> object as item
+
+[[indoorfeature-schema]]
+.A JSON schema of the IndoorFeature:
+[source,json]
+----
+include::../schema/core/indoorfeatures.json[]
+----
+
+[[indoorfeature-example]]
+.An example of the IndoorFeature object:
+[source,json]
+----
+include::../examples/indoorfeatures.json[]
+----
+
+[[req-indoorfeatures]]
+[requirement]
+.IndoorFeatures schema
+====
+[%metadata]
+identifier:: /req/indoorfeature
+part:: An `*IndoorFeatures*` object SHALL contain at least one <<section-thematiclayer,`*ThematicLayer*`>> object as item of `layers` value.
+====
+
+[[section-thematiclayer]]
+=== ThematicLayer
+
+`*ThematicLayer*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-tehmaticlayer[ThematicLayer], which represents one contextual decomposition of indoor space.
+For example, physical layer, navigation layer, sensor layer, etc.
+
+The `*ThematicLayer*` object shall contain:
+
+* `id`
+* `featureType`
+* `semanticExtention` indicates whether there is extension module with additional semantic information associated to the `*PrimalSpaceLayer*`
+* `theme` determines what type of model representation can be expected in the `*PrimalSpaceLayer*`
+* optionally, `primalSpace` for <<section-primalspacelayer, `*PrimalSpaceLayer*`>> object
+* optionally, `dualSpace` for <<section-dualspacelayer, `*DualSpaceLayer*`>> object
+
+The core schema defines `semanticExtension` and `theme` members, with `theme` values including "Virtual", "Physical", "Tags", and "Unknown", according to the conceptual model.
+
+
+[[thematiclayer-schema]]
+.A JSON schema of the ThematicLayer:
+[source,json]
+----
+include::../schema/core/thematiclayer.json[]
+----
+
+[[thematiclayer-example]]
+.An example of the ThematicLayer object:
+[source,json]
+----
+include::../examples/thematiclayer.json[]
+----
+
+[[req-thematiclayer]]
+[requirement]
+.ThematicLayer schema
+====
+[%metadata]
+identifier:: /req/thematiclayer
+part:: A `*ThematicLayer*` object SHALL declare whether there is an extension module with additional semantic information using the `semanticExtension` member.
+part:: A `*ThematicLayer*` object SHALL determine what type of model representation can be expected using the `theme` member.
+part:: The `Theme` value SHALL be set to "Virtual", "Physical", "Tags", and "Unknown".
+====
+
+[[section-primalspacelayer]]
+=== PrimalSpaceLayer
+
+`*PrimalSpaceLayer*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-primalspacelayer[PrimalSpaceLayer], which contains spatial objects representing indoor subdivisions.
+
+The `*PrimalSpaceLayer*` object shall contain:
+
+* `id`
+* `featureType`
+* `cellSpaceMember` for representing <<section-cellspace,`*CellSpace*`>> object as item
+* optionally, `cellBoundaryMember` for representing <<section-cellboundary,`*CellSBoundary*`>> object as item
+* optionally, `creationDatetime`
+* optionally, `terminationDatetime`
+
+[[primalspacelayer-schema]]
+.A JSON schema of the PrimalSpaceLayer:
+[source,json]
+----
+include::../schema/core/primalspacelayer.json[]
+----
+
+[[primalspacelayer-example]]
+.An example of the PrimalSpaceLayer object:
+[source,json]
+----
+include::../examples/primalspacelayer.json[]
+----
+
+[[req-primalspacelayer]]
+[requirement]
+.PrimalSpaceLayer schema
+====
+[%metadata]
+identifier:: /req/primalspacelayer
+part:: A `PrimalSpaceLayer` SHALL contain one or more <<section-cellspace,CellSpace>> objects.
+====
+
+[[section-cellspace]]
+=== CellSpace
+
+`*CellSpace*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellspace[CellSpace], which represents a unit of indoor space.
+The `*CellSpace*` may correspond to a room, corridor, stairwell, elevator cabin, platform, zone, virtual partition, or other spatial subdivision.
+
+An `*CellSpace*` object shall contain:
+
+* `id`
+* `featureType`
+* `poi` is a flag that specifies whether this `*CellSpace*` is a point of interset
+* optionally, `cellSpaceName` is the name assigned to the space according to internal convention
+* optionally, `level`
+* optionally, `duality` can be mapped to the `id` value of the <<section-node,`*Node*`>> object
+* optionally, `cellSpaceGeom`
+* optionally, `boundedBy` can have the `id` value of the linked <<section-cellboundary,`*CellBoundary*`>> objects
+* optionally, `externalReference` for representing <<section-externalreference,`*ExternalReference*`>> object
+
+A `*CellSpace*` can be linked to a <<section-node,`*Node*`>> through the `duality` member.
+A `*CellSpace*` can be linked to a set of <<section-cellboundary,`*CellBoundaries*`>> through the `boundedBy` member.
+For `cellsSpaceGeom` member, it defines `cellSpaceGeom.geometry2D` using a `JSON-FG Polygon` geometry and `cellSpaceGeom.geometry3D` using a `JSON-FG Polyhedron` geometry.
+The `externalReference` member is used for the reference of an object to its corresponding object in an external data set.
+
+[[cellspace-schema]]
+.A JSON schema of the CellSpace:
+[source,json]
+----
+include::../schema/core/cellspace.json[]
+----
+
+[[cellspace-example]]
+.An example of the CellSpace object:
+[source,json]
+----
+include::../examples/cellspace.json[]
+----
+
+[[req-cellspace]]
+[requirement]
+.CellSpace schema
+====
+[%metadata]
+identifier:: /req/cellspace
+part:: A `*CellSpace*` object SHALL declare whether it is a point of interest space using the `poi` member.
+====
+
+[[section-cellboundary]]
+=== CellBoundary
+
+`*CellBoundary*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellboundary[CellBoundary], a boundary of a CellSpace.
+A boundary may be physical or virtual.
+
+The `*CellBoundary*` object shall contain:
+
+* `id`
+* `featureType`
+* `isVirtual` indicate whether a `*CellBoundary*` corresponds to a virtual surface (true) or a physical one (false)
+* optionally, `duality` can be mapped to the `id` value of the <<section-edge,`*Edge*`>> object
+* optionally, `cellBoundaryGeom`
+* optionally, `externalReference` for representing <<section-externalreference,`*ExternalReference*`>> object
+
+A `*CellBoundary*` can be linked to a <<section-edge,`*Edge*`>> through the `duality` member.
+For `cellBoundaryGeom` member, it defines `cellBoundaryGeom.geometry2D` using a `JSON-FG LineString` geometry and `cellBoundaryGeom.geometry3D` using a `JSON-FG Polygon` geometry.
+The `externalReference` member is used for the reference of an object to its corresponding object in an external data set
+
+[[cellboundary-schema]]
+.A JSON schema of the CellBoundary:
+[source,json]
+----
+include::../schema/core/cellboundary.json[]
+----
+
+[[cellboundary-example]]
+.An example of the CellBoundary object:
+[source,json]
+----
+include::../examples/cellboundary.json[]
+----
+
+[[req-cellboundary]]
+[requirement]
+.CellBoundary schema
+====
+[%metadata]
+identifier:: /req/cellboundary
+part:: A `*CellBoundary*` object SHALL specify whether it is virtual using the `isVirtual` member.
+====
+
+[[section-dualspacelayer]]
+=== DualSpaceLayer
+
+`*DualSpaceLayer*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-dualspacelayer[DualSpaceLayer], represents the graph structure corresponding to the primal space layer.
+It contains nodes and edges.
+
+The `*DualSpaceLayer*` object shall contain:
+
+* `id`
+* `featureType`
+* `isLogical` indicates whether the provided graph is a geometric or a logical
+* `isDirected` specifies whether the provided graph is directed
+* `nodeMember` for representing <<section-node,`*Node*`>> object as item
+* optionally, `edgeMember` for representing <<section-edge,`*Edge*`>> object as item
+* optionally, `creationDatetime`
+* optionally, `terminationDatetime`
+
+[[dualspacelayer-schema]]
+.A JSON schema of the DualSpaceLayer:
+[source,json]
+----
+include::../schema/core/dualspacelayer.json[]
+----
+
+[[dualspacelayer-example]]
+.An example of the DualSpaceLayer object:
+[source,json]
+----
+include::../examples/dualspacelayer.json[]
+----
+
+[[req-dualspacelayer]]
+[requirement]
+.DualSpaceLayer schema
+====
+[%metadata]
+identifier:: /req/dualspacelayer
+part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is a geometric or a logical using the `isLogical` member.
+part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is directed using the `isLogical` member.
+part:: A `*DualSpaceLayer*` object SHALL contain one or more <<section-node,`*Node*`>> objects.
+====
+
+[[section-node]]
+=== Node
+
+`*Node*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-node[Node], a state or a graph vertex in the dual space layer.
+
+The `*Node*` object shall contain:
+
+* `id`
+* `featureType`
+* `duality` must be mapped to the `id` member of the <<section-cellspace,`*CellSpace*`>> object
+* optionally, `geometry`
+* optionally, `connects` can have the `id` member of the connected <<section-edge,`*Edge*`>> object
+
+A `*Node*` may be linked to a <<section-cellspace,`*CellSpace*`>> through the `duality` member.
+A `*Node*` may be connects to a set of <<section-edge,`*Edges*`>> through the `connects` member.
+For `geometry` member referred  `JSON-FG Point` geometry.
+
+[[node-schema]]
+.A JSON schema of the Node:
+[source,json]
+----
+include::../schema/core/node.json[]
+----
+
+[[node-example]]
+.An example of the Node object:
+[source,json]
+----
+include::../examples/node.json[]
+----
+
+[[req-node]]
+[requirement]
+.Node schema
+====
+[%metadata]
+identifier:: /req/node
+part:: A `*Node*` object SHALL contain a `duality` value by referencing the `id` member of to correspond <<section-cellspace,`*CellSpace*`>>.
+====
+
+[[section-edge]]
+=== Edge
+
+`Edge` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-edge[Edge], which represents a relationship between two nodes.
+It may represent adjacency, connectivity, accessibility, or navigability.
+
+The `Edge` object shall contain:
+
+* `id`
+* `featureType`
+* `weight` can be used in graph-based applications
+* `connects` must have the `id` value of the connected <<section-node,`*Nodes*`>> object
+* optionally, `duality` can be mapped to the `id` value of the <<section-cellboundary,`*CellBoundary*`>> object
+* optionally, `geometry`
+
+An `Edge` must reference the connected <<section-node,`*Nodes*`>> using the `connects` member.
+An `Edge` can be linked to a <<section-cellboundary,`*CellBoundary*`>> through the `duality` member.
+For `geometry` member referred  `JSON-FG LineString` geometry.
+
+[[edge-schema]]
+.A JSON schema of an Edge:
+[source,json]
+----
+include::../schema/core/edge.json[]
+----
+
+[[edge-example]]
+.An example of the Edge object:
+[source,json]
+----
+include::../examples/edge.json[]
+----
+
+[[req-edge]]
+[requirement]
+.Edge schema
+====
+[%metadata]
+identifier:: /req/edge
+part:: An `*Edge*` object SHALL reference the connected <<section-node,Nodes>> using the `connects` member.
+part:: An `*Edge*` object SHALL contain a `weight` value.
+====
+
+[[section-interlayerconnection]]
+=== InterLayerConnection
+
+`*InterLayerConnection*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-interlayerconnection[InterLayerConnection], represents a relationship between objects in different thematic layers.
+
+The `*InterLayerConnection*` object shall contain:
+
+* `id`
+* `featureType`
+* `connectedLayers` must be mapped to the `id` value of the two <<section-thematiclayer,`*ThematicLayer*`>> objects
+* `typeOfTopoExpression`
+* optionally, `connectedNodes` can be mapped to the `id` value of the two <<section-node,`*Node*`>> objects
+* optionally, `connectedCells` can be mapped to the `id` value of the two <<section-cellspace,`*CellSpace*`>> objects
+* optionally, `comment`
+
+The `typeOfTopoExpression` member represents the topological relationship between two layers.
+The `typeOfTopoExpression` values including "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", and "OTHERS", according to the conceptual model.
+Those topological values are in the form of verbs for which the subject is the first instance of the `connectedLayers` member.
+The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members are ordered and can be mapped to the same index.
+
+[[interlayerconnection-schema]]
+.A JSON schema of the InterLayerConnection:
+[source,json]
+----
+include::../schema/core/interlayerconnection.json[]
+----
+
+[[interlayerconnection-example]]
+.An example of the InterLayerConnection object:
+[source,json]
+----
+include::../examples/interlayerconnection.json[]
+----
+
+[[req-interlayerconnection]]
+[requirement]
+.InterLayerConnection schema
+====
+[%metadata]
+identifier:: /req/interlayerconnection
+// part:: An Edge SHALL reference the connected <<section-node,Nodes>> using the `connects` property.
+====
+
+
+[[section-externalreference]]
+=== ExternalReferenceType
+
+The `externalReferenceType` object is used for the reference of an object to its corresponding object in an external data set.
+This is not a feature class of IndoorGML 2.0.
+
+[[externalreferencetype-schema]]
+.A JSON schema of the ExternalReferenceType:
+[source,json]
+----
+include::../schema/core/externalreferencetype.json[]
+----
+
+// [NOTE]
+// ====
+// Requirements are encoded using AsciiDoc markup for example blocks, prepended with an role attribute containing the type of the block (i.e. "`requirement`", "`recommendation`", or "`permission`").
+//
+// For more detailed information about encoding Requeriments, Recommendations, and Permissions visit: https://www.metanorma.org/author/topics/document-format/requirements-recommendations-permissions/
+// ====
+//
+// === Requirement examples
+//
+// [requirement,type="class",label="Requeriment Label",obligation="requirement",subject="Web API",inherit="Dependency_1;Dependency_2;Dependency_3;Dependency_n"]
+// ====
+//
+// [requirement,type="general",label="Requeriment label 1"]
+// ======
+// Description text
+// ======
+//
+// [requirement,type="general",label="Requeriment label 2"]
+// ======
+// Description text
+// ======
+//
+// [requirement,type="general",label="Requeriment label 3"]
+// ======
+// Description text
+// ======
+//
+// ====
+//
+// [requirement,model=ogc,type="class",label="http://www.opengis.net/spec/waterml/2.0/req/xsd-xml-rules[*req/core*]",subject="Encoding of logical models",inherit="urn:iso:dis:iso:19156:clause:7.2.2;urn:iso:dis:iso:19156:clause:8;http://www.opengis.net/doc/IS/GML/3.2/clause/2.4;O&M Abstract model, OGC 10-004r3, clause D.3.4;http://www.opengis.net/spec/SWE/2.0/req/core/core-concepts-used",classification="priority:P0;domain:Hydrology,Groundwater;control-class:Technical",obligation="recommendation,requirement"]
+// ====
+// I recommend this
+// ====
+//
+//
+// === Requirement examples
+//
+// [.requirement,label="requirement label"]
+// ====
+//
+// [.requirement]
+// ======
+// Description text
+// ======
+//
+// ====
+//
+//
+// [.requirement,label="requirement label"]
+// ====
+//
+// [.requirement]
+// ======
+// Description text
+// ======
+//
+// [.requirement]
+// ======
+// Description text
+// ======
+//
+// ====

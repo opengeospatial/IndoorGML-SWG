@@ -1,0 +1,15 @@
+{
+  "NavigableSpace": {
+    "$anchor": "NavigableSpace",
+    "allOf": [
+      {"$ref": "indoorjson.core.schema.json#/$defs/CellSpace"},
+      {
+        "type": "object",
+        "properties": {
+          "locomotionType": { "enum": ["Flying","Rolling","Walking","Unspecified"]}
+        },
+        "required": ["locomotionType"]
+      }
+    ]
+  }
+}

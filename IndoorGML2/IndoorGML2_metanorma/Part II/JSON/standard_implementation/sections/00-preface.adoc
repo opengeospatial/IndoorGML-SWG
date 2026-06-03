@@ -1,0 +1,127 @@
+
+////
+== Keywords
+
+Keywords inserted here automatically by Metanorma
+////
+
+
+.Preface
+
+In order to achieve consensus on the modeling indoor spaces and their neighborhood relationships to support indoor location-based services, a UML Conceptual Model, IndoorGML 2.0 Part 1, was approved as an OGC Standard (<<ogc22-045r5>>,OGC 22-045r5) in June, 2025.
+This model covers geometric and semantic properties of indoor spaces relevant for indoor navigation.
+This IndoorGML 2.0 Part 2: JSON Encoding (IndoorJSON) Standard defines how those concepts should be realized using JSON format.
+The IndoorJSON encoding is intended for software developers, data providers, standards implementers, and service providers who need a lightweight, web-friendly, and machine-readable representation of IndoorGML datasets.
+
+
+// [NOTE]
+// ====
+// Insert Preface Text here. Give OGC specific commentary: describe the technical content, reason for document, history of the document and precursors, and plans for future work.
+//
+// There are two ways to specify the Preface: "simple clause" or "full clasuse"
+//
+// If the Preface does not contain subclauses, it is considered a simple preface clause. This one is entered as text after the `.Preface` label and must be placed between the AsciiDoc document attributes and the first AsciiDoc section title. It should not be give a section title of its own.
+//
+// If the Preface contains subclauses, it needs to be encoded as a full preface clause. This one is recognized as a full Metanorma AsciiDoc section with te title "Preface", i.e. `== Preface`. (Simple preface content can also be encoded like full preface.)
+//
+// ====
+
+
+// *OGC Declaration*
+
+
+////
+[THIS TEXT IS ALREADY ADDED AUTOMATICALLY IN THE FRONTISPIECE OF ALL OGC DOUCMENTS]
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The Open Geospatial Consortium shall not be held responsible for identifying any or all such patent rights.
+
+Recipients of this document are requested to submit, with their comments, notification of any relevant patent claims or other intellectual property rights of which they may be aware that might be infringed by any implementation of the standard set forth in this document, and to provide supporting documentation.
+////
+
+////
+NOTE: Uncomment ISO section if necessary
+
+*ISO Declaration*
+
+ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies). The work of preparing International Standards is normally carried out through ISO technical committees. Each member body interested in a subject for which a technical committee has been established has the right to be represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also take part in the work. ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of electrotechnical standardization.
+
+International Standards are drafted in accordance with the rules given in the ISO/IEC Directives, Part 2.
+
+The main task of technical committees is to prepare International Standards. Draft International Standards adopted by the technical committees are circulated to the member bodies for voting. Publication as an International Standard requires approval by at least 75 % of the member bodies casting a vote.
+
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights.
+////
+
+[abstract]
+== Abstract
+
+The IndoorGML 2.0 Part 2b – JSON Encoding Standard presents the implementation-dependent JavaScript Object Notation (JSON) encoding of the concepts defined by the IndoorGML 2.0 Part 1 – Conceptual Model Standard (<<ogc22-045r5>>,OGC 22-045r5).
+The JSON Encoding is compliant to JSON schema specified by <<rfc8259, RFC8259>>.
+The IndoorGML JSON (IndoorJSON) encoding defines a concrete implementation schema for representing indoor spatial information, including primal space, dual space, thematic layers, interlayer connections, and navigation-related indoor features.
+This encoding can be used to store and exchange 2D and/or 3D indoor space and indoor navigation network models in the JSON format as data sets or via web services.
+
+This Part 2b of the Standard defines how the concepts developed in Part 1 are realized using JSON schemas.
+The IndoorJSON Encoding represents a full mapping of the Conceptual Model and is derived fully automatically from the UML model following the UML-to-JSON encoding rules as defined by <<ogc24-017r1,OGC 24-017r1>>.
+The IndoorJSON adopts JSON Schema as its primary schema language and uses geometry objects compatible with OGC Features and Geometries JSON (JSON-FG, <<ogc21-045r1, OGC 21-045r1>>), where appropriate. This design choice addresses the limitation that conventional GeoJSON does not provide sufficient support for indoor 3D geometry, especially solid and volumetric geometry.
+Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into the implementation details documented in this standard.
+
+// TODO: fix cross-reference
+|===
+|Conceptual Model       |Section            |JSON Schema
+
+|IndoorGML Core         |<<section 6.1>>    |<<core.json>>
+|Navigation Extension   |<<section 6.2>>    |<<navi.json>>
+|===
+
+[.preface]
+== Security Considerations
+
+//If no security considerations have been made for this Standard, use the following text.
+
+No security considerations have been made for this Standard.
+
+////
+If security considerations have been made for this Standard, follow the examples found in IANA or IETF documents. Please see the following example.
+
+“VRRP is designed for a range of internetworking environments that may employ different security policies. The protocol includes several authentication methods ranging from no authentication, simple clear text passwords, and strong authentication using IP Authentication with MD5 HMAC. The details on each approach including possible attacks and recommended environments follows.
+
+Independent of any authentication type VRRP includes a mechanism (setting TTL=255, checking on receipt) that protects against VRRP packets being injected from another remote network. This limits most vulnerabilities to local attacks.
+NOTE: The security measures discussed in the following sections only provide various kinds of authentication. No confidentiality is provided at all. This should be explicitly described as outside the scope....”
+////
+
+////
+== Submitting organizations
+
+Submitting organisations added automatically by Metanorma from document attributes
+////
+
+[.preface]
+== Submitters
+All questions regarding this submission should be directed to the editor or the submitters:
+
+
+|===
+|Name |Affiliation |OGC member
+
+|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |Yes
+|Abdoulaye Diakite      |CityGeometrix  |Yes
+|Ki-Joune Li            |Pusan National University  |Yes
+|Sisi Zlatanova         |The University of New South Wales  |Yes
+|===
+
+
+// [.preface]
+// == Contributors
+//
+// //This clause is optional.
+//
+// Additional contributors to this Standard include the following:
+//
+// Individual name(s), Organization
+//
+// [NOTE]
+// ====
+// If you need to place any further sections in the preface area
+// use the `[.preface]` attribute.
+// ====
+

@@ -1,0 +1,12 @@
+{
+  "id": "B1",
+  "featureType": "CellBoundary",
+  "isVirtual": false,
+  "duality": "TL-1:DS-1:E1",
+  "cellBoundaryGeom": {
+    "geometry2D": {
+      "type": "LineString",
+      "coordinates": [[2,0],[2,2]]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "TransferSpace": {
+    "$anchor": "TransferSpace",
+    "allOf": [
+      {"$ref": "#/$defs/NavigableSpace"},
+      {
+        "type": "object",
+        "properties": {
+          "category": { "enum": ["Door","Window"]},
+          "function": { "enum": ["AnchorSpace","ConnectionSpace"]}
+        },
+        "required": ["category","function"]
+      }
+    ]
+  }
+}

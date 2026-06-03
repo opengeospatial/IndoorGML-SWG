@@ -1,0 +1,21 @@
+{
+  "Edge": {
+    "$anchor": "Edge",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "featureType": { "enum": ["Edge"] },
+      "duality" : { "type": "string", "format": "uri-reference" },
+      "weight" : { "type": "number" },
+      "geometry" : { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
+      "connects" : {
+        "type": "array",
+        "items": { "type": "string", "format": "uri-reference" },
+        "minItems": 2,
+        "maximum": 2,
+        "uniqueItems": true
+      }
+    },
+    "required": ["id","featureType","weight","connects"]
+  }
+}
