@@ -1,0 +1,18 @@
+[[section-indoorjson-navi]]
+== IndoorJSON Navigation
+
+[requirements_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/json/req/navi
+subject:: Implementation Specification
+inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
+inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
+inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+requirement:: /req/navi/navigablespace
+requirement:: /req/navi/generalspace
+requirement:: /req/navi/transferspace
+requirement:: /req/navi/objectspace
+requirement:: /req/navi/navigableboundary
+requirement:: /req/navi/route
+====

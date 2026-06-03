@@ -1,22 +1,24 @@
-[[section-indoorjson]]
-== IndoorJSON Object
+[[section-indoorjson-core]]
+== IndoorJSON Core
 
 [requirements_class]
 ====
 [%metadata]
-identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/json/req
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/json/req/core
 subject:: Implementation Specification
-// inherit::
-requirement:: /req/indoorjson
-requirement:: /req/indoorfeature
-requirement:: /req/thematiclayer
-requirement:: /req/primalspacelayer
-requirement:: /req/cellspace
-requirement:: /req/cellboundary
-requirement:: /req/dualspace
-requirement:: /req/node
-requirement:: /req/edge
-requirement:: /req/interlayerconnection
+inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
+inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
+inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+requirement:: /req/core/indoorjson
+requirement:: /req/core/indoorfeature
+requirement:: /req/core/thematiclayer
+requirement:: /req/core/primalspacelayer
+requirement:: /req/core/cellspace
+requirement:: /req/core/cellboundary
+requirement:: /req/core/dualspace
+requirement:: /req/core/node
+requirement:: /req/core/edge
+requirement:: /req/core/interlayerconnection
 ====
 
 IndoorJSON object represents one of feature class of IndoorGML 2.0 conceptual model.
@@ -32,7 +34,7 @@ The IndoorJSON Object:
 .Requirement for IndoorJSON object
 ====
 [%metadata]
-identifier:: /req/indoorjson
+identifier:: /req/core/indoorjson
 part:: An IndoorJSON object SHALL contain `id` and `featuretype` members.
 ====
 
@@ -68,7 +70,7 @@ include::../examples/indoorfeatures.json[]
 .IndoorFeatures schema
 ====
 [%metadata]
-identifier:: /req/indoorfeature
+identifier:: /req/core/indoorfeature
 part:: An `*IndoorFeatures*` object SHALL contain at least one <<section-thematiclayer,`*ThematicLayer*`>> object as item of `layers` value.
 ====
 
@@ -109,7 +111,7 @@ include::../examples/thematiclayer.json[]
 .ThematicLayer schema
 ====
 [%metadata]
-identifier:: /req/thematiclayer
+identifier:: /req/core/thematiclayer
 part:: A `*ThematicLayer*` object SHALL declare whether there is an extension module with additional semantic information using the `semanticExtension` member.
 part:: A `*ThematicLayer*` object SHALL determine what type of model representation can be expected using the `theme` member.
 part:: The `Theme` value SHALL be set to "Virtual", "Physical", "Tags", and "Unknown".
@@ -148,7 +150,7 @@ include::../examples/primalspacelayer.json[]
 .PrimalSpaceLayer schema
 ====
 [%metadata]
-identifier:: /req/primalspacelayer
+identifier:: /req/core/primalspacelayer
 part:: A `PrimalSpaceLayer` SHALL contain one or more <<section-cellspace,CellSpace>> objects.
 ====
 
@@ -194,7 +196,7 @@ include::../examples/cellspace.json[]
 .CellSpace schema
 ====
 [%metadata]
-identifier:: /req/cellspace
+identifier:: /req/core/cellspace
 part:: A `*CellSpace*` object SHALL declare whether it is a point of interest space using the `poi` member.
 ====
 
@@ -236,7 +238,7 @@ include::../examples/cellboundary.json[]
 .CellBoundary schema
 ====
 [%metadata]
-identifier:: /req/cellboundary
+identifier:: /req/core/cellboundary
 part:: A `*CellBoundary*` object SHALL specify whether it is virtual using the `isVirtual` member.
 ====
 
@@ -276,7 +278,7 @@ include::../examples/dualspacelayer.json[]
 .DualSpaceLayer schema
 ====
 [%metadata]
-identifier:: /req/dualspacelayer
+identifier:: /req/core/dualspacelayer
 part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is a geometric or a logical using the `isLogical` member.
 part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is directed using the `isLogical` member.
 part:: A `*DualSpaceLayer*` object SHALL contain one or more <<section-node,`*Node*`>> objects.
@@ -318,7 +320,7 @@ include::../examples/node.json[]
 .Node schema
 ====
 [%metadata]
-identifier:: /req/node
+identifier:: /req/core/node
 part:: A `*Node*` object SHALL contain a `duality` value by referencing the `id` member of to correspond <<section-cellspace,`*CellSpace*`>>.
 ====
 
@@ -360,7 +362,7 @@ include::../examples/edge.json[]
 .Edge schema
 ====
 [%metadata]
-identifier:: /req/edge
+identifier:: /req/core/edge
 part:: An `*Edge*` object SHALL reference the connected <<section-node,Nodes>> using the `connects` member.
 part:: An `*Edge*` object SHALL contain a `weight` value.
 ====
@@ -404,7 +406,7 @@ include::../examples/interlayerconnection.json[]
 .InterLayerConnection schema
 ====
 [%metadata]
-identifier:: /req/interlayerconnection
+identifier:: /req/core/interlayerconnection
 // part:: An Edge SHALL reference the connected <<section-node,Nodes>> using the `connects` property.
 ====
 

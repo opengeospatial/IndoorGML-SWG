@@ -69,8 +69,10 @@ Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into t
 |===
 |Conceptual Model       |Section            |JSON Schema
 
-|IndoorGML Core         |<<section 6.1>>    |<<core.json>>
-|Navigation Extension   |<<section 6.2>>    |<<navi.json>>
+|IndoorGML Core         |<<section-indoorjson-core>>
+|<<annex_indoorjson_core_schema>>
+|Navigation Extension   |<<section-indoorjson-navi>>
+|<<annex_indoorjson_navi_schema>>
 |===
 
 [.preface]

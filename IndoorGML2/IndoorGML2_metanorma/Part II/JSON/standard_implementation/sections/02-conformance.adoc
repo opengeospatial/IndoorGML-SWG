@@ -16,6 +16,6 @@ All requirements-classes and conformance-classes described in this document are 
 
 |===
 |Conformance class      |URI
-|IndoorGML Core         |
-|Navigation Extension   |
+|IndoorGML Core         |http://www.opengis.net/spec/indoorgml-2/2.0/json/conf/core
+|Navigation Extension   |http://www.opengis.net/spec/indoorgml-2/2.0/json/conf/navi
 |===
