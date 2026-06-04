@@ -15,7 +15,7 @@ requirement:: /req/core/thematiclayer
 requirement:: /req/core/primalspacelayer
 requirement:: /req/core/cellspace
 requirement:: /req/core/cellboundary
-requirement:: /req/core/dualspace
+requirement:: /req/core/dualspacelayer
 requirement:: /req/core/node
 requirement:: /req/core/edge
 requirement:: /req/core/interlayerconnection
