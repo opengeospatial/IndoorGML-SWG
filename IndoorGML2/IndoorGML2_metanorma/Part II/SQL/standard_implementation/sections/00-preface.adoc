@@ -1,0 +1,48 @@
+
+.Preface
+
+In order to achieve consensus on the modeling indoor spaces and their neighborhood relationships to support indoor location-based services, a UML Conceptual Model, IndoorGML 2.0 Part 1, was approved as an OGC Standard (<<ogc22-045r5>>) in June, 2025.
+This model covers geometric and semantic properties of indoor spaces relevant for indoor navigation.
+This IndoorGML 2.0 Part 2c: SQL Encoding Standard defines how those concepts should be realized using a relational database schema.
+The SQL encoding of IndoorGML 2.0 is intended for software developers, data providers, standards implementers, and service providers who need a persistent, queryable, and interoperable representation of IndoorGML datasets in SQL databases.
+
+[abstract]
+== Abstract
+
+The IndoorGML 2.0 Part 2c – SQL Encoding Standard presents the implementation-dependent Structured Query Language (SQL) encoding of the concepts defined by the IndoorGML 2.0 Part 1 – Conceptual Model Standard (<<ogc22-045r5>>).
+The SQL Encoding is compliant with SQL as specified by <<iso9075,ISO/IEC 9075>> and is implemented using PostgreSQL as the reference database management system.
+The SQL encoding of IndoorGML 2.0 defines a concrete implementation schema for representing indoor spatial information, including primal space, dual space, thematic layers, interlayer connections, and navigation-related indoor features.
+This encoding can be used to store and exchange 2D and/or 3D indoor space and indoor navigation network models in relational databases as data sets or via web services.
+
+This Part 2c of the Standard defines how the concepts developed in Part 1 are realized using SQL table definitions.
+The SQL encoding represents a mapping of the Conceptual Model derived from the UML model using Enterprise Architecture tooling, with subsequent corrections to identifier types, relationships, and missing properties.
+Geometry values are stored in PostGIS `geometry` columns.
+Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into the implementation details documented in this standard.
+
+|===
+|Conceptual Model       |Section            |SQL Schema
+
+|IndoorGML Core         |<<section-indoorsql-core>>
+|<<annex_indoorsql_core_schema>>
+|Navigation Extension   |<<section-indoorsql-navi>>
+|<<annex_indoorsql_navi_schema>>
+|===
+
+[.preface]
+== Security Considerations
+
+No security considerations have been made for this Standard.
+
+[.preface]
+== Submitters
+All questions regarding this submission should be directed to the editor or the submitters:
+
+|===
+|Name |Affiliation |OGC member
+
+|Sisi Zlatanova         |The University of New South Wales  |Yes
+|Zhiyong Wang           |SpatialAlgebra  |Yes
+|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |Yes
+|Abdoulaye Diakite      |CityGeometrix  |Yes
+|Ki-Joune Li            |Pusan National University  |Yes
+|===

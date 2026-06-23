@@ -1,0 +1,381 @@
+[[section-indoorsql-core]]
+== SQL Encoding of the Core Module
+
+[requirements_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/core
+subject:: Implementation Specification
+inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
+inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
+inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+requirement:: /req/core/indoorsql
+requirement:: /req/core/indoorfeature
+requirement:: /req/core/thematiclayer
+requirement:: /req/core/primalspacelayer
+requirement:: /req/core/cellspace
+requirement:: /req/core/cellboundary
+requirement:: /req/core/dualspacelayer
+requirement:: /req/core/node
+requirement:: /req/core/edge
+requirement:: /req/core/interlayerconnection
+====
+
+Each feature table of the SQL encoding represents one feature class of the IndoorGML 2.0 conceptual model.
+
+Every feature table:
+
+* *must* have a primary key column storing a string identifier that serves as a unique identifier for the feature and can be used to represent cross-references between objects in the SQL encoding.
+
+[[req-indoorsql]]
+[requirement]
+.Requirement for SQL encoding feature tables
+====
+[%metadata]
+identifier:: /req/core/indoorsql
+part:: Each feature table of the SQL encoding SHALL contain a string primary key column for the feature identifier.
+====
+
+[[section-core-enums]]
+=== Core code list types
+
+The following PostgreSQL `ENUM` types represent IndoorGML core code lists:
+
+* `ThemeLayerValue` for the `Thematiclayer.Theme` column;
+* `TopoExpressionValue` for the `Interlayerconnection.Typeoftopoexpression` column.
+
+[[core-enums-schema]]
+.A SQL schema of the core code list types:
+[source,sql]
+----
+include::../schema/core/enums.sql[]
+----
+
+[[section-indoorfeatures]]
+=== IndoorFeatures
+
+The `Indoorfeatures` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeature], the container for the indoor dataset.
+It aggregates one or more thematic layers and may include inter-layer connections.
+
+The `Indoorfeatures` table shall contain:
+
+* `IndoorfeaturesID` as the primary key
+* optionally, `layers` as a reference to associated thematic layers
+
+NOTE: The `layers` column was added during schema correction because it was not included in the SQL generated from Enterprise Architecture tooling.
+
+[[indoorfeature-schema]]
+.A SQL schema of the IndoorFeatures table:
+[source,sql]
+----
+include::../schema/core/indoorfeatures.sql[]
+----
+
+[[indoorfeature-example]]
+.An example INSERT statement for the IndoorFeatures table:
+[source,sql]
+----
+include::../examples/indoorfeatures.sql[]
+----
+
+[[req-indoorfeatures]]
+[requirement]
+.IndoorFeatures schema
+====
+[%metadata]
+identifier:: /req/core/indoorfeature
+part:: An `Indoorfeatures` table SHALL be related to at least one <<section-thematiclayer,`Thematiclayer`>> row through a foreign key.
+====
+
+[[section-thematiclayer]]
+=== ThematicLayer
+
+The `Thematiclayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-tehmaticlayer[ThematicLayer], which represents one contextual decomposition of indoor space.
+
+The `Thematiclayer` table shall contain:
+
+* `ThematiclayerID` as the primary key
+* `IndoorfeaturesID` as a foreign key to `Indoorfeatures`
+* `Semanticextension` indicates whether there is an extension module with additional semantic information
+* `Theme` of type `ThemeLayerValue`, with values including "Virtual", "Physical", "Tags", and "Unknown"
+
+[[thematiclayer-schema]]
+.A SQL schema of the ThematicLayer table:
+[source,sql]
+----
+include::../schema/core/thematiclayer.sql[]
+----
+
+[[req-thematiclayer]]
+[requirement]
+.ThematicLayer schema
+====
+[%metadata]
+identifier:: /req/core/thematiclayer
+part:: A `Thematiclayer` table SHALL declare whether there is an extension module with additional semantic information using the `Semanticextension` column.
+part:: A `Thematiclayer` table SHALL determine what type of model representation can be expected using the `Theme` column.
+part:: The `Theme` value SHALL be one of "Virtual", "Physical", "Tags", and "Unknown".
+====
+
+[[section-primalspacelayer]]
+=== PrimalSpaceLayer
+
+The `Primalspacelayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-primalspacelayer[PrimalSpaceLayer], which contains spatial objects representing indoor subdivisions.
+
+The `Primalspacelayer` table shall contain:
+
+* `PrimalspacelayerID` as the primary key
+* `ThematiclayerID` as a foreign key to `Thematiclayer`
+* optionally, `Creationdate`
+* optionally, `Terminationdate`
+
+[[primalspacelayer-schema]]
+.A SQL schema of the PrimalSpaceLayer table:
+[source,sql]
+----
+include::../schema/core/primalspacelayer.sql[]
+----
+
+[[req-primalspacelayer]]
+[requirement]
+.PrimalSpaceLayer schema
+====
+[%metadata]
+identifier:: /req/core/primalspacelayer
+part:: A `Primalspacelayer` table SHALL be related to one or more <<section-cellspace,CellSpace>> rows.
+====
+
+[[section-cellspace]]
+=== CellSpace
+
+The `Cellspace` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellspace[CellSpace], which represents a unit of indoor space.
+
+The `Cellspace` table shall contain:
+
+* `CellspaceID` as the primary key
+* `PrimalspacelayerID` as a foreign key to `Primalspacelayer`
+* `Poi` is a flag that specifies whether this cell space is a point of interest
+* optionally, `Cellspacename`
+* optionally, `Level`
+* optionally, `duality` referencing the `NodeID` of the dual node
+* optionally, `Cellspacegeom` as a PostGIS `geometry` value
+* optionally, `Externalreference` as a serialized external reference object
+
+`Cellboundary` rows reference `Cellspace` rows through the `bounds` foreign key column.
+
+[[cellspace-schema]]
+.A SQL schema of the CellSpace table:
+[source,sql]
+----
+include::../schema/core/cellspace.sql[]
+----
+
+[[cellspace-example]]
+.An example query returning CellSpace records:
+[source,sql]
+----
+include::../examples/select_cellspace.sql[]
+----
+
+[[req-cellspace]]
+[requirement]
+.CellSpace schema
+====
+[%metadata]
+identifier:: /req/core/cellspace
+part:: A `Cellspace` table SHALL declare whether it is a point of interest space using the `Poi` column.
+====
+
+[[section-cellboundary]]
+=== CellBoundary
+
+The `Cellboundary` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellboundary[CellBoundary], a boundary of a CellSpace.
+
+The `Cellboundary` table shall contain:
+
+* `CellboundaryID` as the primary key
+* `PrimalspacelayerID` as a foreign key to `Primalspacelayer`
+* `Isvirtual` indicating whether the boundary is virtual or physical
+* optionally, `bounds` referencing the `CellspaceID` of a bounded cell space
+* optionally, `Cellboundarygeom` as a PostGIS `geometry` value
+* optionally, `Externalreference`
+
+[[cellboundary-schema]]
+.A SQL schema of the CellBoundary table:
+[source,sql]
+----
+include::../schema/core/cellboundary.sql[]
+----
+
+[[req-cellboundary]]
+[requirement]
+.CellBoundary schema
+====
+[%metadata]
+identifier:: /req/core/cellboundary
+part:: A `Cellboundary` table SHALL specify whether it is virtual using the `Isvirtual` column.
+====
+
+[[section-dualspacelayer]]
+=== DualSpaceLayer
+
+The `Dualspacelayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-dualspacelayer[DualSpaceLayer], representing the graph structure corresponding to the primal space layer.
+
+The `Dualspacelayer` table shall contain:
+
+* `DualspacelayerID` as the primary key
+* `ThematiclayerID` as a foreign key to `Thematiclayer`
+* `Islogical` indicating whether the graph is geometric or logical
+* `Isdirected` specifying whether the graph is directed
+* optionally, `Creationdate`
+* optionally, `Terminationdate`
+
+[[dualspacelayer-schema]]
+.A SQL schema of the DualSpaceLayer table:
+[source,sql]
+----
+include::../schema/core/dualspacelayer.sql[]
+----
+
+[[req-dualspacelayer]]
+[requirement]
+.DualSpaceLayer schema
+====
+[%metadata]
+identifier:: /req/core/dualspacelayer
+part:: A `Dualspacelayer` table SHALL specify whether the provided graph is geometric or logical using the `Islogical` column.
+part:: A `Dualspacelayer` table SHALL specify whether the provided graph is directed using the `Isdirected` column.
+part:: A `Dualspacelayer` table SHALL be related to one or more <<section-node,`Node`>> rows.
+====
+
+[[section-node]]
+=== Node
+
+The `Node` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-node[Node], a state or graph vertex in the dual space layer.
+
+The `Node` table shall contain:
+
+* `NodeID` as the primary key
+* `DualspacelayerID` as a foreign key to `Dualspacelayer`
+* `duality` referencing the `CellspaceID` of the corresponding cell space
+* optionally, `Geometry` as a PostGIS `geometry` value (typically `Point`)
+* optionally, `connects` as a `jsonb` array of connected `EdgeID` values
+
+[[node-schema]]
+.A SQL schema of the Node table:
+[source,sql]
+----
+include::../schema/core/node.sql[]
+----
+
+[[node-example]]
+.An example query returning Node records:
+[source,sql]
+----
+include::../examples/select_node.sql[]
+----
+
+[[req-node]]
+[requirement]
+.Node schema
+====
+[%metadata]
+identifier:: /req/core/node
+part:: A `Node` table SHALL contain a `duality` value referencing the `CellspaceID` of the corresponding <<section-cellspace,CellSpace>>.
+part:: A `Node` table SHALL store connected edge identifiers in the `connects` column.
+====
+
+[[section-edge]]
+=== Edge
+
+The `Edge` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-edge[Edge], representing a relationship between two nodes.
+
+The `Edge` table shall contain:
+
+* `EdgeID` as the primary key
+* `DualspacelayerID` as a foreign key to `Dualspacelayer`
+* `Weight` for use in graph-based applications
+* optionally, `duality` referencing the `CellboundaryID` of the corresponding cell boundary
+* optionally, `Geometry` as a PostGIS `geometry` value (typically `LineString`)
+* optionally, `connects` as a `jsonb` array of the two connected `NodeID` values
+
+[[edge-schema]]
+.A SQL schema of the Edge table:
+[source,sql]
+----
+include::../schema/core/edge.sql[]
+----
+
+[[req-edge]]
+[requirement]
+.Edge schema
+====
+[%metadata]
+identifier:: /req/core/edge
+part:: An `Edge` table SHALL reference connected <<section-node,Nodes>> using the `connects` column.
+part:: An `Edge` table SHALL contain a `Weight` column.
+====
+
+[[section-interlayerconnection]]
+=== InterLayerConnection
+
+The `Interlayerconnection` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-interlayerconnection[InterLayerConnection], representing a relationship between objects in different thematic layers.
+
+The `Interlayerconnection` table shall contain:
+
+* `InterlayerconnectionID` as the primary key
+* `IndoorfeaturesID` as a foreign key to `Indoorfeatures`
+* `Typeoftopoexpression` of type `TopoExpressionValue`, with values including "Contains", "Overlaps", "Equals", "Within", "Crosses", and "Other"
+* optionally, `Comment`
+
+Associated junction tables `InterLayerConnection_ThematicLayer`, `InterLayerConnection_Node`, and `InterLayerConnection_CellSpace` store references to thematic layers, nodes, and cell spaces respectively.
+
+[[interlayerconnection-schema]]
+.A SQL schema of the InterLayerConnection table:
+[source,sql]
+----
+include::../schema/core/interlayerconnection.sql[]
+----
+
+[[interlayerconnection-cellspace-schema]]
+.A SQL schema of the InterLayerConnection_CellSpace junction table:
+[source,sql]
+----
+include::../schema/core/interlayerconnection_cellspace.sql[]
+----
+
+[[interlayerconnection-node-schema]]
+.A SQL schema of the InterLayerConnection_Node junction table:
+[source,sql]
+----
+include::../schema/core/interlayerconnection_node.sql[]
+----
+
+[[interlayerconnection-thematiclayer-schema]]
+.A SQL schema of the InterLayerConnection_ThematicLayer junction table:
+[source,sql]
+----
+include::../schema/core/interlayerconnection_thematiclayer.sql[]
+----
+
+[[req-interlayerconnection]]
+[requirement]
+.InterLayerConnection schema
+====
+[%metadata]
+identifier:: /req/core/interlayerconnection
+part:: An `Interlayerconnection` table SHALL reference <<section-thematiclayer,ThematicLayer>> rows through the `InterLayerConnection_ThematicLayer` junction table.
+====
+
+[[section-externalreference]]
+=== ExternalReferenceType
+
+The `Externalreferencetype` and `Externalobjectreferencetype` tables represent components of the `ExternalReference` complex type.
+These are not feature classes of IndoorGML 2.0.
+
+[[externalreferencetype-schema]]
+.A SQL schema of the ExternalReference tables:
+[source,sql]
+----
+include::../schema/core/externalreferencetype.sql[]
+----

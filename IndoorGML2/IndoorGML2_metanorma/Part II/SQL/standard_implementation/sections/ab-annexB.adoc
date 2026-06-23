@@ -1,0 +1,15 @@
+[appendix,obligation="normative"]
+== Schemas
+
+[[annex_indoorsql_core_schema]]
+=== SQL Schema of IndoorGML Core
+[source,sql]
+----
+include::../schema/IndoorGML_core.sql[]
+----
+[[annex_indoorsql_navi_schema]]
+=== SQL Schema of IndoorGML Navigation
+[source,sql]
+----
+include::../schema/IndoorGML_navi.sql[]
+----

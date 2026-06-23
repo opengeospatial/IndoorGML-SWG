@@ -1,0 +1,13 @@
+
+== Scope
+
+The OGC IndoorGML 2.0 Part 2c – SQL Encoding Standard defines a SQL encoding for IndoorGML 2.0 Part 1 - Conceptual Model.
+
+This Standard specifies:
+
+- SQL table definitions for IndoorGML 2.0 core module;
+- SQL table definitions for IndoorGML 2.0 navigation module;
+- the geometry storage rules based on PostGIS `geometry` columns; and
+- a statement to which SQL encoding conformance classes an IndoorGML 2.0 implementation conforms to.
+
+The SQL encoding of IndoorGML 2.0 is an implementation encoding of IndoorGML 2.0 Part 1. Therefore, database instances of the SQL encoding shall be interpreted according to the semantics defined in the IndoorGML 2.0 conceptual model.

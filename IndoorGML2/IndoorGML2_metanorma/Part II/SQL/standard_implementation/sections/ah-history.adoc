@@ -1,0 +1,11 @@
+
+[appendix]
+== Revision History
+
+[%unnumbered]
+[width="90%",options="header"]
+|===
+|Date |Release |Editor | Primary clauses modified |Description
+|2026-06-17 |0.1 |Zhiyong Wang |all |initial version derived from SQL generation workflow document
+|2026-06-18 |0.2 |Zhiyong Wang |5, 6, 7, 8, annex B |align schema with ENUM types, jsonb connects/route arrays, and EA table naming
+|===

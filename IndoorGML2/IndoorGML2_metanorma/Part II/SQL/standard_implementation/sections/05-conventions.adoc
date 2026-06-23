@@ -1,0 +1,57 @@
+
+== Conventions
+
+=== Identifiers
+
+The normative provisions in this standard are denoted by the URI
+
+`http://www.opengis.net/spec/indoorgml-2/2.0/sql`
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
+
+=== Use of SQL terminology
+
+The following terms are used as specified in <<iso9075,SQL>>. In particular:
+
+* "table" refers to a named relation in the database schema;
+* "column" refers to an attribute of a table; and
+* "row" refers to a single record in a table.
+
+Feature identifiers are stored as string values in `varchar` columns rather than integer auto-increment keys, in order to preserve cross-references between IndoorGML objects and to align with IndoorJSON identifier conventions.
+
+=== Geometry storage
+
+Geometry values are stored as PostGIS `geometry` columns (for example, `Cellspacegeom`, `Cellboundarygeom`, and `Geometry` on `Node` and `Edge`).
+The reference implementation requires the PostGIS extension (<<postgis,PostGIS>>).
+
+=== Code list storage
+
+IndoorGML code list types (for example, `ThemeLayerValue`, `TopoExpressionValue`, `LocomotionAccessType`) are represented as PostgreSQL `ENUM` types whose labels match the UML type names and enumeration literals defined in the IndoorGML 2.0 XML schema.
+
+=== Graph and route associations
+
+Graph adjacency in the dual space layer is stored as `jsonb` identifier arrays on the owning table:
+
+* `Node.connects` stores the identifiers of connected `Edge` rows;
+* `Edge.connects` stores the identifiers of the two connected `Node` rows.
+
+A `Route` represents an ordered navigation path through the dual-space graph.
+The ordered `routeNode` and `routeEdge` members are stored as `jsonb` arrays on the `Route` table rather than in separate junction tables.
+This encoding preserves the sequence of nodes and edges in a single row and simplifies maintenance of route order during import, update, and export.
+Array position expresses traversal order; the first element is the first node or edge in the route, the second element is the next, and so on.
+
+Example:
+
+[source,sql]
+----
+-- routeNode and routeEdge preserve traversal order in array position
+INSERT INTO "Route" ("RouteID", "routeNode", "routeEdge")
+VALUES (
+    'R1',
+    '["N1", "N2", "N3"]'::jsonb,
+    '["E1", "E2"]'::jsonb
+);
+----
+=== Table and column naming
+
+SQL table and column names use identifiers enclosed in double quotes, following the spellings produced from Enterprise Architecture tooling and aligned with UML type names (for example, `Indoorfeatures`, `Thematiclayer`, `Cellspace`, `Navigablespace`).
