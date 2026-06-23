@@ -1,0 +1,53 @@
+[appendix,obligation="normative"]
+== Conformance Class Abstract Test Suite
+
+[NOTE]
+====
+Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
+====
+
+=== Conformance Class Core
+
+[requirement,type="verification"]
+====
+
+[requirement,type="general",label="Test id"]
+======
+conf/indoorsql/core/schema
+======
+
+[recommendation,type="general",label="Test purpose"]
+======
+Verify that the database schema implements all core SQL encoding tables and constraints.
+======
+
+[requirement,type="general",label="Test method"]
+======
+Verify that all core tables defined in <<section-indoorsql-core>> exist with the required columns, primary keys, and foreign key constraints.
+Verify that identifier columns use string types.
+Verify that geometry columns use the PostGIS `geometry` type.
+======
+
+====
+
+=== Conformance Class Navigation
+
+[requirement,type="verification"]
+====
+
+[requirement,type="general",label="Test id"]
+======
+conf/indoorsql/navi/schema
+======
+
+[recommendation,type="general",label="Test purpose"]
+======
+Verify that the database schema implements all navigation SQL encoding tables and constraints.
+======
+
+[requirement,type="general",label="Test method"]
+======
+Verify that all navigation tables defined in <<section-indoorsql-navi>> exist with the required columns and foreign key references to core tables.
+======
+
+====

@@ -1,0 +1,34 @@
+
+== Terms and Definitions
+
+[conceptual model]
+=== conceptual model
+
+model that defines concepts of a universe of discourse
+
+[.source]
+<<iso19101-1>>
+
+=== conceptual schema
+
+formal description of a <<conceptual model,conceptual model>>
+
+[.source]
+<<iso19101-1>>
+
+=== feature
+
+abstraction of real world phenomena
+
+NOTE: Features are objects that have an identity that allows for distinguishing features from each other. Features can have spatial and non-spatial properties that describe the features in more detail. Spatial properties are properties that have a geometry from <<iso19107>> as data type.
+
+NOTE: Features are denoted by the stereotype «FeatureType» in the IndoorGML 2.0 Conceptual Model.
+
+[.source]
+<<iso19101-1>>
+
+=== relational table
+
+persistent data structure in a relational database that stores records of a single feature type or association
+
+NOTE: In the SQL encoding of IndoorGML 2.0, each IndoorGML 2.0 feature class is mapped to one or more relational tables.

@@ -1,0 +1,10 @@
+
+
+[bibliography]
+== Bibliography
+
+* [[[yaml,YAML]]], Ben-Kiki, O., Evans, C., Ingy döt Net: *YAML Ain't Markup Language,* https://yaml.org/
+
+* [[[rfc8259,RFC 8259]]], The JavaScript Object Notation (JSON) Data Interchange Format,
+
+* [[[rfc7946,RFC 7946]]], Butler, H., Daly, M., Doyle, A., Gillies, S., Hagen, S., Schaub, T.: IETF RFC 7946, *The GeoJSON Format*, 2016 https://tools.ietf.org/rfc/rfc7946.txt
