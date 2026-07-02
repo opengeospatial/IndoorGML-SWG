@@ -1,0 +1,11 @@
+{
+  "dualSpace": {
+    "id": "DS-1",
+    "featureType": "DualSpaceLayer",
+    "creationDatetime": "2025-10-30T13:00:00",
+    "isLogical": false,
+    "isDirected": false,
+    "nodeMember": [...],
+    "edgeMember": [...]
+  }
+}

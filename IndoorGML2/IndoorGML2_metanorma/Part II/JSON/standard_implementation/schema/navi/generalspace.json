@@ -1,0 +1,15 @@
+{
+  "GeneralSpace": {
+    "$anchor": "GeneralSpace",
+    "allOf": [
+      {"$ref": "#/$defs/NavigableSpace"},
+      {
+        "type": "object",
+        "properties": {
+          "function": { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"]}
+        },
+        "required": ["function"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+
+[bibliography]
+== References
+
+The following normative documents contain provisions that, through reference in this text, constitute provisions of this document. For dated references, subsequent amendments to, or revisions of, any of these publications do not apply. For undated references, the latest edition of the normative document referred to applies.
+
+[NOTE]
+====
+Insert References here. If there are no references, leave this section empty.
+
+References are to follow the Springer LNCS style, with the exception that optional information may be appended to references: DOIs are added after the date and web resource references may include an access date at the end of the reference in parentheses. See examples from Springer and OGC below.
+====
+
+* [[[ogc24-017r1,OGC 24-017r1]]], Best Practice for OGC - UML to JSON Encoding Rules,
+
+* [[[ogc22-045r5,OGC 22-045r5]]], OGC IndoorGML 2.0 Part 1 – Conceptual Model,
+
+* [[[ogc21-045r1,OGC 21-045r1]]], OGC Features and Geometries JSON - Part 1: Core,
+
+* [[[iso19101-1,ISO 19101-1]]], Geographic information — Reference model Part 1: Fundamentals
+
+* [[[iso19107,ISO 19107]]], Geographic information — Spatial schema
+
+* [[[rfc8259,RFC 8259]]], The JavaScript Object Notation (JSON) Data Interchange Format,
+
+// * [[[openapi,Open API Initiative]]], Open API Initiative: *OpenAPI Specification 3.0.2*, 2018 https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md
+//
+// * [[[rfc2616,RFC 2616]]], Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., Berners-Lee, T.: IETF RFC 2616, *HTTP/1.1*, 1999 http://tools.ietf.org/rfc/rfc2616.txt
+//
+// * [[[rfc2818,RFC 2818]]], Rescorla, E.: IETF RFC 2818, *HTTP Over TLS*, 2000 http://tools.ietf.org/rfc/rfc2818.txt
+//
+// * [[[rfc3339,RFC 3339]]], Klyne, G., Newman, C.: IETF RFC 3339, *Date and Time on the Internet: Timestamps*, 2002 http://tools.ietf.org/rfc/rfc3339.txt
+//
+// * [[[rfc8288,RFC 8288]]], Nottingham, M.: IETF RFC 8288, *Web Linking*, 2017 http://tools.ietf.org/rfc/rfc8288.txt
+//
+// * [[[gmlsf,GMLSF]]], van den Brink, L., Portele, C., Vretanos, P.: OGC 10-100r3, *Geography Markup Language (GML) Simple Features Profile*, 2012 http://portal.opengeospatial.org/files/?artifact_id=42729
+//
+// * [[[rfc7946,RFC 7946]]], Butler, H., Daly, M., Doyle, A., Gillies, S., Hagen, S., Schaub, T.: IETF RFC 7946, *The GeoJSON Format*, 2016 https://tools.ietf.org/rfc/rfc7946.txt
+//
+// * [[[html5, HTML5]]], W3C: *HTML5*, W3C Recommendation, 2019 http://www.w3.org/TR/html5/
+//
+// * [[[schema,Schema.org]]], *Schema.org:* http://schema.org/docs/schemas.html

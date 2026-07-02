@@ -1,0 +1,16 @@
+{
+  "NavigableBoundary": {
+    "$anchor": "NavigableBoundary",
+    "allOf": [
+      {"$ref": "indoorjson.core.schema.json#/$defs/CellBoundary"},
+      {
+        "type": "object",
+        "properties": {
+          "boundaryOrientation": { "type": "boolean"},
+          "navigableBoundaryFunction": { "enum": ["AnchorBoundary","ConnectionBoundary"]}
+        },
+        "required": ["navigableBoundaryFunction"]
+      }
+    ]
+  }
+}

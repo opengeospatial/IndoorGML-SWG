@@ -1,14 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.indoorgml.org/schemas/indoorjson/0.1/indoorjson2.navi.schema.json",
-  "title": "IndoorJSON for IndoorGML 2.0 navi part",
-  "description": "IndoorJSON",
+  "$id": "https://www.opengis.net/spec/indoorgml/2.0/json/indoorjson.navi.schema.json",
+  "title": "IndoorJSON for IndoorGML 2.0 navigation part",
+  "description": "IndoorJSON Navigation",
+  "oneOf": [
+    {"$ref": "#/$defs/NavigableSpace"       },
+    {"$ref": "#/$defs/NonNavigableSpace"    },
+    {"$ref": "#/$defs/GeneralSpace"         },
+    {"$ref": "#/$defs/TransferSpace"        },
+    {"$ref": "#/$defs/ObjectSpace"          },
+    {"$ref": "#/$defs/NavigableBoundary"    },
+    {"$ref": "#/$defs/NonNavigableBoundary" },
+    {"$ref": "#/$defs/Route"                }
+  ],
   "$defs": {
 
     "NavigableSpace": {
       "$anchor": "NavigableSpace",
       "allOf": [
-        {"$ref": "indoorjson2.core.schema.json#/$defs/CellSpace"},
+        {"$ref": "indoorjson.core.schema.json#/$defs/CellSpace"},
         {
           "type": "object",
           "properties": {
@@ -22,7 +32,7 @@
     "NonNavigableSpace": {
       "$anchor": "NonNavigableSpace",
       "allOf": [
-        {"$ref": "indoorjson2.core.schema.json#/$defs/CellSpace"}
+        {"$ref": "indoorjson.core.schema.json#/$defs/CellSpace"}
       ]
     },
 
@@ -72,7 +82,7 @@
     "NavigableBoundary": {
       "$anchor": "NavigableBoundary",
       "allOf": [
-        {"$ref": "indoorjson2.core.schema.json#/$defs/CellBoundary"},
+        {"$ref": "indoorjson.core.schema.json#/$defs/CellBoundary"},
         {
           "type": "object",
           "properties": {
@@ -87,7 +97,7 @@
     "NonNavigableBoundary": {
       "$anchor": "NonNavigableBoundary",
       "allOf": [
-        {"$ref": "indoorjson2.core.schema.json#/$defs/CellBoundary"}
+        {"$ref": "indoorjson.core.schema.json#/$defs/CellBoundary"}
       ]
     },
 
@@ -99,12 +109,12 @@
         "routeNode": {
           "type": "array",
           "minItems": 2,
-          "items": {"$ref": "indoorjson2.core.schema.json#/$defs/Node"}
+          "items": {"$ref": "indoorjson.core.schema.json#/$defs/Node"}
         },
         "routeEdge": {
           "type": "array",
           "minItems": 1,
-          "items": {"$ref": "indoorjson2.core.schema.json#/$defs/Edge"}
+          "items": {"$ref": "indoorjson.core.schema.json#/$defs/Edge"}
         }
       },
       "required": ["routeNode","routeEdge"]

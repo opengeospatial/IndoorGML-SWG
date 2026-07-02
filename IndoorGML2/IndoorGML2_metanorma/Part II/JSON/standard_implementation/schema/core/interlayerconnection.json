@@ -1,0 +1,36 @@
+{
+  "InterLayerConnection": {
+    "$anchor": "InterLayerConnection",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "featureType": { "enum": ["InterLayerConnection"] },
+      "connectedLayers": {
+        "type": "array",
+        "items": { "type": "string", "format": "uri-reference" },
+        "minItems": 2,
+        "maximum": 2,
+        "uniqueItems": true
+      },
+      "connectedNodes" : {
+        "type": "array",
+        "items": { "type": "string", "format": "uri-reference" },
+        "minItems": 2,
+        "maximum": 2,
+        "uniqueItems": true
+      },
+      "connectedCells" : {
+        "type": "array",
+        "items": { "type": "string", "format": "uri-reference" },
+        "minItems": 2,
+        "maximum": 2,
+        "uniqueItems": true
+      },
+      "typeOfTopoExpression" : {
+        "enum": ["CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", "OTHERS"]
+      },
+      "comment" : { "type": "string" }
+    },
+    "required": ["id","featureType","connectedLayers","typeOfTopoExpression"]
+  }
+}

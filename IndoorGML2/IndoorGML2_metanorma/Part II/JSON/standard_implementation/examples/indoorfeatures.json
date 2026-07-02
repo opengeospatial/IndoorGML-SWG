@@ -1,0 +1,22 @@
+{
+  "featureType": "IndoorFeatures",
+  "layers": [
+    {
+      "id": "TL-1",
+      "featureType": "ThematicLayer",
+      "semanticExtension": false,
+      "theme": "Physical",
+      "primalSpace": {...},
+      "dualSpace": {...}
+    },
+    ...
+  ],
+  "layerConnections": [
+    {
+      "id": "ILC-1",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-1", "TL-2"],
+      "connectedNodes": ["N1", "N101"]
+    }
+  ]
+}

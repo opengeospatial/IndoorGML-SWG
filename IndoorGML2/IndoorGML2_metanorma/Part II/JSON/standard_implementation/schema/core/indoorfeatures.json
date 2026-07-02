@@ -1,0 +1,22 @@
+{
+  "IndoorFeatures": {
+    "$anchor": "IndoorFeatures",
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "featureType": { "enum": ["IndoorFeatures"] },
+      "layers": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "$ref": "#/$defs/ThematicLayer" },
+        "uniqueItems": true
+      },
+      "layerConnections": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/InterLayerConnection" },
+        "uniqueItems": true
+      }
+    },
+    "required": ["id","featureType","layers"]
+  }
+}

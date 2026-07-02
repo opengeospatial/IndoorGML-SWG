@@ -1,0 +1,49 @@
+
+== Terms and Definitions
+
+////
+Note that the initial notice about terms ("This document uses the terms defined in OGC Policy Directive 49...")
+is inserted automatically by Metanorma using the agreed standardised language, and you should not enter it here.
+////
+
+// === example
+// term used for exemplary purposes
+//
+// [.source]
+// <<iso19101-1>>
+//
+// NOTE: An example note.
+//
+// [example]
+// Here's an example of an example term.
+
+[conceptual model]
+=== conceptual model
+
+model that defines concepts of a universe of discourse
+
+[.source]
+<<iso19101-1>>
+
+=== conceptual schema
+
+formal description of a <<conceptual model,conceptual model>>
+
+[.source]
+<<iso19101-1>>
+
+=== feature
+
+abstraction of real world phenomena
+
+NOTE: Features are objects that have an identity that allows for distinguishing features from each other. Features can have spatial and non-spatial properties that describe the features in more detail. Spatial properties are properties that have a geometry from <<iso19107>> as data type.
+
+NOTE: Features are denoted by the stereotype «FeatureType» in the IndoorGML 2.0 Conceptual Model.
+
+[.source]
+<<iso19101-1>>
+
+
+
+
+

@@ -1,0 +1,27 @@
+
+== Conventions
+
+// [NOTE]
+// ====
+// This section provides details and examples for any conventions used in the document. Examples of conventions are symbols, abbreviations, use of XML schema, or special notes regarding how to read the document.
+// ====
+
+
+=== Identifiers
+
+The normative provisions in this standard are denoted by the URI 
+
+`http://www.opengis.net/spec/indoorgml-2/2.0/json`
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
+
+
+=== Use of JSON terminology
+
+The following terms are used as specified in <<rfc8259,JSON>>. In particular:
+
+* "member" refers to a name/value pair of an object;
+* "key" refers to the name of a member; and
+* "value" refers to the value of a member, which may be an object, array, string, number, boolean, or `null`.
+
+For example, the GeoJSON "geometry" member has the key "geometry" and one of the GeoJSON geometries (or `null`) as its value.
