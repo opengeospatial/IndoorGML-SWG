@@ -1,0 +1,1905 @@
+= OGC IndoorGML 2.0 Part 2c – SQL Encoding
+:comment: ### Document type; mandatory. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
+:doctype: standard
+:comment: ### Document subtype; optional. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
+:docsubtype: implementation
+:comment: ### Version number; optional. Dot-delimited, preferably with this structure <version number>.<minor version number>.<patch version number>
+:edition: 1.0.0
+:comment: ### Language of the document; mandatory. Specified in two-letter code: "en" for English, "fr" for French
+:language: en
+:comment: ### Document status/stage; mandatory. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
+:status: swg-draft
+:comment: ### Relevant committee; mandatory. The permitted types are: technical, planning, and strategic-member-advisory
+:committee: technical
+:comment: ### Internal reference number; mandatory
+:docnumber: 26-008
+:comment: ### Date on which the standard was updated; mandatory
+:received-date: 2026-06-18
+:comment: ### Date on which the standard was approved by the issuing authority; mandatory
+:issued-date: 2099-01-01
+:comment: ### Date on which the standard was published; mandatory
+:published-date: 2099-01-01
+:comment: ### External link referencing the document; optional. If not provided, a default value is created following this structure: "http://www.opengis.net/doc/{abbrevation of doctype}/{abbrev}/{version}",
+:external-id: http://www.opengis.net/doc/IS/indoorsql/1.0
+:comment: ### Author one
+:fullname: Sisi Zlatanova
+:affiliation: The University of New South Wales
+:comment: ### Author two
+:fullname_2: Zhiyong Wang
+:affiliation_2: SpatialAlgebra
+:comment: ### Author three
+:fullname_3: Taehoon Kim
+:affiliation_3: National Institute of Advanced Industrial Science and Technology
+:comment: ### Author four
+:fullname_4: Abdoulaye Diakite
+:affiliation_4: CityGeometrix
+:comment: ### Author five
+:fullname_5: Ki-Joune Li
+:affiliation_5: Pusan National University
+:comment: ### Role of the authors; mandatory
+:role: editor
+:comment: ### Comma delimited keywords; mandatory
+:keywords: OGCDoc, OGC documents, indoor, navigation, IndoorGML, SQL, PostgreSQL, PostGIS
+:comment: ### Semicolon-delimited list of the submitting organizations; mandatory
+:submitting-organizations: The University of New South Wales; SpatialAlgebra; Pusan National University; CityGeometrix; National Institute of Advanced Industrial Science and Technology;
+:comment: ### Metanorma flavor; mandatory
+:mn-document-class: ogc
+:comment: ### Desired output formats; mandatory
+:mn-output-extensions: xml,html,doc,pdf,rxl
+:comment: ### Enable local relaton cache for quick inclusion of prefetched references; optional. For further information, visit: https://www.metanorma.org/author/ref/document-attributes/#caches, https://www.metanorma.org/author/topics/building/reference-lookup/#lookup-result-caching
+:local-cache-only:
+:comment: ### URI to which the PDF version of this standard is published; optional
+:pdf-uri: ./document.pdf
+:comment: ### URI to which the XML version of this standard is published; optional
+:xml-uri: ./document.xml
+:comment: ### URI to which the DOC version of this standard is published; optional
+:doc-uri: ./document.doc
+:comment: ### Directory name used as prefix for the location of image files; optional
+:imagesdir: images
+:comment: ### Enable rendering of AsciiMath, MathML, and LaTeX ("latexmath" needs to be indicated in the code to use LaTeX, or set ":stem: latexmath" to interpret by default); optional
+:stem:
+
+
+// Clauses
+
+.Preface
+
+In order to achieve consensus on the modeling indoor spaces and their neighborhood relationships to support indoor location-based services, a UML Conceptual Model, IndoorGML 2.0 Part 1, was approved as an OGC Standard (<<ogc22-045r5>>) in June, 2025.
+This model covers geometric and semantic properties of indoor spaces relevant for indoor navigation.
+This IndoorGML 2.0 Part 2c: SQL Encoding Standard defines how those concepts should be realized using a relational database schema.
+The SQL encoding of IndoorGML 2.0 is intended for software developers, data providers, standards implementers, and service providers who need a persistent, queryable, and interoperable representation of IndoorGML datasets in SQL databases.
+
+[abstract]
+== Abstract
+
+The IndoorGML 2.0 Part 2c – SQL Encoding Standard presents the implementation-dependent Structured Query Language (SQL) encoding of the concepts defined by the IndoorGML 2.0 Part 1 – Conceptual Model Standard (<<ogc22-045r5>>).
+The SQL Encoding is compliant with SQL as specified by <<iso9075,ISO/IEC 9075>> and is implemented using PostgreSQL as the reference database management system.
+The SQL encoding of IndoorGML 2.0 defines a concrete implementation schema for representing indoor spatial information, including primal space, dual space, thematic layers, interlayer connections, and navigation-related indoor features.
+This encoding can be used to store and exchange 2D and/or 3D indoor space and indoor navigation network models in relational databases as data sets or via web services.
+
+This Part 2c of the Standard defines how the concepts developed in Part 1 are realized using SQL table definitions.
+The SQL encoding represents a mapping of the Conceptual Model derived from the UML model using Enterprise Architecture tooling, with subsequent corrections to identifier types, relationships, and missing properties.
+Geometry values are stored in PostGIS `geometry` columns.
+Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into the implementation details documented in this standard.
+
+|===
+|Conceptual Model       |Section            |SQL Schema
+
+|IndoorGML Core         |<<section-indoorsql-core>>
+|<<annex_indoorsql_core_schema>>
+|Navigation Extension   |<<section-indoorsql-navi>>
+|<<annex_indoorsql_navi_schema>>
+|===
+
+[.preface]
+== Security Considerations
+
+No security considerations have been made for this Standard.
+
+[.preface]
+== Submitters
+All questions regarding this submission should be directed to the editor or the submitters:
+
+|===
+|Name |Affiliation |OGC member
+
+|Sisi Zlatanova         |The University of New South Wales  |Yes
+|Zhiyong Wang           |SpatialAlgebra  |Yes
+|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |Yes
+|Abdoulaye Diakite      |CityGeometrix  |Yes
+|Ki-Joune Li            |Pusan National University  |Yes
+|===
+
+== Scope
+
+The OGC IndoorGML 2.0 Part 2c – SQL Encoding Standard defines a SQL encoding for IndoorGML 2.0 Part 1 - Conceptual Model.
+
+This Standard specifies:
+
+- SQL table definitions for IndoorGML 2.0 core module;
+- SQL table definitions for IndoorGML 2.0 navigation module;
+- the geometry storage rules based on PostGIS `geometry` columns; and
+- a statement to which SQL encoding conformance classes an IndoorGML 2.0 implementation conforms to.
+
+The SQL encoding of IndoorGML 2.0 is an implementation encoding of IndoorGML 2.0 Part 1. Therefore, database instances of the SQL encoding shall be interpreted according to the semantics defined in the IndoorGML 2.0 conceptual model.
+
+== Conformance
+This standard defines an implementation specification which specifies how the IndoorGML 2.0 Conceptual Model should be implemented using Structured Query Language (SQL).
+The Standardization Target for this standard is:
+
+* Implementations of the IndoorGML 2.0 Conceptual Model using SQL encodings.
+
+Conformance with this standard shall be checked using all the relevant tests specified in Annex A (normative) of this document. The framework, concepts, and methodology for testing, and the criteria to be achieved to claim conformance are specified in the OGC Compliance Testing Policies and Procedures and the OGC Compliance Testing web site.
+
+In order to conform to this OGC® interface standard, a software implementation shall choose to implement:
+
+* Any one of the conformance levels specified in Annex A (normative).
+
+All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
+
+|===
+|Conformance class      |URI
+
+|IndoorGML Core         |http://www.opengis.net/spec/indoorgml-2/2.0/sql/conf/core
+|Navigation Extension   |http://www.opengis.net/spec/indoorgml-2/2.0/sql/conf/navi
+|===
+
+[bibliography]
+== References
+
+The following normative documents contain provisions that, through reference in this text, constitute provisions of this document. For dated references, subsequent amendments to, or revisions of, any of these publications do not apply. For undated references, the latest edition of the normative document referred to applies.
+
+* [[[ogc22-045r5,OGC 22-045r5]]], OGC IndoorGML 2.0 Part 1 – Conceptual Model,
+
+* [[[ogc21-045r1,OGC 21-045r1]]], OGC Features and Geometries JSON - Part 1: Core,
+
+* [[[iso19101-1,ISO 19101-1]]], Geographic information — Reference model Part 1: Fundamentals
+
+* [[[iso19107,ISO 19107]]], Geographic information — Spatial schema
+
+* [[[iso9075,ISO/IEC 9075]]], Information technology — Database languages — SQL
+
+* [[[postgis,PostGIS]]], PostGIS Spatial and Geographic Objects for PostgreSQL, link:++https://postgis.net/++[]
+
+== Terms and Definitions
+
+[conceptual model]
+=== conceptual model
+
+model that defines concepts of a universe of discourse
+
+[.source]
+<<iso19101-1>>
+
+=== conceptual schema
+
+formal description of a <<conceptual model,conceptual model>>
+
+[.source]
+<<iso19101-1>>
+
+=== feature
+
+abstraction of real world phenomena
+
+NOTE: Features are objects that have an identity that allows for distinguishing features from each other. Features can have spatial and non-spatial properties that describe the features in more detail. Spatial properties are properties that have a geometry from <<iso19107>> as data type.
+
+NOTE: Features are denoted by the stereotype «FeatureType» in the IndoorGML 2.0 Conceptual Model.
+
+[.source]
+<<iso19101-1>>
+
+=== relational table
+
+persistent data structure in a relational database that stores records of a single feature type or association
+
+NOTE: In the SQL encoding of IndoorGML 2.0, each IndoorGML 2.0 feature class is mapped to one or more relational tables.
+
+== Conventions
+
+=== Symbols (and abbreviated terms)
+
+The following symbols and abbreviated terms are used in this standard.
+Symbols and abbreviated terms defined in <<ogc22-045r5,IndoorGML 2.0 Part 1>> also apply to this document.
+
+[[symbols]]
+.Symbols and abbreviated terms
+[]
+|===
+h| *Abbreviation* h| *Word or Phrase*
+| DDL        | Data Definition Language
+| EA         | Enterprise Architecture
+| IndoorJSON | JSON encoding of IndoorGML concepts
+| JSON       | JavaScript Object Notation
+| PostgreSQL | Open-source relational database management system
+| PostGIS    | Spatial database extension for PostgreSQL
+| SQL        | Structured Query Language
+|===
+
+=== Identifiers
+
+The normative provisions in this standard are denoted by the URI
+
+`http://www.opengis.net/spec/indoorgml-2/2.0/sql`
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
+
+=== Use of SQL terminology
+
+The following terms are used as specified in <<iso9075,SQL>>. In particular:
+
+* "table" refers to a named relation in the database schema;
+* "column" refers to an attribute of a table; and
+* "row" refers to a single record in a table.
+
+Feature identifiers are stored as string values in `varchar` columns rather than integer auto-increment keys, in order to preserve cross-references between IndoorGML objects and to align with IndoorJSON identifier conventions.
+
+=== Geometry storage
+
+Geometry values are stored as PostGIS `geometry` columns (for example, `Cellspacegeom`, `Cellboundarygeom`, and `Geometry` on `Node` and `Edge`).
+The reference implementation requires the PostGIS extension (<<postgis,PostGIS>>).
+
+=== Code list storage
+
+IndoorGML code list types (for example, `ThemeLayerValue`, `TopoExpressionValue`, `LocomotionAccessType`) are represented as PostgreSQL `ENUM` types whose labels match the UML type names and enumeration literals defined in the IndoorGML 2.0 XML schema.
+
+=== Graph and route associations
+
+Graph adjacency in the dual space layer is stored as `jsonb` identifier arrays on the owning table:
+
+* `Node.connects` stores the identifiers of connected `Edge` rows;
+* `Edge.connects` stores the identifiers of the two connected `Node` rows.
+
+A `Route` represents an ordered navigation path through the dual-space graph.
+The ordered `routeNode` and `routeEdge` members are stored as `jsonb` arrays on the `Route` table rather than in separate junction tables.
+This encoding preserves the sequence of nodes and edges in a single row and simplifies maintenance of route order during import, update, and export.
+Array position expresses traversal order; the first element is the first node or edge in the route, the second element is the next, and so on.
+
+Example:
+
+[source,sql]
+----
+-- routeNode and routeEdge preserve traversal order in array position
+INSERT INTO "Route" ("RouteID", "routeNode", "routeEdge")
+VALUES (
+    'R1',
+    '["N1", "N2", "N3"]'::jsonb,
+    '["E1", "E2"]'::jsonb
+);
+----
+=== Table and column naming
+
+SQL table and column names use identifiers enclosed in double quotes, following the spellings produced from Enterprise Architecture tooling and aligned with UML type names (for example, `Indoorfeatures`, `Thematiclayer`, `Cellspace`, `Navigablespace`).
+
+== Overview of the SQL Encoding
+
+The SQL encoding of IndoorGML 2.0 implements the conceptual classes of <<ogc22-045r5,IndoorGML 2.0 Part 1>> as relational database tables.
+The conceptual model remains normative for semantics, while this document defines the SQL representation.
+
+=== Design Principle
+
+The SQL encoding is based on the following encoding principles.
+
+==== Conceptual model preservation
+
+The SQL encoding of the IndoorGML core module preserves the IndoorGML 2.0 core conceptual model structure, as shown in <<fig-core-indoorgml>>.
+
+[[fig-core-indoorgml]]
+.IndoorGML 2.0 core module structure
+image::../figures/core-module-uml.png[align="center"]
+
+Each feature class is mapped to one or more relational tables, and associations are represented using foreign key columns or junction tables.
+For example, the `Indoorfeatures` table is related to `Thematiclayer` rows through the `IndoorfeaturesID` foreign key, and `Interlayerconnection` rows are linked to `Thematiclayer`, `Node`, and `Cellspace` rows through the `InterLayerConnection_ThematicLayer`, `InterLayerConnection_Node`, and `InterLayerConnection_CellSpace` junction tables.
+
+The SQL encoding of the IndoorGML navigation module preserves the IndoorGML 2.0 navigation conceptual model structure, as shown in <<fig-navi-indoorgml>>.
+
+[[fig-navi-indoorgml]]
+.IndoorGML 2.0 navigation module structure
+image::../figures/navi-module-uml.png[align="center"]
+
+Navigation feature classes extend core tables using table inheritance patterns implemented through foreign key references to `Cellspace` and `Cellboundary`.
+
+==== UML-to-SQL generation workflow
+
+The SQL encoding schema is derived from the IndoorGML 2.0 UML model and is designed on the basis of PostgreSQL with PostGIS as the reference database platform.
+SQL `CREATE TABLE` statements are first generated from the UML model using Enterprise Architecture tooling, and the resulting DDL is then corrected to align with the conceptual model.
+Typical corrections include converting identifier columns from integer to string (`varchar`), replacing EA code list tables with PostgreSQL `ENUM` types named after the UML code list types, storing `connects` as `jsonb` arrays on `Node` and `Edge`, storing `routeNode` and `routeEdge` as ordered `jsonb` arrays on `Route` to preserve traversal sequence, adding missing properties (for example, the `layers` member on `Indoorfeatures`), and updating relationship cardinalities and junction tables.
+[[section-indoorsql-core]]
+== SQL Encoding of the Core Module
+
+[requirements_class]
+====
+[%metadata]
+identifier:: link:++http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/core++[]
+subject:: Implementation Specification
+inherit:: link:++http://www.opengis.net/spec/indoorgml/2.0/req++[]
+inherit:: link:++http://www.opengis.net/spec/json-fg-1/1.0/req/core++[]
+inherit:: link:++http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra++[]
+requirement:: /req/core/indoorsql
+requirement:: /req/core/indoorfeature
+requirement:: /req/core/thematiclayer
+requirement:: /req/core/primalspacelayer
+requirement:: /req/core/cellspace
+requirement:: /req/core/cellboundary
+requirement:: /req/core/dualspacelayer
+requirement:: /req/core/node
+requirement:: /req/core/edge
+requirement:: /req/core/interlayerconnection
+====
+
+Each feature table of the SQL encoding represents one feature class of the IndoorGML 2.0 conceptual model.
+
+Every feature table:
+
+* *must* have a primary key column storing a string identifier that serves as a unique identifier for the feature and can be used to represent cross-references between objects in the SQL encoding.
+
+[[req-indoorsql]]
+[requirement]
+.Requirement for SQL encoding feature tables
+====
+[%metadata]
+identifier:: /req/core/indoorsql
+part:: Each feature table of the SQL encoding SHALL contain a string primary key column for the feature identifier.
+====
+
+[[section-core-enums]]
+=== Core code list types
+
+The following PostgreSQL `ENUM` types represent IndoorGML core code lists:
+
+* `ThemeLayerValue` for the `Thematiclayer.Theme` column;
+* `TopoExpressionValue` for the `Interlayerconnection.Typeoftopoexpression` column.
+
+[[core-enums-schema]]
+.A SQL schema of the core code list types:
+[source,sql]
+----
+CREATE TYPE "ThemeLayerValue" AS ENUM (
+    'Virtual',
+    'Physical',
+    'Tags',
+    'Unknown'
+);
+
+CREATE TYPE "TopoExpressionValue" AS ENUM (
+    'Contains',
+    'Overlaps',
+    'Equals',
+    'Within',
+    'Crosses',
+    'Other'
+);
+----
+
+[[section-indoorfeatures]]
+=== IndoorFeatures
+
+The `Indoorfeatures` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core++[IndoorFeature], the container for the indoor dataset.
+It aggregates one or more thematic layers and may include inter-layer connections.
+
+The `Indoorfeatures` table shall contain:
+
+* `IndoorfeaturesID` as the primary key
+* optionally, `layers` as a reference to associated thematic layers
+
+NOTE: The `layers` column was added during schema correction because it was not included in the SQL generated from Enterprise Architecture tooling.
+
+[[indoorfeature-schema]]
+.A SQL schema of the IndoorFeatures table:
+[source,sql]
+----
+CREATE TABLE "Indoorfeatures"
+(
+    "IndoorfeaturesID" varchar(100) NOT NULL,
+    "layers" varchar(100) NULL,
+    CONSTRAINT "PK_Indoorfeatures" PRIMARY KEY ("IndoorfeaturesID")
+);
+----
+
+[[indoorfeature-example]]
+.An example INSERT statement for the IndoorFeatures table:
+[source,sql]
+----
+INSERT INTO "Indoorfeatures" ("IndoorfeaturesID", "layers")
+VALUES ('IF-1', 'TL-1');
+
+-- Additional thematic layers and inter-layer connections may be inserted here.
+----
+
+[[req-indoorfeatures]]
+[requirement]
+.IndoorFeatures schema
+====
+[%metadata]
+identifier:: /req/core/indoorfeature
+part:: An `Indoorfeatures` table SHALL be related to at least one <<section-thematiclayer,`Thematiclayer`>> row through a foreign key.
+====
+
+[[section-thematiclayer]]
+=== ThematicLayer
+
+The `Thematiclayer` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-tehmaticlayer++[ThematicLayer], which represents one contextual decomposition of indoor space.
+
+The `Thematiclayer` table shall contain:
+
+* `ThematiclayerID` as the primary key
+* `IndoorfeaturesID` as a foreign key to `Indoorfeatures`
+* `Semanticextension` indicates whether there is an extension module with additional semantic information
+* `Theme` of type `ThemeLayerValue`, with values including "Virtual", "Physical", "Tags", and "Unknown"
+
+[[thematiclayer-schema]]
+.A SQL schema of the ThematicLayer table:
+[source,sql]
+----
+CREATE TABLE "Thematiclayer"
+(
+    "Semanticextension" boolean NULL,
+    "Theme" "ThemeLayerValue" NULL,
+    "ThematiclayerID" varchar(100) NOT NULL,
+    "IndoorfeaturesID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Thematiclayer" PRIMARY KEY ("ThematiclayerID"),
+    CONSTRAINT "FK_ThematicLayer_layers"
+        FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID")
+);
+
+COMMENT ON TABLE "Thematiclayer"
+    IS 'A layer of specific theme aggregating a primal and/or a dual space of a given environment.';
+
+COMMENT ON COLUMN "Thematiclayer"."Semanticextension"
+    IS 'Indicates whether semantic information is associated (true) or not (false) to the primal space of the thematic layer.';
+
+COMMENT ON COLUMN "Thematiclayer"."Theme"
+    IS 'Determines the theme of the layer (e.g topographic, logical, etc.).';
+----
+
+[[req-thematiclayer]]
+[requirement]
+.ThematicLayer schema
+====
+[%metadata]
+identifier:: /req/core/thematiclayer
+part:: A `Thematiclayer` table SHALL declare whether there is an extension module with additional semantic information using the `Semanticextension` column.
+part:: A `Thematiclayer` table SHALL determine what type of model representation can be expected using the `Theme` column.
+part:: The `Theme` value SHALL be one of "Virtual", "Physical", "Tags", and "Unknown".
+====
+
+[[section-primalspacelayer]]
+=== PrimalSpaceLayer
+
+The `Primalspacelayer` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-primalspacelayer++[PrimalSpaceLayer], which contains spatial objects representing indoor subdivisions.
+
+The `Primalspacelayer` table shall contain:
+
+* `PrimalspacelayerID` as the primary key
+* `ThematiclayerID` as a foreign key to `Thematiclayer`
+* optionally, `Creationdate`
+* optionally, `Terminationdate`
+
+[[primalspacelayer-schema]]
+.A SQL schema of the PrimalSpaceLayer table:
+[source,sql]
+----
+CREATE TABLE "Primalspacelayer"
+(
+    "Creationdate" timestamp without time zone NULL,
+    "Terminationdate" timestamp without time zone NULL,
+    "PrimalspacelayerID" varchar(100) NOT NULL,
+    "ThematiclayerID" varchar(100) NULL,
+    CONSTRAINT "PK_Primalspacelayer" PRIMARY KEY ("PrimalspacelayerID"),
+    CONSTRAINT "FK_PrimalSpaceLayer_primalSpace"
+        FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID")
+);
+----
+
+[[req-primalspacelayer]]
+[requirement]
+.PrimalSpaceLayer schema
+====
+[%metadata]
+identifier:: /req/core/primalspacelayer
+part:: A `Primalspacelayer` table SHALL be related to one or more <<section-cellspace,CellSpace>> rows.
+====
+
+[[section-cellspace]]
+=== CellSpace
+
+The `Cellspace` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellspace++[CellSpace], which represents a unit of indoor space.
+
+The `Cellspace` table shall contain:
+
+* `CellspaceID` as the primary key
+* `PrimalspacelayerID` as a foreign key to `Primalspacelayer`
+* `Poi` is a flag that specifies whether this cell space is a point of interest
+* optionally, `Cellspacename`
+* optionally, `Level`
+* optionally, `duality` referencing the `NodeID` of the dual node
+* optionally, `Cellspacegeom` as a PostGIS `geometry` value
+* optionally, `Externalreference` as a serialized external reference object
+
+`Cellboundary` rows reference `Cellspace` rows through the `bounds` foreign key column.
+
+[[cellspace-schema]]
+.A SQL schema of the CellSpace table:
+[source,sql]
+----
+CREATE TABLE "Cellspace"
+(
+    "Cellspacegeom" geometry NULL,
+    "Cellspacename" varchar(100) NULL,
+    "Externalreference" varchar(100) NULL,
+    "Level" varchar(100) NULL,
+    "Poi" boolean NULL,
+    "CellspaceID" varchar(100) NOT NULL,
+    "PrimalspacelayerID" varchar(100) NOT NULL,
+    "duality" varchar(100) NULL,
+    CONSTRAINT "PK_Cellspace" PRIMARY KEY ("CellspaceID"),
+    CONSTRAINT "FK_CellSpace_cellSpaceMember"
+        FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID")
+);
+----
+
+[[cellspace-example]]
+.An example query returning CellSpace records:
+[source,sql]
+----
+SELECT
+    "CellspaceID"    AS id,
+    'CellSpace'      AS "featureType",
+    "Poi"            AS poi,
+    "Cellspacegeom"  AS "cellSpaceGeom",
+    "Cellspacename"  AS name,
+    "duality"        AS duality,
+    "Level"          AS level
+FROM "Cellspace"
+ORDER BY "CellspaceID";
+----
+
+[[req-cellspace]]
+[requirement]
+.CellSpace schema
+====
+[%metadata]
+identifier:: /req/core/cellspace
+part:: A `Cellspace` table SHALL declare whether it is a point of interest space using the `Poi` column.
+====
+
+[[section-cellboundary]]
+=== CellBoundary
+
+The `Cellboundary` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellboundary++[CellBoundary], a boundary of a CellSpace.
+
+The `Cellboundary` table shall contain:
+
+* `CellboundaryID` as the primary key
+* `PrimalspacelayerID` as a foreign key to `Primalspacelayer`
+* `Isvirtual` indicating whether the boundary is virtual or physical
+* optionally, `bounds` referencing the `CellspaceID` of a bounded cell space
+* optionally, `Cellboundarygeom` as a PostGIS `geometry` value
+* optionally, `Externalreference`
+
+[[cellboundary-schema]]
+.A SQL schema of the CellBoundary table:
+[source,sql]
+----
+CREATE TABLE "Cellboundary"
+(
+    "Cellboundarygeom" geometry NULL,
+    "Externalreference" varchar(100) NULL,
+    "Isvirtual" boolean NULL,
+    "CellboundaryID" varchar(100) NOT NULL,
+    bounds varchar(100) NULL,
+    "PrimalspacelayerID" varchar(100) NULL,
+    CONSTRAINT "PK_Cellboundary" PRIMARY KEY ("CellboundaryID"),
+    CONSTRAINT "FK_CellBoundary_boundedBy"
+        FOREIGN KEY (bounds) REFERENCES "Cellspace" ("CellspaceID"),
+    CONSTRAINT "FK_CellBoundary_cellBoundaryMember"
+        FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID")
+);
+----
+
+[[req-cellboundary]]
+[requirement]
+.CellBoundary schema
+====
+[%metadata]
+identifier:: /req/core/cellboundary
+part:: A `Cellboundary` table SHALL specify whether it is virtual using the `Isvirtual` column.
+====
+
+[[section-dualspacelayer]]
+=== DualSpaceLayer
+
+The `Dualspacelayer` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-dualspacelayer++[DualSpaceLayer], representing the graph structure corresponding to the primal space layer.
+
+The `Dualspacelayer` table shall contain:
+
+* `DualspacelayerID` as the primary key
+* `ThematiclayerID` as a foreign key to `Thematiclayer`
+* `Islogical` indicating whether the graph is geometric or logical
+* `Isdirected` specifying whether the graph is directed
+* optionally, `Creationdate`
+* optionally, `Terminationdate`
+
+[[dualspacelayer-schema]]
+.A SQL schema of the DualSpaceLayer table:
+[source,sql]
+----
+CREATE TABLE "Dualspacelayer"
+(
+    "Creationdate" timestamp without time zone NULL,
+    "Terminationdate" timestamp without time zone NULL,
+    "Islogical" boolean NULL,
+    "Isdirected" boolean NULL,
+    "DualspacelayerID" varchar(100) NOT NULL,
+    "ThematiclayerID" varchar(100) NULL,
+    CONSTRAINT "PK_Dualspacelayer" PRIMARY KEY ("DualspacelayerID"),
+    CONSTRAINT "FK_DualSpaceLayer_dualSpace"
+        FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID")
+);
+----
+
+[[req-dualspacelayer]]
+[requirement]
+.DualSpaceLayer schema
+====
+[%metadata]
+identifier:: /req/core/dualspacelayer
+part:: A `Dualspacelayer` table SHALL specify whether the provided graph is geometric or logical using the `Islogical` column.
+part:: A `Dualspacelayer` table SHALL specify whether the provided graph is directed using the `Isdirected` column.
+part:: A `Dualspacelayer` table SHALL be related to one or more <<section-node,`Node`>> rows.
+====
+
+[[section-node]]
+=== Node
+
+The `Node` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-node++[Node], a state or graph vertex in the dual space layer.
+
+The `Node` table shall contain:
+
+* `NodeID` as the primary key
+* `DualspacelayerID` as a foreign key to `Dualspacelayer`
+* `duality` referencing the `CellspaceID` of the corresponding cell space
+* optionally, `Geometry` as a PostGIS `geometry` value (typically `Point`)
+* optionally, `connects` as a `jsonb` array of connected `EdgeID` values
+
+[[node-schema]]
+.A SQL schema of the Node table:
+[source,sql]
+----
+CREATE TABLE "Node"
+(
+    "Geometry" geometry NULL,
+    "NodeID" varchar(100) NOT NULL,
+    "duality" varchar(100) NULL,
+    "DualspacelayerID" varchar(100) NOT NULL,
+    connects jsonb NULL,
+    CONSTRAINT "PK_Node" PRIMARY KEY ("NodeID"),
+    CONSTRAINT "FK_Node_duality"
+        FOREIGN KEY ("duality") REFERENCES "Cellspace" ("CellspaceID"),
+    CONSTRAINT "FK_Node_Dualspacelayer"
+        FOREIGN KEY ("DualspacelayerID") REFERENCES "Dualspacelayer" ("DualspacelayerID")
+);
+
+ALTER TABLE "Cellspace" ADD CONSTRAINT "FK_Cellspace_duality"
+    FOREIGN KEY ("duality") REFERENCES "Node" ("NodeID");
+----
+
+[[node-example]]
+.An example query returning Node records:
+[source,sql]
+----
+SELECT
+    n."NodeID" AS id,
+    'Node' AS "featureType",
+    n."Geometry" AS geometry,
+    n."duality" AS duality,
+    n.connects AS connects
+FROM "Node" n
+ORDER BY n."NodeID";
+----
+
+[[req-node]]
+[requirement]
+.Node schema
+====
+[%metadata]
+identifier:: /req/core/node
+part:: A `Node` table SHALL contain a `duality` value referencing the `CellspaceID` of the corresponding <<section-cellspace,CellSpace>>.
+part:: A `Node` table SHALL store connected edge identifiers in the `connects` column.
+====
+
+[[section-edge]]
+=== Edge
+
+The `Edge` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-edge++[Edge], representing a relationship between two nodes.
+
+The `Edge` table shall contain:
+
+* `EdgeID` as the primary key
+* `DualspacelayerID` as a foreign key to `Dualspacelayer`
+* `Weight` for use in graph-based applications
+* optionally, `duality` referencing the `CellboundaryID` of the corresponding cell boundary
+* optionally, `Geometry` as a PostGIS `geometry` value (typically `LineString`)
+* optionally, `connects` as a `jsonb` array of the two connected `NodeID` values
+
+[[edge-schema]]
+.A SQL schema of the Edge table:
+[source,sql]
+----
+CREATE TABLE "Edge"
+(
+    "Geometry" geometry NULL,
+    "Weight" real NULL,
+    "EdgeID" varchar(100) NOT NULL,
+    "duality" varchar(100) NULL,
+    "DualspacelayerID" varchar(100) NULL,
+    connects jsonb NULL,
+    CONSTRAINT "PK_Edge" PRIMARY KEY ("EdgeID"),
+    CONSTRAINT "FK_Edge_duality"
+        FOREIGN KEY ("duality") REFERENCES "Cellboundary" ("CellboundaryID"),
+    CONSTRAINT "FK_Edge_Dualspacelayer"
+        FOREIGN KEY ("DualspacelayerID") REFERENCES "Dualspacelayer" ("DualspacelayerID")
+);
+----
+
+[[req-edge]]
+[requirement]
+.Edge schema
+====
+[%metadata]
+identifier:: /req/core/edge
+part:: An `Edge` table SHALL reference connected <<section-node,Nodes>> using the `connects` column.
+part:: An `Edge` table SHALL contain a `Weight` column.
+====
+
+[[section-interlayerconnection]]
+=== InterLayerConnection
+
+The `Interlayerconnection` table is an instance of link:++https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-interlayerconnection++[InterLayerConnection], representing a relationship between objects in different thematic layers.
+
+The `Interlayerconnection` table shall contain:
+
+* `InterlayerconnectionID` as the primary key
+* `IndoorfeaturesID` as a foreign key to `Indoorfeatures`
+* `Typeoftopoexpression` of type `TopoExpressionValue`, with values including "Contains", "Overlaps", "Equals", "Within", "Crosses", and "Other"
+* optionally, `Comment`
+
+Associated junction tables `InterLayerConnection_ThematicLayer`, `InterLayerConnection_Node`, and `InterLayerConnection_CellSpace` store references to thematic layers, nodes, and cell spaces respectively.
+
+[[interlayerconnection-schema]]
+.A SQL schema of the InterLayerConnection table:
+[source,sql]
+----
+CREATE TABLE "Interlayerconnection"
+(
+    "Typeoftopoexpression" "TopoExpressionValue" NULL,
+    "Comment" text NULL,
+    "InterlayerconnectionID" varchar(100) NOT NULL,
+    "IndoorfeaturesID" varchar(100) NULL,
+    CONSTRAINT "PK_Interlayerconnection" PRIMARY KEY ("InterlayerconnectionID"),
+    CONSTRAINT "FK_InterLayerConnection_layerConnections"
+        FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID")
+);
+
+COMMENT ON TABLE "Interlayerconnection"
+    IS 'Describes the connection between two thematic layers. ';
+
+COMMENT ON COLUMN "Interlayerconnection"."Typeoftopoexpression"
+    IS 'Describes the topological relationship between two layers (e.g. overlaps, contains, etc.).';
+----
+
+[[interlayerconnection-cellspace-schema]]
+.A SQL schema of the InterLayerConnection_CellSpace junction table:
+[source,sql]
+----
+CREATE TABLE "InterLayerConnection_CellSpace"
+(
+    "connectedCells" varchar(100) NULL,
+    "InterlayerconnectionID" varchar(100) NULL,
+    CONSTRAINT "FK_InterLayerConnection_CellSpace_connectedCells"
+        FOREIGN KEY ("connectedCells") REFERENCES "Cellspace" ("CellspaceID"),
+    CONSTRAINT "FK_InterLayerConnection_CellSpace_InterLayerConnection"
+        FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID")
+);
+----
+
+[[interlayerconnection-node-schema]]
+.A SQL schema of the InterLayerConnection_Node junction table:
+[source,sql]
+----
+CREATE TABLE "InterLayerConnection_Node"
+(
+    "connectedNodes" varchar(100) NULL,
+    "InterlayerconnectionID" varchar(100) NULL,
+    CONSTRAINT "FK_InterLayerConnection_Node_connectedNodes"
+        FOREIGN KEY ("connectedNodes") REFERENCES "Node" ("NodeID"),
+    CONSTRAINT "FK_InterLayerConnection_Node_InterLayerConnection"
+        FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID")
+);
+----
+
+[[interlayerconnection-thematiclayer-schema]]
+.A SQL schema of the InterLayerConnection_ThematicLayer junction table:
+[source,sql]
+----
+CREATE TABLE "InterLayerConnection_ThematicLayer"
+(
+    "connectedLayers" varchar(100) NULL,
+    "InterlayerconnectionID" varchar(100) NULL,
+    CONSTRAINT "FK_InterLayerConnection_ThematicLayer_connectedLayers"
+        FOREIGN KEY ("connectedLayers") REFERENCES "Thematiclayer" ("ThematiclayerID"),
+    CONSTRAINT "FK_InterLayerConnection_ThematicLayer_InterLayerConnection"
+        FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID")
+);
+----
+
+[[req-interlayerconnection]]
+[requirement]
+.InterLayerConnection schema
+====
+[%metadata]
+identifier:: /req/core/interlayerconnection
+part:: An `Interlayerconnection` table SHALL reference <<section-thematiclayer,ThematicLayer>> rows through the `InterLayerConnection_ThematicLayer` junction table.
+====
+
+[[section-externalreference]]
+=== ExternalReferenceType
+
+The `Externalreferencetype` and `Externalobjectreferencetype` tables represent components of the `ExternalReference` complex type.
+These are not feature classes of IndoorGML 2.0.
+
+[[externalreferencetype-schema]]
+.A SQL schema of the ExternalReference tables:
+[source,sql]
+----
+CREATE TABLE "Externalobjectreferencetype"
+(
+    "Name" varchar(100) NULL,
+    "Uri" varchar(100) NULL,
+    "ExternalobjectreferencetypeID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Externalobjectreferencetype" PRIMARY KEY ("ExternalobjectreferencetypeID")
+);
+
+CREATE TABLE "Externalreferencetype"
+(
+    "Externalobject" varchar(100) NULL,
+    "Informationsystem" varchar(100) NULL,
+    "ExternalreferencetypeID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Externalreferencetype" PRIMARY KEY ("ExternalreferencetypeID")
+);
+----
+[[section-indoorsql-navi]]
+== SQL Encoding of the Navigation Module
+
+[requirements_class]
+====
+[%metadata]
+identifier:: link:++http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/navi++[]
+subject:: Implementation Specification
+inherit:: link:++http://www.opengis.net/spec/indoorgml/2.0/req++[]
+inherit:: link:++http://www.opengis.net/spec/json-fg-1/1.0/req/core++[]
+inherit:: link:++http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra++[]
+requirement:: /req/navi/navigablespace
+requirement:: /req/navi/generalspace
+requirement:: /req/navi/transferspace
+requirement:: /req/navi/objectspace
+requirement:: /req/navi/navigableboundary
+requirement:: /req/navi/route
+====
+
+The navigation SQL encoding schema extends the core SQL encoding schema with tables for navigation-related feature classes.
+
+NOTE: Navigation feature classes have not yet been validated with actual datasets in the preliminary implementation.
+
+[[section-navi-enums]]
+=== Navigation code list types
+
+The following PostgreSQL `ENUM` types represent IndoorGML navigation code lists:
+
+* `LocomotionAccessType` for `Navigablespace.Locomotiontype`;
+* `GeneralSpaceFunctionType` for `Generalspace.Function`;
+* `TransferSpaceFunctionType` for `Transferspace.Function`;
+* `TransferSpaceCategoryType` for `Transferspace.Type`;
+* `NavigableBoundaryFunctionType` for `Navigableboundary.Navigableboundaryfunction`.
+
+[[navi-enums-schema]]
+.A SQL schema of the navigation code list types:
+[source,sql]
+----
+CREATE TYPE "GeneralSpaceFunctionType" AS ENUM (
+    'Administration',
+    'Business, trade',
+    'Education, training',
+    'Recreation',
+    'Laboratory',
+    'Storage',
+    'Security'
+);
+
+CREATE TYPE "LocomotionAccessType" AS ENUM (
+    'Walking',
+    'Flying',
+    'Rolling',
+    'Unspecified'
+);
+
+CREATE TYPE "NavigableBoundaryFunctionType" AS ENUM (
+    'AnchorBoundary',
+    'ConnectionBoundary'
+);
+
+CREATE TYPE "TransferSpaceFunctionType" AS ENUM (
+    'ConnectionSpace',
+    'AnchorSpace'
+);
+
+CREATE TYPE "TransferSpaceCategoryType" AS ENUM (
+    'Door',
+    'Window'
+);
+----
+
+[[section-navigablespace]]
+=== NavigableSpace
+
+The `Navigablespace` table extends `Cellspace` with navigation-specific attributes.
+
+The `Navigablespace` table shall contain:
+
+* `NavigablespaceID` as a primary key and foreign key to `Cellspace`
+* `Locomotiontype` of type `LocomotionAccessType`, with values including "Walking", "Flying", "Rolling", and "Unspecified"
+
+[[navigablespace-schema]]
+.A SQL schema of the NavigableSpace table:
+[source,sql]
+----
+CREATE TABLE "Navigablespace"
+(
+    "Locomotiontype" "LocomotionAccessType" NULL,
+    "NavigablespaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Navigablespace" PRIMARY KEY ("NavigablespaceID"),
+    CONSTRAINT "FK_NavigableSpace_CellSpace"
+        FOREIGN KEY ("NavigablespaceID") REFERENCES "Cellspace" ("CellspaceID")
+);
+----
+
+[[req-navigablespace]]
+[requirement]
+.NavigableSpace schema
+====
+[%metadata]
+identifier:: /req/navi/navigablespace
+part:: A `Navigablespace` table SHALL reference a <<section-cellspace,CellSpace>> row and SHALL contain a `Locomotiontype` column.
+====
+
+[[section-generalspace]]
+=== GeneralSpace
+
+The `Generalspace` table extends `Navigablespace` with a function attribute.
+
+The `Generalspace` table shall contain:
+
+* `GeneralspaceID` as a primary key and foreign key to `Navigablespace`
+* `Function` of type `GeneralSpaceFunctionType`, with values including "Administration", "Business, trade", "Education, training", "Recreation", "Laboratory", "Storage", and "Security"
+
+[[generalspace-schema]]
+.A SQL schema of the GeneralSpace table:
+[source,sql]
+----
+CREATE TABLE "Generalspace"
+(
+    "Function" "GeneralSpaceFunctionType" NULL,
+    "GeneralspaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Generalspace" PRIMARY KEY ("GeneralspaceID"),
+    CONSTRAINT "FK_GeneralSpace_NavigableSpace"
+        FOREIGN KEY ("GeneralspaceID") REFERENCES "Navigablespace" ("NavigablespaceID")
+);
+----
+
+[[req-generalspace]]
+[requirement]
+.GeneralSpace schema
+====
+[%metadata]
+identifier:: /req/navi/generalspace
+part:: A `Generalspace` table SHALL contain a `Function` column.
+====
+
+[[section-transferspace]]
+=== TransferSpace
+
+The `Transferspace` table extends `Navigablespace` with transfer-specific attributes.
+
+The `Transferspace` table shall contain:
+
+* `TransferspaceID` as a primary key and foreign key to `Navigablespace`
+* `Type` of type `TransferSpaceCategoryType`, with values "Door" and "Window"
+* `Function` of type `TransferSpaceFunctionType`, with values "AnchorSpace" and "ConnectionSpace"
+
+[[transferspace-schema]]
+.A SQL schema of the TransferSpace table:
+[source,sql]
+----
+CREATE TABLE "Transferspace"
+(
+    "Function" "TransferSpaceFunctionType" NULL,
+    "Type" "TransferSpaceCategoryType" NULL,
+    "TransferspaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Transferspace" PRIMARY KEY ("TransferspaceID"),
+    CONSTRAINT "FK_TransferSpace_NavigableSpace"
+        FOREIGN KEY ("TransferspaceID") REFERENCES "Navigablespace" ("NavigablespaceID")
+);
+----
+
+[[req-transferspace]]
+[requirement]
+.TransferSpace schema
+====
+[%metadata]
+identifier:: /req/navi/transferspace
+part:: A `Transferspace` table SHALL contain `Type` and `Function` columns.
+====
+
+[[section-nonnavigablespace]]
+=== NonNavigableSpace
+
+The `Nonnavigablespace` table extends `Cellspace` for spaces that are not navigable.
+
+[[nonnavigablespace-schema]]
+.A SQL schema of the NonNavigableSpace table:
+[source,sql]
+----
+CREATE TABLE "Nonnavigablespace"
+(
+    "NonnavigablespaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Nonnavigablespace" PRIMARY KEY ("NonnavigablespaceID"),
+    CONSTRAINT "FK_NonNavigableSpace_CellSpace"
+        FOREIGN KEY ("NonnavigablespaceID") REFERENCES "Cellspace" ("CellspaceID")
+);
+----
+
+[[section-objectspace]]
+=== ObjectSpace
+
+The `Objectspace` table extends `Nonnavigablespace` with object-specific attributes.
+
+The `Objectspace` table shall contain:
+
+* `ObjectspaceID` as a primary key and foreign key to `Nonnavigablespace`
+* optionally, `Containedfeatures`
+* optionally, `Description`
+
+[[objectspace-schema]]
+.A SQL schema of the ObjectSpace table:
+[source,sql]
+----
+CREATE TABLE "Objectspace"
+(
+    "Description" text NULL,
+    "Containedfeatures" varchar(100) NULL,
+    "ObjectspaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Objectspace" PRIMARY KEY ("ObjectspaceID"),
+    CONSTRAINT "FK_ObjectSpace_NonNavigableSpace"
+        FOREIGN KEY ("ObjectspaceID") REFERENCES "Nonnavigablespace" ("NonnavigablespaceID")
+);
+----
+
+[[req-objectspace]]
+[requirement]
+.ObjectSpace schema
+====
+[%metadata]
+identifier:: /req/navi/objectspace
+part:: An `Objectspace` table SHALL reference a `Nonnavigablespace` row.
+====
+
+[[section-nonnavigableboundary]]
+=== NonNavigableBoundary
+
+The `Nonnavigableboundary` table extends `Cellboundary` for boundaries that are not navigable.
+
+[[nonnavigableboundary-schema]]
+.A SQL schema of the NonNavigableBoundary table:
+[source,sql]
+----
+CREATE TABLE "Nonnavigableboundary"
+(
+    "NonnavigableboundaryID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Nonnavigableboundary" PRIMARY KEY ("NonnavigableboundaryID"),
+    CONSTRAINT "FK_NonNavigableBoundary_CellBoundary"
+        FOREIGN KEY ("NonnavigableboundaryID") REFERENCES "Cellboundary" ("CellboundaryID")
+);
+----
+
+[[section-navigableboundary]]
+=== NavigableBoundary
+
+The `Navigableboundary` table extends `Cellboundary` with navigation-specific boundary attributes.
+
+The `Navigableboundary` table shall contain:
+
+* `NavigableboundaryID` as a primary key and foreign key to `Cellboundary`
+* optionally, `Boundaryorientation`
+* `Navigableboundaryfunction` of type `NavigableBoundaryFunctionType`, with values "AnchorBoundary" and "ConnectionBoundary"
+
+[[navigableboundary-schema]]
+.A SQL schema of the NavigableBoundary table:
+[source,sql]
+----
+CREATE TABLE "Navigableboundary"
+(
+    "Navigableboundaryfunction" "NavigableBoundaryFunctionType" NULL,
+    "Boundaryorientation" boolean NULL,
+    "NavigableboundaryID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_Navigableboundary" PRIMARY KEY ("NavigableboundaryID"),
+    CONSTRAINT "FK_NavigableBoundary_CellBoundary"
+        FOREIGN KEY ("NavigableboundaryID") REFERENCES "Cellboundary" ("CellboundaryID")
+);
+----
+
+[[req-navigableboundary]]
+[requirement]
+.NavigableBoundary schema
+====
+[%metadata]
+identifier:: /req/navi/navigableboundary
+part:: A `Navigableboundary` table SHALL contain a `Navigableboundaryfunction` column.
+====
+
+[[section-route]]
+=== Route
+
+The `Route` table represents a navigation route as an ordered sequence of nodes and edges.
+
+In this SQL encoding, `routeNode` and `routeEdge` are stored as `jsonb` arrays on the `Route` row.
+This design keeps the full traversal order in one place and makes it easier to maintain, reorder, or replace the node and edge sequence of a route without managing separate ordered junction-table rows.
+The array index corresponds to position in the route: `routeNode[0]` is the first node, `routeNode[1]` is the second node, and `routeEdge` follows the same rule for edges.
+
+The `Route` table shall contain:
+
+* `RouteID` as the primary key
+* optionally, `Creationdate`
+* optionally, `routeNode` as a `jsonb` array of ordered `NodeID` values
+* optionally, `routeEdge` as a `jsonb` array of ordered `EdgeID` values
+
+[[route-schema]]
+.A SQL schema of the Route table:
+[source,sql]
+----
+CREATE TABLE "Route"
+(
+    "Creationdate" timestamp without time zone NULL,
+    "RouteID" varchar(100) NOT NULL,
+    "routeNode" jsonb NULL,
+    "routeEdge" jsonb NULL,
+    CONSTRAINT "PK_Route" PRIMARY KEY ("RouteID")
+);
+----
+
+[[req-route]]
+[requirement]
+.Route schema
+====
+[%metadata]
+identifier:: /req/navi/route
+part:: A `Route` table SHALL store ordered node identifiers in the `routeNode` column.
+part:: A `Route` table SHALL store ordered edge identifiers in the `routeEdge` column.
+====
+
+// Annexes
+[appendix,obligation="normative"]
+== Conformance Class Abstract Test Suite
+
+[NOTE]
+====
+Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
+====
+
+=== Conformance Class Core
+
+[requirement,type="verification"]
+====
+
+[requirement,type="general",label="Test id"]
+======
+conf/indoorsql/core/schema
+======
+
+[recommendation,type="general",label="Test purpose"]
+======
+Verify that the database schema implements all core SQL encoding tables and constraints.
+======
+
+[requirement,type="general",label="Test method"]
+======
+Verify that all core tables defined in <<section-indoorsql-core>> exist with the required columns, primary keys, and foreign key constraints.
+Verify that identifier columns use string types.
+Verify that geometry columns use the PostGIS `geometry` type.
+======
+
+====
+
+=== Conformance Class Navigation
+
+[requirement,type="verification"]
+====
+
+[requirement,type="general",label="Test id"]
+======
+conf/indoorsql/navi/schema
+======
+
+[recommendation,type="general",label="Test purpose"]
+======
+Verify that the database schema implements all navigation SQL encoding tables and constraints.
+======
+
+[requirement,type="general",label="Test method"]
+======
+Verify that all navigation tables defined in <<section-indoorsql-navi>> exist with the required columns and foreign key references to core tables.
+======
+
+====
+[appendix,obligation="normative"]
+== Schemas
+
+[[annex_indoorsql_core_schema]]
+=== SQL Schema of IndoorGML Core
+[source,sql]
+----
+/* ---------------------------------------------------- */
+/*  Generated by Enterprise Architect Version 14.1 		*/
+/*  Created On : 07-7月-2025 11:10:23 				*/
+/*  DBMS       : PostgreSQL 						*/
+/* ---------------------------------------------------- */
+
+CREATE EXTENSION IF NOT EXISTS postgis
+;
+/* Drop Tables */
+
+DROP TABLE IF EXISTS "Cellboundary" CASCADE
+;
+
+DROP TABLE IF EXISTS "Cellboundarygeometrytype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Cellspace" CASCADE
+;
+
+DROP TABLE IF EXISTS "Cellspacegeometrytype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Dualspacelayer" CASCADE
+;
+
+DROP TABLE IF EXISTS "Edge" CASCADE
+;
+
+DROP TABLE IF EXISTS "Externalobjectreferencetype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Externalreferencetype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Indoorfeatures" CASCADE
+;
+
+DROP TABLE IF EXISTS "Interlayerconnection" CASCADE
+;
+
+DROP TABLE IF EXISTS "InterLayerConnection_CellSpace" CASCADE
+;
+
+DROP TABLE IF EXISTS "InterLayerConnection_Node" CASCADE
+;
+
+DROP TABLE IF EXISTS "InterLayerConnection_ThematicLayer" CASCADE
+;
+
+DROP TABLE IF EXISTS "InterLayerConnection CellSpace" CASCADE
+;
+
+DROP TABLE IF EXISTS "InterLayerConnection Node" CASCADE
+;
+
+DROP TABLE IF EXISTS "InterLayerConnection ThematicLayer" CASCADE
+;
+
+DROP TABLE IF EXISTS "Node" CASCADE
+;
+
+DROP TABLE IF EXISTS "Primalspacelayer" CASCADE
+;
+
+DROP TABLE IF EXISTS "Thematiclayer" CASCADE
+;
+
+DROP TABLE IF EXISTS "Themelayervalue" CASCADE
+;
+
+DROP TABLE IF EXISTS "Topoexpressionvalue" CASCADE
+;
+
+/* Drop ENUM Types */
+
+DROP TYPE IF EXISTS "TopoExpressionValue" CASCADE
+;
+
+DROP TYPE IF EXISTS "ThemeLayerValue" CASCADE
+;
+
+/* Create ENUM Types */
+
+CREATE TYPE "ThemeLayerValue" AS ENUM (
+	'Virtual',
+	'Physical',
+	'Tags',
+	'Unknown'
+)
+;
+
+CREATE TYPE "TopoExpressionValue" AS ENUM (
+	'Contains',
+	'Overlaps',
+	'Equals',
+	'Within',
+	'Crosses',
+	'Other'
+)
+;
+
+/* Create Tables */
+
+CREATE TABLE "Cellboundary"
+(
+	"Cellboundarygeom" geometry NULL,
+	"Externalreference" varchar(100) NULL,
+	"Isvirtual" boolean NULL,
+	"CellboundaryID" varchar(100) NOT NULL,
+	bounds varchar(100) NULL,
+	"PrimalspacelayerID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "Cellboundarygeometrytype"
+(
+	"Geometry1d" geometry NULL,
+	"Geometry2d" geometry NULL,
+	"CellboundarygeometrytypeID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Cellspace"
+(
+	"Cellspacegeom" geometry NULL,
+	"Cellspacename" varchar(100) NULL,
+	"Externalreference" varchar(100) NULL,
+	"Level" varchar(100) NULL,
+	"Poi" boolean NULL,
+	"CellspaceID" varchar(100) NOT NULL,
+	"PrimalspacelayerID" varchar(100) NOT NULL,
+	"duality" varchar(100) NULL
+)
+;
+
+CREATE TABLE "Cellspacegeometrytype"
+(
+	"Geometry2d" geometry NULL,
+	"Geometry3d" geometry NULL,
+	"CellspacegeometrytypeID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Dualspacelayer"
+(
+	"Creationdate" timestamp without time zone NULL,
+	"Terminationdate" timestamp without time zone NULL,
+	"Islogical" boolean NULL,
+	"Isdirected" boolean NULL,
+	"DualspacelayerID" varchar(100) NOT NULL,
+	"ThematiclayerID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "Edge"
+(
+	"Geometry" geometry NULL,
+	"Weight" real NULL,
+	"EdgeID" varchar(100) NOT NULL,
+	"duality" varchar(100) NULL,
+	"DualspacelayerID" varchar(100) NULL,
+	connects jsonb NULL
+)
+;
+
+CREATE TABLE "Externalobjectreferencetype"
+(
+	"Name" varchar(100) NULL,
+	"Uri" varchar(100) NULL,
+	"ExternalobjectreferencetypeID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Externalreferencetype"
+(
+	"Externalobject" varchar(100) NULL,
+	"Informationsystem" varchar(100) NULL,
+	"ExternalreferencetypeID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Indoorfeatures"
+(
+	"IndoorfeaturesID" varchar(100) NOT NULL,
+	"layers" varchar(100) NULL  -- Reference to layers if needed, though usually layers point back to IndoorFeatures
+)
+;
+
+CREATE TABLE "Interlayerconnection"
+(
+	"Typeoftopoexpression" "TopoExpressionValue" NULL,
+	"Comment" text NULL,
+	"InterlayerconnectionID" varchar(100) NOT NULL,
+	"IndoorfeaturesID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "InterLayerConnection_CellSpace"
+(
+	"connectedCells" varchar(100) NULL,
+	"InterlayerconnectionID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "InterLayerConnection_Node"
+(
+	"connectedNodes" varchar(100) NULL,
+	"InterlayerconnectionID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "InterLayerConnection_ThematicLayer"
+(
+	"connectedLayers" varchar(100) NULL,
+	"InterlayerconnectionID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "Node"
+(
+	"Geometry" geometry NULL,
+	"NodeID" varchar(100) NOT NULL,
+	"duality" varchar(100) NULL,
+	"DualspacelayerID" varchar(100) NOT NULL,
+	connects jsonb NULL
+)
+;
+
+CREATE TABLE "Primalspacelayer"
+(
+	"Creationdate" timestamp without time zone NULL,
+	"Terminationdate" timestamp without time zone NULL,
+	"PrimalspacelayerID" varchar(100) NOT NULL,
+	"ThematiclayerID" varchar(100) NULL
+)
+;
+
+CREATE TABLE "Thematiclayer"
+(
+	"Semanticextension" boolean NULL,
+	"Theme" "ThemeLayerValue" NULL,
+	"ThematiclayerID" varchar(100) NOT NULL,
+	"IndoorfeaturesID" varchar(100) NOT NULL
+)
+;
+
+/* Create Primary Keys, Indexes, Uniques, Checks */
+
+ALTER TABLE "Cellboundary" ADD CONSTRAINT "PK_Cellboundary"
+	PRIMARY KEY ("CellboundaryID")
+;
+
+ALTER TABLE "Cellboundarygeometrytype" ADD CONSTRAINT "PK_Cellboundarygeometrytype"
+	PRIMARY KEY ("CellboundarygeometrytypeID")
+;
+
+ALTER TABLE "Cellspace" ADD CONSTRAINT "PK_Cellspace"
+	PRIMARY KEY ("CellspaceID")
+;
+
+ALTER TABLE "Cellspacegeometrytype" ADD CONSTRAINT "PK_Cellspacegeometrytype"
+	PRIMARY KEY ("CellspacegeometrytypeID")
+;
+
+ALTER TABLE "Dualspacelayer" ADD CONSTRAINT "PK_Dualspacelayer"
+	PRIMARY KEY ("DualspacelayerID")
+;
+
+ALTER TABLE "Edge" ADD CONSTRAINT "PK_Edge"
+	PRIMARY KEY ("EdgeID")
+;
+
+ALTER TABLE "Externalobjectreferencetype" ADD CONSTRAINT "PK_Externalobjectreferencetype"
+	PRIMARY KEY ("ExternalobjectreferencetypeID")
+;
+
+ALTER TABLE "Externalreferencetype" ADD CONSTRAINT "PK_Externalreferencetype"
+	PRIMARY KEY ("ExternalreferencetypeID")
+;
+
+ALTER TABLE "Indoorfeatures" ADD CONSTRAINT "PK_Indoorfeatures"
+	PRIMARY KEY ("IndoorfeaturesID")
+;
+
+ALTER TABLE "Interlayerconnection" ADD CONSTRAINT "PK_Interlayerconnection"
+	PRIMARY KEY ("InterlayerconnectionID")
+;
+
+ALTER TABLE "Node" ADD CONSTRAINT "PK_Node"
+	PRIMARY KEY ("NodeID")
+;
+
+ALTER TABLE "Primalspacelayer" ADD CONSTRAINT "PK_Primalspacelayer"
+	PRIMARY KEY ("PrimalspacelayerID")
+;
+
+ALTER TABLE "Thematiclayer" ADD CONSTRAINT "PK_Thematiclayer"
+	PRIMARY KEY ("ThematiclayerID")
+;
+
+/* Create Foreign Key Constraints */
+
+ALTER TABLE "Cellboundary" ADD CONSTRAINT "FK_CellBoundary_boundedBy"
+	FOREIGN KEY (bounds) REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Cellboundary" ADD CONSTRAINT "FK_CellBoundary_cellBoundaryMember"
+	FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Cellspace" ADD CONSTRAINT "FK_CellSpace_cellSpaceMember"
+	FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Cellspace" ADD CONSTRAINT "FK_Cellspace_duality"
+	FOREIGN KEY ("duality") REFERENCES "Node" ("NodeID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Dualspacelayer" ADD CONSTRAINT "FK_DualSpaceLayer_dualSpace"
+	FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Edge" ADD CONSTRAINT "FK_Edge_duality"
+	FOREIGN KEY ("duality") REFERENCES "Cellboundary" ("CellboundaryID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Edge" ADD CONSTRAINT "FK_Edge_Dualspacelayer"
+	FOREIGN KEY ("DualspacelayerID") REFERENCES "Dualspacelayer" ("DualspacelayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Interlayerconnection" ADD CONSTRAINT "FK_InterLayerConnection_layerConnections"
+	FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "InterLayerConnection_CellSpace" ADD CONSTRAINT "FK_InterLayerConnection_CellSpace_connectedCells"
+	FOREIGN KEY ("connectedCells") REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "InterLayerConnection_CellSpace" ADD CONSTRAINT "FK_InterLayerConnection_CellSpace_InterLayerConnection"
+	FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_Node_connectedNodes"
+	FOREIGN KEY ("connectedNodes") REFERENCES "Node" ("NodeID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_Node_InterLayerConnection"
+	FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "InterLayerConnection_ThematicLayer" ADD CONSTRAINT "FK_InterLayerConnection_ThematicLayer_connectedLayers"
+	FOREIGN KEY ("connectedLayers") REFERENCES "Thematiclayer" ("ThematiclayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "InterLayerConnection_ThematicLayer" ADD CONSTRAINT "FK_InterLayerConnection_ThematicLayer_InterLayerConnection"
+	FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Node" ADD CONSTRAINT "FK_Node_duality"
+	FOREIGN KEY ("duality") REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Node" ADD CONSTRAINT "FK_Node_Dualspacelayer"
+	FOREIGN KEY ("DualspacelayerID") REFERENCES "Dualspacelayer" ("DualspacelayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Primalspacelayer" ADD CONSTRAINT "FK_PrimalSpaceLayer_primalSpace"
+	FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Thematiclayer" ADD CONSTRAINT "FK_ThematicLayer_layers"
+	FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID") ON DELETE No Action ON UPDATE No Action
+;
+
+/* Create Table Comments, Sequences for Autonumber Columns */
+
+COMMENT ON TABLE "Interlayerconnection"
+	IS 'Describes the connection between two thematic layers. '
+;
+
+COMMENT ON COLUMN "Interlayerconnection"."Typeoftopoexpression"
+	IS 'Describes the topological relationship between two layers (e.g. overlaps, contains, etc.).'
+;
+
+COMMENT ON TABLE "Thematiclayer"
+	IS 'A layer of specific theme aggregating a primal and/or a dual space of a given environment.'
+;
+
+COMMENT ON COLUMN "Thematiclayer"."Semanticextension"
+	IS 'Indicates whether semantic information is associated (true) or not (false) to the primal space of the thematic layer.'
+;
+
+COMMENT ON COLUMN "Thematiclayer"."Theme"
+	IS 'Determines the theme of the layer (e.g topographic, logical, etc.).'
+;
+----
+[[annex_indoorsql_navi_schema]]
+=== SQL Schema of IndoorGML Navigation
+[source,sql]
+----
+/* ---------------------------------------------------- */
+/*  IndoorGML Navigation Schema Extension               */
+/*  Apply AFTER IndoorGML_core.sql on the same database */
+/* ---------------------------------------------------- */
+
+/* Drop Navigation Tables */
+
+DROP TABLE IF EXISTS "Transferspace" CASCADE
+;
+
+DROP TABLE IF EXISTS "Generalspace" CASCADE
+;
+
+DROP TABLE IF EXISTS "Objectspace" CASCADE
+;
+
+DROP TABLE IF EXISTS "Nonnavigablespace" CASCADE
+;
+
+DROP TABLE IF EXISTS "Navigableboundary" CASCADE
+;
+
+DROP TABLE IF EXISTS "Nonnavigableboundary" CASCADE
+;
+
+DROP TABLE IF EXISTS "Navigablespace" CASCADE
+;
+
+DROP TABLE IF EXISTS "Route" CASCADE
+;
+
+DROP TABLE IF EXISTS "Generalspacefunctiontype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Locomotionaccesstype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Navigableboundaryfunctiontype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Networktype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Transferspacefunctiontype" CASCADE
+;
+
+DROP TABLE IF EXISTS "Transferspacetype" CASCADE
+;
+
+/* Drop ENUM Types */
+
+DROP TYPE IF EXISTS "NavigableBoundaryFunctionType" CASCADE
+;
+
+DROP TYPE IF EXISTS "GeneralSpaceFunctionType" CASCADE
+;
+
+DROP TYPE IF EXISTS "LocomotionAccessType" CASCADE
+;
+
+DROP TYPE IF EXISTS "TransferSpaceCategoryType" CASCADE
+;
+
+DROP TYPE IF EXISTS "TransferSpaceFunctionType" CASCADE
+;
+
+/* Create ENUM Types */
+
+CREATE TYPE "GeneralSpaceFunctionType" AS ENUM (
+	'Administration',
+	'Business, trade',
+	'Education, training',
+	'Recreation',
+	'Laboratory',
+	'Storage',
+	'Security'
+)
+;
+
+CREATE TYPE "LocomotionAccessType" AS ENUM (
+	'Walking',
+	'Flying',
+	'Rolling',
+	'Unspecified'
+)
+;
+
+CREATE TYPE "NavigableBoundaryFunctionType" AS ENUM (
+	'AnchorBoundary',
+	'ConnectionBoundary'
+)
+;
+
+CREATE TYPE "TransferSpaceFunctionType" AS ENUM (
+	'ConnectionSpace',
+	'AnchorSpace'
+)
+;
+
+CREATE TYPE "TransferSpaceCategoryType" AS ENUM (
+	'Door',
+	'Window'
+)
+;
+
+/* Create Navigation Tables */
+
+CREATE TABLE "Navigablespace"
+(
+	"Locomotiontype" "LocomotionAccessType" NULL,
+	"NavigablespaceID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Nonnavigablespace"
+(
+	"NonnavigablespaceID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Generalspace"
+(
+	"Function" "GeneralSpaceFunctionType" NULL,
+	"GeneralspaceID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Transferspace"
+(
+	"Function" "TransferSpaceFunctionType" NULL,
+	"Type" "TransferSpaceCategoryType" NULL,
+	"TransferspaceID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Objectspace"
+(
+	"Description" text NULL,
+	"Containedfeatures" varchar(100) NULL,
+	"ObjectspaceID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Navigableboundary"
+(
+	"Navigableboundaryfunction" "NavigableBoundaryFunctionType" NULL,
+	"Boundaryorientation" boolean NULL,
+	"NavigableboundaryID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Nonnavigableboundary"
+(
+	"NonnavigableboundaryID" varchar(100) NOT NULL
+)
+;
+
+CREATE TABLE "Route"
+(
+	"Creationdate" timestamp without time zone NULL,
+	"RouteID" varchar(100) NOT NULL,
+	"routeNode" jsonb NULL,
+	"routeEdge" jsonb NULL
+)
+;
+
+/* Primary Keys */
+
+ALTER TABLE "Navigablespace" ADD CONSTRAINT "PK_Navigablespace"
+	PRIMARY KEY ("NavigablespaceID")
+;
+
+ALTER TABLE "Nonnavigablespace" ADD CONSTRAINT "PK_Nonnavigablespace"
+	PRIMARY KEY ("NonnavigablespaceID")
+;
+
+ALTER TABLE "Generalspace" ADD CONSTRAINT "PK_Generalspace"
+	PRIMARY KEY ("GeneralspaceID")
+;
+
+ALTER TABLE "Transferspace" ADD CONSTRAINT "PK_Transferspace"
+	PRIMARY KEY ("TransferspaceID")
+;
+
+ALTER TABLE "Objectspace" ADD CONSTRAINT "PK_Objectspace"
+	PRIMARY KEY ("ObjectspaceID")
+;
+
+ALTER TABLE "Navigableboundary" ADD CONSTRAINT "PK_Navigableboundary"
+	PRIMARY KEY ("NavigableboundaryID")
+;
+
+ALTER TABLE "Nonnavigableboundary" ADD CONSTRAINT "PK_Nonnavigableboundary"
+	PRIMARY KEY ("NonnavigableboundaryID")
+;
+
+ALTER TABLE "Route" ADD CONSTRAINT "PK_Route"
+	PRIMARY KEY ("RouteID")
+;
+
+/* Foreign Keys */
+
+ALTER TABLE "Navigablespace" ADD CONSTRAINT "FK_NavigableSpace_CellSpace"
+	FOREIGN KEY ("NavigablespaceID") REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Nonnavigablespace" ADD CONSTRAINT "FK_NonNavigableSpace_CellSpace"
+	FOREIGN KEY ("NonnavigablespaceID") REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Generalspace" ADD CONSTRAINT "FK_GeneralSpace_NavigableSpace"
+	FOREIGN KEY ("GeneralspaceID") REFERENCES "Navigablespace" ("NavigablespaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Transferspace" ADD CONSTRAINT "FK_TransferSpace_NavigableSpace"
+	FOREIGN KEY ("TransferspaceID") REFERENCES "Navigablespace" ("NavigablespaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Objectspace" ADD CONSTRAINT "FK_ObjectSpace_NonNavigableSpace"
+	FOREIGN KEY ("ObjectspaceID") REFERENCES "Nonnavigablespace" ("NonnavigablespaceID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Navigableboundary" ADD CONSTRAINT "FK_NavigableBoundary_CellBoundary"
+	FOREIGN KEY ("NavigableboundaryID") REFERENCES "Cellboundary" ("CellboundaryID") ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE "Nonnavigableboundary" ADD CONSTRAINT "FK_NonNavigableBoundary_CellBoundary"
+	FOREIGN KEY ("NonnavigableboundaryID") REFERENCES "Cellboundary" ("CellboundaryID") ON DELETE No Action ON UPDATE No Action
+;
+----
+
+// Revision history
+
+[appendix]
+== Revision History
+
+[%unnumbered]
+[width="90%",options="header"]
+|===
+|Date |Release |Editor | Primary clauses modified |Description
+|2026-06-17 |0.1 |Zhiyong Wang |all |initial version derived from SQL generation workflow document
+|2026-06-18 |0.2 |Zhiyong Wang |5, 6, 7, 8, annex B |align schema with ENUM types, jsonb connects/route arrays, and EA table naming
+|2026-07-02 |0.3 |Zhiyong Wang |5, 6 |add Part 2c-specific symbols and abbreviated terms table (clause 5); replace vague figure references with numbered cross-references in clause 6.1.1 and remove redundant follow-up sentences; rebuild document.pdf and document.html
+|===
+
+// Bibliography
+
+
+[bibliography]
+== Bibliography
+
+* [[[yaml,YAML]]], Ben-Kiki, O., Evans, C., Ingy döt Net: *YAML Ain't Markup Language,* link:++https://yaml.org/++[]
+
+* [[[rfc8259,RFC 8259]]], The JavaScript Object Notation (JSON) Data Interchange Format,
+
+* [[[rfc7946,RFC 7946]]], Butler, H., Daly, M., Doyle, A., Gillies, S., Hagen, S., Schaub, T.: IETF RFC 7946, *The GeoJSON Format*, 2016 link:++https://tools.ietf.org/rfc/rfc7946.txt++[]

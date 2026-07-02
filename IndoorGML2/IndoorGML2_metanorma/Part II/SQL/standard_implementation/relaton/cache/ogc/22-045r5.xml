@@ -1,0 +1,60 @@
+<bibdata type="standard" schema-version="v1.2.9">
+  <fetched>2026-07-02</fetched>
+  <title type="title-main" format="text/plain" language="en" script="Latn">OGC IndoorGML 2.0 Part 1 – Conceptual Model</title>
+  <title type="main" format="text/plain" language="en" script="Latn">OGC IndoorGML 2.0 Part 1 – Conceptual Model</title>
+  <uri type="src">http://www.opengis.net/doc/IS/indoorgml/2.0</uri>
+  <uri type="html">https://docs.ogc.org/is/22-045r5/22-045r5.html</uri>
+  <docidentifier type="OGC" primary="true">22-045r5</docidentifier>
+  <date type="published">
+    <on>2025-06-26</on>
+  </date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Sisi Zlatanova</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Abdoulaye Diakite</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Taehoon Kim</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Ki-Joune Li </completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Open Geospatial Consortium</name>
+    </organization>
+  </contributor>
+  <edition>5</edition>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/plain" language="en" script="Latn">The OGC IndoorGML Part I – Conceptual Model Standard (this Standard) specifies an UML model for indoor information. Part 2 of the standard specifies technical implementation schemas in GML, SQL and JSON. While there are several standards supporting 3D modelling concepts such as CityGML, KML, IFC, LADM, and IMDF that deal with interiors of buildings from geometric, cartographic, and semantic viewpoints, IndoorGML focuses on modeling indoor spaces and their neighborhood relationships to support indoor location-based services. This document describes the conceptual model (Part 1) of IndoorGML that addresses spaces and networks for indoor navigation.</abstract>
+  <ext schema-version="v1.0.1">
+    <doctype>standard</doctype>
+    <subdoctype>implementation</subdoctype>
+    <editorialgroup>
+      <committee>technical</committee>
+    </editorialgroup>
+  </ext>
+</bibdata>

@@ -1,0 +1,43 @@
+<bibdata type="standard">
+<title language="en" format="text/plain">OGC IndoorGML 2.0 Part 2c – SQL Encoding</title>
+<uri type="xml">./document.xml</uri><uri type="pdf">./document.pdf</uri><uri type="doc">./document.doc</uri><docidentifier type="ogc-external">http://www.opengis.net/doc/IS/indoorsql/1.0</docidentifier><docidentifier type="ogc-internal" primary="true">26-008</docidentifier><docnumber>26-008</docnumber><date type="published"><on>2099-01-01</on></date><date type="issued"><on>2099-01-01</on></date><date type="received"><on>2026-06-18</on></date><contributor><role type="author"/><organization>
+<name>The University of New South Wales</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>SpatialAlgebra</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>Pusan National University</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>CityGeometrix</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>National Institute of Advanced Industrial Science and Technology</name>
+</organization></contributor><contributor><role type="editor"/><person>
+<name><completename>Sisi Zlatanova</completename></name>
+</person></contributor><contributor><role type="editor"/><person>
+<name><completename>Zhiyong Wang</completename></name>
+</person></contributor><contributor><role type="editor"/><person>
+<name><completename>Taehoon Kim</completename></name>
+</person></contributor><contributor><role type="editor"/><person>
+<name><completename>Abdoulaye Diakite</completename></name>
+</person></contributor><contributor><role type="editor"/><person>
+<name><completename>Ki-Joune Li</completename></name>
+</person></contributor><contributor><role type="publisher"/><organization>
+<name>Open Geospatial Consortium</name>
+<abbreviation>OGC</abbreviation></organization></contributor><edition>1.0.0</edition><language>en</language><script>Latn</script><abstract><p>The IndoorGML 2.0 Part 2c – SQL Encoding Standard presents the implementation-dependent Structured Query Language (SQL) encoding of the concepts defined by the IndoorGML 2.0 Part 1 – Conceptual Model Standard (<eref type="inline" bibitemid="ogc22-045r5" citeas="OGC 22-045r5"/>). The SQL Encoding is compliant with SQL as specified by  <eref type="inline" bibitemid="iso9075" citeas="ISO/IEC 9075"><display-text>ISO/IEC 9075</display-text></eref> and is implemented using PostgreSQL as the reference database management system. The SQL encoding of IndoorGML 2.0 defines a concrete implementation schema for representing indoor spatial information, including primal space, dual space, thematic layers, interlayer connections, and navigation-related indoor features. This encoding can be used to store and exchange 2D and/or 3D indoor space and indoor navigation network models in relational databases as data sets or via web services.</p>
+
+<p>This Part 2c of the Standard defines how the concepts developed in Part 1 are realized using SQL table definitions. The SQL encoding represents a mapping of the Conceptual Model derived from the UML model using Enterprise Architecture tooling, with subsequent corrections to identifier types, relationships, and missing properties. Geometry values are stored in PostGIS  <tt>geometry</tt> columns. Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into the implementation details documented in this standard.</p>
+
+<table><thead><tr><th valign="middle" align="left">Conceptual Model</th>
+<th valign="middle" align="left">Section</th>
+<th valign="middle" align="left">SQL Schema</th>
+</tr></thead>
+<tbody><tr><td valign="middle" align="left">IndoorGML Core</td>
+<td valign="middle" align="left"><xref target="section-indoorsql-core"/></td>
+<td valign="middle" align="left"><xref target="annex_indoorsql_core_schema"/></td>
+</tr><tr><td valign="middle" align="left">Navigation Extension</td>
+<td valign="middle" align="left"><xref target="section-indoorsql-navi"/></td>
+<td valign="middle" align="left"><xref target="annex_indoorsql_navi_schema"/></td>
+</tr></tbody>
+</table>
+</abstract><status><stage>swg-draft</stage></status><copyright><from>2026</from><owner><organization>
+<name>Open Geospatial Consortium</name>
+<abbreviation>OGC</abbreviation></organization></owner></copyright><keyword>OGCDoc</keyword><keyword>OGC documents</keyword><keyword>indoor</keyword><keyword>navigation</keyword><keyword>IndoorGML</keyword><keyword>SQL</keyword><keyword>PostgreSQL</keyword><keyword>PostGIS</keyword><ext><doctype>standard</doctype><subdoctype>implementation</subdoctype><flavor>ogc</flavor><editorialgroup><committee>technical</committee></editorialgroup></ext></bibdata>
