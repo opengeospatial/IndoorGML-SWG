@@ -10,23 +10,21 @@ The SQL encoding is based on the following encoding principles.
 
 ==== Conceptual model preservation
 
-The SQL encoding of the IndoorGML core module preserves the IndoorGML 2.0 core conceptual model structure, as shown in the below figure.
+The SQL encoding of the IndoorGML core module preserves the IndoorGML 2.0 core conceptual model structure, as shown in <<fig-core-indoorgml>>.
 
 [[fig-core-indoorgml]]
 .IndoorGML 2.0 core module structure
 image::../figures/core-module-uml.png[align="center"]
 
-The core SQL encoding schema follows <<fig-core-indoorgml>>.
 Each feature class is mapped to one or more relational tables, and associations are represented using foreign key columns or junction tables.
 For example, the `Indoorfeatures` table is related to `Thematiclayer` rows through the `IndoorfeaturesID` foreign key, and `Interlayerconnection` rows are linked to `Thematiclayer`, `Node`, and `Cellspace` rows through the `InterLayerConnection_ThematicLayer`, `InterLayerConnection_Node`, and `InterLayerConnection_CellSpace` junction tables.
 
-The SQL encoding of the IndoorGML navigation module preserves the IndoorGML 2.0 navigation conceptual model structure, as shown in the below figure.
+The SQL encoding of the IndoorGML navigation module preserves the IndoorGML 2.0 navigation conceptual model structure, as shown in <<fig-navi-indoorgml>>.
 
 [[fig-navi-indoorgml]]
 .IndoorGML 2.0 navigation module structure
 image::../figures/navi-module-uml.png[align="center"]
 
-The navigation SQL encoding schema follows <<fig-navi-indoorgml>>.
 Navigation feature classes extend core tables using table inheritance patterns implemented through foreign key references to `Cellspace` and `Cellboundary`.
 
 ==== UML-to-SQL generation workflow

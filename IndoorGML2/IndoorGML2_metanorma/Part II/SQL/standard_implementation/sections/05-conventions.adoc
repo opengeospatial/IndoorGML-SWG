@@ -1,6 +1,25 @@
 
 == Conventions
 
+=== Symbols (and abbreviated terms)
+
+The following symbols and abbreviated terms are used in this standard.
+Symbols and abbreviated terms defined in <<ogc22-045r5,IndoorGML 2.0 Part 1>> also apply to this document.
+
+[[symbols]]
+.Symbols and abbreviated terms
+[]
+|===
+h| *Abbreviation* h| *Word or Phrase*
+| DDL        | Data Definition Language
+| EA         | Enterprise Architecture
+| IndoorJSON | JSON encoding of IndoorGML concepts
+| JSON       | JavaScript Object Notation
+| PostgreSQL | Open-source relational database management system
+| PostGIS    | Spatial database extension for PostgreSQL
+| SQL        | Structured Query Language
+|===
+
 === Identifiers
 
 The normative provisions in this standard are denoted by the URI

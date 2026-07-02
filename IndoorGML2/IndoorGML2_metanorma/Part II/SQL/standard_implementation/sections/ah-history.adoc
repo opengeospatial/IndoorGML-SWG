@@ -8,4 +8,5 @@
 |Date |Release |Editor | Primary clauses modified |Description
 |2026-06-17 |0.1 |Zhiyong Wang |all |initial version derived from SQL generation workflow document
 |2026-06-18 |0.2 |Zhiyong Wang |5, 6, 7, 8, annex B |align schema with ENUM types, jsonb connects/route arrays, and EA table naming
+|2026-07-02 |0.3 |Zhiyong Wang |5, 6 |add Part 2c-specific symbols and abbreviated terms table (clause 5); replace vague figure references with numbered cross-references in clause 6.1.1 and remove redundant follow-up sentences; rebuild document.pdf and document.html
 |===
