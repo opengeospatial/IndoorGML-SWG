@@ -1,19 +1,19 @@
-CREATE TABLE "Thematiclayer"
+CREATE TABLE "ThematicLayer"
 (
     "Semanticextension" boolean NULL,
     "Theme" "ThemeLayerValue" NULL,
-    "ThematiclayerID" varchar(100) NOT NULL,
-    "IndoorfeaturesID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Thematiclayer" PRIMARY KEY ("ThematiclayerID"),
+    "ThematicLayerID" varchar(100) NOT NULL,
+    "IndoorFeaturesID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_ThematicLayer" PRIMARY KEY ("ThematicLayerID"),
     CONSTRAINT "FK_ThematicLayer_layers"
-        FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID")
+        FOREIGN KEY ("IndoorFeaturesID") REFERENCES "IndoorFeatures" ("IndoorFeaturesID")
 );
 
-COMMENT ON TABLE "Thematiclayer"
+COMMENT ON TABLE "ThematicLayer"
     IS 'A layer of specific theme aggregating a primal and/or a dual space of a given environment.';
 
-COMMENT ON COLUMN "Thematiclayer"."Semanticextension"
+COMMENT ON COLUMN "ThematicLayer"."Semanticextension"
     IS 'Indicates whether semantic information is associated (true) or not (false) to the primal space of the thematic layer.';
 
-COMMENT ON COLUMN "Thematiclayer"."Theme"
+COMMENT ON COLUMN "ThematicLayer"."Theme"
     IS 'Determines the theme of the layer (e.g topographic, logical, etc.).';

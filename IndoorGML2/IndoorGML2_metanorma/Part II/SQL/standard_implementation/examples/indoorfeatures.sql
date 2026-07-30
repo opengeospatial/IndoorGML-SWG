@@ -1,4 +1,4 @@
-INSERT INTO "Indoorfeatures" ("IndoorfeaturesID", "layers")
+INSERT INTO "IndoorFeatures" ("IndoorFeaturesID", "layers")
 VALUES ('IF-1', 'TL-1');
 
 -- Additional thematic layers and inter-layer connections may be inserted here.

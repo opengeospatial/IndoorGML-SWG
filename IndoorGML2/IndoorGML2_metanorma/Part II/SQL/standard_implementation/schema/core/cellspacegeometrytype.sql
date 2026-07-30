@@ -1,7 +1,5 @@
-CREATE TABLE "Cellspacegeometrytype"
-(
-    "Geometry2d" geometry NULL,
-    "Geometry3d" geometry NULL,
-    "CellspacegeometrytypeID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Cellspacegeometrytype" PRIMARY KEY ("CellspacegeometrytypeID")
-);
+/* UML DataType CellSpaceGeometryType is flattened onto CellSpace:
+   - cellSpaceGeom_geometry2D  (GM_Surface)
+   - cellSpaceGeom_geometry3D  (GM_Solid)
+   See schema/core/cellspace.sql
+*/

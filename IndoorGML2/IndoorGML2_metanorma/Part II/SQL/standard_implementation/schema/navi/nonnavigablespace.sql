@@ -1,7 +1,7 @@
-CREATE TABLE "Nonnavigablespace"
+CREATE TABLE "NonNavigableSpace"
 (
-    "NonnavigablespaceID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Nonnavigablespace" PRIMARY KEY ("NonnavigablespaceID"),
+    "NonNavigableSpaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_NonNavigableSpace" PRIMARY KEY ("NonNavigableSpaceID"),
     CONSTRAINT "FK_NonNavigableSpace_CellSpace"
-        FOREIGN KEY ("NonnavigablespaceID") REFERENCES "Cellspace" ("CellspaceID")
+        FOREIGN KEY ("NonNavigableSpaceID") REFERENCES "CellSpace" ("CellSpaceID")
 );

@@ -8,34 +8,34 @@ CREATE EXTENSION IF NOT EXISTS postgis
 ;
 /* Drop Tables */
 
-DROP TABLE IF EXISTS "Cellboundary" CASCADE
+DROP TABLE IF EXISTS "CellBoundary" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Cellboundarygeometrytype" CASCADE
+DROP TABLE IF EXISTS "CellBoundaryGeometryType" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Cellspace" CASCADE
+DROP TABLE IF EXISTS "CellSpace" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Cellspacegeometrytype" CASCADE
+DROP TABLE IF EXISTS "CellSpaceGeometryType" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Dualspacelayer" CASCADE
+DROP TABLE IF EXISTS "DualSpaceLayer" CASCADE
 ;
 
 DROP TABLE IF EXISTS "Edge" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Externalobjectreferencetype" CASCADE
+DROP TABLE IF EXISTS "ExternalObjectReferenceType" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Externalreferencetype" CASCADE
+DROP TABLE IF EXISTS "ExternalReferenceType" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Indoorfeatures" CASCADE
+DROP TABLE IF EXISTS "IndoorFeatures" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Interlayerconnection" CASCADE
+DROP TABLE IF EXISTS "InterLayerConnection" CASCADE
 ;
 
 DROP TABLE IF EXISTS "InterLayerConnection_CellSpace" CASCADE
@@ -59,24 +59,30 @@ DROP TABLE IF EXISTS "InterLayerConnection ThematicLayer" CASCADE
 DROP TABLE IF EXISTS "Node" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Primalspacelayer" CASCADE
+DROP TABLE IF EXISTS "PrimalSpaceLayer" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Thematiclayer" CASCADE
+DROP TABLE IF EXISTS "ThematicLayer" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Themelayervalue" CASCADE
+DROP TABLE IF EXISTS "ThemeLayerValue" CASCADE
 ;
 
-DROP TABLE IF EXISTS "Topoexpressionvalue" CASCADE
+DROP TABLE IF EXISTS "TopoExpressionValue" CASCADE
 ;
 
-/* Drop ENUM Types */
+/* Drop ENUM and composite Types */
 
 DROP TYPE IF EXISTS "TopoExpressionValue" CASCADE
 ;
 
 DROP TYPE IF EXISTS "ThemeLayerValue" CASCADE
+;
+
+DROP TYPE IF EXISTS "ExternalReferenceType" CASCADE
+;
+
+DROP TYPE IF EXISTS "ExternalObjectReferenceType" CASCADE
 ;
 
 /* Create ENUM Types */
@@ -99,56 +105,62 @@ CREATE TYPE "TopoExpressionValue" AS ENUM (
 )
 ;
 
+/* Create composite Types (UML DataTypes for external references) */
+
+CREATE TYPE "ExternalObjectReferenceType" AS (
+	"Name" varchar(100),
+	"Uri" text
+)
+;
+
+CREATE TYPE "ExternalReferenceType" AS (
+	"ExternalObject" "ExternalObjectReferenceType",
+	"InformationSystem" text
+)
+;
+
 /* Create Tables */
 
-CREATE TABLE "Cellboundary"
+CREATE TABLE "CellBoundary"
 (
-	"Cellboundarygeom" geometry NULL,
-	"Externalreference" varchar(100) NULL,
+	"cellBoundaryGeom_geometry1D" geometry NULL,
+	"cellBoundaryGeom_geometry2D" geometry NULL,
+	"externalReference" "ExternalReferenceType" NULL,
 	"Isvirtual" boolean NULL,
-	"CellboundaryID" varchar(100) NOT NULL,
+	"CellBoundaryID" varchar(100) NOT NULL,
 	bounds varchar(100) NULL,
-	"PrimalspacelayerID" varchar(100) NULL
+	"PrimalSpaceLayerID" varchar(100) NULL,
+	CONSTRAINT "chk_CellBoundary_geom_xor" CHECK (
+		NOT ("cellBoundaryGeom_geometry1D" IS NOT NULL AND "cellBoundaryGeom_geometry2D" IS NOT NULL)
+	)
 )
 ;
 
-CREATE TABLE "Cellboundarygeometrytype"
+CREATE TABLE "CellSpace"
 (
-	"Geometry1d" geometry NULL,
-	"Geometry2d" geometry NULL,
-	"CellboundarygeometrytypeID" varchar(100) NOT NULL
-)
-;
-
-CREATE TABLE "Cellspace"
-(
-	"Cellspacegeom" geometry NULL,
-	"Cellspacename" varchar(100) NULL,
-	"Externalreference" varchar(100) NULL,
+	"cellSpaceGeom_geometry2D" geometry NULL,
+	"cellSpaceGeom_geometry3D" geometry NULL,
+	"CellSpaceName" varchar(100) NULL,
+	"externalReference" "ExternalReferenceType" NULL,
 	"Level" varchar(100) NULL,
 	"Poi" boolean NULL,
-	"CellspaceID" varchar(100) NOT NULL,
-	"PrimalspacelayerID" varchar(100) NOT NULL,
-	"duality" varchar(100) NULL
+	"CellSpaceID" varchar(100) NOT NULL,
+	"PrimalSpaceLayerID" varchar(100) NOT NULL,
+	"duality" varchar(100) NULL,
+	CONSTRAINT "chk_CellSpace_geom_xor" CHECK (
+		NOT ("cellSpaceGeom_geometry2D" IS NOT NULL AND "cellSpaceGeom_geometry3D" IS NOT NULL)
+	)
 )
 ;
 
-CREATE TABLE "Cellspacegeometrytype"
-(
-	"Geometry2d" geometry NULL,
-	"Geometry3d" geometry NULL,
-	"CellspacegeometrytypeID" varchar(100) NOT NULL
-)
-;
-
-CREATE TABLE "Dualspacelayer"
+CREATE TABLE "DualSpaceLayer"
 (
 	"Creationdate" timestamp without time zone NULL,
 	"Terminationdate" timestamp without time zone NULL,
 	"Islogical" boolean NULL,
 	"Isdirected" boolean NULL,
-	"DualspacelayerID" varchar(100) NOT NULL,
-	"ThematiclayerID" varchar(100) NULL
+	"DualSpaceLayerID" varchar(100) NOT NULL,
+	"ThematicLayerID" varchar(100) NULL
 )
 ;
 
@@ -158,61 +170,45 @@ CREATE TABLE "Edge"
 	"Weight" real NULL,
 	"EdgeID" varchar(100) NOT NULL,
 	"duality" varchar(100) NULL,
-	"DualspacelayerID" varchar(100) NULL,
+	"DualSpaceLayerID" varchar(100) NULL,
 	connects jsonb NULL
 )
 ;
 
-CREATE TABLE "Externalobjectreferencetype"
+CREATE TABLE "IndoorFeatures"
 (
-	"Name" varchar(100) NULL,
-	"Uri" varchar(100) NULL,
-	"ExternalobjectreferencetypeID" varchar(100) NOT NULL
-)
-;
-
-CREATE TABLE "Externalreferencetype"
-(
-	"Externalobject" varchar(100) NULL,
-	"Informationsystem" varchar(100) NULL,
-	"ExternalreferencetypeID" varchar(100) NOT NULL
-)
-;
-
-CREATE TABLE "Indoorfeatures"
-(
-	"IndoorfeaturesID" varchar(100) NOT NULL,
+	"IndoorFeaturesID" varchar(100) NOT NULL,
 	"layers" varchar(100) NULL  -- Reference to layers if needed, though usually layers point back to IndoorFeatures
 )
 ;
 
-CREATE TABLE "Interlayerconnection"
+CREATE TABLE "InterLayerConnection"
 (
 	"Typeoftopoexpression" "TopoExpressionValue" NULL,
 	"Comment" text NULL,
-	"InterlayerconnectionID" varchar(100) NOT NULL,
-	"IndoorfeaturesID" varchar(100) NULL
+	"InterLayerConnectionID" varchar(100) NOT NULL,
+	"IndoorFeaturesID" varchar(100) NULL
 )
 ;
 
 CREATE TABLE "InterLayerConnection_CellSpace"
 (
 	"connectedCells" varchar(100) NULL,
-	"InterlayerconnectionID" varchar(100) NULL
+	"InterLayerConnectionID" varchar(100) NULL
 )
 ;
 
 CREATE TABLE "InterLayerConnection_Node"
 (
 	"connectedNodes" varchar(100) NULL,
-	"InterlayerconnectionID" varchar(100) NULL
+	"InterLayerConnectionID" varchar(100) NULL
 )
 ;
 
 CREATE TABLE "InterLayerConnection_ThematicLayer"
 (
 	"connectedLayers" varchar(100) NULL,
-	"InterlayerconnectionID" varchar(100) NULL
+	"InterLayerConnectionID" varchar(100) NULL
 )
 ;
 
@@ -221,123 +217,107 @@ CREATE TABLE "Node"
 	"Geometry" geometry NULL,
 	"NodeID" varchar(100) NOT NULL,
 	"duality" varchar(100) NULL,
-	"DualspacelayerID" varchar(100) NOT NULL,
+	"DualSpaceLayerID" varchar(100) NOT NULL,
 	connects jsonb NULL
 )
 ;
 
-CREATE TABLE "Primalspacelayer"
+CREATE TABLE "PrimalSpaceLayer"
 (
 	"Creationdate" timestamp without time zone NULL,
 	"Terminationdate" timestamp without time zone NULL,
-	"PrimalspacelayerID" varchar(100) NOT NULL,
-	"ThematiclayerID" varchar(100) NULL
+	"PrimalSpaceLayerID" varchar(100) NOT NULL,
+	"ThematicLayerID" varchar(100) NULL
 )
 ;
 
-CREATE TABLE "Thematiclayer"
+CREATE TABLE "ThematicLayer"
 (
 	"Semanticextension" boolean NULL,
 	"Theme" "ThemeLayerValue" NULL,
-	"ThematiclayerID" varchar(100) NOT NULL,
-	"IndoorfeaturesID" varchar(100) NOT NULL
+	"ThematicLayerID" varchar(100) NOT NULL,
+	"IndoorFeaturesID" varchar(100) NOT NULL
 )
 ;
 
 /* Create Primary Keys, Indexes, Uniques, Checks */
 
-ALTER TABLE "Cellboundary" ADD CONSTRAINT "PK_Cellboundary"
-	PRIMARY KEY ("CellboundaryID")
+ALTER TABLE "CellBoundary" ADD CONSTRAINT "PK_CellBoundary"
+	PRIMARY KEY ("CellBoundaryID")
 ;
 
-ALTER TABLE "Cellboundarygeometrytype" ADD CONSTRAINT "PK_Cellboundarygeometrytype"
-	PRIMARY KEY ("CellboundarygeometrytypeID")
+ALTER TABLE "CellSpace" ADD CONSTRAINT "PK_CellSpace"
+	PRIMARY KEY ("CellSpaceID")
 ;
 
-ALTER TABLE "Cellspace" ADD CONSTRAINT "PK_Cellspace"
-	PRIMARY KEY ("CellspaceID")
-;
-
-ALTER TABLE "Cellspacegeometrytype" ADD CONSTRAINT "PK_Cellspacegeometrytype"
-	PRIMARY KEY ("CellspacegeometrytypeID")
-;
-
-ALTER TABLE "Dualspacelayer" ADD CONSTRAINT "PK_Dualspacelayer"
-	PRIMARY KEY ("DualspacelayerID")
+ALTER TABLE "DualSpaceLayer" ADD CONSTRAINT "PK_DualSpaceLayer"
+	PRIMARY KEY ("DualSpaceLayerID")
 ;
 
 ALTER TABLE "Edge" ADD CONSTRAINT "PK_Edge"
 	PRIMARY KEY ("EdgeID")
 ;
 
-ALTER TABLE "Externalobjectreferencetype" ADD CONSTRAINT "PK_Externalobjectreferencetype"
-	PRIMARY KEY ("ExternalobjectreferencetypeID")
+ALTER TABLE "IndoorFeatures" ADD CONSTRAINT "PK_IndoorFeatures"
+	PRIMARY KEY ("IndoorFeaturesID")
 ;
 
-ALTER TABLE "Externalreferencetype" ADD CONSTRAINT "PK_Externalreferencetype"
-	PRIMARY KEY ("ExternalreferencetypeID")
-;
-
-ALTER TABLE "Indoorfeatures" ADD CONSTRAINT "PK_Indoorfeatures"
-	PRIMARY KEY ("IndoorfeaturesID")
-;
-
-ALTER TABLE "Interlayerconnection" ADD CONSTRAINT "PK_Interlayerconnection"
-	PRIMARY KEY ("InterlayerconnectionID")
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "PK_InterLayerConnection"
+	PRIMARY KEY ("InterLayerConnectionID")
 ;
 
 ALTER TABLE "Node" ADD CONSTRAINT "PK_Node"
 	PRIMARY KEY ("NodeID")
 ;
 
-ALTER TABLE "Primalspacelayer" ADD CONSTRAINT "PK_Primalspacelayer"
-	PRIMARY KEY ("PrimalspacelayerID")
+ALTER TABLE "PrimalSpaceLayer" ADD CONSTRAINT "PK_PrimalSpaceLayer"
+	PRIMARY KEY ("PrimalSpaceLayerID")
 ;
 
-ALTER TABLE "Thematiclayer" ADD CONSTRAINT "PK_Thematiclayer"
-	PRIMARY KEY ("ThematiclayerID")
+ALTER TABLE "ThematicLayer" ADD CONSTRAINT "PK_ThematicLayer"
+	PRIMARY KEY ("ThematicLayerID")
 ;
 
 /* Create Foreign Key Constraints */
 
-ALTER TABLE "Cellboundary" ADD CONSTRAINT "FK_CellBoundary_boundedBy"
-	FOREIGN KEY (bounds) REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "CellBoundary" ADD CONSTRAINT "FK_CellBoundary_boundedBy"
+	FOREIGN KEY (bounds) REFERENCES "CellSpace" ("CellSpaceID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Cellboundary" ADD CONSTRAINT "FK_CellBoundary_cellBoundaryMember"
-	FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "CellBoundary" ADD CONSTRAINT "FK_CellBoundary_cellBoundaryMember"
+	FOREIGN KEY ("PrimalSpaceLayerID") REFERENCES "PrimalSpaceLayer" ("PrimalSpaceLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Cellspace" ADD CONSTRAINT "FK_CellSpace_cellSpaceMember"
-	FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "CellSpace" ADD CONSTRAINT "FK_CellSpace_cellSpaceMember"
+	FOREIGN KEY ("PrimalSpaceLayerID") REFERENCES "PrimalSpaceLayer" ("PrimalSpaceLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Cellspace" ADD CONSTRAINT "FK_Cellspace_duality"
+ALTER TABLE "CellSpace" ADD CONSTRAINT "FK_CellSpace_duality"
 	FOREIGN KEY ("duality") REFERENCES "Node" ("NodeID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Dualspacelayer" ADD CONSTRAINT "FK_DualSpaceLayer_dualSpace"
-	FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "DualSpaceLayer" ADD CONSTRAINT "FK_DualSpaceLayer_dualSpace"
+	FOREIGN KEY ("ThematicLayerID") REFERENCES "ThematicLayer" ("ThematicLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "Edge" ADD CONSTRAINT "FK_Edge_duality"
-	FOREIGN KEY ("duality") REFERENCES "Cellboundary" ("CellboundaryID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("duality") REFERENCES "CellBoundary" ("CellBoundaryID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Edge" ADD CONSTRAINT "FK_Edge_Dualspacelayer"
-	FOREIGN KEY ("DualspacelayerID") REFERENCES "Dualspacelayer" ("DualspacelayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "Edge" ADD CONSTRAINT "FK_Edge_DualSpaceLayer"
+	FOREIGN KEY ("DualSpaceLayerID") REFERENCES "DualSpaceLayer" ("DualSpaceLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Interlayerconnection" ADD CONSTRAINT "FK_InterLayerConnection_layerConnections"
-	FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_layerConnections"
+	FOREIGN KEY ("IndoorFeaturesID") REFERENCES "IndoorFeatures" ("IndoorFeaturesID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "InterLayerConnection_CellSpace" ADD CONSTRAINT "FK_InterLayerConnection_CellSpace_connectedCells"
-	FOREIGN KEY ("connectedCells") REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("connectedCells") REFERENCES "CellSpace" ("CellSpaceID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "InterLayerConnection_CellSpace" ADD CONSTRAINT "FK_InterLayerConnection_CellSpace_InterLayerConnection"
-	FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("InterLayerConnectionID") REFERENCES "InterLayerConnection" ("InterLayerConnectionID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_Node_connectedNodes"
@@ -345,51 +325,51 @@ ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_
 ;
 
 ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_Node_InterLayerConnection"
-	FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("InterLayerConnectionID") REFERENCES "InterLayerConnection" ("InterLayerConnectionID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "InterLayerConnection_ThematicLayer" ADD CONSTRAINT "FK_InterLayerConnection_ThematicLayer_connectedLayers"
-	FOREIGN KEY ("connectedLayers") REFERENCES "Thematiclayer" ("ThematiclayerID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("connectedLayers") REFERENCES "ThematicLayer" ("ThematicLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "InterLayerConnection_ThematicLayer" ADD CONSTRAINT "FK_InterLayerConnection_ThematicLayer_InterLayerConnection"
-	FOREIGN KEY ("InterlayerconnectionID") REFERENCES "Interlayerconnection" ("InterlayerconnectionID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("InterLayerConnectionID") REFERENCES "InterLayerConnection" ("InterLayerConnectionID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "Node" ADD CONSTRAINT "FK_Node_duality"
-	FOREIGN KEY ("duality") REFERENCES "Cellspace" ("CellspaceID") ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ("duality") REFERENCES "CellSpace" ("CellSpaceID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Node" ADD CONSTRAINT "FK_Node_Dualspacelayer"
-	FOREIGN KEY ("DualspacelayerID") REFERENCES "Dualspacelayer" ("DualspacelayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "Node" ADD CONSTRAINT "FK_Node_DualSpaceLayer"
+	FOREIGN KEY ("DualSpaceLayerID") REFERENCES "DualSpaceLayer" ("DualSpaceLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Primalspacelayer" ADD CONSTRAINT "FK_PrimalSpaceLayer_primalSpace"
-	FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "PrimalSpaceLayer" ADD CONSTRAINT "FK_PrimalSpaceLayer_primalSpace"
+	FOREIGN KEY ("ThematicLayerID") REFERENCES "ThematicLayer" ("ThematicLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "Thematiclayer" ADD CONSTRAINT "FK_ThematicLayer_layers"
-	FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "ThematicLayer" ADD CONSTRAINT "FK_ThematicLayer_layers"
+	FOREIGN KEY ("IndoorFeaturesID") REFERENCES "IndoorFeatures" ("IndoorFeaturesID") ON DELETE No Action ON UPDATE No Action
 ;
 
 /* Create Table Comments, Sequences for Autonumber Columns */
 
-COMMENT ON TABLE "Interlayerconnection"
+COMMENT ON TABLE "InterLayerConnection"
 	IS 'Describes the connection between two thematic layers. '
 ;
 
-COMMENT ON COLUMN "Interlayerconnection"."Typeoftopoexpression"
+COMMENT ON COLUMN "InterLayerConnection"."Typeoftopoexpression"
 	IS 'Describes the topological relationship between two layers (e.g. overlaps, contains, etc.).'
 ;
 
-COMMENT ON TABLE "Thematiclayer"
+COMMENT ON TABLE "ThematicLayer"
 	IS 'A layer of specific theme aggregating a primal and/or a dual space of a given environment.'
 ;
 
-COMMENT ON COLUMN "Thematiclayer"."Semanticextension"
+COMMENT ON COLUMN "ThematicLayer"."Semanticextension"
 	IS 'Indicates whether semantic information is associated (true) or not (false) to the primal space of the thematic layer.'
 ;
 
-COMMENT ON COLUMN "Thematiclayer"."Theme"
+COMMENT ON COLUMN "ThematicLayer"."Theme"
 	IS 'Determines the theme of the layer (e.g topographic, logical, etc.).'
 ;

@@ -1,9 +1,9 @@
-CREATE TABLE "Objectspace"
+CREATE TABLE "ObjectSpace"
 (
     "Description" text NULL,
     "Containedfeatures" varchar(100) NULL,
-    "ObjectspaceID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Objectspace" PRIMARY KEY ("ObjectspaceID"),
+    "ObjectSpaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_ObjectSpace" PRIMARY KEY ("ObjectSpaceID"),
     CONSTRAINT "FK_ObjectSpace_NonNavigableSpace"
-        FOREIGN KEY ("ObjectspaceID") REFERENCES "Nonnavigablespace" ("NonnavigablespaceID")
+        FOREIGN KEY ("ObjectSpaceID") REFERENCES "NonNavigableSpace" ("NonNavigableSpaceID")
 );

@@ -4,7 +4,7 @@
 :comment: ### Document subtype; optional. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
 :docsubtype: implementation
 :comment: ### Version number; optional. Dot-delimited, preferably with this structure <version number>.<minor version number>.<patch version number>
-:edition: 1.0.0
+:edition: 0.0.9
 :comment: ### Language of the document; mandatory. Specified in two-letter code: "en" for English, "fr" for French
 :language: en
 :comment: ### Document status/stage; mandatory. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
@@ -16,23 +16,23 @@
 :comment: ### Date on which the standard was updated; mandatory
 :received-date: 2026-06-18
 :comment: ### Date on which the standard was approved by the issuing authority; mandatory
-:issued-date: 2099-01-01
+:issued-date: 2026-XX-XX
 :comment: ### Date on which the standard was published; mandatory
-:published-date: 2099-01-01
+:published-date: 2026-XX-XX
 :comment: ### External link referencing the document; optional. If not provided, a default value is created following this structure: "http://www.opengis.net/doc/{abbrevation of doctype}/{abbrev}/{version}",
 :external-id: http://www.opengis.net/doc/IS/indoorsql/1.0
 :comment: ### Author one
 :fullname: Sisi Zlatanova
-:affiliation: The University of New South Wales
+:affiliation: University of New South Wales
 :comment: ### Author two
 :fullname_2: Zhiyong Wang
-:affiliation_2: SpatialAlgebra
+:affiliation_2: SpatialAlgebra Technology Limited
 :comment: ### Author three
 :fullname_3: Taehoon Kim
 :affiliation_3: National Institute of Advanced Industrial Science and Technology
 :comment: ### Author four
 :fullname_4: Abdoulaye Diakite
-:affiliation_4: CityGeometrix
+:affiliation_4: CityGeometrix Pty Ltd
 :comment: ### Author five
 :fullname_5: Ki-Joune Li
 :affiliation_5: Pusan National University
@@ -41,7 +41,7 @@
 :comment: ### Comma delimited keywords; mandatory
 :keywords: OGCDoc, OGC documents, indoor, navigation, IndoorGML, SQL, PostgreSQL, PostGIS
 :comment: ### Semicolon-delimited list of the submitting organizations; mandatory
-:submitting-organizations: The University of New South Wales; SpatialAlgebra; Pusan National University; CityGeometrix; National Institute of Advanced Industrial Science and Technology;
+:submitting-organizations: University of New South Wales; SpatialAlgebra Technology Limited; Pusan National University; CityGeometrix Pty Ltd; National Institute of Advanced Industrial Science and Technology;
 :comment: ### Metanorma flavor; mandatory
 :mn-document-class: ogc
 :comment: ### Desired output formats; mandatory

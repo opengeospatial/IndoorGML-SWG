@@ -1,15 +1,13 @@
-CREATE TABLE "Externalobjectreferencetype"
-(
-    "Name" varchar(100) NULL,
-    "Uri" varchar(100) NULL,
-    "ExternalobjectreferencetypeID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Externalobjectreferencetype" PRIMARY KEY ("ExternalobjectreferencetypeID")
+/* UML DataType ExternalObjectReferenceType / ExternalReferenceType
+   Encoded as PostgreSQL composite types (not tables).
+   Apply before creating CellSpace / CellBoundary. */
+
+CREATE TYPE "ExternalObjectReferenceType" AS (
+    "Name" varchar(100),
+    "Uri" text
 );
 
-CREATE TABLE "Externalreferencetype"
-(
-    "Externalobject" varchar(100) NULL,
-    "Informationsystem" varchar(100) NULL,
-    "ExternalreferencetypeID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Externalreferencetype" PRIMARY KEY ("ExternalreferencetypeID")
+CREATE TYPE "ExternalReferenceType" AS (
+    "ExternalObject" "ExternalObjectReferenceType",
+    "InformationSystem" text
 );

@@ -1,10 +1,10 @@
-CREATE TABLE "Primalspacelayer"
+CREATE TABLE "PrimalSpaceLayer"
 (
     "Creationdate" timestamp without time zone NULL,
     "Terminationdate" timestamp without time zone NULL,
-    "PrimalspacelayerID" varchar(100) NOT NULL,
-    "ThematiclayerID" varchar(100) NULL,
-    CONSTRAINT "PK_Primalspacelayer" PRIMARY KEY ("PrimalspacelayerID"),
+    "PrimalSpaceLayerID" varchar(100) NOT NULL,
+    "ThematicLayerID" varchar(100) NULL,
+    CONSTRAINT "PK_PrimalSpaceLayer" PRIMARY KEY ("PrimalSpaceLayerID"),
     CONSTRAINT "FK_PrimalSpaceLayer_primalSpace"
-        FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID")
+        FOREIGN KEY ("ThematicLayerID") REFERENCES "ThematicLayer" ("ThematicLayerID")
 );

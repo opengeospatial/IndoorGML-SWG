@@ -14,4 +14,4 @@ The following normative documents contain provisions that, through reference in 
 
 * [[[iso9075,ISO/IEC 9075]]], Information technology — Database languages — SQL
 
-* [[[postgis,PostGIS]]], PostGIS Spatial and Geographic Objects for PostgreSQL, https://postgis.net/
+* [[[postgis,PostGIS]]], PostGIS Spatial and Geographic Objects for PostgreSQL, https://postgis.net/docs/

@@ -40,8 +40,19 @@ Feature identifiers are stored as string values in `varchar` columns rather than
 
 === Geometry storage
 
-Geometry values are stored as PostGIS `geometry` columns (for example, `Cellspacegeom`, `Cellboundarygeom`, and `Geometry` on `Node` and `Edge`).
+UML geometry DataTypes are flattened onto the owning feature table as PostGIS `geometry` columns whose names follow the property path (aligned with IndoorJSON member names):
+
+* `CellSpace.cellSpaceGeom_geometry2D` and `CellSpace.cellSpaceGeom_geometry3D` (corresponding to `CellSpaceGeometryType`);
+* `CellBoundary.cellBoundaryGeom_geometry1D` and `CellBoundary.cellBoundaryGeom_geometry2D` (corresponding to `CellBoundaryGeometryType`);
+* `Geometry` on `Node` and `Edge`.
+
+At most one of the paired geometry columns on `CellSpace` or `CellBoundary` is populated for a given row (enforced by a table `CHECK` constraint).
 The reference implementation requires the PostGIS extension (<<postgis,PostGIS>>).
+
+=== Complex DataType storage
+
+Non-geometric UML DataTypes that are not feature classes are encoded as PostgreSQL composite types (`CREATE TYPE ... AS (...)`) rather than as standalone tables.
+In particular, `ExternalObjectReferenceType` and `ExternalReferenceType` are composite types, and `CellSpace` / `CellBoundary` store an optional `externalReference` column of type `ExternalReferenceType`.
 
 === Code list storage
 
@@ -73,4 +84,4 @@ VALUES (
 ----
 === Table and column naming
 
-SQL table and column names use identifiers enclosed in double quotes, following the spellings produced from Enterprise Architecture tooling and aligned with UML type names (for example, `Indoorfeatures`, `Thematiclayer`, `Cellspace`, `Navigablespace`).
+SQL table and column names use identifiers enclosed in double quotes. Table names use PascalCase aligned with UML type names (for example, `IndoorFeatures`, `ThematicLayer`, `CellSpace`, `NavigableSpace`, `ObjectSpace`).

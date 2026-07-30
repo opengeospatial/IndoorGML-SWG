@@ -1,9 +1,9 @@
-CREATE TABLE "Transferspace"
+CREATE TABLE "TransferSpace"
 (
     "Function" "TransferSpaceFunctionType" NULL,
     "Type" "TransferSpaceCategoryType" NULL,
-    "TransferspaceID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Transferspace" PRIMARY KEY ("TransferspaceID"),
+    "TransferSpaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_TransferSpace" PRIMARY KEY ("TransferSpaceID"),
     CONSTRAINT "FK_TransferSpace_NavigableSpace"
-        FOREIGN KEY ("TransferspaceID") REFERENCES "Navigablespace" ("NavigablespaceID")
+        FOREIGN KEY ("TransferSpaceID") REFERENCES "NavigableSpace" ("NavigableSpaceID")
 );

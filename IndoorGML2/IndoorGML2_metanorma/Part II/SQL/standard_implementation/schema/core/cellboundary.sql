@@ -1,14 +1,18 @@
-CREATE TABLE "Cellboundary"
+CREATE TABLE "CellBoundary"
 (
-    "Cellboundarygeom" geometry NULL,
-    "Externalreference" varchar(100) NULL,
+    "cellBoundaryGeom_geometry1D" geometry NULL,
+    "cellBoundaryGeom_geometry2D" geometry NULL,
+    "externalReference" "ExternalReferenceType" NULL,
     "Isvirtual" boolean NULL,
-    "CellboundaryID" varchar(100) NOT NULL,
+    "CellBoundaryID" varchar(100) NOT NULL,
     bounds varchar(100) NULL,
-    "PrimalspacelayerID" varchar(100) NULL,
-    CONSTRAINT "PK_Cellboundary" PRIMARY KEY ("CellboundaryID"),
+    "PrimalSpaceLayerID" varchar(100) NULL,
+    CONSTRAINT "PK_CellBoundary" PRIMARY KEY ("CellBoundaryID"),
+    CONSTRAINT "chk_CellBoundary_geom_xor" CHECK (
+        NOT ("cellBoundaryGeom_geometry1D" IS NOT NULL AND "cellBoundaryGeom_geometry2D" IS NOT NULL)
+    ),
     CONSTRAINT "FK_CellBoundary_boundedBy"
-        FOREIGN KEY (bounds) REFERENCES "Cellspace" ("CellspaceID"),
+        FOREIGN KEY (bounds) REFERENCES "CellSpace" ("CellSpaceID"),
     CONSTRAINT "FK_CellBoundary_cellBoundaryMember"
-        FOREIGN KEY ("PrimalspacelayerID") REFERENCES "Primalspacelayer" ("PrimalspacelayerID")
+        FOREIGN KEY ("PrimalSpaceLayerID") REFERENCES "PrimalSpaceLayer" ("PrimalSpaceLayerID")
 );
