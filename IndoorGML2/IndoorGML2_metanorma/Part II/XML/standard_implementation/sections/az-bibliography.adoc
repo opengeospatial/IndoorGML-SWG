@@ -1,0 +1,34 @@
+[bibliography]
+== Bibliography
+
+* [[[iso19107_b,nofetch(ISO 19107)]]], Geographic information – Spatial Schema
+* [[[lorenz2006,nofetch(Lorenz et al. 2006)]]], Lorenz, B., Ohlbach, H. J., Stoffel, E.-P., Rosner, M.: NL Navigation Commands from Indoor WLAN fingerprinting position data, Technical Report of REWERSE-Project, Munich, Germany, September 2006
+* [[[ontonav,nofetch(OntoNav)]]], Anagnostopoulus, C., Testsos, V., Kikiras, P., Hadjiefthymiades, S. P.: OntoNav: A Semantic Indoor Navigation System, First International Workshop on Managing Context Information in Mobile and Pervasive Environments, Vol. 165, Ayia Napa, Cyprus, 2003
+* [[[robocart,nofetch(RoboCart)]]], Kulyukin, V., Gharpure, C., Nicholson, J.: RoboCart: Toward Robot-Assisted Navigation of Grocery Stores by the Visually Impaired, Proceedings of the International Conference on Intelligent Robots and Systems, IROS 2005, IEEE/RSJ
+* [[[cellportal,nofetch(Cell & Portal)]]], Lefebvre, S., Hornus S.: Automatic cell-and-portal decomposition, Technical Report 4898, INRIA, 2003
+* [[[lee2004,nofetch(Lee 2004)]]], Lee, J.: 3D GIS for Geo-coding Human Activity in Micro-scale Urban Environments, M.J. Egenhofer, C. Freksa, and H.J. Miller (Eds.): GIScience 2004, Springer, Berlin, Germany
+* [[[lee2008,nofetch(Lee & Zlatanova 2008)]]], Lee, J., Zlatanova, S.: A 3D data model and topological analyses for emergency response in urban areas. Geospatial Information Technology for Emergency Response – Zlatanova & Li (eds), Taylor & Francis Group, London, UK, 2008
+* [[[munkres1984,nofetch(Munkres 1984)]]], Munkres, J. R.: Elements of Algebraic Topology, Addison-Wesley, Menlo Park, CA, 1984
+* [[[kolodziej2006,nofetch(Kolodziej & Hjelm 2006)]]], Kolodziej, K. W., Hjelm, J.: Local Positioning Systems – LBS Applications and Services, Taylor & Francis Group, London, UK, 2006
+* [[[citygml_spec,nofetch(OGC CityGML)]]], OGC: CityGML, OGC 08-007r1 2008
+* [[[kolbe2005,nofetch(Kolbe et al. 2005)]]], Kolbe, T.H., Gröger, G. & Plümer, L.: CityGML – Interoperable Access to 3D City Models, P. van Oosterom, S. Zlatanova & E.M. Fendel (eds), Geo-information for Disaster Management; Proc. of the 1st International Symposium on Geo-information for Disaster Management, Delft, The Netherlands, March 21–23, 2005. Springer.
+* [[[ifc_spec,nofetch(buildingSMART IFC)]]], Adachi, Y., Forester, J., Hyvarinen, J., Karstila, K., Liebich, T., Wix, J.: Industry Foundation Classes IFC2x Edition 3, International Alliance for Interoperability, 2003
+* [[[voronoi_tracking,nofetch(Voronoi Tracking)]]], Liao, L., Fox, D., Hightower, J., Kautz, H., Schulz, D.: Voronoi Tracking: Location Estimation Using Sparse and Noisy Sensor Data, Proc. of the International Conference on Intelligent Robots and Systems, IROS 2003, IEEE/RSJ
+* [[[egenhofer1990,nofetch(Egenhofer & Herring 1990)]]], Egenhofer, M., Herring, J.: Categorizing Binary Topological Relations between Regions, Lines and Points in Geographical Databases, NCGIA Technical Report, 1990
+* [[[ogc08-131r3,OGC 08-131r3]]], OGC: The Specification Model – A Standard for Modular specifications, OGC 08-131r3, OGC Version: 1.0.0
+* [[[lavalle2006,nofetch(LaValle 2006)]]], LaValle, S. M.: Planning Algorithms, Cambridge University Press, USA, 2006
+* [[[lorenz2007,nofetch(Lorenz et al. 2007)]]], Lorenz, B., Ohlbach, H. J., Stoffel, E.-P., Rosner, M.: Towards a Semantic Spatial Model for Pedestrian Indoor Navigation, Lecture Notes in Computer Science - Advances in Conceptual Modeling – Foundations and Applications, Volume 4802/2007, Springer, Berlin, Germany
+* [[[sidney2007,nofetch(Sidney 2007)]]], Morris, Sidney A.: Topology without Tears, University of Ballarat, Australia, 2007
+* [[[piccinini2008,nofetch(Piccinini 2008)]]], Fritsch, R. and Piccinini, R. A.: Cellular Structures in Topology, Cambridge University Press, Cambridge, England, 2008
+* [[[gold2007,nofetch(Gold & Ledoux 2007)]]], Gold, C. M. and Ledoux, H.: Simultaneous Storage of Primal and Dual Three-Dimensional Subdivisions, Computers, Environment and Urban Systems – Topology and Spatial Databases, Vol. 31, Issue 4, 2007, Elsevier
+* [[[becker2008,nofetch(Becker et al. 2008)]]], Becker, T., Nagel, C., and Kolbe, T. H.: A Multilayered Space-Event Model for Navigation in Indoor Spaces, Lecture Notes in Geoinformation and Cartography - 3D Geo-Information Science, 2008.
+* [[[becker2009,nofetch(Becker et al. 2009)]]], Becker, T., Nagel, C., and Kolbe, T. H.: Supporting Contexts for Indoor Navigation using a Multilayered Space Model, Tenth International Conference on Mobile Data Management, Taipei, Taiwan, 2009
+* [[[uml_guide,nofetch(UML Guide)]]], Booch, G., Rumbaugh, J., and Jacobson, I.: Unified Modeling Language User Guide, Addison-Wesley, 1997
+* [[[lee1990,nofetch(Lee 1990)]]], Lee, Y.C.: Geographic information systems for urban applications: Problems and solutions, Environment and Planning B: Planning and Design, Vol. 17:463-473, 1990.
+* [[[lee2004b,nofetch(Lee 2004b)]]], Lee, J.: A Spatial Access Oriented Implementation of a Topological Data Model for 3D Urban Entities, GeoInformatica 8(3), 235-262, 2004.
+* [[[nagel2010,nofetch(Nagel et al. 2010)]]], Nagel, C., Becker B., Kaden, R., Li, K-J., Lee, J., and Kolbe, T. H.: Requirements and Space-Event Modeling for Indoor Navigation, OGC 10-191r1, 2010
+* [[[lee2008b,nofetch(Lee 2008b)]]], Lee, J.: Indoor Spatial Data Model, Proc. ISA Workshop, Seoul, Korea, Aug. 2008
+* [[[wordnet,nofetch(WordNet)]]], Princeton University, 2010
+* [[[citygml_2,nofetch(OGC CityGML 2.0)]]], OGC: OGC City Geography Markup Language (CityGML) Encoding Standard version 2.0, OGC 12-019, 2012
+* [[[kml_spec,nofetch(OGC KML)]]], OGC: OGC KML version 2.2, OGC 07-147r2, 2008
+* [[[ifc_2x3,nofetch(buildingSMART IFC 2x3)]]], buildingSmart: Industry Foundation Classes Release 2x3 version 2

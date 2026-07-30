@@ -1,0 +1,17 @@
+
+[[annex-d]]
+[annex,obligation=informative]
+== Use-Cases of IndoorGML 2 - Part2a
+
+=== Use-Case 1: Conversion from IndoorGML 1.1 to IndoorGML 2
+* Contributor: Ki-Joune Li
+
+=== Use-Case 2: Conversion from IFC to IndoorGML 2
+* Contributor: Abdoulaye Diakité
+
+=== Use-Case 3: Mapping of ISO 19164 in IndoorGML 2 – Part 2a
+* Contributors: Ki-Joune Li & Abdoulaye Diakité
+
+=== Use-Case 4: Implementation of omlox in IndoorGML 2 – Part 2a
+
+=== Use-Case 5: Indoor Navigation Service for Visually Impaired Person

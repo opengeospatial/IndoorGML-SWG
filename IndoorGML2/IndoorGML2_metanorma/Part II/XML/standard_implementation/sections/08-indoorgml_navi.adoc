@@ -1,0 +1,326 @@
+[[section-indoorxml-navi]]
+== IndoorXML Navigation
+
+[requirements_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/req/navi
+subject:: Implementation Specification
+inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
+inherit:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/req/core
+requirement:: /req/navi/global
+requirement:: /req/navi/navigablespace
+requirement:: /req/navi/generalspace
+requirement:: /req/navi/transferspace
+requirement:: /req/navi/navigableboundary
+requirement:: /req/navi/nonnavigablespace
+requirement:: /req/navi/objectspace
+requirement:: /req/navi/nonnavigableboundary
+requirement:: /req/navi/route
+====
+
+=== General requirements for encoding standards
+
+[[req-navi-global]]
+[requirement]
+.Requirement for navigation module XML schema validation
+====
+[%metadata]
+identifier:: /req/navi/global
+part:: An instance XML document representing an IndoorGML 2.0 Navigation module dataset SHALL conform to the schemas defined in this standard.
+====
+
+
+=== NavigableSpace
+
+[[req-navi-navigablespace]]
+[requirement]
+.Requirement for NavigableSpace XML element
+====
+[%metadata]
+identifier:: /req/navi/navigablespace
+part:: An instance `NavigableSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="NavigableSpace" substitutionGroup="core:CellSpace" type="navi:NavigableSpaceType"/>
+  <complexType name="NavigableSpaceType">
+    <complexContent>
+      <extension base="core:CellSpaceType">
+        <sequence>
+          <element name="locomotionType" type="navi:LocomotionAccessType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:NavigableSpace gml:id="NS_1">
+    <!-- mandatory property -->
+    <navi:locomotionType>Walking</navi:locomotionType>
+</navi:NavigableSpace>
+----
+
+
+=== GeneralSpace
+
+[[req-navi-generalspace]]
+[requirement]
+.Requirement for GeneralSpace XML element
+====
+[%metadata]
+identifier:: /req/navi/generalspace
+part:: An instance `GeneralSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="GeneralSpace" substitutionGroup="navi:NavigableSpace" type="navi:GeneralSpaceType"/>
+  <complexType name="GeneralSpaceType">
+    <complexContent>
+      <extension base="navi:NavigableSpaceType">
+        <sequence>
+          <element name="function" type="navi:GeneralSpaceFunctionType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:GeneralSpace gml:id="GS_1">
+    <!-- mandatory property -->
+    <navi:function>Storage</navi:function>
+</navi:GeneralSpace>
+----
+
+
+=== TransferSpace
+
+[[req-navi-transferspace]]
+[requirement]
+.Requirement for TransferSpace XML element
+====
+[%metadata]
+identifier:: /req/navi/transferspace
+part:: An instance `TransferSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="TransferSpace" substitutionGroup="navi:NavigableSpace" type="navi:TransferSpaceType"/>
+<complexType name="TransferSpaceType">
+  <complexContent>
+    <extension base="navi:NavigableSpaceType">
+      <sequence>
+        <element name="function" type="navi:TransferSpaceFunctionType"/>
+        <element name="type" type="navi:TransferSpaceType"/>
+      </sequence>
+    </extension>
+  </complexContent>
+</complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:TransferSpace gml:id="TS_1">
+    <!-- mandatory properties -->
+    <navi:category>Door</navi:category>
+    <navi:function>ConnectionSpace</navi:function>
+</navi:TransferSpace>
+----
+
+
+=== NavigableBoundary
+
+[[req-navi-navigableboundary]]
+[requirement]
+.Requirement for NavigableBoundary XML element
+====
+[%metadata]
+identifier:: /req/navi/navigableboundary
+part:: An instance `NavigableBoundary` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="NavigableBoundary" substitutionGroup="core:CellBoundary" type="navi:NavigableBoundaryType"/>
+<complexType name="NavigableBoundaryType">
+  <complexContent>
+    <extension base="core:CellBoundaryType">
+      <sequence>
+        <element name="NavigableBoundaryFunction" type="navi:NavigableBoundaryFunctionType"/>
+        <element minOccurs="0" name="boundaryOrientation" type="boolean"/>
+      </sequence>
+    </extension>
+  </complexContent>
+</complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:NavigableBoundary gml:id="NB_1">
+    <!-- mandatory property -->
+    <navi:NavigableBoundaryFunction>AnchorBoundary</navi:NavigableBoundaryFunction>
+    <!-- Optional property -->
+    <navi:boundaryOrientation>false</navi:boundaryOrientation>
+</navi:NavigableBoundary>
+----
+
+
+=== NonNavigableSpace
+
+[[req-navi-nonnavigablespace]]
+[requirement]
+.Requirement for NonNavigableSpace XML element
+====
+[%metadata]
+identifier:: /req/navi/nonnavigablespace
+part:: An instance `NonNavigableSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="NonNavigableSpace" substitutionGroup="core:CellSpace" type="navi:NonNavigableSpaceType"/>
+<complexType name="NonNavigableSpaceType">
+  <complexContent>
+    <extension base="core:CellSpaceType">
+      <sequence/>
+    </extension>
+  </complexContent>
+</complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:NonNavigableSpace gml:id="NNS_1">
+    <!-- no property -->
+</navi:NonNavigableSpace>
+----
+
+
+=== ObjectSpace
+
+[[req-navi-objectspace]]
+[requirement]
+.Requirement for ObjectSpace XML element
+====
+[%metadata]
+identifier:: /req/navi/objectspace
+part:: An instance `ObjectSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="ObjectSpace" substitutionGroup="navi:NonNavigableSpace" type="navi:ObjectSpaceType"/>
+<complexType name="ObjectSpaceType">
+  <complexContent>
+    <extension base="navi:NonNavigableSpaceType">
+      <sequence>
+        <element minOccurs="0" name="description" type="string"/>
+        <element minOccurs="0" name="containedFeatures" type="integer"/>
+      </sequence>
+    </extension>
+  </complexContent>
+</complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:ObjectSpace gml:id="OS_1">
+    <!-- Optional properties -->
+    <navi:containedFeatures>3</navi:containedFeatures>
+    <navi:description>Living room furniture</navi:description>
+</navi:ObjectSpace>
+----
+
+
+=== NonNavigableBoundary
+
+[[req-navi-nonnavigableboundary]]
+[requirement]
+.Requirement for NonNavigableBoundary XML element
+====
+[%metadata]
+identifier:: /req/navi/nonnavigableboundary
+part:: An instance `NonNavigableBoundary` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="NonNavigableBoundary" substitutionGroup="core:CellBoundary" type="navi:NonNavigableBoundaryType"/>
+<complexType name="NonNavigableBoundaryType">
+  <complexContent>
+    <extension base="core:CellBoundaryType">
+      <sequence/>
+    </extension>
+  </complexContent>
+</complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:NonNavigableBoundary gml:id="NNB_1">
+    <!-- no property -->
+</navi:NonNavigableBoundary>
+----
+
+
+=== Route
+
+[[req-navi-route]]
+[requirement]
+.Requirement for Route XML element
+====
+[%metadata]
+identifier:: /req/navi/route
+part:: An instance `Route` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="Route" substitutionGroup="gml:AbstractFeature" type="navi:RouteType"/>
+<complexType name="RouteType">
+  <complexContent>
+    <extension base="gml:AbstractFeatureType">
+      <sequence>
+        <element minOccurs="0" name="creationDate" type="dateTime"/>
+        <element maxOccurs="unbounded" minOccurs="2" name="routeNode" type="core:NodePropertyType"/>
+        <element maxOccurs="unbounded" name="routeEdge" type="core:EdgePropertyType"/>
+      </sequence>
+    </extension>
+  </complexContent>
+</complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<navi:Route gml:id="RT_1">
+    <!-- mandatory properties (at least 2 nodes and 1 edge) -->
+    <navi:routeNode xlink:href="#ND_1"/>
+    <navi:routeNode xlink:href="#ND_2"/>
+    <navi:routeEdge xlink:href="#EDG_1"/>
+    <!-- Optional property -->
+    <navi:creationDate>2025-10-20T16:44:00Z</navi:creationDate>
+</navi:Route>
+----

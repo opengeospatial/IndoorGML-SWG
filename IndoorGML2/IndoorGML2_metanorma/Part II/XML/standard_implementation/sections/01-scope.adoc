@@ -1,0 +1,15 @@
+
+[heading=scope]
+== Scope
+
+The OGC® IndoorGML 2.0 Part 2a – XML Encoding Standard defines an XML encoding for IndoorGML 2.0 Part 1 - Conceptual Model.
+The encoding is implemented as an application schema of the Geography Markup Language version 3.2.1 (GML 3.2.1).
+
+The IndoorGML XML Encoding Standard specifies:
+
+- XML schema for IndoorGML 2.0 core module;
+- XML schema for IndoorGML 2.0 navigation module;
+- the geometry encoding rules based on GML 3.2.1 geometry objects; and
+- a statement to which IndoorGML XML conformance classes an IndoorGML 2.0 instance conforms to.
+
+IndoorGML XML encoding is an implementation encoding of IndoorGML 2.0 Part 1. Therefore, IndoorGML XML instances shall be interpreted according to the semantics defined in the IndoorGML 2.0 conceptual model.

@@ -1,0 +1,34 @@
+[clause=overview]
+== Overview of the XML Encoding
+
+The XML encoding of IndoorGML 2.0 implements the conceptual classes of <<ogc22-045r5,IndoorGML 2.0 Part 1>> as GML-compliant XML elements and types.
+The conceptual model remains normative for semantics, while this document defines the XML schema representation.
+
+=== Design Principle
+
+The XML encoding is based on the following encoding principles.
+
+==== Conceptual model preservation
+
+The XML encoding of the IndoorGML core module preserves the IndoorGML 2.0 core conceptual model structure, as shown in <<fig-core-indoorgml>>.
+
+[[fig-core-indoorgml]]
+.IndoorGML 2.0 core module structure
+image::UML_core_July2025.png[align="center"]
+
+Each feature class is mapped to an XML element inheriting from or substituting GML feature elements (e.g. `gml:AbstractFeature`).
+For example, the `<CellSpace>` element substitutes `gml:AbstractFeature` and extends `gml:AbstractFeatureType` to represent cell spaces.
+
+The XML encoding of the IndoorGML navigation module preserves the IndoorGML 2.0 navigation conceptual model structure, as shown in <<fig-navi-indoorgml>>.
+
+[[fig-navi-indoorgml]]
+.IndoorGML 2.0 navigation module structure
+image::UML_navi_July2025.png[align="center"]
+
+Navigation feature classes extend core elements using GML inheritance patterns, implementing substitutions where appropriate. For example, `<NavigableSpace>` substitutes `<CellSpace>` and extends its complex type definition.
+
+==== XML Schema design workflow
+
+The XML encoding schema is derived from the IndoorGML 2.0 UML model and is designed on the basis of OGC GML 3.2.1.
+XML schema (`.xsd`) documents are generated from the UML model, establishing elements and complex types for the Core and Navigation modules.
+Typical patterns include converting associations into GML property types using `xlink:href` references (for example, the `duality` link from `CellSpace` to `Node`), mapping attributes to native XML schema elements (such as `creationDate` of type `xs:dateTime`), and representing UML code lists as XML simple types restricting `xs:string` with enumeration constraints.

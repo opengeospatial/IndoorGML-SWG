@@ -1,0 +1,22 @@
+
+[[annex-b]]
+[annex,obligation=normative]
+== XML Schema for IndoorGML 2
+
+In addition to this document, this standard includes some normative XML Schema Documents. These XML Schema Documents are included in this document. These XML Schema Documents are also posted online at the URL http://schemas.opengis.net/indoorgml/2.0. In the event of a discrepancy between this document and online versions of the XML Schema Document files (posted at schemas.opengis.net), the online schema files SHALL be considered authoritative.
+
+[[annex_indoorxml_core_schema]]
+=== IndoorGML Core Module
+
+[source,xml]
+----
+include::../schema/IndoorGML_core.xsd[]
+----
+
+[[annex_indoorxml_navi_schema]]
+=== IndoorGML Indoor Navigation Module
+
+[source,xml]
+----
+include::../schema/IndoorGML_navi.xsd[]
+----

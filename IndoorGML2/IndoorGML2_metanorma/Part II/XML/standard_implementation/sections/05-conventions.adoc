@@ -1,0 +1,57 @@
+== Conventions
+
+=== Identifiers
+
+The normative provisions in this standard are denoted by the URI 
+
+`http://www.opengis.net/spec/indoorgml-2/2.0/xml`
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.
+
+
+=== Use of XML terminology
+
+The following terms and concepts are used as specified in the W3C XML specifications and OGC GML 3.2.1:
+
+* "element" refers to an XML element tag;
+* "attribute" refers to a name/value attribute on an XML element;
+* "complexType" refers to an XML Schema complex type definition;
+* "substitutionGroup" refers to the GML element substitution mechanism allowing specialized elements to substitute base GML feature types; and
+* "property element" refers to an XML element that represents an association between features or objects.
+
+
+// === Symbols and abbreviated terms
+// 
+// The following symbols and abbreviated terms are used in this standard:
+// 
+// * BIM - Building Information Modeling
+// * CityGML - City Geographic Markup Language
+// * CRS - Coordinate Reference System
+// * GML - Geographic Markup Language
+// * IFC - Industry Foundation Classes
+// * IndoorGML - Indoor Geographic Markup Language
+// * ISO - International Organization for Standardization
+// * KML - Keyhole Markup Language
+// * LOD - Level of Detail
+// * MLSM - Multi-Layered Space Model
+// * MVD - Model View Definition
+// * NRG - Node-Relation Graph
+// * OGC - Open Geospatial Consortium
+// * RFID - Radio Frequency IDentifier
+// * SensorML - Sensor Model Language
+// * UML - Unified Modeling Language
+// * XML - Extensible Markup Language
+// * XSD - XML Schema Definition
+
+
+=== UML Notation
+
+The diagrams that appear in this standard are presented using the Unified Modeling Language (UML) static structure diagram.
+
+In this standard, the following standard UML class stereotypes and data types are used:
+
+* `«Interface»`: A definition of a set of operations supported by objects having this interface. An Interface class cannot contain any attributes.
+* `«DataType»`: A descriptor of a set of values that lack identity.
+* `«CodeList»`: A flexible enumeration that uses string values for expressing a list of potential values.
+
+Standard data types used include `CharacterString`, `Integer`, `Double`, and `Float`.

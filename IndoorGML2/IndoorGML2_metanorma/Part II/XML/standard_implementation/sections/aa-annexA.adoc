@@ -1,0 +1,13 @@
+
+[[annex-a]]
+[annex,obligation=normative]
+== Abstract Test Suites for IndoorGML Instance Documents
+
+=== Test Cases for mandatory conformance requirements
+
+==== Valid IndoorGML instance document
+
+* *Test purpose:* Verify the validity of the IndoorGML instance document against the XML Schema definition of each IndoorGML module that is part of the IndoorGML profile employed by the instance document. This may be any combination of IndoorGML extension modules in conjunction with the IndoorGML core module.
+* *Test method:* Validate the IndoorGML XML instance document against the XML Schema definitions of all employed IndoorGML modules. The process may be using an appropriate software tool for validation or be a manual process that checks all relevant definitions from the respective XML Schema specification of the employed IndoorGML modules.
+* *Reference:* Annex B
+* *Test type:* Basic Test

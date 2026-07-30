@@ -1,0 +1,68 @@
+= OGC IndoorGML 2.0 Part 2a – XML Encoding
+:comment: ### Document type; mandatory.
+:doctype: standard
+:comment: ### Document subtype; optional.
+:docsubtype: implementation
+:comment: ### Version number
+:edition: 2.0.0
+:draft: 2.0.0
+:comment: ### Language of the document
+:language: en
+:comment: ### Document status/stage
+:status: swg-draft
+:comment: ### Relevant committee
+:committee: technical
+:comment: ### Internal reference number
+:docnumber: 25-001
+:comment: ### Date on which the standard was updated
+:received-date: 2025-08-06
+:comment: ### Date on which the standard was approved
+:issued-date: 2099-01-01
+:comment: ### Date on which the standard was published
+:published-date: 2099-01-01
+:comment: ### External link referencing the document
+:external-id: http://www.opengis.net/doc/IS/indoorgml-xml/2.0
+:comment: ### Authors
+:fullname: Abdoulaye Diakité
+:fullname_2: Taehoon Kim
+:fullname_3: Sisi Zlatanova
+:fullname_4: Ki-Joune Li
+:fullname_5: Zhiyong Wang
+:comment: ### Role of the authors
+:role: editor
+:comment: ### Keywords
+:keywords: OGCDoc, OGC documents, indoor, navigation, IndoorGML, GML, XML
+:submitting-organizations: The University of New South Wales; Pusan National University; CityGeometrix; National Institute of Advanced Industrial Science and Technology; SpatialAlgebra;
+:comment: ### Metanorma flavor
+:mn-document-class: ogc
+:comment: ### Desired output formats
+:mn-output-extensions: xml,html,doc,pdf,rxl
+:local-cache-only:
+:pdf-uri: ./document.pdf
+:xml-uri: ./document.xml
+:doc-uri: ./document.doc
+:imagesdir: figures
+:stem:
+
+// Clauses
+include::sections/00-preface.adoc[]
+include::sections/01-scope.adoc[]
+include::sections/02-conformance.adoc[]
+include::sections/03-references.adoc[]
+include::sections/04-terms_and_definitions.adoc[]
+include::sections/05-conventions.adoc[]
+include::sections/06-overview.adoc[]
+include::sections/07-indoorgml_core.adoc[]
+include::sections/08-indoorgml_navi.adoc[]
+
+// Annexes
+include::sections/aa-annexA.adoc[]
+include::sections/ab-annexB.adoc[]
+include::sections/ac-annexC.adoc[]
+include::sections/ad-annexD.adoc[]
+
+// Revision history
+include::sections/ah-history.adoc[]
+
+// Bibliography
+include::sections/az-bibliography.adoc[]

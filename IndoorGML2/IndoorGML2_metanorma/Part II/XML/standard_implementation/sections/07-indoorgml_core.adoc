@@ -1,0 +1,518 @@
+[[section-indoorxml-core]]
+== IndoorXML Core
+
+[requirements_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/req/core
+subject:: Implementation Specification
+inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
+inherit:: http://www.opengis.net/spec/gml/3.2.1/req
+requirement:: /req/core/global
+requirement:: /req/core/cellspace
+requirement:: /req/core/cellboundary
+requirement:: /req/core/primalspacelayer
+requirement:: /req/core/node
+requirement:: /req/core/edge
+requirement:: /req/core/dualspacelayer
+requirement:: /req/core/interlayerconnection
+requirement:: /req/core/thematiclayer
+====
+
+=== General requirements for encoding standard
+
+[[req-core-global]]
+[requirement]
+.Requirement for global XML schema validation
+====
+[%metadata]
+identifier:: /req/core/global
+part:: An instance XML document representing an IndoorGML 2.0 dataset SHALL be well-formed XML and validate against the schemas defined in this standard.
+====
+
+
+=== CellSpace
+
+[[req-core-cellspace]]
+[requirement]
+.Requirement for CellSpace XML element
+====
+[%metadata]
+identifier:: /req/core/cellspace
+part:: An instance `CellSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="CellSpace" substitutionGroup="gml:AbstractFeature" type="core:CellSpaceType"/>
+  <complexType name="CellSpaceType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="cellSpaceGeom" type="core:CellSpaceGeometryPropertyType"/>
+          <element minOccurs="0" name="externalReference" type="core:ExternalReferencePropertyType"/>
+          <element minOccurs="0" name="level" type="string"/>
+          <element name="PoI" type="boolean"/>
+          <element minOccurs="0" name="cellSpaceName" type="string"/>
+          <element minOccurs="0" name="duality" type="core:NodePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="boundedBy" type="core:CellBoundaryPropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CellSpacePropertyType">
+    <sequence minOccurs="0">
+      <element ref="core:CellSpace"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="CellSpaceGeometry" substitutionGroup="gml:AbstractObject" type="core:CellSpaceGeometryType"/>
+  <complexType name="CellSpaceGeometryType">
+    <sequence>
+      <element minOccurs="0" name="Geometry3D" type="gml:SolidPropertyType"/>
+      <element minOccurs="0" name="Geometry2D" type="gml:SurfacePropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="CellSpaceGeometryPropertyType">
+    <sequence>
+      <element ref="core:CellSpaceGeometry"/>
+    </sequence>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:CellSpace gml:id="CS_1">
+    <!-- mandatory property -->
+    <core:PoI>false</core:PoI>
+
+    <!-- optional properties -->
+    <core:cellSpaceGeom>
+        <core:Geometry3D>
+            <gml:Solid gml:id="CSG_CS_1">
+                ...
+            </gml:Solid>
+        </core:Geometry3D>
+    </core:cellSpaceGeom>
+    <core:duality xlink:href="#ND_1"/>
+    <core:level>3rd Floor</core:level>
+    <core:cellSpaceName>Locker Room Lv3</core:cellSpaceName>
+</core:CellSpace>
+----
+
+
+=== CellBoundary
+
+[[req-core-cellboundary]]
+[requirement]
+.Requirement for CellBoundary XML element
+====
+[%metadata]
+identifier:: /req/core/cellboundary
+part:: An instance `CellBoundary` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="CellBoundary" substitutionGroup="gml:AbstractFeature" type="core:CellBoundaryType"/>
+  <complexType name="CellBoundaryType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="cellBoundaryGeom" type="core:CellBoundaryGeometryPropertyType"/>
+          <element minOccurs="0" name="externalReference" type="core:ExternalReferencePropertyType"/>
+          <element name="isVirtual" type="boolean"/>
+          <element minOccurs="0" name="duality" type="core:EdgePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CellBoundaryPropertyType">
+    <sequence minOccurs="0">
+      <element ref="core:CellBoundary"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="CellBoundaryGeometry" substitutionGroup="gml:AbstractObject" type="core:CellBoundaryGeometryType"/>
+  <complexType name="CellBoundaryGeometryType">
+    <sequence>
+      <element minOccurs="0" name="Geometry2D" type="gml:SurfacePropertyType"/>
+      <element minOccurs="0" name="Geometry1D" type="gml:CurvePropertyType"/>
+    </sequence>
+  </complexType>
+  <complexType name="CellBoundaryGeometryPropertyType">
+    <sequence>
+      <element ref="core:CellBoundaryGeometry"/>
+    </sequence>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:CellBoundary gml:id="CB_1">
+    <!-- mandatory property -->
+    <core:isVirtual>false</core:isVirtual>
+
+    <!-- optional properties -->
+    <core:cellBoundaryGeom>
+        <core:Geometry2D>
+            <gml:Surface gml:id="CBG_CB_1">
+                ...
+            </gml:Surface>
+        </core:Geometry2D>
+    </core:cellBoundaryGeom>
+    <core:duality xlink:href="#EDG_1"/>
+</core:CellBoundary>
+----
+
+
+=== PrimalSpaceLayer
+
+[[req-core-primalspacelayer]]
+[requirement]
+.Requirement for PrimalSpaceLayer XML element
+====
+[%metadata]
+identifier:: /req/core/primalspacelayer
+part:: An instance `PrimalSpaceLayer` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="PrimalSpaceLayer" substitutionGroup="gml:AbstractFeature" type="core:PrimalSpaceLayerType"/>
+  <complexType name="PrimalSpaceLayerType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="creationDate" type="dateTime"/>
+          <element minOccurs="0" name="terminationDate" type="dateTime"/>
+          <element maxOccurs="unbounded" name="cellSpaceMember">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="core:CellSpace"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="cellBoundaryMember">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="core:CellBoundary"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:PrimalSpaceLayer gml:id="PSL_1">
+    <!-- mandatory properties (at least one CellSpace) -->
+    <core:cellSpaceMember>
+        <core:CellSpace gml:id="CS_1">...</core:CellSpace>
+    </core:cellSpaceMember>
+    <!-- optional properties -->
+    <core:cellBoundaryMember>
+        <core:CellBoundary gml:id="CB_1">...</core:CellBoundary>
+    </core:cellBoundaryMember>
+    <core:creationDate>2025-08-06T18:39:00Z</core:creationDate>
+</core:PrimalSpaceLayer>
+----
+
+
+=== Node
+
+[[req-core-node]]
+[requirement]
+.Requirement for Node XML element
+====
+[%metadata]
+identifier:: /req/core/node
+part:: An instance `Node` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="Node" substitutionGroup="gml:AbstractFeature" type="core:NodeType"/>
+  <complexType name="NodeType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="geometry" type="gml:PointPropertyType"/>
+          <element name="duality" type="core:CellSpacePropertyType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="connects" type="core:EdgePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:Node gml:id="ND_1">
+    <!-- mandatory property -->
+    <core:duality xlink:href="#CS_1"/>
+    <!-- optional properties -->
+    <core:geometry>
+        <gml:Point gml:id="G_ND_1">
+            <gml:pos>445536.499779417 5444906.24858758 -2.02</gml:pos>
+        </gml:Point>
+    </core:geometry>
+    <core:connects xlink:href="#EDG_1"/>
+</core:Node>
+----
+
+
+=== Edge
+
+[[req-core-edge]]
+[requirement]
+.Requirement for Edge XML element
+====
+[%metadata]
+identifier:: /req/core/edge
+part:: An instance `Edge` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="Edge" substitutionGroup="gml:AbstractFeature" type="core:EdgeType"/>
+  <complexType name="EdgeType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element minOccurs="0" name="geometry" type="gml:CurvePropertyType"/>
+          <element name="weight" type="double"/>
+          <element minOccurs="0" name="duality" type="core:CellBoundaryPropertyType"/>
+          <element maxOccurs="2" minOccurs="2" name="connects" type="core:NodePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:Edge gml:id="EDG_1">
+    <!-- mandatory properties -->
+    <core:connects xlink:href="#ND_1"/>
+    <core:connects xlink:href="#ND_2"/>
+    <!-- optional properties -->
+    <core:geometry>
+        <gml:LineString gml:id="G_EDG_1">
+            <gml:pos>445536.499779417 5444906.24858758 -2.02</gml:pos>
+            <gml:pos>445537.914644321 5444904.59001251 -2.02</gml:pos>
+        </gml:LineString>
+    </core:geometry>
+    <core:duality xlink:href="#CB_1"/>
+</core:Edge>
+----
+
+
+=== DualSpaceLayer
+
+[[req-core-dualspacelayer]]
+[requirement]
+.Requirement for DualSpaceLayer XML element
+====
+[%metadata]
+identifier:: /req/core/dualspacelayer
+part:: An instance `DualSpaceLayer` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="DualSpaceLayer" substitutionGroup="gml:AbstractFeature" type="core:DualSpaceLayerType"/>
+  <complexType name="DualSpaceLayerType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="isLogical" type="boolean"/>
+          <element minOccurs="0" name="creationDate" type="dateTime"/>
+          <element minOccurs="0" name="terminationDate" type="dateTime"/>
+          <element name="isDirected" type="boolean"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="edgeMember">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="core:Edge"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" name="nodeMember">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="core:Node"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:DualSpaceLayer gml:id="DSL_1">
+    <!-- mandatory properties -->
+    <core:isLogical>true</core:isLogical>
+    <core:isDirected>false</core:isDirected>
+    <core:nodeMember>
+        <core:Node gml:id="ND_1">...</core:Node>
+    </core:nodeMember>
+    <!-- optional properties -->
+    <core:edgeMember>
+        <core:Edge gml:id="EDG_1">...</core:Edge>
+    </core:edgeMember>
+    <core:creationDate>2025-08-06T18:39:00Z</core:creationDate>
+</core:DualSpaceLayer>
+----
+
+
+=== InterLayerConnection
+
+[[req-core-interlayerconnection]]
+[requirement]
+.Requirement for InterLayerConnection XML element
+====
+[%metadata]
+identifier:: /req/core/interlayerconnection
+part:: An instance `InterLayerConnection` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="InterLayerConnection" substitutionGroup="gml:AbstractFeature" type="core:InterLayerConnectionType"/>
+  <complexType name="InterLayerConnectionType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="typeOfTopoExpression" type="core:TopoExpressionValueType"/>
+          <element minOccurs="0" name="comment" type="string"/>
+          <element maxOccurs="2" minOccurs="2" name="connectedLayers" type="core:ThematicLayerPropertyType"/>
+          <element maxOccurs="2" minOccurs="0" name="connectedCells" type="core:CellSpacePropertyType"/>
+          <element maxOccurs="2" minOccurs="0" name="connectedNodes" type="core:NodePropertyType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:InterLayerConnection gml:id="ILC_1">
+    <!-- mandatory properties -->
+    <core:typeOfTopoExpression>Contains</core:typeOfTopoExpression>
+    <core:connectedLayers>
+        <core:ThematicLayer gml:id="TL_1">...</core:ThematicLayer>
+        <core:ThematicLayer gml:id="TL_2">...</core:ThematicLayer>
+    </core:connectedLayers>
+    <!-- optional properties -->
+    <core:comment>TL_1 describes the room spaces and contains TL_2</core:comment>
+    <core:connectedCells xlink:href="#PS1_CS_1"/>
+    <core:connectedCells xlink:href="#PS2_CS_1"/>
+</core:InterLayerConnection>
+----
+
+
+=== ThematicLayer
+
+[[req-core-thematiclayer]]
+[requirement]
+.Requirement for ThematicLayer XML element
+====
+[%metadata]
+identifier:: /req/core/thematiclayer
+part:: An instance `ThematicLayer` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Core XML Schema (`IndoorGML_core.xsd`).
+====
+
+[%unnumbered]
+[source,xml]
+----
+<element name="ThematicLayer" substitutionGroup="gml:AbstractFeature" type="core:ThematicLayerType"/>
+  <complexType name="ThematicLayerType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="semanticExtension" type="boolean"/>
+          <element name="theme" type="core:ThemeLayerValueType"/>
+          <element minOccurs="0" name="primalSpace">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="core:PrimalSpaceLayer"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="dualSpace">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="core:DualSpaceLayer"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+----
+
+[%unnumbered]
+[source,xml]
+----
+<core:ThematicLayer gml:id="TL_1">
+    <!-- mandatory properties -->
+    <core:semanticExtension>true</core:semanticExtension>
+    <core:theme>Physical</core:theme>
+    <!-- optional properties -->
+    <core:primalSpace xlink:href="#PSL_1"/>
+    <core:dualSpace xlink:href="#DSL_1"/>
+</core:ThematicLayer>
+----

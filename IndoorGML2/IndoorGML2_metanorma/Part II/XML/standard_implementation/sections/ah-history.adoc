@@ -1,0 +1,7 @@
+
+== Revision History
+
+|===
+|Date |Release |Author |Paragraph modified |Description
+|2025-08-06 |2.0.0 |Sisi Zlatanova, Abdoulaye Diakité, Taehoon Kim, Ki-Joune Li |All |First draft of IndoorGML 2.0 Part 2a (XML Encoding)
+|===
