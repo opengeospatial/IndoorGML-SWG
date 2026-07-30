@@ -1,8 +1,8 @@
-CREATE TABLE "Navigablespace"
+CREATE TABLE "NavigableSpace"
 (
     "Locomotiontype" "LocomotionAccessType" NULL,
-    "NavigablespaceID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Navigablespace" PRIMARY KEY ("NavigablespaceID"),
+    "NavigableSpaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_NavigableSpace" PRIMARY KEY ("NavigableSpaceID"),
     CONSTRAINT "FK_NavigableSpace_CellSpace"
-        FOREIGN KEY ("NavigablespaceID") REFERENCES "Cellspace" ("CellspaceID")
+        FOREIGN KEY ("NavigableSpaceID") REFERENCES "CellSpace" ("CellSpaceID")
 );

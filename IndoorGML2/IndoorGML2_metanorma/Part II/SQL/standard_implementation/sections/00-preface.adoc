@@ -17,6 +17,7 @@ This encoding can be used to store and exchange 2D and/or 3D indoor space and in
 This Part 2c of the Standard defines how the concepts developed in Part 1 are realized using SQL table definitions.
 The SQL encoding represents a mapping of the Conceptual Model derived from the UML model using Enterprise Architecture tooling, with subsequent corrections to identifier types, relationships, and missing properties.
 Geometry values are stored in PostGIS `geometry` columns.
+Geometry DataTypes from the conceptual model are flattened onto owning feature tables using path-style column names (for example, `cellSpaceGeom_geometry2D`), and non-geometric reference DataTypes are encoded as PostgreSQL composite types.
 Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into the implementation details documented in this standard.
 
 |===
@@ -38,11 +39,11 @@ No security considerations have been made for this Standard.
 All questions regarding this submission should be directed to the editor or the submitters:
 
 |===
-|Name |Affiliation |OGC member
+|Name |Affiliation |Email |OGC member
 
-|Sisi Zlatanova         |The University of New South Wales  |Yes
-|Zhiyong Wang           |SpatialAlgebra  |Yes
-|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |Yes
-|Abdoulaye Diakite      |CityGeometrix  |Yes
-|Ki-Joune Li            |Pusan National University  |Yes
+|Sisi Zlatanova |University of New South Wales |s.zlatanova@unsw.edu.au |Yes
+|Zhiyong Wang |SpatialAlgebra Technology Limited |zhiyongwang@spatialalgebra.tech |Yes
+|Taehoon Kim |National Institute of Advanced Industrial Science and Technology |kim.taehoon@aist.go.jp |Yes
+|Abdoulaye Diakite |CityGeometrix Pty Ltd |abdou@citygeometrix.com |Yes
+|Ki-Joune Li |Pusan National University |lik@pnu.edu |Yes
 |===

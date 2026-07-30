@@ -25,7 +25,8 @@ Verify that the database schema implements all core SQL encoding tables and cons
 ======
 Verify that all core tables defined in <<section-indoorsql-core>> exist with the required columns, primary keys, and foreign key constraints.
 Verify that identifier columns use string types.
-Verify that geometry columns use the PostGIS `geometry` type.
+Verify that geometry columns use the PostGIS `geometry` type, including path-named columns such as `cellSpaceGeom_geometry2D` / `cellSpaceGeom_geometry3D`.
+Verify that `ExternalReferenceType` and `ExternalObjectReferenceType` exist as PostgreSQL composite types and that `externalReference` columns use `ExternalReferenceType`.
 ======
 
 ====

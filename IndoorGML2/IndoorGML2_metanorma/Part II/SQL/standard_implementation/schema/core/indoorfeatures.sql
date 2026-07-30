@@ -1,6 +1,6 @@
-CREATE TABLE "Indoorfeatures"
+CREATE TABLE "IndoorFeatures"
 (
-    "IndoorfeaturesID" varchar(100) NOT NULL,
+    "IndoorFeaturesID" varchar(100) NOT NULL,
     "layers" varchar(100) NULL,
-    CONSTRAINT "PK_Indoorfeatures" PRIMARY KEY ("IndoorfeaturesID")
+    CONSTRAINT "PK_IndoorFeatures" PRIMARY KEY ("IndoorFeaturesID")
 );

@@ -1,8 +1,8 @@
 The SQL encoding of IndoorGML 2.0 maps the Part 1 conceptual model to a PostgreSQL/PostGIS relational schema with one table per feature class.
 
-**Core module** — `Indoorfeatures`, `Thematiclayer`, `Primalspacelayer`, `Dualspacelayer`, `Cellspace`, `Cellboundary`, `Node`, `Edge`, `Interlayerconnection` (+ junction tables for M:N links to `Thematiclayer`, `Node`, `Cellspace`).
+**Core module** — `IndoorFeatures`, `ThematicLayer`, `PrimalSpaceLayer`, `DualSpaceLayer`, `CellSpace`, `CellBoundary`, `Node`, `Edge`, `InterLayerConnection` (+ junction tables for M:N links to `ThematicLayer`, `Node`, `CellSpace`).
 
-**Navigation module** — `Navigablespace`, `Generalspace`, `Transferspace`, `Nonnavigablespace`, `Objectspace`, `Navigableboundary`, `Nonnavigableboundary`, `Route`.
+**Navigation module** — `NavigableSpace`, `GeneralSpace`, `TransferSpace`, `NonNavigableSpace`, `ObjectSpace`, `NavigableBoundary`, `NonNavigableBoundary`, `Route`.
 
 ## Directory structure
 
@@ -29,6 +29,8 @@ SQL/
 ## Key encoding choices
 
 - **PostgreSQL 14+ with PostGIS** — geometry columns use the `geometry` type.
+- **Flattened geometry DataTypes** — e.g. `cellSpaceGeom_geometry2D` / `cellSpaceGeom_geometry3D` on `CellSpace` (no separate geometry-type tables).
+- **Composite types** — `ExternalObjectReferenceType` / `ExternalReferenceType` via `CREATE TYPE` (not tables).
 - **ENUM types** — UML code lists are mapped to PostgreSQL `ENUM` types (not lookup tables).
 - **`jsonb` arrays** — `Node.connects` / `Edge.connects` for graph adjacency; `Route.routeNode` / `Route.routeEdge` for ordered traversal sequences.
 - **Junction tables** — `InterLayerConnection_*` for many-to-many associations.

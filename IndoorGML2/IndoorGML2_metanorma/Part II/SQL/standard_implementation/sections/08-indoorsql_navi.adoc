@@ -26,11 +26,11 @@ NOTE: Navigation feature classes have not yet been validated with actual dataset
 
 The following PostgreSQL `ENUM` types represent IndoorGML navigation code lists:
 
-* `LocomotionAccessType` for `Navigablespace.Locomotiontype`;
-* `GeneralSpaceFunctionType` for `Generalspace.Function`;
-* `TransferSpaceFunctionType` for `Transferspace.Function`;
-* `TransferSpaceCategoryType` for `Transferspace.Type`;
-* `NavigableBoundaryFunctionType` for `Navigableboundary.Navigableboundaryfunction`.
+* `LocomotionAccessType` for `NavigableSpace.Locomotiontype`;
+* `GeneralSpaceFunctionType` for `GeneralSpace.Function`;
+* `TransferSpaceFunctionType` for `TransferSpace.Function`;
+* `TransferSpaceCategoryType` for `TransferSpace.Type`;
+* `NavigableBoundaryFunctionType` for `NavigableBoundary.NavigableBoundaryFunction`.
 
 [[navi-enums-schema]]
 .A SQL schema of the navigation code list types:
@@ -42,11 +42,11 @@ include::../schema/navi/enums.sql[]
 [[section-navigablespace]]
 === NavigableSpace
 
-The `Navigablespace` table extends `Cellspace` with navigation-specific attributes.
+The `NavigableSpace` table extends `CellSpace` with navigation-specific attributes.
 
-The `Navigablespace` table shall contain:
+The `NavigableSpace` table shall contain:
 
-* `NavigablespaceID` as a primary key and foreign key to `Cellspace`
+* `NavigableSpaceID` as a primary key and foreign key to `CellSpace`
 * `Locomotiontype` of type `LocomotionAccessType`, with values including "Walking", "Flying", "Rolling", and "Unspecified"
 
 [[navigablespace-schema]]
@@ -62,17 +62,17 @@ include::../schema/navi/navigablespace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/navigablespace
-part:: A `Navigablespace` table SHALL reference a <<section-cellspace,CellSpace>> row and SHALL contain a `Locomotiontype` column.
+part:: A `NavigableSpace` table SHALL reference a <<section-cellspace,CellSpace>> row and SHALL contain a `Locomotiontype` column.
 ====
 
 [[section-generalspace]]
 === GeneralSpace
 
-The `Generalspace` table extends `Navigablespace` with a function attribute.
+The `GeneralSpace` table extends `NavigableSpace` with a function attribute.
 
-The `Generalspace` table shall contain:
+The `GeneralSpace` table shall contain:
 
-* `GeneralspaceID` as a primary key and foreign key to `Navigablespace`
+* `GeneralSpaceID` as a primary key and foreign key to `NavigableSpace`
 * `Function` of type `GeneralSpaceFunctionType`, with values including "Administration", "Business, trade", "Education, training", "Recreation", "Laboratory", "Storage", and "Security"
 
 [[generalspace-schema]]
@@ -88,17 +88,17 @@ include::../schema/navi/generalspace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/generalspace
-part:: A `Generalspace` table SHALL contain a `Function` column.
+part:: A `GeneralSpace` table SHALL contain a `Function` column.
 ====
 
 [[section-transferspace]]
 === TransferSpace
 
-The `Transferspace` table extends `Navigablespace` with transfer-specific attributes.
+The `TransferSpace` table extends `NavigableSpace` with transfer-specific attributes.
 
-The `Transferspace` table shall contain:
+The `TransferSpace` table shall contain:
 
-* `TransferspaceID` as a primary key and foreign key to `Navigablespace`
+* `TransferSpaceID` as a primary key and foreign key to `NavigableSpace`
 * `Type` of type `TransferSpaceCategoryType`, with values "Door" and "Window"
 * `Function` of type `TransferSpaceFunctionType`, with values "AnchorSpace" and "ConnectionSpace"
 
@@ -115,13 +115,13 @@ include::../schema/navi/transferspace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/transferspace
-part:: A `Transferspace` table SHALL contain `Type` and `Function` columns.
+part:: A `TransferSpace` table SHALL contain `Type` and `Function` columns.
 ====
 
 [[section-nonnavigablespace]]
 === NonNavigableSpace
 
-The `Nonnavigablespace` table extends `Cellspace` for spaces that are not navigable.
+The `NonNavigableSpace` table extends `CellSpace` for spaces that are not navigable.
 
 [[nonnavigablespace-schema]]
 .A SQL schema of the NonNavigableSpace table:
@@ -133,11 +133,11 @@ include::../schema/navi/nonnavigablespace.sql[]
 [[section-objectspace]]
 === ObjectSpace
 
-The `Objectspace` table extends `Nonnavigablespace` with object-specific attributes.
+The `ObjectSpace` table extends `NonNavigableSpace` with object-specific attributes.
 
-The `Objectspace` table shall contain:
+The `ObjectSpace` table shall contain:
 
-* `ObjectspaceID` as a primary key and foreign key to `Nonnavigablespace`
+* `ObjectSpaceID` as a primary key and foreign key to `NonNavigableSpace`
 * optionally, `Containedfeatures`
 * optionally, `Description`
 
@@ -154,13 +154,13 @@ include::../schema/navi/objectspace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/objectspace
-part:: An `Objectspace` table SHALL reference a `Nonnavigablespace` row.
+part:: An `ObjectSpace` table SHALL reference a `NonNavigableSpace` row.
 ====
 
 [[section-nonnavigableboundary]]
 === NonNavigableBoundary
 
-The `Nonnavigableboundary` table extends `Cellboundary` for boundaries that are not navigable.
+The `NonNavigableBoundary` table extends `CellBoundary` for boundaries that are not navigable.
 
 [[nonnavigableboundary-schema]]
 .A SQL schema of the NonNavigableBoundary table:
@@ -172,13 +172,13 @@ include::../schema/navi/nonnavigableboundary.sql[]
 [[section-navigableboundary]]
 === NavigableBoundary
 
-The `Navigableboundary` table extends `Cellboundary` with navigation-specific boundary attributes.
+The `NavigableBoundary` table extends `CellBoundary` with navigation-specific boundary attributes.
 
-The `Navigableboundary` table shall contain:
+The `NavigableBoundary` table shall contain:
 
-* `NavigableboundaryID` as a primary key and foreign key to `Cellboundary`
+* `NavigableBoundaryID` as a primary key and foreign key to `CellBoundary`
 * optionally, `Boundaryorientation`
-* `Navigableboundaryfunction` of type `NavigableBoundaryFunctionType`, with values "AnchorBoundary" and "ConnectionBoundary"
+* `NavigableBoundaryFunction` of type `NavigableBoundaryFunctionType`, with values "AnchorBoundary" and "ConnectionBoundary"
 
 [[navigableboundary-schema]]
 .A SQL schema of the NavigableBoundary table:
@@ -193,7 +193,7 @@ include::../schema/navi/navigableboundary.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/navigableboundary
-part:: A `Navigableboundary` table SHALL contain a `Navigableboundaryfunction` column.
+part:: A `NavigableBoundary` table SHALL contain a `NavigableBoundaryFunction` column.
 ====
 
 [[section-route]]

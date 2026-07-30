@@ -1,9 +1,9 @@
-CREATE TABLE "Navigableboundary"
+CREATE TABLE "NavigableBoundary"
 (
-    "Navigableboundaryfunction" "NavigableBoundaryFunctionType" NULL,
+    "NavigableBoundaryFunction" "NavigableBoundaryFunctionType" NULL,
     "Boundaryorientation" boolean NULL,
-    "NavigableboundaryID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Navigableboundary" PRIMARY KEY ("NavigableboundaryID"),
+    "NavigableBoundaryID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_NavigableBoundary" PRIMARY KEY ("NavigableBoundaryID"),
     CONSTRAINT "FK_NavigableBoundary_CellBoundary"
-        FOREIGN KEY ("NavigableboundaryID") REFERENCES "Cellboundary" ("CellboundaryID")
+        FOREIGN KEY ("NavigableBoundaryID") REFERENCES "CellBoundary" ("CellBoundaryID")
 );

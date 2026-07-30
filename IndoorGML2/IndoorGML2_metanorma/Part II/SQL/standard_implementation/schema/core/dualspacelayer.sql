@@ -1,12 +1,12 @@
-CREATE TABLE "Dualspacelayer"
+CREATE TABLE "DualSpaceLayer"
 (
     "Creationdate" timestamp without time zone NULL,
     "Terminationdate" timestamp without time zone NULL,
     "Islogical" boolean NULL,
     "Isdirected" boolean NULL,
-    "DualspacelayerID" varchar(100) NOT NULL,
-    "ThematiclayerID" varchar(100) NULL,
-    CONSTRAINT "PK_Dualspacelayer" PRIMARY KEY ("DualspacelayerID"),
+    "DualSpaceLayerID" varchar(100) NOT NULL,
+    "ThematicLayerID" varchar(100) NULL,
+    CONSTRAINT "PK_DualSpaceLayer" PRIMARY KEY ("DualSpaceLayerID"),
     CONSTRAINT "FK_DualSpaceLayer_dualSpace"
-        FOREIGN KEY ("ThematiclayerID") REFERENCES "Thematiclayer" ("ThematiclayerID")
+        FOREIGN KEY ("ThematicLayerID") REFERENCES "ThematicLayer" ("ThematicLayerID")
 );

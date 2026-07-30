@@ -41,8 +41,8 @@ part:: Each feature table of the SQL encoding SHALL contain a string primary key
 
 The following PostgreSQL `ENUM` types represent IndoorGML core code lists:
 
-* `ThemeLayerValue` for the `Thematiclayer.Theme` column;
-* `TopoExpressionValue` for the `Interlayerconnection.Typeoftopoexpression` column.
+* `ThemeLayerValue` for the `ThematicLayer.Theme` column;
+* `TopoExpressionValue` for the `InterLayerConnection.Typeoftopoexpression` column.
 
 [[core-enums-schema]]
 .A SQL schema of the core code list types:
@@ -54,12 +54,12 @@ include::../schema/core/enums.sql[]
 [[section-indoorfeatures]]
 === IndoorFeatures
 
-The `Indoorfeatures` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeature], the container for the indoor dataset.
+The `IndoorFeatures` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeature], the container for the indoor dataset.
 It aggregates one or more thematic layers and may include inter-layer connections.
 
-The `Indoorfeatures` table shall contain:
+The `IndoorFeatures` table shall contain:
 
-* `IndoorfeaturesID` as the primary key
+* `IndoorFeaturesID` as the primary key
 * optionally, `layers` as a reference to associated thematic layers
 
 NOTE: The `layers` column was added during schema correction because it was not included in the SQL generated from Enterprise Architecture tooling.
@@ -84,18 +84,18 @@ include::../examples/indoorfeatures.sql[]
 ====
 [%metadata]
 identifier:: /req/core/indoorfeature
-part:: An `Indoorfeatures` table SHALL be related to at least one <<section-thematiclayer,`Thematiclayer`>> row through a foreign key.
+part:: An `IndoorFeatures` table SHALL be related to at least one <<section-thematiclayer,`ThematicLayer`>> row through a foreign key.
 ====
 
 [[section-thematiclayer]]
 === ThematicLayer
 
-The `Thematiclayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-tehmaticlayer[ThematicLayer], which represents one contextual decomposition of indoor space.
+The `ThematicLayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-tehmaticlayer[ThematicLayer], which represents one contextual decomposition of indoor space.
 
-The `Thematiclayer` table shall contain:
+The `ThematicLayer` table shall contain:
 
-* `ThematiclayerID` as the primary key
-* `IndoorfeaturesID` as a foreign key to `Indoorfeatures`
+* `ThematicLayerID` as the primary key
+* `IndoorFeaturesID` as a foreign key to `IndoorFeatures`
 * `Semanticextension` indicates whether there is an extension module with additional semantic information
 * `Theme` of type `ThemeLayerValue`, with values including "Virtual", "Physical", "Tags", and "Unknown"
 
@@ -112,20 +112,20 @@ include::../schema/core/thematiclayer.sql[]
 ====
 [%metadata]
 identifier:: /req/core/thematiclayer
-part:: A `Thematiclayer` table SHALL declare whether there is an extension module with additional semantic information using the `Semanticextension` column.
-part:: A `Thematiclayer` table SHALL determine what type of model representation can be expected using the `Theme` column.
+part:: A `ThematicLayer` table SHALL declare whether there is an extension module with additional semantic information using the `Semanticextension` column.
+part:: A `ThematicLayer` table SHALL determine what type of model representation can be expected using the `Theme` column.
 part:: The `Theme` value SHALL be one of "Virtual", "Physical", "Tags", and "Unknown".
 ====
 
 [[section-primalspacelayer]]
 === PrimalSpaceLayer
 
-The `Primalspacelayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-primalspacelayer[PrimalSpaceLayer], which contains spatial objects representing indoor subdivisions.
+The `PrimalSpaceLayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-primalspacelayer[PrimalSpaceLayer], which contains spatial objects representing indoor subdivisions.
 
-The `Primalspacelayer` table shall contain:
+The `PrimalSpaceLayer` table shall contain:
 
-* `PrimalspacelayerID` as the primary key
-* `ThematiclayerID` as a foreign key to `Thematiclayer`
+* `PrimalSpaceLayerID` as the primary key
+* `ThematicLayerID` as a foreign key to `ThematicLayer`
 * optionally, `Creationdate`
 * optionally, `Terminationdate`
 
@@ -142,26 +142,29 @@ include::../schema/core/primalspacelayer.sql[]
 ====
 [%metadata]
 identifier:: /req/core/primalspacelayer
-part:: A `Primalspacelayer` table SHALL be related to one or more <<section-cellspace,CellSpace>> rows.
+part:: A `PrimalSpaceLayer` table SHALL be related to one or more <<section-cellspace,CellSpace>> rows.
 ====
 
 [[section-cellspace]]
 === CellSpace
 
-The `Cellspace` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellspace[CellSpace], which represents a unit of indoor space.
+The `CellSpace` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellspace[CellSpace], which represents a unit of indoor space.
 
-The `Cellspace` table shall contain:
+The `CellSpace` table shall contain:
 
-* `CellspaceID` as the primary key
-* `PrimalspacelayerID` as a foreign key to `Primalspacelayer`
+* `CellSpaceID` as the primary key
+* `PrimalSpaceLayerID` as a foreign key to `PrimalSpaceLayer`
 * `Poi` is a flag that specifies whether this cell space is a point of interest
-* optionally, `Cellspacename`
+* optionally, `CellSpaceName`
 * optionally, `Level`
 * optionally, `duality` referencing the `NodeID` of the dual node
-* optionally, `Cellspacegeom` as a PostGIS `geometry` value
-* optionally, `Externalreference` as a serialized external reference object
+* optionally, `cellSpaceGeom_geometry2D` as a PostGIS `geometry` value (UML `CellSpaceGeometryType.Geometry2D` / IndoorJSON `cellSpaceGeom.geometry2D`)
+* optionally, `cellSpaceGeom_geometry3D` as a PostGIS `geometry` value (UML `CellSpaceGeometryType.Geometry3D` / IndoorJSON `cellSpaceGeom.geometry3D`)
+* optionally, `externalReference` of composite type `ExternalReferenceType`
 
-`Cellboundary` rows reference `Cellspace` rows through the `bounds` foreign key column.
+At most one of `cellSpaceGeom_geometry2D` and `cellSpaceGeom_geometry3D` is populated for a given row.
+
+`CellBoundary` rows reference `CellSpace` rows through the `bounds` foreign key column.
 
 [[cellspace-schema]]
 .A SQL schema of the CellSpace table:
@@ -183,22 +186,26 @@ include::../examples/select_cellspace.sql[]
 ====
 [%metadata]
 identifier:: /req/core/cellspace
-part:: A `Cellspace` table SHALL declare whether it is a point of interest space using the `Poi` column.
+part:: A `CellSpace` table SHALL declare whether it is a point of interest space using the `Poi` column.
 ====
 
 [[section-cellboundary]]
 === CellBoundary
 
-The `Cellboundary` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellboundary[CellBoundary], a boundary of a CellSpace.
+The `CellBoundary` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellboundary[CellBoundary], a boundary of a CellSpace.
 
-The `Cellboundary` table shall contain:
+The `CellBoundary` table shall contain:
 
-* `CellboundaryID` as the primary key
-* `PrimalspacelayerID` as a foreign key to `Primalspacelayer`
+* `CellBoundaryID` as the primary key
+* `PrimalSpaceLayerID` as a foreign key to `PrimalSpaceLayer`
 * `Isvirtual` indicating whether the boundary is virtual or physical
-* optionally, `bounds` referencing the `CellspaceID` of a bounded cell space
-* optionally, `Cellboundarygeom` as a PostGIS `geometry` value
-* optionally, `Externalreference`
+* optionally, `bounds` referencing the `CellSpaceID` of a bounded cell space
+* optionally, `cellBoundaryGeom_geometry1D` as a PostGIS `geometry` value (UML `CellBoundaryGeometryType.Geometry1D`, typically a curve)
+* optionally, `cellBoundaryGeom_geometry2D` as a PostGIS `geometry` value (UML `CellBoundaryGeometryType.Geometry2D`, typically a surface)
+* optionally, `externalReference` of composite type `ExternalReferenceType`
+
+At most one of `cellBoundaryGeom_geometry1D` and `cellBoundaryGeom_geometry2D` is populated for a given row.
+NOTE: IndoorJSON names the curve member `cellBoundaryGeom.geometry2D` and the surface member `cellBoundaryGeom.geometry3D`; the SQL columns follow the UML `Geometry1D` / `Geometry2D` names.
 
 [[cellboundary-schema]]
 .A SQL schema of the CellBoundary table:
@@ -213,18 +220,18 @@ include::../schema/core/cellboundary.sql[]
 ====
 [%metadata]
 identifier:: /req/core/cellboundary
-part:: A `Cellboundary` table SHALL specify whether it is virtual using the `Isvirtual` column.
+part:: A `CellBoundary` table SHALL specify whether it is virtual using the `Isvirtual` column.
 ====
 
 [[section-dualspacelayer]]
 === DualSpaceLayer
 
-The `Dualspacelayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-dualspacelayer[DualSpaceLayer], representing the graph structure corresponding to the primal space layer.
+The `DualSpaceLayer` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-dualspacelayer[DualSpaceLayer], representing the graph structure corresponding to the primal space layer.
 
-The `Dualspacelayer` table shall contain:
+The `DualSpaceLayer` table shall contain:
 
-* `DualspacelayerID` as the primary key
-* `ThematiclayerID` as a foreign key to `Thematiclayer`
+* `DualSpaceLayerID` as the primary key
+* `ThematicLayerID` as a foreign key to `ThematicLayer`
 * `Islogical` indicating whether the graph is geometric or logical
 * `Isdirected` specifying whether the graph is directed
 * optionally, `Creationdate`
@@ -243,9 +250,9 @@ include::../schema/core/dualspacelayer.sql[]
 ====
 [%metadata]
 identifier:: /req/core/dualspacelayer
-part:: A `Dualspacelayer` table SHALL specify whether the provided graph is geometric or logical using the `Islogical` column.
-part:: A `Dualspacelayer` table SHALL specify whether the provided graph is directed using the `Isdirected` column.
-part:: A `Dualspacelayer` table SHALL be related to one or more <<section-node,`Node`>> rows.
+part:: A `DualSpaceLayer` table SHALL specify whether the provided graph is geometric or logical using the `Islogical` column.
+part:: A `DualSpaceLayer` table SHALL specify whether the provided graph is directed using the `Isdirected` column.
+part:: A `DualSpaceLayer` table SHALL be related to one or more <<section-node,`Node`>> rows.
 ====
 
 [[section-node]]
@@ -256,8 +263,8 @@ The `Node` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.htm
 The `Node` table shall contain:
 
 * `NodeID` as the primary key
-* `DualspacelayerID` as a foreign key to `Dualspacelayer`
-* `duality` referencing the `CellspaceID` of the corresponding cell space
+* `DualSpaceLayerID` as a foreign key to `DualSpaceLayer`
+* `duality` referencing the `CellSpaceID` of the corresponding cell space
 * optionally, `Geometry` as a PostGIS `geometry` value (typically `Point`)
 * optionally, `connects` as a `jsonb` array of connected `EdgeID` values
 
@@ -281,7 +288,7 @@ include::../examples/select_node.sql[]
 ====
 [%metadata]
 identifier:: /req/core/node
-part:: A `Node` table SHALL contain a `duality` value referencing the `CellspaceID` of the corresponding <<section-cellspace,CellSpace>>.
+part:: A `Node` table SHALL contain a `duality` value referencing the `CellSpaceID` of the corresponding <<section-cellspace,CellSpace>>.
 part:: A `Node` table SHALL store connected edge identifiers in the `connects` column.
 ====
 
@@ -293,9 +300,9 @@ The `Edge` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.htm
 The `Edge` table shall contain:
 
 * `EdgeID` as the primary key
-* `DualspacelayerID` as a foreign key to `Dualspacelayer`
+* `DualSpaceLayerID` as a foreign key to `DualSpaceLayer`
 * `Weight` for use in graph-based applications
-* optionally, `duality` referencing the `CellboundaryID` of the corresponding cell boundary
+* optionally, `duality` referencing the `CellBoundaryID` of the corresponding cell boundary
 * optionally, `Geometry` as a PostGIS `geometry` value (typically `LineString`)
 * optionally, `connects` as a `jsonb` array of the two connected `NodeID` values
 
@@ -319,12 +326,12 @@ part:: An `Edge` table SHALL contain a `Weight` column.
 [[section-interlayerconnection]]
 === InterLayerConnection
 
-The `Interlayerconnection` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-interlayerconnection[InterLayerConnection], representing a relationship between objects in different thematic layers.
+The `InterLayerConnection` table is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-interlayerconnection[InterLayerConnection], representing a relationship between objects in different thematic layers.
 
-The `Interlayerconnection` table shall contain:
+The `InterLayerConnection` table shall contain:
 
-* `InterlayerconnectionID` as the primary key
-* `IndoorfeaturesID` as a foreign key to `Indoorfeatures`
+* `InterLayerConnectionID` as the primary key
+* `IndoorFeaturesID` as a foreign key to `IndoorFeatures`
 * `Typeoftopoexpression` of type `TopoExpressionValue`, with values including "Contains", "Overlaps", "Equals", "Within", "Crosses", and "Other"
 * optionally, `Comment`
 
@@ -364,17 +371,18 @@ include::../schema/core/interlayerconnection_thematiclayer.sql[]
 ====
 [%metadata]
 identifier:: /req/core/interlayerconnection
-part:: An `Interlayerconnection` table SHALL reference <<section-thematiclayer,ThematicLayer>> rows through the `InterLayerConnection_ThematicLayer` junction table.
+part:: An `InterLayerConnection` table SHALL reference <<section-thematiclayer,ThematicLayer>> rows through the `InterLayerConnection_ThematicLayer` junction table.
 ====
 
 [[section-externalreference]]
 === ExternalReferenceType
 
-The `Externalreferencetype` and `Externalobjectreferencetype` tables represent components of the `ExternalReference` complex type.
+The UML DataTypes `ExternalObjectReferenceType` and `ExternalReferenceType` are encoded as PostgreSQL composite types rather than as tables.
 These are not feature classes of IndoorGML 2.0.
+`CellSpace` and `CellBoundary` optionally store an `externalReference` column of type `ExternalReferenceType`, which nests an `ExternalObject` of type `ExternalObjectReferenceType` together with an `InformationSystem` URI.
 
 [[externalreferencetype-schema]]
-.A SQL schema of the ExternalReference tables:
+.A SQL schema of the ExternalReference composite types:
 [source,sql]
 ----
 include::../schema/core/externalreferencetype.sql[]

@@ -1,8 +1,8 @@
-CREATE TABLE "Generalspace"
+CREATE TABLE "GeneralSpace"
 (
     "Function" "GeneralSpaceFunctionType" NULL,
-    "GeneralspaceID" varchar(100) NOT NULL,
-    CONSTRAINT "PK_Generalspace" PRIMARY KEY ("GeneralspaceID"),
+    "GeneralSpaceID" varchar(100) NOT NULL,
+    CONSTRAINT "PK_GeneralSpace" PRIMARY KEY ("GeneralSpaceID"),
     CONSTRAINT "FK_GeneralSpace_NavigableSpace"
-        FOREIGN KEY ("GeneralspaceID") REFERENCES "Navigablespace" ("NavigablespaceID")
+        FOREIGN KEY ("GeneralSpaceID") REFERENCES "NavigableSpace" ("NavigableSpaceID")
 );

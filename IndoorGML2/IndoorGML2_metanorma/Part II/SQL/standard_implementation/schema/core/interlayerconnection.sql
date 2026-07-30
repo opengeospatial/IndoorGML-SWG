@@ -1,16 +1,16 @@
-CREATE TABLE "Interlayerconnection"
+CREATE TABLE "InterLayerConnection"
 (
     "Typeoftopoexpression" "TopoExpressionValue" NULL,
     "Comment" text NULL,
-    "InterlayerconnectionID" varchar(100) NOT NULL,
-    "IndoorfeaturesID" varchar(100) NULL,
-    CONSTRAINT "PK_Interlayerconnection" PRIMARY KEY ("InterlayerconnectionID"),
+    "InterLayerConnectionID" varchar(100) NOT NULL,
+    "IndoorFeaturesID" varchar(100) NULL,
+    CONSTRAINT "PK_InterLayerConnection" PRIMARY KEY ("InterLayerConnectionID"),
     CONSTRAINT "FK_InterLayerConnection_layerConnections"
-        FOREIGN KEY ("IndoorfeaturesID") REFERENCES "Indoorfeatures" ("IndoorfeaturesID")
+        FOREIGN KEY ("IndoorFeaturesID") REFERENCES "IndoorFeatures" ("IndoorFeaturesID")
 );
 
-COMMENT ON TABLE "Interlayerconnection"
+COMMENT ON TABLE "InterLayerConnection"
     IS 'Describes the connection between two thematic layers. ';
 
-COMMENT ON COLUMN "Interlayerconnection"."Typeoftopoexpression"
+COMMENT ON COLUMN "InterLayerConnection"."Typeoftopoexpression"
     IS 'Describes the topological relationship between two layers (e.g. overlaps, contains, etc.).';
