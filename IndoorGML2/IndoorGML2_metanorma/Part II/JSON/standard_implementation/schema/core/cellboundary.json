@@ -4,14 +4,14 @@
     "type": "object",
     "properties": {
       "id": { "type": "string" },
-      "featureType": { "enum": ["CellBoundary"] },
+      "featureType": { "enum": ["CellBoundary","NavigableBoundary","NonNavigableBoundary"] },
       "isVirtual": { "type":  "boolean" },
       "duality" : { "type": "string", "format": "uri-reference" },
       "cellBoundaryGeom" : {
         "type": "object",
         "properties": {
-          "geometry2D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
-          "geometry3D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" }
+          "geometry2D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
+          "geometry3D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" }
         }
       },
       "externalReference": { "$ref": "#/$defs/ExternalReferenceType" }

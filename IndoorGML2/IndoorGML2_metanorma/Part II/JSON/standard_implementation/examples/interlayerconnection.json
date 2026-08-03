@@ -2,5 +2,6 @@
   "id": "ILC-1",
   "featureType": "InterLayerConnection",
   "connectedLayers": ["TL-1", "TL-2"],
-  "connectedNodes": ["N1", "N101"]
+  "connectedNodes": ["N1", "N101"],
+  "typeOfTopoExpression": "CONTAINS"
 }

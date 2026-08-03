@@ -6,6 +6,7 @@
       {
         "type": "object",
         "properties": {
+          "featureType": { "enum": ["ObjectSpace"] },
           "containedFeatures": { "type": "integer"},
           "description": { "type": "string"}
         }

@@ -1,5 +1,5 @@
 [[section-indoorjson-navi]]
-== IndoorJSON Navigation
+== IndoorJSON Navigation Extension
 
 [requirements_class]
 ====
@@ -9,10 +9,287 @@ subject:: Implementation Specification
 inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
 inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
 inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+requirement:: /req/navi/element
 requirement:: /req/navi/navigablespace
 requirement:: /req/navi/generalspace
 requirement:: /req/navi/transferspace
+requirement:: /req/navi/nonnavigablespace
 requirement:: /req/navi/objectspace
 requirement:: /req/navi/navigableboundary
+requirement:: /req/navi/nonnavigableboundary
 requirement:: /req/navi/route
+====
+
+[[req-indoornavi]]
+[requirement]
+.Requirement for IndoorJSON Navigation Extension
+====
+[%metadata]
+identifier:: /req/navi/element
+part:: IndoorGML Navigation Extension JSON elements implemented by a conforming instance document SHALL conform to the JSON schema in <<annex_indoorjson_navi_schema, indoorjson.navi.schema.json>>.
+====
+
+[[section-navigablespace]]
+=== NavigableSpace
+`*NavigableSpace*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-navigablespace[NavigableSpace], which represents a space where the user can move freely.
+The compartmentalized spaces such as corridor, door, lobby, hallway, big room are represented as `*NavigableSpace*`.
+
+An `*NavigableSpace*` object shall contain:
+
+* All members from <<section-cellspace,`*CellSpace*`>>
+* `locomotionType` is the allowed transportation mode in indoor space
+
+[[navigablespace-schema]]
+.A JSON schema of the NavigableSpace:
+[source,json]
+----
+include::../schema/navi/navigablespace.json[]
+----
+
+[[navigablespace-example]]
+.An example of the NavigableSpace object:
+[source,json]
+----
+include::../examples/navigablespace.json[]
+----
+
+[[req-navigablespace]]
+[requirement]
+.NavigableSpace schema
+====
+[%metadata]
+identifier:: /req/navi/navigablespace
+part:: A `*NavigableSpace*` object SHALL specify the transportation mode using the `locomotionType` member.
+part:: The `locomotionType` value SHALL be one of the following: "Flying", "Rolling", "Walking", or "Unspecified"
+part:: The `featuretype` value SHALL be "NavigableSpace".
+====
+
+[[section-generalspace]]
+=== GeneralSpace
+`*GeneralSpace*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-generalspace[GeneralSpace], which agents can use for a longer period of time and can serve as starting and target cell in navigation.
+
+An `*GeneralSpace*` object shall contain:
+
+* All members from <<section-navigablespace,`*NavigableSpace*`>>
+* `function` specifies details about the function of the cell.
+
+[[generalspace-schema]]
+.A JSON schema of the GeneralSpace:
+[source,json]
+----
+include::../schema/navi/generalspace.json[]
+----
+
+[[generalspace-example]]
+.An example of the GeneralSpace object:
+[source,json]
+----
+include::../examples/generalspace.json[]
+----
+
+[[req-generalspace]]
+[requirement]
+.GeneralSpace schema
+====
+[%metadata]
+identifier:: /req/navi/generalspace
+part:: A `*GeneralSpace*` object SHALL specify the transportation mode using the `function` member.
+part:: The `function` value SHALL be one of the following: "Administration","Business, trade","Education, training","Recreation","Laboratory","Storage", or "Security"
+part:: The `featuretype` value SHALL be "GeneralSpace".
+====
+
+[[section-transferspace]]
+=== TransferSpace
+`*TransferSpace*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-transferspace[GeneralSpace], which a space that provides passages between <<section-generalspace,`*GeneralSpaces*`>>.
+
+An `*TransferSpace*` object shall contain:
+
+* All members from <<section-navigablespace,`*NavigableSpace*`>>
+* `category` specifies opening categories (Door or Window).
+* `function` describes whether the space is an "AnchorSpace" or a "ConnectionSpace".
+
+Note that an AnchorSpace is a space that allows for the connection between the indoor and the outdoor.
+A ConnectionSpace is a space connecting two indoor or two outdoor spaces.
+
+[[transferspace-schema]]
+.A JSON schema of the TransferSpace:
+[source,json]
+----
+include::../schema/navi/transferspace.json[]
+----
+
+[[transferspace-example]]
+.An example of the TransferSpace object:
+[source,json]
+----
+include::../examples/transferspace.json[]
+----
+
+[[req-transferspace]]
+[requirement]
+.TransferSpace schema
+====
+[%metadata]
+identifier:: /req/navi/transferspace
+part:: A `*TransferSpace*` object SHALL contain `category` and `function` members.
+part:: The `category` value SHALL be one of the following: "Door" or "Window"
+part:: The `function` value SHALL be one of the following: "AnchorSpace" for representing connection between the indoor and the outdoor or "ConnectionSpace" for representing connection between two indoor or outdoor spaces.
+part:: The `featuretype` value SHALL be "TransferSpace".
+====
+
+[[section-nonnavigablespace]]
+=== NonNavigableSpace
+`*NonNavigableSpace*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-nonnavigablespace[NonNavigableSpace], which <<section-cellspace,`*CellSpace*`>> that are occupied by obstacles.
+
+An `*ObjectSpace*` object shall contain:
+
+* All members from <<section-cellspace,`*CellSpace*`>>
+
+[[nonnavigablespace-schema]]
+.A JSON schema of the NonNavigableSpace:
+[source,json]
+----
+include::../schema/navi/nonnavigablespace.json[]
+----
+
+[[req-nonnavigablespace]]
+[requirement]
+.NonNavigableSpace schema
+====
+[%metadata]
+identifier:: /req/navi/nonnavigablespace
+part:: The `featuretype` value SHALL be one of "NonNavigableSpace" or "ObjectSpace".
+====
+
+[[section-objectspace]]
+=== ObjectSpace
+`*ObjectSpace*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-obejctspace[ObjectSpace], when `*NonNavigableSpace*` contains some objects that makes it non-navigable.
+
+An `*ObjectSpace*` object shall contain:
+
+* All members from <<section-nonnavigablespace,`*NonNavigableSpace*`>>
+* optionally, `containedFeatures` describes the number of objects encapsulated within the `*ObjectSpace*`.
+* optionally, `description` describes any relevant information regarding the objects contained within the space in plain text.
+
+[[objectspace-schema]]
+.A JSON schema of the ObjectSpace:
+[source,json]
+----
+include::../schema/navi/objectspace.json[]
+----
+
+[[objectspace-example]]
+.An example of the ObjectSpace object:
+[source,json]
+----
+include::../examples/obejctspace.json[]
+----
+
+[[req-objectspace]]
+[requirement]
+.ObjectSpace schema
+====
+[%metadata]
+identifier:: /req/navi/objectspace
+part:: The `featuretype` value SHALL be "ObjectSpace".
+====
+
+[[section-navigableboundary]]
+=== NavigableBoundary
+`*NavigableBoundary*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-navigableboundary[NavigableBoundary], which provides further information related to <<section-navigablespace,`*NavigableSpace*`>>.
+
+An `*NavigableBoundary*` object shall contain:
+
+* All members from <<section-cellboundary,`*CellBoundary*`>>
+* `navigableBoundaryFunction` describes whether the boundary is an "AnchorBoundary" or a "ConnectionBoundary".
+* optionally, `boundaryOrientation` is a flag that specifies whether to use the geometry represented by `cellBoundaryGeom` as-is ('true') or in reverse ('false').
+
+Note that an AnchorBoundary is the boundary of AnchorSpace that enables the connection between indoor and outdoor spaces.
+A ConnectionBoundary is the boundary of a ConnectionSpace that connects two indoor spaces or two outdoor spaces.
+
+[[navigableboundary-schema]]
+.A JSON schema of the NavigableBoundary:
+[source,json]
+----
+include::../schema/navi/navigableboundary.json[]
+----
+
+[[navigableboundary-example]]
+.An example of the NavigableBoundary object:
+[source,json]
+----
+include::../examples/navigableboundary.json[]
+----
+
+[[req-navigableboundary]]
+[requirement]
+.NavigableBoundary schema
+====
+[%metadata]
+identifier:: /req/navi/navigableboundary
+part:: A `*NavigableBoundary*` object SHALL specify the function type using the `navigableBoundaryFunction` member.
+part:: The `navigableBoundaryFunction` value SHALL be one of the following: "AnchorBoundary" or "ConnectionBoundary"
+part:: The `featuretype` value SHALL be "NavigableBoundary".
+====
+
+[[section-nonnavigableboundary]]
+=== NonNavigableBoundary
+`*NonNavigableBoundary*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-nonnavigableboundary[NonNavigableBoundary], which represent the boundaries between two <<section-nonnavigablespace,`*NonNavigableSpace*`>> cells or between a <<section-navigablespace,`*NavigableSpace*`>> and a <<section-nonnavigablespace,`*NonNavigableSpace*`>> cells.
+
+An `*NonNavigableBoundary*` object shall contain:
+
+* All members from <<section-cellboundary,`*CellBoundary*`>>
+
+[[nonnavigableboundary-schema]]
+.A JSON schema of the NonNavigableBoundary:
+[source,json]
+----
+include::../schema/navi/nonnavigableboundary.json[]
+----
+
+[[req-nonnavigableboundary]]
+[requirement]
+.NonNavigableBoundary schema
+====
+[%metadata]
+identifier:: /req/navi/nonnavigableboundary
+part:: The `featuretype` value SHALL be "NonNavigableBoundary".
+====
+
+[[section-route]]
+=== Route
+`*Route*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-route[Route], which represents a subset of network from <<section-dualspacelayer,`*DualSpace*`>>, to describe a path for navigation within an indoor space.
+
+An `*Route*` object shall contain:
+
+* `routeNode` is ordered sequences of <<section-node,`*Node*`>> references to describe the different parts of the route path.
+* `routeEdge` is ordered sequences of <<section-edge,`*Edge*`>> references to describe the different parts of the route path.
+* optionally, `creationDate` indicates when a specific route was created.
+
+[[route-schema]]
+.A JSON schema of the Route:
+[source,json]
+----
+include::../schema/navi/route.json[]
+----
+
+[[route-example]]
+.An example of the Route object:
+[source,json]
+----
+include::../examples/route.json[]
+----
+
+[[req-route]]
+[requirement]
+.Route schema
+====
+[%metadata]
+identifier:: /req/navi/route
+part:: A `*Route*` object SHALL contain `routeNode` and `routeEdge` members.
+part:: The `routeNode` value SHALL contain the same `id` as the linked <<section-node, `*Node*`>> objects.
+part:: The `routeEdge` value SHALL contain the same `id` as the linked <<section-edge, `*Edge*`>> objects.
+part:: The `routeNode` and `routeEdge` SHALL be an ordered list.
+part:: An *Edge* object whose `connected` value contains two consecutive IDs within `routeNode` SHALL be included in `routeEdge` value.
+part:: The `connected` value of a *Edge* object corresponding to two consecutive IDs in `routeEdge` SHALL be contained the ID of the same *Node* object.
 ====

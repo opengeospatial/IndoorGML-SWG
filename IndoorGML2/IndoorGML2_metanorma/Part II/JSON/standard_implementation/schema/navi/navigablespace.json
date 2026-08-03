@@ -6,7 +6,8 @@
       {
         "type": "object",
         "properties": {
-          "locomotionType": { "enum": ["Flying","Rolling","Walking","Unspecified"]}
+          "featureType": { "enum": ["NavigableSpace","GeneralSpace","TransferSpace"] },
+          "locomotionType": { "enum": ["Flying","Rolling","Walking","Unspecified"] }
         },
         "required": ["locomotionType"]
       }

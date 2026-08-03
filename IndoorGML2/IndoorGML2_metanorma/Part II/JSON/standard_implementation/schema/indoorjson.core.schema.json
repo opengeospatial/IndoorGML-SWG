@@ -79,7 +79,9 @@
       "type": "object",
       "properties": {
         "id": { "type": "string" },
-        "featureType": { "enum": ["CellSpace"] },
+        "featureType": { "enum": ["CellSpace",
+          "NavigableSpace","GeneralSpace","TransferSpace",
+          "NonNavigableSpace","ObjectSpace"] },
         "cellSpaceName:": { "type": "string" },
         "level": { "type": "string" },
         "poi": { "type":  "boolean" },
@@ -87,8 +89,8 @@
         "cellSpaceGeom" : {
           "type": "object",
           "properties": {
-            "geometry2D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" },
-            "geometry3D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polyhedron" }
+            "geometry2D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" },
+            "geometry3D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polyhedron" }
           }
         },
         "boundedBy": {
@@ -106,14 +108,14 @@
       "type": "object",
       "properties": {
         "id": { "type": "string" },
-        "featureType": { "enum": ["CellBoundary"] },
+        "featureType": { "enum": ["CellBoundary","NavigableBoundary","NonNavigableBoundary"] },
         "isVirtual": { "type":  "boolean" },
         "duality" : { "type": "string", "format": "uri-reference" },
         "cellBoundaryGeom" : {
           "type": "object",
           "properties": {
-            "geometry2D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
-            "geometry3D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" }
+            "geometry2D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
+            "geometry3D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" }
           }
         },
         "externalReference": { "$ref": "#/$defs/ExternalReferenceType" }
@@ -153,7 +155,7 @@
         "id": { "type": "string" },
         "featureType": { "enum": ["Node"] },
         "duality" : { "type": "string", "format": "uri-reference" },
-        "geometry" : { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point" },
+        "geometry" : { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point" },
         "connects" : {
           "type": "array",
           "items": { "type": "string", "format": "uri-reference" },
@@ -171,7 +173,7 @@
         "featureType": { "enum": ["Edge"] },
         "duality" : { "type": "string", "format": "uri-reference" },
         "weight" : { "type": "number" },
-        "geometry" : { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
+        "geometry" : { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/LineString" },
         "connects" : {
           "type": "array",
           "items": { "type": "string", "format": "uri-reference" },

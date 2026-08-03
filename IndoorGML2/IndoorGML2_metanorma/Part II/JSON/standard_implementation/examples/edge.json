@@ -8,7 +8,7 @@
     "coordinates": [[1,1],[3,1]]
   },
   "connects": [
-    "TL-1:DS-1:N1",
-    "TL-1:DS-1:N2"
+    "N1",
+    "N2"
   ]
 }

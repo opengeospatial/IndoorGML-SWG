@@ -1,0 +1,9 @@
+{
+  "id": "NB1",
+  "featureType": "NavigableBoundary",
+  "isVirtual": false,
+  "duality": "E1",
+  "cellBoundaryGeom": {...},
+  "boundaryOrientation": true,
+  "navigableBoundaryFunction": "ConnectionBoundary"
+}

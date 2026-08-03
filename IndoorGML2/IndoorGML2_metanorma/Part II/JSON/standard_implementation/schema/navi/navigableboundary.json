@@ -6,6 +6,7 @@
       {
         "type": "object",
         "properties": {
+          "featureType": { "enum": ["NavigableBoundary"] },
           "boundaryOrientation": { "type": "boolean"},
           "navigableBoundaryFunction": { "enum": ["AnchorBoundary","ConnectionBoundary"]}
         },

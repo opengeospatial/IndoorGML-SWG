@@ -6,6 +6,7 @@
       {
         "type": "object",
         "properties": {
+          "featureType": { "enum": ["TransferSpace"] },
           "category": { "enum": ["Door","Window"]},
           "function": { "enum": ["AnchorSpace","ConnectionSpace"]}
         },

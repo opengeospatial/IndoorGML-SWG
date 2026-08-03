@@ -4,7 +4,7 @@
 :comment: ### Document subtype; optional. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
 :docsubtype: implementation
 :comment: ### Version number; optional. Dot-delimited, preferably with this structure <version number>.<minor version number>.<patch version number>
-:edition: 1.0.0
+:edition: 0.2.0
 :comment: ### Language of the document; mandatory. Specified in two-letter code: "en" for English, "fr" for French
 :language: en
 :comment: ### Document status/stage; mandatory. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
@@ -28,12 +28,13 @@
 :comment: ### Author three
 :fullname_3:  Ki-Joune Li
 :fullname_4:  Sisi Zlatanova
+:fullname_4:  Zhiyong Wang
 :comment: ### Role of the authors; mandatory
 :role: editor
 :comment: ### Comma delimited keywords; mandatory
 :keywords: OGCDoc, OGC documents, indoor, navigation, IndoorGML, JSON, GeoJSON, JSON-FG
 :comment: ### Semicolon-delimited list of the submitting organizations; mandatory
-:submitting-organizations: The University of New South Wales; Pusan National University; CityGeometrix; National Institute of Advanced Industrial Science and Technology;
+:submitting-organizations: The University of New South Wales; Pusan National University; CityGeometrix; National Institute of Advanced Industrial Science and Technology;SpatialAlgebra Technology Limited;
 :comment: ### Metanorma flavor; mandatory
 :mn-document-class: ogc
 :comment: ### Desired output formats; mandatory
@@ -71,5 +72,5 @@ include::sections/ab-annexB.adoc[]
 include::sections/ah-history.adoc[]
 
 // Bibliography
-include::sections/az-bibliography.adoc[]
+// include::sections/az-bibliography.adoc[]
 

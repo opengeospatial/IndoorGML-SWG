@@ -1,0 +1,8 @@
+{
+  "id": "OS1",
+  "featureType": "ObjectSpace",
+  "poi": true,
+  "cellSpaceGeom": {...},
+  "containedFeatures": 1,
+  "description": "vending machine"
+}

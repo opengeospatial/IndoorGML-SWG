@@ -1,0 +1,14 @@
+{
+  "NavigableBoundary": {
+    "$anchor": "NonNavigableBoundary",
+    "allOf": [
+      {"$ref": "indoorjson.core.schema.json#/$defs/CellBoundary"},
+      {
+        "type": "object",
+        "properties": {
+          "featureType": { "enum": ["NonNavigableBoundary"] },
+        }
+      }
+    ]
+  }
+}

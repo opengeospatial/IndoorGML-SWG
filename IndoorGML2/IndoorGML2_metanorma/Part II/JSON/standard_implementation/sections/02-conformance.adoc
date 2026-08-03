@@ -14,6 +14,7 @@ In order to conform to this OGC® interface standard, a software implementation 
 
 All requirements-classes and conformance-classes described in this document are owned by the standard(s) identified.
 
+.Conformance Class URIs
 |===
 |Conformance class      |URI
 

@@ -6,6 +6,7 @@
       {
         "type": "object",
         "properties": {
+          "featureType": { "enum": ["GeneralSpace"] },
           "function": { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"]}
         },
         "required": ["function"]

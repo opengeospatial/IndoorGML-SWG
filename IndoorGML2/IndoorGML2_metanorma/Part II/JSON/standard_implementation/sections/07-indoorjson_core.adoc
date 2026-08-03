@@ -9,6 +9,7 @@ subject:: Implementation Specification
 inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
 inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
 inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+requirement:: /req/core/element
 requirement:: /req/core/indoorjson
 requirement:: /req/core/indoorfeature
 requirement:: /req/core/thematiclayer
@@ -21,13 +22,15 @@ requirement:: /req/core/edge
 requirement:: /req/core/interlayerconnection
 ====
 
+
 IndoorJSON object represents one of feature class of IndoorGML 2.0 conceptual model.
 
 The IndoorJSON Object:
 
 * *must* have one member with the name `id`. The value must be a string that serves as a unique identifier for the IndoorJSON object and can be used to represent cross-references between IndoorJSON objects.
 
-* *must* have one member with the name `featuretype`. The value is one of the possibilities in the figure <<fig-core-indoorgml>>.
+* *must* have one member with the name `featuretype`.
+The value is one of the possibilities in the figure <<fig-core-indoorgml>> or <<fig-navi-indoorgml>>.
 
 [[req-indoorjson]]
 [requirement]
@@ -36,13 +39,23 @@ The IndoorJSON Object:
 [%metadata]
 identifier:: /req/core/indoorjson
 part:: An IndoorJSON object SHALL contain `id` and `featuretype` members.
+// part:: The `featuretype` value SHALL be one of the following: "IndoorFeatures", "ThematicLayer", "PrimalSpaceLayer", "CellSpace", "CellBoundary", "DualSpaceLayer", "Node", "Edge", or "InterLayerConnection"
+====
+
+[[req-indoorcore]]
+[requirement]
+.Requirement for IndoorJSON Core
+====
+[%metadata]
+identifier:: /req/core/element
+part:: IndoorGML Core JSON elements implemented by a conforming instance document SHALL conform to the JSON schema in <<annex_indoorjson_core_schema, indoorjson.core.schema.json>>.
 ====
 
 [[section-indoorfeatures]]
 === IndoorFeatures
 
 `*IndoorFeature*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeature], the container for the indoor dataset.
-It aggregates one or more thematic layers and may include inter-layer connections.
+It aggregates one or more thematic layers and may include interlayer connections.
 
 The `*IndoorFeature*` object shall contain:
 
@@ -72,6 +85,7 @@ include::../examples/indoorfeatures.json[]
 [%metadata]
 identifier:: /req/core/indoorfeature
 part:: An `*IndoorFeatures*` object SHALL contain at least one <<section-thematiclayer,`*ThematicLayer*`>> object as item of `layers` value.
+part:: The `featuretype` value SHALL be "IndoorFeatures".
 ====
 
 [[section-thematiclayer]]
@@ -114,7 +128,8 @@ include::../examples/thematiclayer.json[]
 identifier:: /req/core/thematiclayer
 part:: A `*ThematicLayer*` object SHALL declare whether there is an extension module with additional semantic information using the `semanticExtension` member.
 part:: A `*ThematicLayer*` object SHALL determine what type of model representation can be expected using the `theme` member.
-part:: The `Theme` value SHALL be set to "Virtual", "Physical", "Tags", and "Unknown".
+part:: The `Theme` value SHALL be one of the following: "Virtual", "Physical", "Tags", or "Unknown"
+part:: The `featuretype` value SHALL be "ThematicLayer".
 ====
 
 [[section-primalspacelayer]]
@@ -151,7 +166,11 @@ include::../examples/primalspacelayer.json[]
 ====
 [%metadata]
 identifier:: /req/core/primalspacelayer
-part:: A `PrimalSpaceLayer` SHALL contain one or more <<section-cellspace,CellSpace>> objects.
+part:: A `*PrimalSpaceLayer*` SHALL contain one or more <<section-cellspace,`*CellSpace*`>> objects.
+part:: The <<section-cellspace,`*CellSpace*`>> objects belonging to the same `*PrimalSpaceLayer*` SHALL not intersect with each other.
+part:: The <<section-cellboundary, `*CellBoundary*`>> objects belonging to the same `*PrimalSpaceLayer*` SHALL not intersect with each other.
+part:: The `featuretype` value SHALL be "PrimalSpaceLayer".
+
 ====
 
 [[section-cellspace]]
@@ -198,6 +217,10 @@ include::../examples/cellspace.json[]
 [%metadata]
 identifier:: /req/core/cellspace
 part:: A `*CellSpace*` object SHALL declare whether it is a point of interest space using the `poi` member.
+part:: The `duality` value SHALL be the same as the `id` of the linked <<section-node,`*Node*`>> object.
+part:: The `boundedBy` value SHALL contain the same `id` as the linked <<section-cellboundary, `*CellBoundary*`>> objects.
+part:: The geometry of the linked <<section-cellboundary, `*CellBoundary*`>> SHALL not exceed the extent of the `*CellSpace*` geometry.
+part:: The `featuretype` value SHALL be one of "CellSpace", "NonNavigableSpace", or "ObjectSpace".
 ====
 
 [[section-cellboundary]]
@@ -240,6 +263,8 @@ include::../examples/cellboundary.json[]
 [%metadata]
 identifier:: /req/core/cellboundary
 part:: A `*CellBoundary*` object SHALL specify whether it is virtual using the `isVirtual` member.
+part:: The `duality` value SHALL be the same as the `id` of the linked <<section-edge,`*Edge*`>> object.
+part:: The `featuretype` value SHALL be one of "CellBoundary", or "NonNavigableBoundary".
 ====
 
 [[section-dualspacelayer]]
@@ -280,8 +305,11 @@ include::../examples/dualspacelayer.json[]
 [%metadata]
 identifier:: /req/core/dualspacelayer
 part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is a geometric or a logical using the `isLogical` member.
-part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is directed using the `isLogical` member.
-part:: A `*DualSpaceLayer*` object SHALL contain one or more <<section-node,`*Node*`>> objects.
+part:: When the `isLogical` value is FALSE, the geometries of its <<section-node,`*Node*`>> instances SHALL be spatially located inside of their corresponding <<section-cellspace, `*CellSpaces*`>>.
+part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is directed using the `isDirected` member.
+
+part:: A `*DualSpaceLayer*` object SHALL contain one or more <<section-node,`*Node*`>> objects as `NodeMember` values.
+part:: The `featuretype` value SHALL be "DualSpaceLayer".
 ====
 
 [[section-node]]
@@ -322,6 +350,8 @@ include::../examples/node.json[]
 [%metadata]
 identifier:: /req/core/node
 part:: A `*Node*` object SHALL contain a `duality` value by referencing the `id` member of to correspond <<section-cellspace,`*CellSpace*`>>.
+part:: The `connects` value SHALL contain the same `id` as the linked <<section-edge, `*Edge*`>> objects.
+part:: The `featuretype` value SHALL be "Node".
 ====
 
 [[section-edge]]
@@ -363,8 +393,10 @@ include::../examples/edge.json[]
 ====
 [%metadata]
 identifier:: /req/core/edge
-part:: An `*Edge*` object SHALL reference the connected <<section-node,Nodes>> using the `connects` member.
+part:: An `*Edge*` object SHALL reference the connected <<section-node,`*Nodes*`>> using the `connects` member.
 part:: An `*Edge*` object SHALL contain a `weight` value.
+part:: The start and end coordinates of the `geometry` value SHALL match the coordinates of the connected <<section-node,`*Nodes*`>> in the `connects` member.
+part:: The `featuretype` value SHALL be "Edge".
 ====
 
 [[section-interlayerconnection]]
@@ -385,7 +417,7 @@ The `*InterLayerConnection*` object shall contain:
 The `typeOfTopoExpression` member represents the topological relationship between two layers.
 The `typeOfTopoExpression` values including "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", and "OTHERS", according to the conceptual model.
 Those topological values are in the form of verbs for which the subject is the first instance of the `connectedLayers` member.
-The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members are ordered and can be mapped to the same index.
+The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members shall be ordered and mapped to the same indices.
 
 [[interlayerconnection-schema]]
 .A JSON schema of the InterLayerConnection:
@@ -407,7 +439,14 @@ include::../examples/interlayerconnection.json[]
 ====
 [%metadata]
 identifier:: /req/core/interlayerconnection
-// part:: An Edge SHALL reference the connected <<section-node,Nodes>> using the `connects` property.
+part:: The `*InterLayerConnection*` object SHALL reference the connected <<section-thematiclayer,`*ThematicLayer*`>> using the `connectedLayers` member.
+part:: The `*InterLayerConnection*` object SHALL use the `typeOfTopoExpression` member to represent the topological  the values in `connectedLayers` (or, if that value is not null, `connectedNodes` or `connectedCells`).
+part:: The `typeOfTopoExpression` value SHALL be one of the following: "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", or "OTHERS"
+part:: The `connectedLayers` value SHALL contain the same `id` as the linked <<section-thematiclayer, `*ThematicLayer*`>> objects.
+part:: The `connectedNodes` value SHALL contain the same `id` as the linked <<section-node, `*Node*`>> objects.
+part:: The `connectedCells` value SHALL contain the same `id` as the linked <<section-cellspace, `*CellSpace*`>> objects.
+part:: The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members SHALL be ordered and mapped to the same indices.
+part:: The `featuretype` value SHALL be "InterLayerConnection".
 ====
 
 

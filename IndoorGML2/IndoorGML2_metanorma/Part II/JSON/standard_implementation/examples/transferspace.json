@@ -1,0 +1,8 @@
+{
+  "id": "TS1",
+  "featureType": "TransferSpace",
+  "poi": false,
+  "cellSpaceGeom": {...},
+  "category": "Door",
+  "function": "ConnectionSpace"
+}

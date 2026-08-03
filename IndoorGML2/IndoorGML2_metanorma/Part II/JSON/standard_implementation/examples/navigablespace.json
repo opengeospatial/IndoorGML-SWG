@@ -1,0 +1,10 @@
+{
+  "id": "NS1",
+  "featureType": "NavigableSpace",
+  "duality": "N1",
+  "poi": false,
+  "level": "1",
+  "cellSpaceGeom": {...},
+  "boundedBy": ["B1"],
+  "locomotionType": "Walking"
+}

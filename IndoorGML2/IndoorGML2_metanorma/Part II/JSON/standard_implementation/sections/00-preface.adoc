@@ -65,14 +65,12 @@ The IndoorJSON Encoding represents a full mapping of the Conceptual Model and is
 The IndoorJSON adopts JSON Schema as its primary schema language and uses geometry objects compatible with OGC Features and Geometries JSON (JSON-FG, <<ogc21-045r1, OGC 21-045r1>>), where appropriate. This design choice addresses the limitation that conventional GeoJSON does not provide sufficient support for indoor 3D geometry, especially solid and volumetric geometry.
 Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into the implementation details documented in this standard.
 
-// TODO: fix cross-reference
+.Conceptual Model Mapping
 |===
 |Conceptual Model       |Section            |JSON Schema
 
-|IndoorGML Core         |<<section-indoorjson-core>>
-|<<annex_indoorjson_core_schema>>
-|Navigation Extension   |<<section-indoorjson-navi>>
-|<<annex_indoorjson_navi_schema>>
+|IndoorGML Core         |<<section-indoorjson-core>>    |<<annex_indoorjson_core_schema>>
+|Navigation Extension   |<<section-indoorjson-navi>>    |<<annex_indoorjson_navi_schema>>
 |===
 
 [.preface]
@@ -103,12 +101,13 @@ All questions regarding this submission should be directed to the editor or the 
 
 
 |===
-|Name |Affiliation |OGC member
+|Name |Affiliation |Email
 
-|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |Yes
-|Abdoulaye Diakite      |CityGeometrix  |Yes
-|Ki-Joune Li            |Pusan National University  |Yes
-|Sisi Zlatanova         |The University of New South Wales  |Yes
+|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |kim.taehoon@aist.go.jp
+|Abdoulaye Diakite      |CityGeometrix Pty Ltd              |abdou@citygeometrix.com
+|Ki-Joune Li            |Pusan National University          |lik@pnu.edu
+|Sisi Zlatanova         |The University of New South Wales  |s.zlatanova@unsw.edu.au
+|Zhiyong Wang           |SpatialAlgebra Technology Limited  |zhiyongwang@spatialalgebra.tech
 |===
 
 
