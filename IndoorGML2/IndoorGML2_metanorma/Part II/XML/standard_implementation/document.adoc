@@ -13,7 +13,7 @@
 :comment: ### Relevant committee
 :committee: technical
 :comment: ### Internal reference number
-:docnumber: 25-001
+:docnumber: 26-045
 :comment: ### Date on which the standard was updated
 :received-date: 2025-08-06
 :comment: ### Date on which the standard was approved

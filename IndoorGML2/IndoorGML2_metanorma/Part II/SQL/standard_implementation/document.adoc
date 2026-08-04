@@ -12,7 +12,7 @@
 :comment: ### Relevant committee; mandatory. The permitted types are: technical, planning, and strategic-member-advisory
 :committee: technical
 :comment: ### Internal reference number; mandatory
-:docnumber: 26-008
+:docnumber: 26-046
 :comment: ### Date on which the standard was updated; mandatory
 :received-date: 2026-06-18
 :comment: ### Date on which the standard was approved by the issuing authority; mandatory
