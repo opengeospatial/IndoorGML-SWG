@@ -1,10 +1,10 @@
 {
   "id": "N1",
   "featureType": "Node",
-  "duality": "C1",
+  "duality": "R1",
   "geometry": {
     "type": "Point",
-    "coordinates": [1,1]
+    "coordinates": [1.5,1.5]
   },
   "connects": ["E1"]
 }

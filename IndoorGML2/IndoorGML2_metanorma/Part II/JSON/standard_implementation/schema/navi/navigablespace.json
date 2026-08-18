@@ -7,7 +7,12 @@
         "type": "object",
         "properties": {
           "featureType": { "enum": ["NavigableSpace","GeneralSpace","TransferSpace"] },
-          "locomotionType": { "enum": ["Flying","Rolling","Walking","Unspecified"] }
+          "locomotionType": {
+            "anyOf": [
+              { "enum": ["Flying","Rolling","Walking","Unspecified"] },
+              { "type": "string", "minLength": 1 }
+            ]
+          }
         },
         "required": ["locomotionType"]
       }

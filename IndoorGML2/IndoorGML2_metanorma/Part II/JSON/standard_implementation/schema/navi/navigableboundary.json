@@ -7,8 +7,13 @@
         "type": "object",
         "properties": {
           "featureType": { "enum": ["NavigableBoundary"] },
-          "boundaryOrientation": { "type": "boolean"},
-          "navigableBoundaryFunction": { "enum": ["AnchorBoundary","ConnectionBoundary"]}
+          "boundaryOrientation": { "type": "boolean" },
+          "navigableBoundaryFunction": {
+            "anyOf": [
+              { "enum": ["AnchorBoundary","ConnectionBoundary"] },
+              { "type": "string", "minLength": 1 }
+            ]
+          }
         },
         "required": ["navigableBoundaryFunction"]
       }

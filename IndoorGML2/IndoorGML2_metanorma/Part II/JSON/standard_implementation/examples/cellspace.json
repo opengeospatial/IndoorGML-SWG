@@ -1,5 +1,5 @@
 {
-  "id": "C1",
+  "id": "R1",
   "featureType": "CellSpace",
   "duality": "N1",
   "poi": false,
@@ -7,7 +7,7 @@
   "cellSpaceGeom": {
     "geometry2D": {
       "type": "Polygon",
-      "coordinates": [[[0,0], [2,0], [2,2], [0,2], [0,0]]]
+      "coordinates": [[[0,0], [3,0], [3,3], [0,3], [0,0]]]
     }
   },
   "boundedBy": ["B1"]

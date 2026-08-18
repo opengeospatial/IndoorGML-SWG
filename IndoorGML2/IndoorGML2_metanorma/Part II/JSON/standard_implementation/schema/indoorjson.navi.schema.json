@@ -43,7 +43,12 @@
         {
           "type": "object",
           "properties": {
-            "function": { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"]}
+            "function": {
+              "anyOf": [
+                { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"] },
+                { "type": "string", "minLength": 1 }
+              ]
+            }
           },
           "required": ["function"]
         }
@@ -57,8 +62,18 @@
         {
           "type": "object",
           "properties": {
-            "category": { "enum": ["Door","Window"]},
-            "function": { "enum": ["AnchorSpace","ConnectionSpace"]}
+            "category": {
+              "anyOf": [
+                { "enum": ["Door","Window"] },
+                { "type": "string", "minLength": 1 }
+              ]
+            },
+            "function": {
+              "anyOf": [
+                { "enum": ["AnchorSpace","ConnectionSpace"] },
+                { "type": "string", "minLength": 1 }
+              ]
+            }
           },
           "required": ["category","function"]
         }

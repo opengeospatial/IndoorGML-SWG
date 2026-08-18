@@ -8,9 +8,9 @@ Keywords inserted here automatically by Metanorma
 
 .Preface
 
-In order to achieve consensus on the modeling indoor spaces and their neighborhood relationships to support indoor location-based services, a UML Conceptual Model, IndoorGML 2.0 Part 1, was approved as an OGC Standard (<<ogc22-045r5>>) in June, 2025.
+In order to achieve consensus on the modeling indoor spaces and their neighborhood relationships to support indoor location-based services, a UML Conceptual Model, IndoorGML 2.0 Part 1, was approved as an OGC Standard (<<ogc22-045r5>>) in June 2025.
 This model covers geometric and semantic properties of indoor spaces relevant for indoor navigation.
-This IndoorGML 2.0 Part 2: JSON Encoding (IndoorJSON) Standard defines how those concepts should be realized using JSON format.
+The IndoorGML 2.0 Part 2b: JSON Encoding (IndoorJSON) Standard defines how those concepts should be realized using JSON format.
 The IndoorJSON encoding is intended for software developers, data providers, standards implementers, and service providers who need a lightweight, web-friendly, and machine-readable representation of IndoorGML datasets.
 
 
@@ -101,13 +101,13 @@ All questions regarding this submission should be directed to the editor or the 
 
 
 |===
-|Name |Affiliation |Email
+|Name   |Affiliation    |Email  |OGC Member
 
-|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |kim.taehoon@aist.go.jp
-|Abdoulaye Diakite      |CityGeometrix Pty Ltd              |abdou@citygeometrix.com
-|Ki-Joune Li            |Pusan National University          |lik@pnu.edu
-|Sisi Zlatanova         |The University of New South Wales  |s.zlatanova@unsw.edu.au
-|Zhiyong Wang           |SpatialAlgebra Technology Limited  |zhiyongwang@spatialalgebra.tech
+|Taehoon KIM            |National Institute of Advanced Industrial Science and Technology  |kim.taehoon at aist.go.jp  |Yes
+|Abdoulaye Diakite      |CityGeometrix Pty Ltd              |abdou at citygeometrix.com    |Yes
+|Ki-Joune Li            |Pusan National University          |lik at pnu.edu    |Yes
+|Sisi Zlatanova         |The University of New South Wales  |s.zlatanova at unsw.edu.au    |Yes
+|Zhiyong Wang           |SpatialAlgebra Technology Limited  |zhiyongwang at spatialalgebra.tech    |Yes
 |===
 
 

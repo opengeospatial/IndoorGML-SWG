@@ -5,7 +5,32 @@
     "creationDatetime": "2025-10-30T13:00:00",
     "isLogical": false,
     "isDirected": false,
-    "nodeMember": [...],
-    "edgeMember": [...]
+    "nodeMember": [
+      {
+        "id": "N1",
+        "featureType": "Node",
+        "duality": "R1",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.5,1.5]
+        },
+        "connects": ["E1"]
+      },
+      ...
+    ],
+    "edgeMember": [
+      {
+        "id": "E1",
+        "featureType": "Edge",
+        "duality": "B1",
+        "weight": 1.0,
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [[1.5,1.5],[3.5,1.5]]
+        },
+        "connects": ["N1", "N2"]
+      },
+      ...
+    ]
   }
 }

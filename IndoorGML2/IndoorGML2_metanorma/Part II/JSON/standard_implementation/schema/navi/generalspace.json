@@ -7,7 +7,12 @@
         "type": "object",
         "properties": {
           "featureType": { "enum": ["GeneralSpace"] },
-          "function": { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"]}
+          "function": {
+            "anyOf": [
+              { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"] },
+              { "type": "string", "minLength": 1 }
+            ]
+          }
         },
         "required": ["function"]
       }

@@ -1,5 +1,5 @@
 [[section-indoorjson-navi]]
-== IndoorJSON Navigation Extension
+== IndoorJSON Navigation
 
 [requirements_class]
 ====
@@ -60,7 +60,7 @@ include::../examples/navigablespace.json[]
 [%metadata]
 identifier:: /req/navi/navigablespace
 part:: A `*NavigableSpace*` object SHALL specify the transportation mode using the `locomotionType` member.
-part:: The `locomotionType` value SHALL be one of the following: "Flying", "Rolling", "Walking", or "Unspecified"
+part:: The `locomotionType` value SHALL be a user-defined code or one of the following: "Flying", "Rolling", "Walking", or "Unspecified"
 part:: The `featuretype` value SHALL be "NavigableSpace".
 ====
 
@@ -94,7 +94,7 @@ include::../examples/generalspace.json[]
 [%metadata]
 identifier:: /req/navi/generalspace
 part:: A `*GeneralSpace*` object SHALL specify the transportation mode using the `function` member.
-part:: The `function` value SHALL be one of the following: "Administration","Business, trade","Education, training","Recreation","Laboratory","Storage", or "Security"
+part:: The `function` value SHALL be a user-defined code or one of the following: "Administration","Business, trade","Education, training","Recreation","Laboratory","Storage", or "Security"
 part:: The `featuretype` value SHALL be "GeneralSpace".
 ====
 
@@ -132,8 +132,8 @@ include::../examples/transferspace.json[]
 [%metadata]
 identifier:: /req/navi/transferspace
 part:: A `*TransferSpace*` object SHALL contain `category` and `function` members.
-part:: The `category` value SHALL be one of the following: "Door" or "Window"
-part:: The `function` value SHALL be one of the following: "AnchorSpace" for representing connection between the indoor and the outdoor or "ConnectionSpace" for representing connection between two indoor or outdoor spaces.
+part:: The `category` value SHALL be a user-defined code or one of the following: "Door" or "Window"
+part:: The `function` value SHALL be a user-defined code or  one of the following: "AnchorSpace" for representing connection between the indoor and the outdoor or "ConnectionSpace" for representing connection between two indoor or outdoor spaces.
 part:: The `featuretype` value SHALL be "TransferSpace".
 ====
 
@@ -228,7 +228,7 @@ include::../examples/navigableboundary.json[]
 [%metadata]
 identifier:: /req/navi/navigableboundary
 part:: A `*NavigableBoundary*` object SHALL specify the function type using the `navigableBoundaryFunction` member.
-part:: The `navigableBoundaryFunction` value SHALL be one of the following: "AnchorBoundary" or "ConnectionBoundary"
+part:: The `navigableBoundaryFunction` value SHALL be a user-defined code or one of the following: "AnchorBoundary" or "ConnectionBoundary"
 part:: The `featuretype` value SHALL be "NavigableBoundary".
 ====
 

@@ -22,6 +22,8 @@ requirement:: /req/core/edge
 requirement:: /req/core/interlayerconnection
 ====
 
+[[section-indoorjson]]
+=== General requirements for IndoorJSON
 
 IndoorJSON object represents one of feature class of IndoorGML 2.0 conceptual model.
 
@@ -30,7 +32,7 @@ The IndoorJSON Object:
 * *must* have one member with the name `id`. The value must be a string that serves as a unique identifier for the IndoorJSON object and can be used to represent cross-references between IndoorJSON objects.
 
 * *must* have one member with the name `featuretype`.
-The value is one of the possibilities in the figure <<fig-core-indoorgml>> or <<fig-navi-indoorgml>>.
+The value is one of the possibilities in the <<fig-core-indoorgml>> or <<fig-navi-indoorgml>>.
 
 [[req-indoorjson]]
 [requirement]
@@ -64,15 +66,23 @@ The `*IndoorFeature*` object shall contain:
 * `layers` for representing <<section-thematiclayer,`*ThematicLayer*`>> object as item
 * optionally, `layerConnections` for <<section-interlayerconnection, `*InterLayerConnection*`>> object as item
 
+The following examples refer to an `*IndoorFeature*` object shown in <<fig-indoorjson-example>>.
+In the example, the `*IndoorFeature*` object contains an array of `*ThematicLayer*` objects as the value of its `layers` member and an array of `*InterLayerConnection*` objects as the value of its `interlayerConnections` member.
+Each object has an `id` member, which is used by specific members (such as `connectedLayers` or `connectedNodes` in `*InterLayerConnection*`) to reference the object.
+
+[[fig-indoorjson-example]]
+.IndoorJSON example layout
+image::../figures/indoorjson_example.png[align="center"]
+
 [[indoorfeature-schema]]
-.A JSON schema of the IndoorFeature:
+.A JSON schema of the IndoorFeature
 [source,json]
 ----
 include::../schema/core/indoorfeatures.json[]
 ----
 
 [[indoorfeature-example]]
-.An example of the IndoorFeature object:
+.An example of the IndoorFeature object
 [source,json]
 ----
 include::../examples/indoorfeatures.json[]
@@ -107,14 +117,16 @@ The core schema defines `semanticExtension` and `theme` members, with `theme` va
 
 
 [[thematiclayer-schema]]
-.A JSON schema of the ThematicLayer:
+.A JSON schema of the ThematicLayer
 [source,json]
 ----
 include::../schema/core/thematiclayer.json[]
 ----
 
+The following examples refer to a `*ThematicLayer*` object ("TL-1"), shown in <<fig-indoorjson-example>>.
+
 [[thematiclayer-example]]
-.An example of the ThematicLayer object:
+.An example of the ThematicLayer object
 [source,json]
 ----
 include::../examples/thematiclayer.json[]
@@ -147,14 +159,16 @@ The `*PrimalSpaceLayer*` object shall contain:
 * optionally, `terminationDatetime`
 
 [[primalspacelayer-schema]]
-.A JSON schema of the PrimalSpaceLayer:
+.A JSON schema of the PrimalSpaceLayer
 [source,json]
 ----
 include::../schema/core/primalspacelayer.json[]
 ----
 
+The following examples refer to a `*PrimalSpaceLayer*` object of "TL-1", shown in <<fig-indoorjson-example>>.
+
 [[primalspacelayer-example]]
-.An example of the PrimalSpaceLayer object:
+.An example of the PrimalSpaceLayer object
 [source,json]
 ----
 include::../examples/primalspacelayer.json[]
@@ -197,14 +211,16 @@ For `cellsSpaceGeom` member, it defines `cellSpaceGeom.geometry2D` using a `JSON
 The `externalReference` member is used for the reference of an object to its corresponding object in an external data set.
 
 [[cellspace-schema]]
-.A JSON schema of the CellSpace:
+.A JSON schema of the CellSpace
 [source,json]
 ----
 include::../schema/core/cellspace.json[]
 ----
 
+The following examples refer to a `*CellSpace*` object ("R1"), shown in <<fig-indoorjson-example>>.
+
 [[cellspace-example]]
-.An example of the CellSpace object:
+.An example of the CellSpace object
 [source,json]
 ----
 include::../examples/cellspace.json[]
@@ -243,14 +259,16 @@ For `cellBoundaryGeom` member, it defines `cellBoundaryGeom.geometry2D` using a 
 The `externalReference` member is used for the reference of an object to its corresponding object in an external data set
 
 [[cellboundary-schema]]
-.A JSON schema of the CellBoundary:
+.A JSON schema of the CellBoundary
 [source,json]
 ----
 include::../schema/core/cellboundary.json[]
 ----
 
+The following examples refer to a `*CellBoundary*` object ("B1"), shown in <<fig-indoorjson-example>>.
+
 [[cellboundary-example]]
-.An example of the CellBoundary object:
+.An example of the CellBoundary object
 [source,json]
 ----
 include::../examples/cellboundary.json[]
@@ -285,14 +303,16 @@ The `*DualSpaceLayer*` object shall contain:
 * optionally, `terminationDatetime`
 
 [[dualspacelayer-schema]]
-.A JSON schema of the DualSpaceLayer:
+.A JSON schema of the DualSpaceLayer
 [source,json]
 ----
 include::../schema/core/dualspacelayer.json[]
 ----
 
+The following examples refer to a `*DualSpaceLayer*` object of "TL-1", shown in <<fig-indoorjson-example>>.
+
 [[dualspacelayer-example]]
-.An example of the DualSpaceLayer object:
+.An example of the DualSpaceLayer object
 [source,json]
 ----
 include::../examples/dualspacelayer.json[]
@@ -330,14 +350,16 @@ A `*Node*` may be connects to a set of <<section-edge,`*Edges*`>> through the `c
 For `geometry` member referred  `JSON-FG Point` geometry.
 
 [[node-schema]]
-.A JSON schema of the Node:
+.A JSON schema of the Node
 [source,json]
 ----
 include::../schema/core/node.json[]
 ----
 
+The following examples refer to a `*Node*` object ("N1"), shown in <<fig-indoorjson-example>>.
+
 [[node-example]]
-.An example of the Node object:
+.An example of the Node object
 [source,json]
 ----
 include::../examples/node.json[]
@@ -374,14 +396,16 @@ An `Edge` can be linked to a <<section-cellboundary,`*CellBoundary*`>> through t
 For `geometry` member referred  `JSON-FG LineString` geometry.
 
 [[edge-schema]]
-.A JSON schema of an Edge:
+.A JSON schema of an Edge
 [source,json]
 ----
 include::../schema/core/edge.json[]
 ----
 
+The following examples refer to a `*Edge*` object ("E1"), shown in <<fig-indoorjson-example>>.
+
 [[edge-example]]
-.An example of the Edge object:
+.An example of the Edge object
 [source,json]
 ----
 include::../examples/edge.json[]
@@ -420,14 +444,17 @@ Those topological values are in the form of verbs for which the subject is the f
 The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members shall be ordered and mapped to the same indices.
 
 [[interlayerconnection-schema]]
-.A JSON schema of the InterLayerConnection:
+.A JSON schema of the InterLayerConnection
 [source,json]
 ----
 include::../schema/core/interlayerconnection.json[]
 ----
 
+The following examples refer to a `*InterLayerConnection*` object ("ILC-1"), shown in <<fig-indoorjson-example>>.
+For example, when representing a fire hydrant ("P1") located in a room ("R1") using IndoorJSON, including it in the thematic layer for the building ("TL-1") would complicate the representation of the CellSpace; instead, it can be defined using a separate thematic layer for the object ("TL-2"), with the spatial topological relationship defined via an interlayer connection.
+
 [[interlayerconnection-example]]
-.An example of the InterLayerConnection object:
+.An example of the InterLayerConnection object
 [source,json]
 ----
 include::../examples/interlayerconnection.json[]
@@ -457,7 +484,7 @@ The `externalReferenceType` object is used for the reference of an object to its
 This is not a feature class of IndoorGML 2.0.
 
 [[externalreferencetype-schema]]
-.A JSON schema of the ExternalReferenceType:
+.A JSON schema of the ExternalReferenceType
 [source,json]
 ----
 include::../schema/core/externalreferencetype.json[]

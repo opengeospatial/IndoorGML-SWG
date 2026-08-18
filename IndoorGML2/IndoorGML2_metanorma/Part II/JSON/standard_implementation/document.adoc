@@ -4,7 +4,7 @@
 :comment: ### Document subtype; optional. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
 :docsubtype: implementation
 :comment: ### Version number; optional. Dot-delimited, preferably with this structure <version number>.<minor version number>.<patch version number>
-:edition: 0.2.0
+:edition: 0.5.0
 :comment: ### Language of the document; mandatory. Specified in two-letter code: "en" for English, "fr" for French
 :language: en
 :comment: ### Document status/stage; mandatory. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
@@ -12,7 +12,7 @@
 :comment: ### Relevant committee; mandatory. The permitted types are: technical, planning, and strategic-member-advisory
 :committee: technical
 :comment: ### Internal reference number; mandatory
-:docnumber: 26-007
+:docnumber: 26-043
 :comment: ### Date on which the standard was updated; mandatory
 :received-date: 2026-02-28
 :comment: ### Date on which the standard was approved by the issuing authority; mandatory
@@ -20,7 +20,7 @@
 :comment: ### Date on which the standard was published; mandatory
 :published-date: 2099-01-01
 :comment: ### External link referencing the document; optional. If not provided, a default value is created following this structure: "http://www.opengis.net/doc/{abbrevation of doctype}/{abbrev}/{version}",
-:external-id: http://www.opengis.net/doc/IS/indoorjson/1.0
+:external-id: http://www.opengis.net/doc/IS/indoorjson/2.0
 :comment: ### Author one
 :fullname: Taehoon Kim
 :comment: ### Author two
@@ -67,6 +67,7 @@ include::sections/08-indoorjson_navi.adoc[]
 // Annexes
 include::sections/aa-annexA.adoc[]
 include::sections/ab-annexB.adoc[]
+include::sections/ac-annexC.adoc[]
 
 // Revision history
 include::sections/ah-history.adoc[]
