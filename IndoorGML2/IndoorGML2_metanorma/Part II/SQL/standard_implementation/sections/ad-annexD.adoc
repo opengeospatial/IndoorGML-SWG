@@ -1,0 +1,18 @@
+[[annex_navi_enums]]
+[appendix,obligation="normative"]
+== Navigation code list types
+
+The following PostgreSQL `ENUM` types represent IndoorGML navigation code lists:
+
+* `LocomotionAccessType` for the `NavigableSpace.locomotionType` column;
+* `GeneralSpaceFunctionType` for the `GeneralSpace.function` column;
+* `TransferSpaceFunctionType` for the `TransferSpace.function` column;
+* `TransferSpaceCategoryType` for the `TransferSpace.category` column;
+* `NavigableBoundaryFunctionType` for the `NavigableBoundary.NavigableBoundaryFunction` column.
+
+[[navi-enums-schema]]
+.A SQL schema of the navigation code list types
+[source,sql]
+----
+include::../schema/navi/enums.sql[]
+----

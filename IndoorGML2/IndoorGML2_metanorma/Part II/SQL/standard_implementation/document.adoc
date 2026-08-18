@@ -4,7 +4,7 @@
 :comment: ### Document subtype; optional. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
 :docsubtype: implementation
 :comment: ### Version number; optional. Dot-delimited, preferably with this structure <version number>.<minor version number>.<patch version number>
-:edition: 0.0.9
+:edition: 0.5.0
 :comment: ### Language of the document; mandatory. Specified in two-letter code: "en" for English, "fr" for French
 :language: en
 :comment: ### Document status/stage; mandatory. Visit: https://www.metanorma.org/author/ogc/authoring/ for permitted types
@@ -12,7 +12,7 @@
 :comment: ### Relevant committee; mandatory. The permitted types are: technical, planning, and strategic-member-advisory
 :committee: technical
 :comment: ### Internal reference number; mandatory
-:docnumber: 26-008
+:docnumber: 26-044
 :comment: ### Date on which the standard was updated; mandatory
 :received-date: 2026-06-18
 :comment: ### Date on which the standard was approved by the issuing authority; mandatory
@@ -74,6 +74,8 @@ include::sections/08-indoorsql_navi.adoc[]
 // Annexes
 include::sections/aa-annexA.adoc[]
 include::sections/ab-annexB.adoc[]
+include::sections/ac-annexC.adoc[]
+include::sections/ad-annexD.adoc[]
 
 // Revision history
 include::sections/ah-history.adoc[]

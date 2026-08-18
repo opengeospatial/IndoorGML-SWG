@@ -107,7 +107,7 @@ CREATE TYPE "TransferSpaceCategoryType" AS ENUM (
 
 CREATE TABLE "NavigableSpace"
 (
-	"Locomotiontype" "LocomotionAccessType" NULL,
+	"locomotionType" "LocomotionAccessType" NOT NULL,
 	"NavigableSpaceID" varchar(100) NOT NULL
 )
 ;
@@ -120,31 +120,31 @@ CREATE TABLE "NonNavigableSpace"
 
 CREATE TABLE "GeneralSpace"
 (
-	"Function" "GeneralSpaceFunctionType" NULL,
+	"function" "GeneralSpaceFunctionType" NOT NULL,
 	"GeneralSpaceID" varchar(100) NOT NULL
 )
 ;
 
 CREATE TABLE "TransferSpace"
 (
-	"Function" "TransferSpaceFunctionType" NULL,
-	"Type" "TransferSpaceCategoryType" NULL,
+	"function" "TransferSpaceFunctionType" NOT NULL,
+	"category" "TransferSpaceCategoryType" NOT NULL,
 	"TransferSpaceID" varchar(100) NOT NULL
 )
 ;
 
 CREATE TABLE "ObjectSpace"
 (
-	"Description" text NULL,
-	"Containedfeatures" varchar(100) NULL,
+	"description" text NULL,
+	"containedFeatures" integer NULL,
 	"ObjectSpaceID" varchar(100) NOT NULL
 )
 ;
 
 CREATE TABLE "NavigableBoundary"
 (
-	"NavigableBoundaryFunction" "NavigableBoundaryFunctionType" NULL,
-	"Boundaryorientation" boolean NULL,
+	"NavigableBoundaryFunction" "NavigableBoundaryFunctionType" NOT NULL,
+	"boundaryOrientation" boolean NULL,
 	"NavigableBoundaryID" varchar(100) NOT NULL
 )
 ;
@@ -157,7 +157,7 @@ CREATE TABLE "NonNavigableBoundary"
 
 CREATE TABLE "Route"
 (
-	"Creationdate" timestamp without time zone NULL,
+	"creationDate" timestamp without time zone NULL,
 	"RouteID" varchar(100) NOT NULL,
 	"routeNode" jsonb NULL,
 	"routeEdge" jsonb NULL

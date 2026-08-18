@@ -1,4 +1,5 @@
 
+[[section-conventions]]
 == Conventions
 
 === Symbols (and abbreviated terms)
@@ -13,7 +14,6 @@ Symbols and abbreviated terms defined in <<ogc22-045r5,IndoorGML 2.0 Part 1>> al
 h| *Abbreviation* h| *Word or Phrase*
 | DDL        | Data Definition Language
 | EA         | Enterprise Architecture
-| IndoorJSON | JSON encoding of IndoorGML concepts
 | JSON       | JavaScript Object Notation
 | PostgreSQL | Open-source relational database management system
 | PostGIS    | Spatial database extension for PostgreSQL
@@ -36,18 +36,47 @@ The following terms are used as specified in <<iso9075,SQL>>. In particular:
 * "column" refers to an attribute of a table; and
 * "row" refers to a single record in a table.
 
-Feature identifiers are stored as string values in `varchar` columns rather than integer auto-increment keys, in order to preserve cross-references between IndoorGML objects and to align with IndoorJSON identifier conventions.
+Feature identifiers are stored as string values in `varchar` columns rather than integer auto-increment keys, in order to preserve cross-references between IndoorGML objects.
 
 === Geometry storage
 
-UML geometry DataTypes are flattened onto the owning feature table as PostGIS `geometry` columns whose names follow the property path (aligned with IndoorJSON member names):
+UML geometry DataTypes are flattened onto the owning feature table as PostGIS `geometry` columns (<<postgis,PostGIS>>) whose names follow the UML property path.
+The reference DDL and examples in this document use PostgreSQL with PostGIS for geometry storage.
 
-* `CellSpace.cellSpaceGeom_geometry2D` and `CellSpace.cellSpaceGeom_geometry3D` (corresponding to `CellSpaceGeometryType`);
-* `CellBoundary.cellBoundaryGeom_geometry1D` and `CellBoundary.cellBoundaryGeom_geometry2D` (corresponding to `CellBoundaryGeometryType`);
-* `Geometry` on `Node` and `Edge`.
+* `CellSpace.cellSpaceGeom_Geometry2D` and `CellSpace.cellSpaceGeom_Geometry3D` (corresponding to `CellSpaceGeometryType`);
+* `CellBoundary.cellBoundaryGeom_Geometry1D` and `CellBoundary.cellBoundaryGeom_Geometry2D` (corresponding to `CellBoundaryGeometryType`);
+* `Node.geometry` and `Edge.geometry` (corresponding to the `geometry` property of `Node` and `Edge` in the conceptual model).
 
-At most one of the paired geometry columns on `CellSpace` or `CellBoundary` is populated for a given row (enforced by a table `CHECK` constraint).
-The reference implementation requires the PostGIS extension (<<postgis,PostGIS>>).
+Although a PostGIS `geometry` column can hold any geometry type, each column of this encoding is restricted to the geometry types that correspond to its UML geometry class.
+The permitted values of the PostGIS `GeometryType` function are as follows.
+
+[[geometry-types]]
+.Permitted geometry types per column
+[cols="3,2,3",options="header"]
+|===
+| Column | UML geometry class | Permitted `GeometryType` values
+
+| `CellSpace.cellSpaceGeom_Geometry2D` | `GM_Surface` | `POLYGON`, `MULTIPOLYGON`
+| `CellSpace.cellSpaceGeom_Geometry3D` | `GM_Solid` | `POLYHEDRALSURFACE`, `TIN`
+| `CellBoundary.cellBoundaryGeom_Geometry1D` | `GM_Curve` | `LINESTRING`, `MULTILINESTRING`
+| `CellBoundary.cellBoundaryGeom_Geometry2D` | `GM_Surface` | `POLYGON`, `MULTIPOLYGON`
+| `Node.geometry` | `GM_Point` | `POINT`
+| `Edge.geometry` | `GM_Curve` | `LINESTRING`, `MULTILINESTRING`
+|===
+
+These restrictions are enforced by table `CHECK` constraints in the DDL of <<annex_schemas>> and are stated normatively in the requirements of <<section-indoorsql-core>>.
+
+NOTE: The `Geometry1D`, `Geometry2D`, and `Geometry3D` column-name suffixes denote the UML geometry class of the property, not the coordinate dimension of the stored value.
+The PostGIS `GeometryType` function does not distinguish coordinate dimension; for example, a `POLYGON Z` value has the geometry type `POLYGON`.
+Implementations that require planar geometry only MAY additionally constrain a column with `ST_NDims(...) = 2`.
+
+NOTE: Implementations on other SQL platforms (for example, Oracle Spatial) MAY conform by preserving the same logical table structure, keys, associations, and cardinalities, and by mapping geometry columns and PostgreSQL-specific constructs (`ENUM`, composite types, `jsonb`) to equivalent platform-native types (for example, `SDO_GEOMETRY`).
+
+NOTE: IndoorGML `GM_Solid` (UML `CellSpaceGeometryType.Geometry3D` / column `cellSpaceGeom_Geometry3D`) has no native solid primitive in PostGIS.
+It is therefore stored in a bare PostGIS `geometry` column as a closed boundary shell, typically `POLYHEDRALSURFACE Z` or `TIN Z`.
+A table `CHECK` constraint on `CellSpace` restricts non-null `cellSpaceGeom_Geometry3D` values to those geometry types.
+Volume and solid-topology operations (for example, `ST_Volume`, `ST_MakeSolid`, `ST_IsSolid`) require the optional PostGIS SFCGAL extension (`postgis_sfcgal`).
+Other SQL platforms MAY map the same logical column to a native solid type where available (for example, Oracle `SDO_GEOMETRY` solid).
 
 === Complex DataType storage
 
@@ -56,19 +85,20 @@ In particular, `ExternalObjectReferenceType` and `ExternalReferenceType` are com
 
 === Code list storage
 
-IndoorGML code list types (for example, `ThemeLayerValue`, `TopoExpressionValue`, `LocomotionAccessType`) are represented as PostgreSQL `ENUM` types whose labels match the UML type names and enumeration literals defined in the IndoorGML 2.0 XML schema.
+IndoorGML code list types (for example, `ThemeLayerValue`, `TopoExpressionValue`, `LocomotionAccessType`) are represented as PostgreSQL `ENUM` types whose labels match the UML type names and enumeration literals defined in the IndoorGML 2.0 conceptual model.
 
 === Graph and route associations
 
-Graph adjacency in the dual space layer is stored as `jsonb` identifier arrays on the owning table:
+Graph adjacency in the dual space layer is encoded as follows:
 
-* `Node.connects` stores the identifiers of connected `Edge` rows;
-* `Edge.connects` stores the identifiers of the two connected `Node` rows.
+* `Node.connects` stores the identifiers of connected `Edge` rows as a `jsonb` array;
+* `Edge.connects_node1` and `Edge.connects_node2` store the two connected `Node` identifiers as foreign-key columns referencing `Node.NodeID`.
 
 A `Route` represents an ordered navigation path through the dual-space graph.
 The ordered `routeNode` and `routeEdge` members are stored as `jsonb` arrays on the `Route` table rather than in separate junction tables.
 This encoding preserves the sequence of nodes and edges in a single row and simplifies maintenance of route order during import, update, and export.
 Array position expresses traversal order; the first element is the first node or edge in the route, the second element is the next, and so on.
+At least one of `routeNode` or `routeEdge` must be present for a valid `Route` row.
 
 Example:
 
@@ -81,6 +111,10 @@ VALUES (
     '["N1", "N2", "N3"]'::jsonb,
     '["E1", "E2"]'::jsonb
 );
+
+-- Edge endpoints reference Node rows via foreign keys
+INSERT INTO "Edge" ("EdgeID", "DualSpaceLayerID", "weight", connects_node1, connects_node2)
+VALUES ('E1', 'DS-1', 1.0, 'N1', 'N2');
 ----
 === Table and column naming
 
