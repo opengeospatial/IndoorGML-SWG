@@ -1,6 +1,6 @@
 
 [[annex-a]]
-[appendix,obligation="normative"]
+[appendix,obligation=normative]
 == Abstract Test Suites for IndoorGML Instance Documents
 
 === Test Cases for mandatory conformance requirements

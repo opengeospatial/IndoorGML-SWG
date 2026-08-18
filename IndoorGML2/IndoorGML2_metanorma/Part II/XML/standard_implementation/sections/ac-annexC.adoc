@@ -1,6 +1,6 @@
 
 [[annex-c]]
-[appendix,obligation="informative"]
+[appendix,obligation=informative]
 == Example of CodeList
 
 For mapping indoor space features to IndoorNavigation module classes, space features have to be classified by functions and usages of space. Each space class has attributes for functions, usages, and classes of space. Because misspellings or different names for the same notion brings the problems in data interoperability, in order to overcome the typo errors, an example of CodeList is provided in this annex to specify the attribute values including space class types, space function types and space usage types. The CodeLists are defined from OmniClass (Table 13 and Table 14) created and used by the North American architectural, engineering and construction (AEC) industry.
