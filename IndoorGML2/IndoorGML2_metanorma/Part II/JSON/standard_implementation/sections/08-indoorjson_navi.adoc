@@ -274,10 +274,16 @@ include::../schema/navi/route.json[]
 ----
 
 [[route-example]]
-.An example of the Route object:
+.An example of the Route object (reference ID only):
 [source,json]
 ----
 include::../examples/route.json[]
+----
+
+.An example of the Route object (using Node (and Edge) object itself):
+[source,json]
+----
+include::../examples/route_full.json[]
 ----
 
 [[req-route]]
@@ -287,8 +293,9 @@ include::../examples/route.json[]
 [%metadata]
 identifier:: /req/navi/route
 part:: A `*Route*` object SHALL contain `routeNode` and `routeEdge` members.
-part:: The `routeNode` value SHALL contain the same `id` as the linked <<section-node, `*Node*`>> objects.
-part:: The `routeEdge` value SHALL contain the same `id` as the linked <<section-edge, `*Edge*`>> objects.
+part::
+The `routeNode` value SHALL contain either the `id` of the linked <<section-node, `*Node*`>> object or the <<section-node, `*Node*`>> object itself.
+part:: The `routeEdge` value SHALL contain either the same `id` as the linked <<section-edge, `*Edge*`>> objects or the <<section-edge, `*Edge*`>> object itself.
 part:: The `routeNode` and `routeEdge` SHALL be an ordered list.
 part:: An *Edge* object whose `connected` value contains two consecutive IDs within `routeNode` SHALL be included in `routeEdge` value.
 part:: The `connected` value of a *Edge* object corresponding to two consecutive IDs in `routeEdge` SHALL be contained the ID of the same *Node* object.

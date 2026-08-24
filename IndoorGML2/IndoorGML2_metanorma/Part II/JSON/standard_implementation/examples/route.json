@@ -1,4 +1,4 @@
 {
-  "routeNode": ["N1","N2"],
-  "routeEdge": ["R1"]
+  "routeNode": ["N-D1","N-R1"],
+  "routeEdge": ["E1"]
 }

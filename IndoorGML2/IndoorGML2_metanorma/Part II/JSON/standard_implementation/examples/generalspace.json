@@ -1,16 +1,16 @@
 {
-  "id": "GS1",
+  "id": "GS-R1",
   "featureType": "GeneralSpace",
-  "duality": "N1",
+  "duality": "N-R1",
   "poi": false,
   "level": "1",
   "cellSpaceGeom": {
     "geometry2D": {
       "type": "Polygon",
-      "coordinates": [[[0,0], [2,0], [2,2], [0,2], [0,0]]]
+      "coordinates": [[[0,0.25], [3.25,0.25], [3.25,1.5], [0,1.5], [0,0.25]]]
     }
   },
-  "boundedBy": ["B1"],
+  "boundedBy": ["B1", "B2", "B7", "B8"],
   "locomotionType": "Walking",
   "function": "Administration"
 }

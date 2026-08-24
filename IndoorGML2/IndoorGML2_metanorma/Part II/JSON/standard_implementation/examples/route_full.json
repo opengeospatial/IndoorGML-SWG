@@ -1,0 +1,37 @@
+{
+  "routeNode": [
+    {
+      "id": "N-D1",
+      "featureType": "Node",
+      "duality": "D1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0.75,0.125]
+      },
+      "connects": ["E1"]
+    },
+    {
+      "id": "N-R1",
+      "featureType": "Node",
+      "duality": "R1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1.625,0.875]
+      },
+      "connects": ["E1","E2","E7","E8"]
+    }
+  ],
+  "routeEdge": [
+    {
+      "id": "E1",
+      "featureType": "Edge",
+      "duality": "B1",
+      "weight": 1.0,
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[0.75,0.125],[0.75,0.875],[1.625,0.875]]
+      },
+      "connects": ["N-D1", "N-R1"]
+    }
+  ]
+}

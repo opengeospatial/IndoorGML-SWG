@@ -123,7 +123,7 @@ The core schema defines `semanticExtension` and `theme` members, with `theme` va
 include::../schema/core/thematiclayer.json[]
 ----
 
-The following examples refer to a `*ThematicLayer*` object ("TL-1"), shown in <<fig-indoorjson-example>>.
+The following examples refer to a `*ThematicLayer*` object ("TL-Pedestrian"), shown in <<fig-indoorjson-example>>.
 
 [[thematiclayer-example]]
 .An example of the ThematicLayer object
@@ -165,7 +165,7 @@ The `*PrimalSpaceLayer*` object shall contain:
 include::../schema/core/primalspacelayer.json[]
 ----
 
-The following examples refer to a `*PrimalSpaceLayer*` object of "TL-1", shown in <<fig-indoorjson-example>>.
+The following examples refer to a `*PrimalSpaceLayer*` object of "TL-Pedestrian", shown in <<fig-indoorjson-example>>.
 
 [[primalspacelayer-example]]
 .An example of the PrimalSpaceLayer object
@@ -309,7 +309,7 @@ The `*DualSpaceLayer*` object shall contain:
 include::../schema/core/dualspacelayer.json[]
 ----
 
-The following examples refer to a `*DualSpaceLayer*` object of "TL-1", shown in <<fig-indoorjson-example>>.
+The following examples refer to a `*DualSpaceLayer*` object of "TL-Pedestrian", shown in <<fig-indoorjson-example>>.
 
 [[dualspacelayer-example]]
 .An example of the DualSpaceLayer object
@@ -356,7 +356,7 @@ For `geometry` member referred  `JSON-FG Point` geometry.
 include::../schema/core/node.json[]
 ----
 
-The following examples refer to a `*Node*` object ("N1"), shown in <<fig-indoorjson-example>>.
+The following examples refer to a `*Node*` object ("N-R1"), shown in <<fig-indoorjson-example>>.
 
 [[node-example]]
 .An example of the Node object
@@ -451,7 +451,10 @@ include::../schema/core/interlayerconnection.json[]
 ----
 
 The following examples refer to a `*InterLayerConnection*` object ("ILC-1"), shown in <<fig-indoorjson-example>>.
-For example, when representing a fire hydrant ("P1") located in a room ("R1") using IndoorJSON, including it in the thematic layer for the building ("TL-1") would complicate the representation of the CellSpace; instead, it can be defined using a separate thematic layer for the object ("TL-2"), with the spatial topological relationship defined via an interlayer connection.
+For example, consider a cell space ("R1") containing a step that pedestrians can traverse but that is difficult for wheelchairs to cross.
+If this distinction leads to the creation of separate thematic layers for pedestrians and wheelchairs, the cell space "R1" is split into "R1-1" and "R1-2" based on the step (a process known as subspacing).
+In this case, since "R1" and "R1-1" (and "R1-2") represent the same physical space, they have a "contains" relationship.
+As shown in the example, this can be represented as "ILC-1" (and "ILC-2").
 
 [[interlayerconnection-example]]
 .An example of the InterLayerConnection object
