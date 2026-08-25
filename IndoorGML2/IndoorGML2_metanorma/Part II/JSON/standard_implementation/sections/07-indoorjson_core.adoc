@@ -72,7 +72,7 @@ Each object has an `id` member, which is used by specific members (such as `conn
 
 [[fig-indoorjson-example]]
 .IndoorJSON example layout
-image::../figures/indoorjson_example.png[align="center"]
+image::indoorjson_example.png[align="center"]
 
 [[indoorfeature-schema]]
 .A JSON schema of the IndoorFeature
