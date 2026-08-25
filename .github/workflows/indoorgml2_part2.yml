@@ -15,15 +15,15 @@ jobs:
           repository: opengeospatial/IndoorGML-SWG
       - name: Generate document
         run: |
-          cd IndoorGML2/IndoorGML2_metanorma/Part II/XML
+          cd "IndoorGML2/IndoorGML2_metanorma/Part II/XML"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
           cp standard/document.html ../../../../main/26-042.html
           cp standard/document.pdf ../../../../main/26-042.pdf
-          cd IndoorGML2/IndoorGML2_metanorma/Part II/JSON
+          cd "IndoorGML2/IndoorGML2_metanorma/Part II/JSON"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
           cp standard/document.html ../../../../main/26-043.html
           cp standard/document.pdf ../../../../main/26-043.pdf
-          cd IndoorGML2/IndoorGML2_metanorma/Part II/SQL
+          cd "IndoorGML2/IndoorGML2_metanorma/Part II/SQL"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
           cp standard/document.html ../../../../main/26-044.html
           cp standard/document.pdf ../../../../main/26-044.pdf
