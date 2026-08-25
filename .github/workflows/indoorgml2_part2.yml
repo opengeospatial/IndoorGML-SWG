@@ -11,8 +11,9 @@ jobs:
           path: main
       - name: checkout other repo
         uses: actions/checkout@v3 # checkout the repository content to github runner
-        with:
+        with: 
           repository: opengeospatial/IndoorGML-SWG
+          path: IndoorGML2
       - name: Generate document
         run: |
           cd "IndoorGML2/IndoorGML2_metanorma/Part II/XML"
