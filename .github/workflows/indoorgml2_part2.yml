@@ -23,13 +23,13 @@ jobs:
           cp standard_implementation/document.html "$GITHUB_WORKSPACE/main/26-042.html"
           cp standard_implementation/document.pdf "$GITHUB_WORKSPACE/main/26-042.pdf"
 
-      - name: Generate JSON document
-        working-directory: IndoorGML2_Part2/IndoorGML2/IndoorGML2_metanorma
-        run: |
-          cd "Part II/JSON"
-          metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard_implementation/document.html "$GITHUB_WORKSPACE/main/26-043.html"
-          cp standard_implementation/document.pdf "$GITHUB_WORKSPACE/main/26-043.pdf"
+      # - name: Generate JSON document
+      #   working-directory: IndoorGML2_Part2/IndoorGML2/IndoorGML2_metanorma
+      #   run: |
+      #     cd "Part II/JSON"
+      #     metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
+      #     cp standard_implementation/document.html "$GITHUB_WORKSPACE/main/26-043.html"
+      #     cp standard_implementation/document.pdf "$GITHUB_WORKSPACE/main/26-043.pdf"
 
       - name: Generate SQL document
         working-directory: IndoorGML2_Part2/IndoorGML2/IndoorGML2_metanorma
@@ -48,7 +48,6 @@ jobs:
 
           git add -- \
             26-042.html 26-042.pdf \
-            26-043.html 26-043.pdf \
             26-044.html 26-044.pdf
           
           git commit -m "Automated generation of HTML and PDF documents"
