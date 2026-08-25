@@ -3,10 +3,10 @@
 :doctype: standard
 :comment: ### Document subtype; optional.
 :docsubtype: implementation
-:document-scheme: 2022
+// :document-scheme: 2022
 :comment: ### Version number
-:edition: 2.0.0
-:draft: 0.5.0
+:edition: 0.5.0
+// :draft: 0.5.0
 :comment: ### Language of the document
 :language: en
 :comment: ### Document status/stage

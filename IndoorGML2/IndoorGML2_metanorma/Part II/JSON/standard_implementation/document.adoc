@@ -48,7 +48,7 @@
 :comment: ### URI to which the DOC version of this standard is published; optional
 :doc-uri: ./document.doc
 :comment: ### Directory name used as prefix for the location of image files; optional
-:imagesdir: images
+:imagesdir: figures
 :comment: ### Enable rendering of AsciiMath, MathML, and LaTeX ("latexmath" needs to be indicated in the code to use LaTeX, or set ":stem: latexmath" to interpret by default); optional
 :stem:
 
