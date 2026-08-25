@@ -6,34 +6,47 @@ jobs:
     container: metanorma/metanorma:latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: main
-      - name: checkout other repo
-        uses: actions/checkout@v3 # checkout the repository content to github runner
-        with: 
+      - name: Checkout IndoorGML source repository
+        uses: actions/checkout@v4
+        with:
           repository: opengeospatial/IndoorGML-SWG
           path: IndoorGML2_Part2
-      - name: Generate document
+
+      - name: Generate XML document
+        working-directory: IndoorGML2_Part2/IndoorGML2/IndoorGML2_metanorma/Part II/XML
         run: |
-          cd IndoorGML_Part2
-          cd "IndoorGML2/IndoorGML2_metanorma/Part II/XML"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard_implementation/document.html ../../../../main/26-042.html
-          cp standard_implementation/document.pdf ../../../../main/26-042.pdf
-          cd ../../../../IndoorGML2_Part2
-          cd "IndoorGML2/IndoorGML2_metanorma/Part II/JSON"
+          cp standard_implementation/document.html "$GITHUB_WORKSPACE/main/26-042.html"
+          cp standard_implementation/document.pdf "$GITHUB_WORKSPACE/main/26-042.pdf"
+
+      - name: Generate JSON document
+        working-directory: IndoorGML2_Part2/IndoorGML2/IndoorGML2_metanorma/Part II/JSON
+        run: |
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard_implementation/document.html ../../../../main/26-043.html
-          cp standard_implementation/document.pdf ../../../../main/26-043.pdf
-          cd ../../../../IndoorGML2_Part2
-          cd "IndoorGML2/IndoorGML2_metanorma/Part II/SQL"
+          cp standard_implementation/document.html "$GITHUB_WORKSPACE/main/26-043.html"
+          cp standard_implementation/document.pdf "$GITHUB_WORKSPACE/main/26-043.pdf"
+
+      - name: Generate SQL document
+        working-directory: IndoorGML2_Part2/IndoorGML2/IndoorGML2_metanorma/Part II/SQL
+        run: |
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard_implementation/document.html ../../../../main/26-044.html
-          cp standard_implementation/document.pdf ../../../../main/26-044.pdf
-          cd ../../../../main
-          git config --global user.name 'opengeospatial'
-          git config --global user.email 'opengeospatial@users.noreply.github.com'
-          git add 26-042.html 26-042.pdf 26-043.html 26-043.pdf 26-044.html 26-044.pdf
-          git commit -am "Automated generation of HTML documents"
-          git push
+          cp standard_implementation/document.html "$GITHUB_WORKSPACE/main/26-044.html"
+          cp standard_implementation/document.pdf "$GITHUB_WORKSPACE/main/26-044.pdf"
+
+      - name: Commit and push generated documents
+        working-directory: main
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/main"
+          git config user.name "opengeospatial"
+          git config user.email "opengeospatial@users.noreply.github.com"
+
+          git add -- \
+            26-042.html 26-042.pdf \
+            26-043.html 26-043.pdf \
+            26-044.html 26-044.pdf
+          
+          git commit -m "Automated generation of HTML and PDF documents"
+          git push 
