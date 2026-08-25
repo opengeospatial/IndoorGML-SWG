@@ -17,16 +17,16 @@ jobs:
         run: |
           cd "IndoorGML2/IndoorGML2_metanorma/Part II/XML"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard/document.html ../../../../main/26-042.html
-          cp standard/document.pdf ../../../../main/26-042.pdf
+          cp standard_implementation/document.html ../../../../main/26-042.html
+          cp standard_implementation/document.pdf ../../../../main/26-042.pdf
           cd "IndoorGML2/IndoorGML2_metanorma/Part II/JSON"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard/document.html ../../../../main/26-043.html
-          cp standard/document.pdf ../../../../main/26-043.pdf
+          cp standard_implementation/document.html ../../../../main/26-043.html
+          cp standard_implementation/document.pdf ../../../../main/26-043.pdf
           cd "IndoorGML2/IndoorGML2_metanorma/Part II/SQL"
           metanorma compile --agree-to-terms -t ogc -x html,pdf standard_implementation/document.adoc
-          cp standard/document.html ../../../../main/26-044.html
-          cp standard/document.pdf ../../../../main/26-044.pdf
+          cp standard_implementation/document.html ../../../../main/26-044.html
+          cp standard_implementation/document.pdf ../../../../main/26-044.pdf
           cd ../../../../main
           git config --global user.name 'opengeospatial'
           git config --global user.email 'opengeospatial@users.noreply.github.com'
