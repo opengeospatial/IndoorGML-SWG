@@ -1,0 +1,908 @@
+{
+  "id": "IFs",
+  "featureType": "IndoorFeatures",
+  "layers": [
+    {
+      "id": "TL-Pedestrian",
+      "featureType": "ThematicLayer",
+      "semanticExtension": false,
+      "theme": "Physical",
+      "primalSpace": {
+        "id": "PS-1",
+        "featureType": "PrimalSpaceLayer",
+        "creationDatetime": "2025-10-30T13:00:00",
+        "cellSpaceMember": [
+          {
+            "id": "R1",
+            "featureType": "CellSpace",
+            "duality": "N-R1",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0,0.25], [3.25,0.25], [3.25,1.5], [0,1.5], [0,0.25]]]
+              }
+            },
+            "boundedBy": ["B1", "B2", "B7", "B8"]
+          },
+          {
+            "id": "R2",
+            "featureType": "CellSpace",
+            "duality": "N-R2",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0,1.75], [1.5,1.75], [1.5,3.0], [0,3.0], [0,1.75]]]
+              }
+            },
+            "boundedBy": ["B3", "B4"]
+          },
+          {
+            "id": "R3",
+            "featureType": "CellSpace",
+            "duality": "N-R3",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[1.75,1.75], [3.25,1.75], [3.25,3.0], [1.75,3.0], [1.75,1.75]]]
+              }
+            },
+            "boundedBy": ["B5", "B6"]
+          },
+          {
+            "id": "D1",
+            "featureType": "CellSpace",
+            "duality": "N-D1",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0.5,0.0], [1.0,0.0], [1.0,0.25], [0.5,0.25], [0.5,0]]]
+              }
+            },
+            "boundedBy": ["B1"]
+          },
+          {
+            "id": "D2",
+            "featureType": "CellSpace",
+            "duality": "N-D2",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0.5,1.5], [1.0,1.5], [1.0,1.75], [0.5,1.75], [0.5,1.5]]]
+              }
+            },
+            "boundedBy": ["B2", "B3"]
+          },
+          {
+            "id": "D3",
+            "featureType": "CellSpace",
+            "duality": "N-D3",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[1.5,2.0], [1.75,2.0], [1.75,2.50], [1.5,2.50], [1.5,2.0]]]
+              }
+            },
+            "boundedBy": ["B4", "B5"]
+          },
+          {
+            "id": "D4",
+            "featureType": "CellSpace",
+            "duality": "N-D4",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[2.5,1.5], [3.0,1.5], [3.0,1.75], [2.5,1.75], [2.5,1.5]]]
+              }
+            },
+            "boundedBy": ["B6", "B7"]
+          },
+          {
+            "id": "D5",
+            "featureType": "CellSpace",
+            "duality": "N-D5",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[3.25,0.5], [3.5,0.5], [3.5,1.0], [3.25,1.0], [3.25,0.5]]]
+              }
+            },
+            "boundedBy": ["B8"]
+          }
+        ],
+        "cellBoundaryMember": [
+          {
+            "id": "B1",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E1",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[0.5,0.25],[1.0,0.25]]
+              }
+            }
+          },
+          {
+            "id": "B2",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E2",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[0.5,1.5],[1.0,1.5]]
+              }
+            }
+          },
+          {
+            "id": "B3",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E3",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[0.5,1.75],[1.0,1.75]]
+              }
+            }
+          },
+          {
+            "id": "B4",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E4",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[1.5,2.0],[1.5,2.5]]
+              }
+            }
+          },
+          {
+            "id": "B5",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E5",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[1.75,2.0],[1.75,2.5]]
+              }
+            }
+          },
+          {
+            "id": "B6",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E6",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[2.5,1.75],[3.0,1.75]]
+              }
+            }
+          },
+          {
+            "id": "B7",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E7",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[2.5,1.5],[3.0,1.5]]
+              }
+            }
+          },
+          {
+            "id": "B8",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E8",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[3.25,0.5],[3.25,1.0]]
+              }
+            }
+          }
+        ]
+      },
+      "dualSpace": {
+        "id": "DS-1",
+        "featureType": "DualSpaceLayer",
+        "creationDatetime": "2025-10-30T13:00:00",
+        "isLogical": false,
+        "isDirected": false,
+        "nodeMember": [
+          {
+            "id": "N-R1",
+            "featureType": "Node",
+            "duality": "R1",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [1.625,0.875]
+            },
+            "connects": ["E1", "E2", "E7", "E8"]
+          },
+          {
+            "id": "N-R2",
+            "featureType": "Node",
+            "duality": "R2",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,2.375]
+            },
+            "connects": ["E3", "E4"]
+          },
+          {
+            "id": "N-R3",
+            "featureType": "Node",
+            "duality": "R3",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [2.5,2.375]
+            },
+            "connects": ["E5", "E6"]
+          },
+          {
+            "id": "N-D1",
+            "featureType": "Node",
+            "duality": "D1",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,0.125]
+            },
+            "connects": ["E1"]
+          },
+          {
+            "id": "N-D2",
+            "featureType": "Node",
+            "duality": "D2",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,1.625]
+            },
+            "connects": ["E2", "E3"]
+          },
+          {
+            "id": "N-D3",
+            "featureType": "Node",
+            "duality": "D3",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [1.625,2.25]
+            },
+            "connects": ["E4", "E5"]
+          },
+          {
+            "id": "N-D4",
+            "featureType": "Node",
+            "duality": "D4",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [2.75,1.625]
+            },
+            "connects": ["E6", "E7"]
+          },
+          {
+            "id": "N-D5",
+            "featureType": "Node",
+            "duality": "D5",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [3.375,0.75]
+            },
+            "connects": ["E8"]
+          }
+        ],
+        "edgeMember": [
+          {
+            "id": "E1",
+            "featureType": "Edge",
+            "duality": "B1",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,0.125],[0.75,0.875],[1.625,0.875]]
+            },
+            "connects": ["N-D1", "N-R1"]
+          },
+          {
+            "id": "E2",
+            "featureType": "Edge",
+            "duality": "B2",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,1.625],[0.75,0.875],[1.625,0.875]]
+            },
+            "connects": ["N-D2", "N-R1"]
+          },
+          {
+            "id": "E3",
+            "featureType": "Edge",
+            "duality": "B3",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,2.375],[0.75,1.625]]
+            },
+            "connects": ["N-R2", "N-D2"]
+          },
+          {
+            "id": "E4",
+            "featureType": "Edge",
+            "duality": "B4",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,2.375],[1.625,2.25]]
+            },
+            "connects": ["N-R2", "N-D3"]
+          },
+          {
+            "id": "E5",
+            "featureType": "Edge",
+            "duality": "B5",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[1.625,2.25],[2.5,2.375]]
+            },
+            "connects": ["N-D3","N-R3"]
+          },
+          {
+            "id": "E6",
+            "featureType": "Edge",
+            "duality": "B6",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[2.5,2.375],[2.75,1.625]]
+            },
+            "connects": ["N-R3","N-D4"]
+          },
+          {
+            "id": "E7",
+            "featureType": "Edge",
+            "duality": "B7",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[2.75,1.625],[2.75,0.875],[1.625,0.875]]
+            },
+            "connects": ["N-D4","N-R1"]
+          },
+          {
+            "id": "E8",
+            "featureType": "Edge",
+            "duality": "B8",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[1.625,0.875],[3.375,0.75]]
+            },
+            "connects": ["N-R1","N-D5"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "TL-Wheelchair",
+      "featureType": "ThematicLayer",
+      "semanticExtension": false,
+      "theme": "Physical",
+      "primalSpace": {
+        "id": "PS-2",
+        "featureType": "PrimalSpaceLayer",
+        "creationDatetime": "2025-10-30T13:00:00",
+        "cellSpaceMember": [
+          {
+            "id": "R1-1",
+            "featureType": "CellSpace",
+            "duality": "N-R1-1",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0,0.25], [1.5,0.25], [1.5,1.5], [0,1.5], [0,0.25]]]
+              }
+            },
+            "boundedBy": ["B1`", "B2`"]
+          },
+          {
+            "id": "R1-2",
+            "featureType": "CellSpace",
+            "duality": "N-R1-2",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[1.75,0.25], [3.25,0.25], [3.25,1.5], [1.75,1.5], [1.75,0.25]]]
+              }
+            },
+            "boundedBy": ["B7`", "B8`"]
+          },
+          {
+            "id": "R2`",
+            "featureType": "CellSpace",
+            "duality": "N-R2`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0,1.75], [1.5,1.75], [1.5,3.0], [0,3.0], [0,1.75]]]
+              }
+            },
+            "boundedBy": ["B3`", "B4`"]
+          },
+          {
+            "id": "R3`",
+            "featureType": "CellSpace",
+            "duality": "N-R3`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[1.75,1.75], [3.25,1.75], [3.25,3.0], [1.75,3.0], [1.75,1.75]]]
+              }
+            },
+            "boundedBy": ["B5`", "B6`"]
+          },
+          {
+            "id": "D1`",
+            "featureType": "CellSpace",
+            "duality": "N-D1`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0.5,0.0], [1.0,0.0], [1.0,0.25], [0.5,0.25], [0.5,0]]]
+              }
+            },
+            "boundedBy": ["B1`"]
+          },
+          {
+            "id": "D2`",
+            "featureType": "CellSpace",
+            "duality": "N-D2`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[0.5,1.5], [1.0,1.5], [1.0,1.75], [0.5,1.75], [0.5,1.5]]]
+              }
+            },
+            "boundedBy": ["B2`", "B3`"]
+          },
+          {
+            "id": "D3`",
+            "featureType": "CellSpace",
+            "duality": "N-D3`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[1.5,2.0], [1.75,2.0], [1.75,2.50], [1.5,2.50], [1.5,2.0]]]
+              }
+            },
+            "boundedBy": ["B4`", "B5`"]
+          },
+          {
+            "id": "D4`",
+            "featureType": "CellSpace",
+            "duality": "N-D4`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[2.5,1.5], [3.0,1.5], [3.0,1.75], [2.5,1.75], [2.5,1.5]]]
+              }
+            },
+            "boundedBy": ["B6`", "B7`"]
+          },
+          {
+            "id": "D5`",
+            "featureType": "CellSpace",
+            "duality": "N-D5`",
+            "poi": false,
+            "level": "1",
+            "cellSpaceGeom": {
+              "geometry2D": {
+                "type": "Polygon",
+                "coordinates": [[[3.25,0.5], [3.5,0.5], [3.5,1.0], [3.25,1.0], [3.25,0.5]]]
+              }
+            },
+            "boundedBy": ["B8`"]
+          }
+        ],
+        "cellBoundaryMember": [
+          {
+            "id": "B1`",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E-W1",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[0.5,0.25],[1.0,0.25]]
+              }
+            }
+          },
+          {
+            "id": "B2`",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E-W2",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[0.5,1.5],[1.0,1.5]]
+              }
+            }
+          },
+          {
+            "id": "B3`",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E3`",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[0.5,1.75],[1.0,1.75]]
+              }
+            }
+          },
+          {
+            "id": "B4`",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E4`",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[1.5,2.0],[1.5,2.5]]
+              }
+            }
+          },
+          {
+            "id": "B5`",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E5`",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[1.75,2.0],[1.75,2.5]]
+              }
+            }
+          },
+          {
+            "id": "B6`",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E6`",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[2.5,1.75],[3.0,1.75]]
+              }
+            }
+          },
+          {
+            "id": "B-W7",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E-W7",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[2.5,1.5],[3.0,1.5]]
+              }
+            }
+          },
+          {
+            "id": "B-W8",
+            "featureType": "CellBoundary",
+            "isVirtual": false,
+            "duality": "E-W8",
+            "cellBoundaryGeom": {
+              "geometry1D": {
+                "type": "LineString",
+                "coordinates": [[3.25,0.5],[3.25,1.0]]
+              }
+            }
+          }
+        ]
+      },
+      "dualSpace": {
+        "id": "DS-2",
+        "featureType": "DualSpaceLayer",
+        "creationDatetime": "2025-10-30T13:00:00",
+        "isLogical": false,
+        "isDirected": false,
+        "nodeMember": [
+          {
+            "id": "N-R1-1",
+            "featureType": "Node",
+            "duality": "R1-1",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,0.875]
+            },
+            "connects": ["E-W1", "E-W2"]
+          },
+          {
+            "id": "N-R1-2",
+            "featureType": "Node",
+            "duality": "R1-2",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [2.5,0.875]
+            },
+            "connects": ["E-W7", "E-W8"]
+          },
+          {
+            "id": "N-R2`",
+            "featureType": "Node",
+            "duality": "R2`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,2.375]
+            },
+            "connects": ["E3`", "E4`"]
+          },
+          {
+            "id": "N-R3`",
+            "featureType": "Node",
+            "duality": "R3`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [2.5,2.375]
+            },
+            "connects": ["E5`", "E6`"]
+          },
+          {
+            "id": "N-D1`",
+            "featureType": "Node",
+            "duality": "D1`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,0.125]
+            },
+            "connects": ["E-W1"]
+          },
+          {
+            "id": "N-D2`",
+            "featureType": "Node",
+            "duality": "D2`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [0.75,1.625]
+            },
+            "connects": ["E-W2", "E3`"]
+          },
+          {
+            "id": "N-D3`",
+            "featureType": "Node",
+            "duality": "D3`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [1.625,2.25]
+            },
+            "connects": ["E4`", "E5`"]
+          },
+          {
+            "id": "N-D4`",
+            "featureType": "Node",
+            "duality": "D4`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [2.75,1.625]
+            },
+            "connects": ["E6`", "E-W7"]
+          },
+          {
+            "id": "N-D5`",
+            "featureType": "Node",
+            "duality": "D5`",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [3.375,0.75]
+            },
+            "connects": ["E-W8"]
+          }
+        ],
+        "edgeMember": [
+          {
+            "id": "E-W1",
+            "featureType": "Edge",
+            "duality": "B1`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,0.125],[0.75,0.875]]
+            },
+            "connects": ["N-D1`", "N-R1-1"]
+          },
+          {
+            "id": "E-W2",
+            "featureType": "Edge",
+            "duality": "B2`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,0.875],[1.625,0.875]]
+            },
+            "connects": ["N-D2`", "N-R1-1"]
+          },
+          {
+            "id": "E3`",
+            "featureType": "Edge",
+            "duality": "B3`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,2.375],[0.75,1.625]]
+            },
+            "connects": ["N-R2`", "N-D2`"]
+          },
+          {
+            "id": "E4`",
+            "featureType": "Edge",
+            "duality": "B4`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[0.75,2.375],[1.625,2.25]]
+            },
+            "connects": ["N-R2`", "N-D3`"]
+          },
+          {
+            "id": "E5`",
+            "featureType": "Edge",
+            "duality": "B5`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[1.625,2.25],[2.5,2.375]]
+            },
+            "connects": ["N-D3`","N-R3`"]
+          },
+          {
+            "id": "E6`",
+            "featureType": "Edge",
+            "duality": "B6`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[2.5,2.375],[2.75,1.625]]
+            },
+            "connects": ["N-R3`","N-D4`"]
+          },
+          {
+            "id": "E-W7",
+            "featureType": "Edge",
+            "duality": "B7`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[2.75,1.625],[2.5,0.875]]
+            },
+            "connects": ["N-D4`","N-R1-2"]
+          },
+          {
+            "id": "E-W8",
+            "featureType": "Edge",
+            "duality": "B8`",
+            "weight": 1.0,
+            "geometry": {
+              "type": "LineString",
+              "coordinates": [[2.5,0.875],[3.375,0.75]]
+            },
+            "connects": ["N-R1-2","N-D5"]
+          }
+        ]
+      }
+    }
+  ],
+  "layerConnections": [
+    {
+      "id": "ILC-R1-1",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["R1", "R1-1"],
+      "connectedNodes": ["N-R1", "N-R1-1"],
+      "typeOfTopoExpression": "CONTAINS"
+    },
+    {
+      "id": "ILC-R1-2",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["R1", "R1-2"],
+      "connectedNodes": ["N-R1", "N-R1-2"],
+      "typeOfTopoExpression": "CONTAINS"
+    },
+    {
+      "id": "ILC-R2",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["R2", "R2`"],
+      "connectedNodes": ["N-R2", "N-R2`"],
+      "typeOfTopoExpression": "EQUALS"
+    },
+    {
+      "id": "ILC-R3",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["R3", "R3`"],
+      "connectedNodes": ["N-R3", "N-R3`"],
+      "typeOfTopoExpression": "EQUALS"
+    },
+    {
+      "id": "ILC-D1",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["D1", "D1`"],
+      "connectedNodes": ["N-D1", "N-D1`"],
+      "typeOfTopoExpression": "EQUALS"
+    },
+    {
+      "id": "ILC-D2",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["D2", "D2`"],
+      "connectedNodes": ["N-D2", "N-D2`"],
+      "typeOfTopoExpression": "EQUALS"
+    },
+    {
+      "id": "ILC-D3",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["D3", "D3`"],
+      "connectedNodes": ["N-D3", "N-D3`"],
+      "typeOfTopoExpression": "EQUALS"
+    },
+    {
+      "id": "ILC-D4",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["D4", "D4`"],
+      "connectedNodes": ["N-D4", "N-D4`"],
+      "typeOfTopoExpression": "EQUALS"
+    },
+    {
+      "id": "ILC-D5",
+      "featureType": "InterLayerConnection",
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["D5", "D5`"],
+      "connectedNodes": ["N-D5", "N-D5`"],
+      "typeOfTopoExpression": "EQUALS"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "id": "ILC-1",
+  "id": "ILC-R1-1",
   "featureType": "InterLayerConnection",
   "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
   "connectedCells": ["R1", "R1-1"],
