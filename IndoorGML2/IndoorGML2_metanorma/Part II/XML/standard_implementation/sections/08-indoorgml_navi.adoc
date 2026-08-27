@@ -19,6 +19,7 @@ requirement:: /req/navi/nonnavigableboundary
 requirement:: /req/navi/route
 ====
 
+[[section-navi-general]]
 === General requirements for encoding standards
 
 [[req-navi-global]]
@@ -27,11 +28,68 @@ requirement:: /req/navi/route
 ====
 [%metadata]
 identifier:: /req/navi/global
-part:: An instance XML document representing an IndoorGML 2.0 Navigation module dataset SHALL conform to the schemas defined in this standard.
+part:: An instance XML document representing an IndoorGML 2.0 Navigation module dataset SHALL be well-formed XML and validate against the schemas defined in this standard (including `IndoorGML_navi.xsd`, `IndoorGML_core.xsd`, and OGC GML 3.2.1).
 ====
 
 
+[[section-navigablespace]]
 === NavigableSpace
+
+The `*NavigableSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-navigablespace[NavigableSpace], representing a space where an agent or user can move freely (e.g. corridor, door, lobby, hallway, room).
+
+[[navigablespace-schema]]
+.XML schema for the NavigableSpace element
+[%unnumbered]
+[source,xml]
+----
+<element name="NavigableSpace" substitutionGroup="core:CellSpace" type="navi:NavigableSpaceType"/>
+<complexType name="NavigableSpaceType">
+  <complexContent>
+    <extension base="core:CellSpaceType">
+      <sequence>
+        <element name="locomotionType" type="navi:LocomotionAccessType"/>
+      </sequence>
+    </extension>
+  </complexContent>
+</complexType>
+<complexType name="NavigableSpacePropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:NavigableSpace"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
+<simpleType name="LocomotionAccessType">
+  <union memberTypes="navi:LocomotionAccessEnumerationType navi:LocomotionAccessOtherType"/>
+</simpleType>
+<simpleType name="LocomotionAccessEnumerationType">
+  <restriction base="string">
+    <enumeration value="Walking"/>
+    <enumeration value="Flying"/>
+    <enumeration value="Rolling"/>
+    <enumeration value="Unspecified"/>
+  </restriction>
+</simpleType>
+<simpleType name="LocomotionAccessOtherType">
+  <restriction base="string">
+    <pattern value="other: \w{2,}"/>
+  </restriction>
+</simpleType>
+----
+
+[[navigablespace-example]]
+.An example of the NavigableSpace element
+[%unnumbered]
+[source,xml]
+----
+<navi:NavigableSpace gml:id="NS_1">
+    <!-- inherited mandatory property from CellSpace -->
+    <core:PoI>false</core:PoI>
+
+    <!-- mandatory property -->
+    <navi:locomotionType>Walking</navi:locomotionType>
+</navi:NavigableSpace>
+----
 
 [[req-navi-navigablespace]]
 [requirement]
@@ -39,35 +97,75 @@ part:: An instance XML document representing an IndoorGML 2.0 Navigation module 
 ====
 [%metadata]
 identifier:: /req/navi/navigablespace
-part:: An instance `NavigableSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+part:: A `*NavigableSpace*` element SHALL conform to all schema and semantic requirements of <<section-cellspace,`*CellSpace*`>>.
+part:: A `*NavigableSpace*` element SHALL specify the allowed locomotion mode using the `locomotionType` element.
+part:: The `locomotionType` value SHALL be one of the following: `"Walking"`, `"Flying"`, `"Rolling"`, `"Unspecified"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: A `*NavigableSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
-[%unnumbered]
-[source,xml]
-----
-<element name="NavigableSpace" substitutionGroup="core:CellSpace" type="navi:NavigableSpaceType"/>
-  <complexType name="NavigableSpaceType">
-    <complexContent>
-      <extension base="core:CellSpaceType">
-        <sequence>
-          <element name="locomotionType" type="navi:LocomotionAccessType"/>
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-----
 
-[%unnumbered]
-[source,xml]
-----
-<navi:NavigableSpace gml:id="NS_1">
-    <!-- mandatory property -->
-    <navi:locomotionType>Walking</navi:locomotionType>
-</navi:NavigableSpace>
-----
-
-
+[[section-generalspace]]
 === GeneralSpace
+
+The `*GeneralSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-generalspace[GeneralSpace], representing a navigable space that agents can occupy for extended periods and which can serve as starting or destination points in navigation.
+
+[[generalspace-schema]]
+.XML schema for the GeneralSpace element
+[%unnumbered]
+[source,xml]
+----
+<element name="GeneralSpace" substitutionGroup="navi:NavigableSpace" type="navi:GeneralSpaceType"/>
+<complexType name="GeneralSpaceType">
+  <complexContent>
+    <extension base="navi:NavigableSpaceType">
+      <sequence>
+        <element name="function" type="navi:GeneralSpaceFunctionType"/>
+      </sequence>
+    </extension>
+  </complexContent>
+</complexType>
+<complexType name="GeneralSpacePropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:GeneralSpace"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
+<simpleType name="GeneralSpaceFunctionType">
+  <union memberTypes="navi:GeneralSpaceFunctionEnumerationType navi:GeneralSpaceFunctionOtherType"/>
+</simpleType>
+<simpleType name="GeneralSpaceFunctionEnumerationType">
+  <restriction base="string">
+    <enumeration value="Administration"/>
+    <enumeration value="Business, trade"/>
+    <enumeration value="Education, training"/>
+    <enumeration value="Recreation"/>
+    <enumeration value="Laboratory"/>
+    <enumeration value="Storage"/>
+    <enumeration value="Security"/>
+  </restriction>
+</simpleType>
+<simpleType name="GeneralSpaceFunctionOtherType">
+  <restriction base="string">
+    <pattern value="other: \w{2,}"/>
+  </restriction>
+</simpleType>
+----
+
+[[generalspace-example]]
+.An example of the GeneralSpace element
+[%unnumbered]
+[source,xml]
+----
+<navi:GeneralSpace gml:id="GS_1">
+    <!-- inherited mandatory properties -->
+    <core:PoI>false</core:PoI>
+    <navi:locomotionType>Walking</navi:locomotionType>
+
+    <!-- mandatory property -->
+    <navi:function>Storage</navi:function>
+</navi:GeneralSpace>
+----
 
 [[req-navi-generalspace]]
 [requirement]
@@ -75,45 +173,20 @@ part:: An instance `NavigableSpace` XML element SHALL conform to the schema stru
 ====
 [%metadata]
 identifier:: /req/navi/generalspace
-part:: An instance `GeneralSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+part:: A `*GeneralSpace*` element SHALL conform to all schema and semantic requirements of <<section-navigablespace,`*NavigableSpace*`>>.
+part:: A `*GeneralSpace*` element SHALL specify the functional purpose of the space using the `function` element.
+part:: The `function` value SHALL be one of the following: `"Administration"`, `"Business, trade"`, `"Education, training"`, `"Recreation"`, `"Laboratory"`, `"Storage"`, `"Security"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: A `*GeneralSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
-[%unnumbered]
-[source,xml]
-----
-<element name="GeneralSpace" substitutionGroup="navi:NavigableSpace" type="navi:GeneralSpaceType"/>
-  <complexType name="GeneralSpaceType">
-    <complexContent>
-      <extension base="navi:NavigableSpaceType">
-        <sequence>
-          <element name="function" type="navi:GeneralSpaceFunctionType"/>
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-----
 
-[%unnumbered]
-[source,xml]
-----
-<navi:GeneralSpace gml:id="GS_1">
-    <!-- mandatory property -->
-    <navi:function>Storage</navi:function>
-</navi:GeneralSpace>
-----
-
-
+[[section-transferspace]]
 === TransferSpace
 
-[[req-navi-transferspace]]
-[requirement]
-.Requirement for TransferSpace XML element
-====
-[%metadata]
-identifier:: /req/navi/transferspace
-part:: An instance `TransferSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
-====
+The `*TransferSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-transferspace[TransferSpace], representing a navigable space that provides passage between general spaces (e.g. doors, windows, gates).
 
+[[transferspace-schema]]
+.XML schema for the TransferSpace element
 [%unnumbered]
 [source,xml]
 ----
@@ -123,35 +196,85 @@ part:: An instance `TransferSpace` XML element SHALL conform to the schema struc
     <extension base="navi:NavigableSpaceType">
       <sequence>
         <element name="function" type="navi:TransferSpaceFunctionType"/>
-        <element name="type" type="navi:TransferSpaceType"/>
+        <element name="type" type="navi:TransferSpaceTypeType"/>
       </sequence>
     </extension>
   </complexContent>
 </complexType>
+<complexType name="TransferSpacePropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:TransferSpace"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
+<simpleType name="TransferSpaceFunctionType">
+  <union memberTypes="navi:TransferSpaceFunctionEnumerationType navi:TransferSpaceFunctionOtherType"/>
+</simpleType>
+<simpleType name="TransferSpaceFunctionEnumerationType">
+  <restriction base="string">
+    <enumeration value="ConnectionSpace"/>
+    <enumeration value="AnchorSpace"/>
+  </restriction>
+</simpleType>
+<simpleType name="TransferSpaceFunctionOtherType">
+  <restriction base="string">
+    <pattern value="other: \w{2,}"/>
+  </restriction>
+</simpleType>
+<simpleType name="TransferSpaceTypeType">
+  <union memberTypes="navi:TransferSpaceTypeEnumerationType navi:TransferSpaceTypeOtherType"/>
+</simpleType>
+<simpleType name="TransferSpaceTypeEnumerationType">
+  <restriction base="string">
+    <enumeration value="Door"/>
+    <enumeration value="Window"/>
+  </restriction>
+</simpleType>
+<simpleType name="TransferSpaceTypeOtherType">
+  <restriction base="string">
+    <pattern value="other: \w{2,}"/>
+  </restriction>
+</simpleType>
 ----
 
+[[transferspace-example]]
+.An example of the TransferSpace element
 [%unnumbered]
 [source,xml]
 ----
 <navi:TransferSpace gml:id="TS_1">
+    <!-- inherited mandatory properties -->
+    <core:PoI>false</core:PoI>
+    <navi:locomotionType>Walking</navi:locomotionType>
+
     <!-- mandatory properties -->
-    <navi:category>Door</navi:category>
     <navi:function>ConnectionSpace</navi:function>
+    <navi:type>Door</navi:type>
 </navi:TransferSpace>
 ----
 
-
-=== NavigableBoundary
-
-[[req-navi-navigableboundary]]
+[[req-navi-transferspace]]
 [requirement]
-.Requirement for NavigableBoundary XML element
+.Requirement for TransferSpace XML element
 ====
 [%metadata]
-identifier:: /req/navi/navigableboundary
-part:: An instance `NavigableBoundary` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+identifier:: /req/navi/transferspace
+part:: A `*TransferSpace*` element SHALL conform to all schema and semantic requirements of <<section-navigablespace,`*NavigableSpace*`>>.
+part:: A `*TransferSpace*` element SHALL specify its passage function using the `function` element and its opening category using the `type` element.
+part:: The `function` value SHALL be one of the following: `"ConnectionSpace"` (connecting two indoor or two outdoor spaces), `"AnchorSpace"` (enabling connection between indoor and outdoor spaces), or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: The `type` value SHALL be one of the following: `"Door"`, `"Window"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: A `*TransferSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
+
+[[section-navigableboundary]]
+=== NavigableBoundary
+
+The `*NavigableBoundary*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-navigableboundary[NavigableBoundary], representing a boundary of a navigable space that provides transition or connection information.
+
+[[navigableboundary-schema]]
+.XML schema for the NavigableBoundary element
 [%unnumbered]
 [source,xml]
 ----
@@ -166,31 +289,67 @@ part:: An instance `NavigableBoundary` XML element SHALL conform to the schema s
     </extension>
   </complexContent>
 </complexType>
+<complexType name="NavigableBoundaryPropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:NavigableBoundary"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
+<simpleType name="NavigableBoundaryFunctionType">
+  <union memberTypes="navi:NavigableBoundaryFunctionEnumerationType navi:NavigableBoundaryFunctionOtherType"/>
+</simpleType>
+<simpleType name="NavigableBoundaryFunctionEnumerationType">
+  <restriction base="string">
+    <enumeration value="AncorBoundary"/>
+    <enumeration value="ConnectionBoundary"/>
+  </restriction>
+</simpleType>
+<simpleType name="NavigableBoundaryFunctionOtherType">
+  <restriction base="string">
+    <pattern value="other: \w{2,}"/>
+  </restriction>
+</simpleType>
 ----
 
+[[navigableboundary-example]]
+.An example of the NavigableBoundary element
 [%unnumbered]
 [source,xml]
 ----
 <navi:NavigableBoundary gml:id="NB_1">
+    <!-- inherited mandatory property from CellBoundary -->
+    <core:isVirtual>false</core:isVirtual>
+
     <!-- mandatory property -->
-    <navi:NavigableBoundaryFunction>AnchorBoundary</navi:NavigableBoundaryFunction>
-    <!-- Optional property -->
-    <navi:boundaryOrientation>false</navi:boundaryOrientation>
+    <navi:NavigableBoundaryFunction>ConnectionBoundary</navi:NavigableBoundaryFunction>
+
+    <!-- optional property -->
+    <navi:boundaryOrientation>true</navi:boundaryOrientation>
 </navi:NavigableBoundary>
 ----
 
-
-=== NonNavigableSpace
-
-[[req-navi-nonnavigablespace]]
+[[req-navi-navigableboundary]]
 [requirement]
-.Requirement for NonNavigableSpace XML element
+.Requirement for NavigableBoundary XML element
 ====
 [%metadata]
-identifier:: /req/navi/nonnavigablespace
-part:: An instance `NonNavigableSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+identifier:: /req/navi/navigableboundary
+part:: A `*NavigableBoundary*` element SHALL conform to all schema and semantic requirements of <<section-cellboundary,`*CellBoundary*`>>.
+part:: A `*NavigableBoundary*` element SHALL specify its boundary function using the `NavigableBoundaryFunction` element.
+part:: The `NavigableBoundaryFunction` value SHALL be one of the following: `"ConnectionBoundary"` (boundary connecting two indoor or two outdoor spaces), `"AncorBoundary"` (boundary enabling transition between indoor and outdoor spaces), or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: When present, `boundaryOrientation` SHALL specify whether the boundary geometry is used with standard orientation (`true`) or reversed orientation (`false`).
+part:: A `*NavigableBoundary*` element SHALL contain a unique `gml:id` attribute.
 ====
 
+
+[[section-nonnavigablespace]]
+=== NonNavigableSpace
+
+The `*NonNavigableSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-nonnavigablespace[NonNavigableSpace], representing an indoor space subdivision occupied by obstacles or restricted from agent traversal.
+
+[[nonnavigablespace-schema]]
+.XML schema for the NonNavigableSpace element
 [%unnumbered]
 [source,xml]
 ----
@@ -202,28 +361,44 @@ part:: An instance `NonNavigableSpace` XML element SHALL conform to the schema s
     </extension>
   </complexContent>
 </complexType>
+<complexType name="NonNavigableSpacePropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:NonNavigableSpace"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
 ----
 
+[[nonnavigablespace-example]]
+.An example of the NonNavigableSpace element
 [%unnumbered]
 [source,xml]
 ----
 <navi:NonNavigableSpace gml:id="NNS_1">
-    <!-- no property -->
+    <!-- inherited mandatory property from CellSpace -->
+    <core:PoI>false</core:PoI>
 </navi:NonNavigableSpace>
 ----
 
-
-=== ObjectSpace
-
-[[req-navi-objectspace]]
+[[req-navi-nonnavigablespace]]
 [requirement]
-.Requirement for ObjectSpace XML element
+.Requirement for NonNavigableSpace XML element
 ====
 [%metadata]
-identifier:: /req/navi/objectspace
-part:: An instance `ObjectSpace` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+identifier:: /req/navi/nonnavigablespace
+part:: A `*NonNavigableSpace*` element SHALL conform to all schema and semantic requirements of <<section-cellspace,`*CellSpace*`>>.
+part:: A `*NonNavigableSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
+
+[[section-objectspace]]
+=== ObjectSpace
+
+The `*ObjectSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-objectspace[ObjectSpace], representing a specialized non-navigable space that encapsulates physical objects or furniture within an indoor environment.
+
+[[objectspace-schema]]
+.XML schema for the ObjectSpace element
 [%unnumbered]
 [source,xml]
 ----
@@ -238,30 +413,51 @@ part:: An instance `ObjectSpace` XML element SHALL conform to the schema structu
     </extension>
   </complexContent>
 </complexType>
+<complexType name="ObjectSpacePropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:ObjectSpace"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
 ----
 
+[[objectspace-example]]
+.An example of the ObjectSpace element
 [%unnumbered]
 [source,xml]
 ----
 <navi:ObjectSpace gml:id="OS_1">
-    <!-- Optional properties -->
+    <!-- inherited mandatory property from CellSpace -->
+    <core:PoI>false</core:PoI>
+
+    <!-- optional properties -->
     <navi:containedFeatures>3</navi:containedFeatures>
-    <navi:description>Living room furniture</navi:description>
+    <navi:description>Living room furniture and columns</navi:description>
 </navi:ObjectSpace>
 ----
 
-
-=== NonNavigableBoundary
-
-[[req-navi-nonnavigableboundary]]
+[[req-navi-objectspace]]
 [requirement]
-.Requirement for NonNavigableBoundary XML element
+.Requirement for ObjectSpace XML element
 ====
 [%metadata]
-identifier:: /req/navi/nonnavigableboundary
-part:: An instance `NonNavigableBoundary` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+identifier:: /req/navi/objectspace
+part:: An `*ObjectSpace*` element SHALL conform to all schema and semantic requirements of <<section-nonnavigablespace,`*NonNavigableSpace*`>>.
+part:: An `*ObjectSpace*` element SHALL NOT overlap with any other `*CellSpace*` or its specialized classes within the same `*PrimalSpaceLayer*`.
+part:: When present, `containedFeatures` SHALL be a non-negative integer representing the count of contained objects.
+part:: When present, `description` SHALL provide descriptive text regarding the contained objects.
+part:: An `*ObjectSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
+
+[[section-nonnavigableboundary]]
+=== NonNavigableBoundary
+
+The `*NonNavigableBoundary*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-nonnavigableboundary[NonNavigableBoundary], representing the boundary between two non-navigable spaces or between a navigable space and a non-navigable space.
+
+[[nonnavigableboundary-schema]]
+.XML schema for the NonNavigableBoundary element
 [%unnumbered]
 [source,xml]
 ----
@@ -273,28 +469,44 @@ part:: An instance `NonNavigableBoundary` XML element SHALL conform to the schem
     </extension>
   </complexContent>
 </complexType>
+<complexType name="NonNavigableBoundaryPropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:NonNavigableBoundary"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
 ----
 
+[[nonnavigableboundary-example]]
+.An example of the NonNavigableBoundary element
 [%unnumbered]
 [source,xml]
 ----
 <navi:NonNavigableBoundary gml:id="NNB_1">
-    <!-- no property -->
+    <!-- inherited mandatory property from CellBoundary -->
+    <core:isVirtual>false</core:isVirtual>
 </navi:NonNavigableBoundary>
 ----
 
-
-=== Route
-
-[[req-navi-route]]
+[[req-navi-nonnavigableboundary]]
 [requirement]
-.Requirement for Route XML element
+.Requirement for NonNavigableBoundary XML element
 ====
 [%metadata]
-identifier:: /req/navi/route
-part:: An instance `Route` XML element SHALL conform to the schema structure defined in the IndoorGML 2.0 Navigation XML Schema (`IndoorGML_navi.xsd`).
+identifier:: /req/navi/nonnavigableboundary
+part:: A `*NonNavigableBoundary*` element SHALL conform to all schema and semantic requirements of <<section-cellboundary,`*CellBoundary*`>>.
+part:: A `*NonNavigableBoundary*` element SHALL contain a unique `gml:id` attribute.
 ====
 
+
+[[section-route]]
+=== Route
+
+The `*Route*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-route[Route], representing a designated navigation path through an indoor space composed of an ordered sequence of nodes and connecting edges in dual space.
+
+[[route-schema]]
+.XML schema for the Route element
 [%unnumbered]
 [source,xml]
 ----
@@ -310,8 +522,17 @@ part:: An instance `Route` XML element SHALL conform to the schema structure def
     </extension>
   </complexContent>
 </complexType>
+<complexType name="RoutePropertyType">
+  <sequence minOccurs="0">
+    <element ref="navi:Route"/>
+  </sequence>
+  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+  <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+</complexType>
 ----
 
+[[route-example]]
+.An example of the Route element
 [%unnumbered]
 [source,xml]
 ----
@@ -320,7 +541,24 @@ part:: An instance `Route` XML element SHALL conform to the schema structure def
     <navi:routeNode xlink:href="#ND_1"/>
     <navi:routeNode xlink:href="#ND_2"/>
     <navi:routeEdge xlink:href="#EDG_1"/>
-    <!-- Optional property -->
+
+    <!-- optional property -->
     <navi:creationDate>2025-10-20T16:44:00Z</navi:creationDate>
 </navi:Route>
 ----
+
+[[req-navi-route]]
+[requirement]
+.Requirement for Route XML element
+====
+[%metadata]
+identifier:: /req/navi/route
+part:: A `*Route*` element SHALL contain at least two `routeNode` properties and at least one `routeEdge` property.
+part:: Each `routeNode` property SHALL reference (via `xlink:href`) or contain a <<section-node,`*Node*`>> element.
+part:: Each `routeEdge` property SHALL reference (via `xlink:href`) or contain an <<section-edge,`*Edge*`>> element.
+part:: The sequences of `routeNode` and `routeEdge` properties SHALL represent an ordered contiguous path in the dual space graph.
+part:: Each consecutive pair of `routeNode` elements in the sequence SHALL be connected by the corresponding `routeEdge` element in `routeEdge`.
+part:: Consecutive `routeEdge` elements in the sequence SHALL share a common `routeNode` element.
+part:: When present, `creationDate` SHALL be formatted as a valid `xs:dateTime` string.
+part:: A `*Route*` element SHALL contain a unique `gml:id` attribute.
+====

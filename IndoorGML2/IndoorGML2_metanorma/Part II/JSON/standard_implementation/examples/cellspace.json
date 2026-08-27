@@ -1,14 +1,14 @@
 {
-  "id": "C1",
+  "id": "R1",
   "featureType": "CellSpace",
-  "duality": "TL-1:DS-1:N1",
+  "duality": "N-R1",
   "poi": false,
   "level": "1",
   "cellSpaceGeom": {
     "geometry2D": {
       "type": "Polygon",
-      "coordinates": [[[0,0], [2,0], [2,2], [0,2], [0,0]]]
+      "coordinates": [[[0,0.25], [3.25,0.25], [3.25,1.5], [0,1.5], [0,0.25]]]
     }
   },
-  "boundedBy": ["TL-1:PS-1:B1"]
+  "boundedBy": ["B1", "B2", "B7", "B8"]
 }

@@ -9,6 +9,7 @@ subject:: Implementation Specification
 inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
 inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
 inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+requirement:: /req/core/element
 requirement:: /req/core/indoorjson
 requirement:: /req/core/indoorfeature
 requirement:: /req/core/thematiclayer
@@ -21,13 +22,17 @@ requirement:: /req/core/edge
 requirement:: /req/core/interlayerconnection
 ====
 
+[[section-indoorjson]]
+=== General requirements for IndoorJSON
+
 IndoorJSON object represents one of feature class of IndoorGML 2.0 conceptual model.
 
 The IndoorJSON Object:
 
 * *must* have one member with the name `id`. The value must be a string that serves as a unique identifier for the IndoorJSON object and can be used to represent cross-references between IndoorJSON objects.
 
-* *must* have one member with the name `featuretype`. The value is one of the possibilities in the figure <<fig-core-indoorgml>>.
+* *must* have one member with the name `featuretype`.
+The value is one of the possibilities in the <<fig-core-indoorgml>> or <<fig-navi-indoorgml>>.
 
 [[req-indoorjson]]
 [requirement]
@@ -36,13 +41,23 @@ The IndoorJSON Object:
 [%metadata]
 identifier:: /req/core/indoorjson
 part:: An IndoorJSON object SHALL contain `id` and `featuretype` members.
+// part:: The `featuretype` value SHALL be one of the following: "IndoorFeatures", "ThematicLayer", "PrimalSpaceLayer", "CellSpace", "CellBoundary", "DualSpaceLayer", "Node", "Edge", or "InterLayerConnection"
+====
+
+[[req-indoorcore]]
+[requirement]
+.Requirement for IndoorJSON Core
+====
+[%metadata]
+identifier:: /req/core/element
+part:: IndoorGML Core JSON elements implemented by a conforming instance document SHALL conform to the JSON schema in <<annex_indoorjson_core_schema, indoorjson.core.schema.json>>.
 ====
 
 [[section-indoorfeatures]]
 === IndoorFeatures
 
 `*IndoorFeature*` object is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeature], the container for the indoor dataset.
-It aggregates one or more thematic layers and may include inter-layer connections.
+It aggregates one or more thematic layers and may include interlayer connections.
 
 The `*IndoorFeature*` object shall contain:
 
@@ -51,15 +66,23 @@ The `*IndoorFeature*` object shall contain:
 * `layers` for representing <<section-thematiclayer,`*ThematicLayer*`>> object as item
 * optionally, `layerConnections` for <<section-interlayerconnection, `*InterLayerConnection*`>> object as item
 
+The following examples refer to an `*IndoorFeature*` object shown in <<fig-indoorjson-example>>.
+In the example, the `*IndoorFeature*` object contains an array of `*ThematicLayer*` objects as the value of its `layers` member and an array of `*InterLayerConnection*` objects as the value of its `interlayerConnections` member.
+Each object has an `id` member, which is used by specific members (such as `connectedLayers` or `connectedNodes` in `*InterLayerConnection*`) to reference the object.
+
+[[fig-indoorjson-example]]
+.IndoorJSON example layout
+image::indoorjson_example.png[align="center"]
+
 [[indoorfeature-schema]]
-.A JSON schema of the IndoorFeature:
+.A JSON schema of the IndoorFeature
 [source,json]
 ----
 include::../schema/core/indoorfeatures.json[]
 ----
 
 [[indoorfeature-example]]
-.An example of the IndoorFeature object:
+.An example of the IndoorFeature object
 [source,json]
 ----
 include::../examples/indoorfeatures.json[]
@@ -72,6 +95,7 @@ include::../examples/indoorfeatures.json[]
 [%metadata]
 identifier:: /req/core/indoorfeature
 part:: An `*IndoorFeatures*` object SHALL contain at least one <<section-thematiclayer,`*ThematicLayer*`>> object as item of `layers` value.
+part:: The `featuretype` value SHALL be "IndoorFeatures".
 ====
 
 [[section-thematiclayer]]
@@ -93,14 +117,16 @@ The core schema defines `semanticExtension` and `theme` members, with `theme` va
 
 
 [[thematiclayer-schema]]
-.A JSON schema of the ThematicLayer:
+.A JSON schema of the ThematicLayer
 [source,json]
 ----
 include::../schema/core/thematiclayer.json[]
 ----
 
+The following examples refer to a `*ThematicLayer*` object ("TL-Pedestrian"), shown in <<fig-indoorjson-example>>.
+
 [[thematiclayer-example]]
-.An example of the ThematicLayer object:
+.An example of the ThematicLayer object
 [source,json]
 ----
 include::../examples/thematiclayer.json[]
@@ -114,7 +140,8 @@ include::../examples/thematiclayer.json[]
 identifier:: /req/core/thematiclayer
 part:: A `*ThematicLayer*` object SHALL declare whether there is an extension module with additional semantic information using the `semanticExtension` member.
 part:: A `*ThematicLayer*` object SHALL determine what type of model representation can be expected using the `theme` member.
-part:: The `Theme` value SHALL be set to "Virtual", "Physical", "Tags", and "Unknown".
+part:: The `Theme` value SHALL be one of the following: "Virtual", "Physical", "Tags", or "Unknown"
+part:: The `featuretype` value SHALL be "ThematicLayer".
 ====
 
 [[section-primalspacelayer]]
@@ -132,14 +159,16 @@ The `*PrimalSpaceLayer*` object shall contain:
 * optionally, `terminationDatetime`
 
 [[primalspacelayer-schema]]
-.A JSON schema of the PrimalSpaceLayer:
+.A JSON schema of the PrimalSpaceLayer
 [source,json]
 ----
 include::../schema/core/primalspacelayer.json[]
 ----
 
+The following examples refer to a `*PrimalSpaceLayer*` object of "TL-Pedestrian", shown in <<fig-indoorjson-example>>.
+
 [[primalspacelayer-example]]
-.An example of the PrimalSpaceLayer object:
+.An example of the PrimalSpaceLayer object
 [source,json]
 ----
 include::../examples/primalspacelayer.json[]
@@ -151,7 +180,11 @@ include::../examples/primalspacelayer.json[]
 ====
 [%metadata]
 identifier:: /req/core/primalspacelayer
-part:: A `PrimalSpaceLayer` SHALL contain one or more <<section-cellspace,CellSpace>> objects.
+part:: A `*PrimalSpaceLayer*` SHALL contain one or more <<section-cellspace,`*CellSpace*`>> objects.
+part:: The <<section-cellspace,`*CellSpace*`>> objects belonging to the same `*PrimalSpaceLayer*` SHALL not intersect with each other.
+part:: The <<section-cellboundary, `*CellBoundary*`>> objects belonging to the same `*PrimalSpaceLayer*` SHALL not intersect with each other.
+part:: The `featuretype` value SHALL be "PrimalSpaceLayer".
+
 ====
 
 [[section-cellspace]]
@@ -178,14 +211,16 @@ For `cellsSpaceGeom` member, it defines `cellSpaceGeom.geometry2D` using a `JSON
 The `externalReference` member is used for the reference of an object to its corresponding object in an external data set.
 
 [[cellspace-schema]]
-.A JSON schema of the CellSpace:
+.A JSON schema of the CellSpace
 [source,json]
 ----
 include::../schema/core/cellspace.json[]
 ----
 
+The following examples refer to a `*CellSpace*` object ("R1"), shown in <<fig-indoorjson-example>>.
+
 [[cellspace-example]]
-.An example of the CellSpace object:
+.An example of the CellSpace object
 [source,json]
 ----
 include::../examples/cellspace.json[]
@@ -198,6 +233,10 @@ include::../examples/cellspace.json[]
 [%metadata]
 identifier:: /req/core/cellspace
 part:: A `*CellSpace*` object SHALL declare whether it is a point of interest space using the `poi` member.
+part:: The `duality` value SHALL be the same as the `id` of the linked <<section-node,`*Node*`>> object.
+part:: The `boundedBy` value SHALL contain the same `id` as the linked <<section-cellboundary, `*CellBoundary*`>> objects.
+part:: The geometry of the linked <<section-cellboundary, `*CellBoundary*`>> SHALL not exceed the extent of the `*CellSpace*` geometry.
+part:: The `featuretype` value SHALL be one of "CellSpace", "NonNavigableSpace", or "ObjectSpace".
 ====
 
 [[section-cellboundary]]
@@ -220,14 +259,16 @@ For `cellBoundaryGeom` member, it defines `cellBoundaryGeom.geometry2D` using a 
 The `externalReference` member is used for the reference of an object to its corresponding object in an external data set
 
 [[cellboundary-schema]]
-.A JSON schema of the CellBoundary:
+.A JSON schema of the CellBoundary
 [source,json]
 ----
 include::../schema/core/cellboundary.json[]
 ----
 
+The following examples refer to a `*CellBoundary*` object ("B1"), shown in <<fig-indoorjson-example>>.
+
 [[cellboundary-example]]
-.An example of the CellBoundary object:
+.An example of the CellBoundary object
 [source,json]
 ----
 include::../examples/cellboundary.json[]
@@ -240,6 +281,8 @@ include::../examples/cellboundary.json[]
 [%metadata]
 identifier:: /req/core/cellboundary
 part:: A `*CellBoundary*` object SHALL specify whether it is virtual using the `isVirtual` member.
+part:: The `duality` value SHALL be the same as the `id` of the linked <<section-edge,`*Edge*`>> object.
+part:: The `featuretype` value SHALL be one of "CellBoundary", or "NonNavigableBoundary".
 ====
 
 [[section-dualspacelayer]]
@@ -260,14 +303,16 @@ The `*DualSpaceLayer*` object shall contain:
 * optionally, `terminationDatetime`
 
 [[dualspacelayer-schema]]
-.A JSON schema of the DualSpaceLayer:
+.A JSON schema of the DualSpaceLayer
 [source,json]
 ----
 include::../schema/core/dualspacelayer.json[]
 ----
 
+The following examples refer to a `*DualSpaceLayer*` object of "TL-Pedestrian", shown in <<fig-indoorjson-example>>.
+
 [[dualspacelayer-example]]
-.An example of the DualSpaceLayer object:
+.An example of the DualSpaceLayer object
 [source,json]
 ----
 include::../examples/dualspacelayer.json[]
@@ -280,8 +325,11 @@ include::../examples/dualspacelayer.json[]
 [%metadata]
 identifier:: /req/core/dualspacelayer
 part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is a geometric or a logical using the `isLogical` member.
-part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is directed using the `isLogical` member.
-part:: A `*DualSpaceLayer*` object SHALL contain one or more <<section-node,`*Node*`>> objects.
+part:: When the `isLogical` value is FALSE, the geometries of its <<section-node,`*Node*`>> instances SHALL be spatially located inside of their corresponding <<section-cellspace, `*CellSpaces*`>>.
+part:: A `*DualSpaceLayer*` object SHALL specify whether the provided graph is directed using the `isDirected` member.
+
+part:: A `*DualSpaceLayer*` object SHALL contain one or more <<section-node,`*Node*`>> objects as `NodeMember` values.
+part:: The `featuretype` value SHALL be "DualSpaceLayer".
 ====
 
 [[section-node]]
@@ -302,14 +350,16 @@ A `*Node*` may be connects to a set of <<section-edge,`*Edges*`>> through the `c
 For `geometry` member referred  `JSON-FG Point` geometry.
 
 [[node-schema]]
-.A JSON schema of the Node:
+.A JSON schema of the Node
 [source,json]
 ----
 include::../schema/core/node.json[]
 ----
 
+The following examples refer to a `*Node*` object ("N-R1"), shown in <<fig-indoorjson-example>>.
+
 [[node-example]]
-.An example of the Node object:
+.An example of the Node object
 [source,json]
 ----
 include::../examples/node.json[]
@@ -322,6 +372,8 @@ include::../examples/node.json[]
 [%metadata]
 identifier:: /req/core/node
 part:: A `*Node*` object SHALL contain a `duality` value by referencing the `id` member of to correspond <<section-cellspace,`*CellSpace*`>>.
+part:: The `connects` value SHALL contain the same `id` as the linked <<section-edge, `*Edge*`>> objects.
+part:: The `featuretype` value SHALL be "Node".
 ====
 
 [[section-edge]]
@@ -344,14 +396,16 @@ An `Edge` can be linked to a <<section-cellboundary,`*CellBoundary*`>> through t
 For `geometry` member referred  `JSON-FG LineString` geometry.
 
 [[edge-schema]]
-.A JSON schema of an Edge:
+.A JSON schema of an Edge
 [source,json]
 ----
 include::../schema/core/edge.json[]
 ----
 
+The following examples refer to a `*Edge*` object ("E1"), shown in <<fig-indoorjson-example>>.
+
 [[edge-example]]
-.An example of the Edge object:
+.An example of the Edge object
 [source,json]
 ----
 include::../examples/edge.json[]
@@ -363,8 +417,10 @@ include::../examples/edge.json[]
 ====
 [%metadata]
 identifier:: /req/core/edge
-part:: An `*Edge*` object SHALL reference the connected <<section-node,Nodes>> using the `connects` member.
+part:: An `*Edge*` object SHALL reference the connected <<section-node,`*Nodes*`>> using the `connects` member.
 part:: An `*Edge*` object SHALL contain a `weight` value.
+part:: The start and end coordinates of the `geometry` value SHALL match the coordinates of the connected <<section-node,`*Nodes*`>> in the `connects` member.
+part:: The `featuretype` value SHALL be "Edge".
 ====
 
 [[section-interlayerconnection]]
@@ -385,17 +441,23 @@ The `*InterLayerConnection*` object shall contain:
 The `typeOfTopoExpression` member represents the topological relationship between two layers.
 The `typeOfTopoExpression` values including "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", and "OTHERS", according to the conceptual model.
 Those topological values are in the form of verbs for which the subject is the first instance of the `connectedLayers` member.
-The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members are ordered and can be mapped to the same index.
+The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members shall be ordered and mapped to the same indices.
 
 [[interlayerconnection-schema]]
-.A JSON schema of the InterLayerConnection:
+.A JSON schema of the InterLayerConnection
 [source,json]
 ----
 include::../schema/core/interlayerconnection.json[]
 ----
 
+The following examples refer to a `*InterLayerConnection*` object ("ILC-R1-1"), shown in <<fig-indoorjson-example>>.
+For example, consider a cell space ("R1") containing a step that pedestrians can traverse but that is difficult for wheelchairs to cross.
+If this distinction leads to the creation of separate thematic layers for pedestrians and wheelchairs, the cell space "R1" is split into "R1-1" and "R1-2" based on the step (a process known as subspacing).
+In this case, since "R1" and "R1-1" (and "R1-2") represent the same physical space, they have a "contains" relationship.
+As shown in the example, this can be represented as "ILC-R1-1" (and "ILC-R1-2").
+
 [[interlayerconnection-example]]
-.An example of the InterLayerConnection object:
+.An example of the InterLayerConnection object
 [source,json]
 ----
 include::../examples/interlayerconnection.json[]
@@ -407,7 +469,14 @@ include::../examples/interlayerconnection.json[]
 ====
 [%metadata]
 identifier:: /req/core/interlayerconnection
-// part:: An Edge SHALL reference the connected <<section-node,Nodes>> using the `connects` property.
+part:: The `*InterLayerConnection*` object SHALL reference the connected <<section-thematiclayer,`*ThematicLayer*`>> using the `connectedLayers` member.
+part:: The `*InterLayerConnection*` object SHALL use the `typeOfTopoExpression` member to represent the topological  the values in `connectedLayers` (or, if that value is not null, `connectedNodes` or `connectedCells`).
+part:: The `typeOfTopoExpression` value SHALL be one of the following: "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", or "OTHERS"
+part:: The `connectedLayers` value SHALL contain the same `id` as the linked <<section-thematiclayer, `*ThematicLayer*`>> objects.
+part:: The `connectedNodes` value SHALL contain the same `id` as the linked <<section-node, `*Node*`>> objects.
+part:: The `connectedCells` value SHALL contain the same `id` as the linked <<section-cellspace, `*CellSpace*`>> objects.
+part:: The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members SHALL be ordered and mapped to the same indices.
+part:: The `featuretype` value SHALL be "InterLayerConnection".
 ====
 
 
@@ -418,7 +487,7 @@ The `externalReferenceType` object is used for the reference of an object to its
 This is not a feature class of IndoorGML 2.0.
 
 [[externalreferencetype-schema]]
-.A JSON schema of the ExternalReferenceType:
+.A JSON schema of the ExternalReferenceType
 [source,json]
 ----
 include::../schema/core/externalreferencetype.json[]

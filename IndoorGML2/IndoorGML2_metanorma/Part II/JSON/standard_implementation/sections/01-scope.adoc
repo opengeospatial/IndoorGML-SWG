@@ -11,7 +11,8 @@ The IndoorJSON Standard specifies:
 - the geometry encoding rules based on JSON-FG geometry objects; and
 - a statement to which IndoorJSON conformance classes a IndoorGML 2.0 conforms to.
 
-IndoorJSON is an implementation encoding of IndoorGML 2.0 Part 1. Therefore, IndoorJSON instances shall be interpreted according to the semantics defined in the IndoorGML 2.0 conceptual model.
+IndoorJSON is an implementation encoding of <<ogc22-045r5,IndoorGML 2.0 Part 1 - Conceptual Model>>.
+Therefore, IndoorJSON instances shall be interpreted according to the semantics defined in the IndoorGML 2.0 conceptual model.
 
 // [NOTE]
 // ====

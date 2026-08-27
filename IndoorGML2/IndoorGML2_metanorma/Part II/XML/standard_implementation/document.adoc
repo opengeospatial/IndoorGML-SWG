@@ -3,9 +3,10 @@
 :doctype: standard
 :comment: ### Document subtype; optional.
 :docsubtype: implementation
+// :document-scheme: 2022
 :comment: ### Version number
-:edition: 2.0.0
-:draft: 2.0.0
+:edition: 0.5.0
+// :draft: 0.5.0
 :comment: ### Language of the document
 :language: en
 :comment: ### Document status/stage
@@ -13,7 +14,7 @@
 :comment: ### Relevant committee
 :committee: technical
 :comment: ### Internal reference number
-:docnumber: 25-001
+:docnumber: 26-042
 :comment: ### Date on which the standard was updated
 :received-date: 2025-08-06
 :comment: ### Date on which the standard was approved

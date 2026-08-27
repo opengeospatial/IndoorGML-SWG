@@ -4,7 +4,9 @@
     "type": "object",
     "properties": {
       "id": { "type": "string" },
-      "featureType": { "enum": ["CellSpace"] },
+      "featureType": { "enum": ["CellSpace",
+        "NavigableSpace","GeneralSpace","TransferSpace",
+        "NonNavigableSpace","ObjectSpace"] },
       "cellSpaceName:": { "type": "string" },
       "level": { "type": "string" },
       "poi": { "type":  "boolean" },
@@ -12,8 +14,8 @@
       "cellSpaceGeom" : {
         "type": "object",
         "properties": {
-          "geometry2D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" },
-          "geometry3D": { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polyhedron" }
+          "geometry2D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polygon" },
+          "geometry3D": { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Polyhedron" }
         }
       },
       "boundedBy": {

@@ -6,7 +6,13 @@
       {
         "type": "object",
         "properties": {
-          "function": { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"]}
+          "featureType": { "enum": ["GeneralSpace"] },
+          "function": {
+            "anyOf": [
+              { "enum": ["Administration","Business, trade","Education, training","Recreation","Laboratory","Storage","Security"] },
+              { "type": "string", "minLength": 1 }
+            ]
+          }
         },
         "required": ["function"]
       }

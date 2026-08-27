@@ -6,7 +6,7 @@
       "id": { "type": "string" },
       "featureType": { "enum": ["Node"] },
       "duality" : { "type": "string", "format": "uri-reference" },
-      "geometry" : { "$ref": "https://beta.schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point" },
+      "geometry" : { "$ref": "https://schemas.opengis.net/json-fg/geometry-object.json#/$defs/Point" },
       "connects" : {
         "type": "array",
         "items": { "type": "string", "format": "uri-reference" },

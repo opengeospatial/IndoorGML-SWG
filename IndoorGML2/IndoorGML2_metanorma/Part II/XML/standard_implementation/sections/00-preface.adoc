@@ -28,25 +28,23 @@ Table 1 maps requirements classes from the IndoorGML 2.0 Conceptual Model into t
 |===
 
 [.preface]
-== Submitters
-
-All questions regarding this submission should be directed to the editor or the submitters:
-
-.Submitters
-|===
-|Name |Affiliation |OGC member
-
-|Abdoulaye Diakité (abdou at citygeometrix.com) |CityGeometrix |Yes
-|Taehoon Kim (kim.taehoon at aist.go.jp) |National Institute of Advanced Industrial Science and Technology |Yes
-|Sisi Zlatanova (s.zlatanova at unsw.edu.au) |University of New South Wales |Yes
-|Ki-Joune Li (likj at pnu.edu) |Pusan National University |Yes
-|Zhiyong Wang (zwang19840102 at gmail.com) |SpatialAlgebra |Yes
-|===
-
-[.preface]
 == Security Considerations
 
 No security considerations have been made for this Standard.
+
+[.preface]
+== Submitters
+All questions regarding this submission should be directed to the editor or the submitters:
+
+|===
+|Name |Affiliation |Email |OGC member
+
+|Abdoulaye Diakité |CityGeometrix Pty Ltd |abdou@citygeometrix.com |Yes
+|Taehoon Kim |National Institute of Advanced Industrial Science and Technology |kim.taehoon@aist.go.jp |Yes
+|Sisi Zlatanova |University of New South Wales |s.zlatanova@unsw.edu.au |Yes
+|Ki-Joune Li |Pusan National University |lik@pnu.edu |Yes
+|Zhiyong Wang |SpatialAlgebra Technology Limited |zhiyongwang@spatialalgebra.tech |Yes
+|===
 
 
 //[.preface]

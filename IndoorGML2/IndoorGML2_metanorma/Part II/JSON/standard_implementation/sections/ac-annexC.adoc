@@ -1,0 +1,182 @@
+
+[[annex-c]]
+[appendix,obligation="informative"]
+== Example of CodeList
+
+For mapping indoor space features to IndoorNavigation module classes, space features have to be classified by functions and usages of space.
+// Each space class has attributes for functions, usages, and classes of space.
+Because misspellings or different names for the same notion brings the problems in data interoperability, in order to overcome the typo errors, an example of CodeList is provided in this annex to specify the attribute values including space category types and space function types.
+The CodeLists are defined from OmniClass (Table 13 and Table 14) created and used by the North American architectural, engineering and construction (AEC) industry.
+
+=== GeneralSpace
+
+// ==== GeneralSpaceClassType
+// Code list derived from OmniClass Table 13 and CityGML:
+//
+// * 1000 - Administration
+// * 1010 - Business, trade
+// * 1020 - Education, training
+// * 1030 - Recreation
+// * 1040 - Art, performance
+// * 1050 - Healthcare
+// * 1060 - Laboratory
+// * 1070 - Service
+// * 1080 - Production
+// * 1090 - Storage
+// * 1100 - Security
+// * 1110 - Accommodation, Waste management
+
+==== GeneralSpaceFunctionType
+Code list derived from OmniClass Table 13:
+
+* T1000 - Corridor
+* T1010 - Breezeway
+* T1020 - Box Lobby
+* T1030 - Elevator Lobby
+* T1040 - Landing
+* T1050 - Aisle
+* T1060 - Ramp
+* T1070 - Concourse
+* T1080 - Moving walkway
+* T1090 - Entry Lobby
+* T1100 - Jet way
+* T1110 - Elevator Shaft
+* T1120 - Stair
+* T1130 - Chute
+* G1000 - Elevator Machine Room
+* G1010 - Fire Command Center
+* G1020 - Men’s Restroom
+* G1030 - Unisex Restroom
+* G1040 - Refrigerant Machinery Room
+* G1050 - Incinerator Room
+* G1060 - Gas Room
+* G1070 - Liquid Use, Dispensing and Mixing Room
+* G1080 - Electrical Room
+* G1090 - Telecommunications Room
+* G1100 - Hazardous Waste Storage
+* G1110 - Building Manager Office
+* G1120 - Guard Stations
+* G1130 - Women’s Restroom
+* G1140 - Furnace Room
+* G1150 - Fuel Room
+* G1160 - Liquid Storage Room
+* G1170 - Hydrogen Cutoff Room
+* G1180 - Switch Room
+* G1190 - Classrooms
+* G1200 - Assembly Hall
+* G1210 - Physics Teaching Laboratory
+* G1220 - Open Class Laboratory
+* G1230 - Laboratory Service Space
+* G1240 - Computer Lab
+* G1250 - Training Support Space
+* G1260 - Study Room
+* G1270 - Evidence Room
+* G1280 - Witness Stand
+* G1290 - Robing Area
+* G1300 - Council Chambers
+* G1310 - Armory
+* G1320 - General Performance Spaces
+* G1330 - Orchestra Pit
+* G1340 - Performance Hall
+* G1350 - Audience Space
+* G1360 - Audience Seating Space
+* G1370 - Projection Booth
+* G1380 - Stage Wings
+* G1390 - Art Gallery
+* G1400 - Sculpture Garden
+* G1410 - Recording Studio
+* G1420 - Photo Lab
+* G1430 - Library
+* G1440 - Mediation Chapel
+* G1450 - Reflection Space
+* G1460 - Chapel
+* G1470 - Shrine
+* G1480 - Confessional Space
+* G1490 - Tabernacle
+* G1500 - Choir Loft
+* G1510 - Marriage Sanctuary
+* G1520 - Mental Health Quiet Room
+* G1530 - Bone Densitometry Room
+* G1540 - CT Simulator Room
+* G1550 - Head Radiographic Room
+* G1560 - Mobile Imaging System Alcove
+* G1570 - MRI System Component Room
+* G1580 - PET/CT Simulator Room
+* G1590 - Radiographic Room
+* G1600 - Stereotactic Mammography Room
+* G1610 - Ultrasound/Optical Coherence Tomography Room
+* G1620 - Angiographic Control Room
+* G1630 - Angiographic Procedure Control Area
+* G1640 - Silver Collection Area
+* G1650 - Computer Image Processing Area
+* G1660 - CT Control Area
+* G1670 - Image Quality Control Room
+* G1680 - X-Ray, Plane Film Storage Space
+* G1690 - MRI Control Room
+* G1700 - MRI Viewing Room
+* G1710 - Radiographic Control Room
+* G1720 - Tele-Radiology/Tele-Medicine Room
+* G1730 - Radiation Diagnostic and Therapy Spaces
+* G1740 - Health Physics Laboratory
+* G1750 - Linear Accelerator Entrance Maze, Healthcare
+* G1760 - Radioactive Waste Storage Room, Healthcare
+* G1770 - Nuclear Medicine Scanning Room
+* G1780 - Patient Dose/Thyroid Uptake Room
+* G1790 - Radiopharmacy
+* G1800 - Radiation Therapy, Mold Fabrication Shop
+* G1810 - Hearth and Lung Diagnostic and Treatment Spaces
+* G1820 - Cardiac Catheter Instrument Room
+* G1830 - Cardiac Catheter Control Room
+* G1840 - Cardiac Electrophysiology Room
+* G1850 - Echocardiograph Room
+* G1860 - Extended Pulmonary Function Testing Laboratory
+* G1870 - Pacemaker ICD Interrogation Room
+* G1880 - Procedure Viewing Area
+* G1890 - Pulmonary Function Treadmill Room
+* G1900 - Respiratory Therapy Clean-up Room
+* G1910 - General Diagnostic Procedure and Treatment Spaces
+* G1920 - Endoscopy/Gastroenterology Spaces
+* G1930 - Clinical Laboratory Spaces
+* G1940 - Pharmacy Spaces
+* G1950 - Rehabilitation Spaces
+* G1960 - Medical Research and Development Spaces
+* G1970 - Chemistry Laboratories
+* G1980 - Physical Sciences Laboratories
+* G1990 - Earth and Environmental Sciences Laboratories
+* G2000 - Psychology Laboratories
+* G2010 - Dry Laboratories
+* G2020 - Wet Laboratories
+* G2030 - Biosciences Laboratories
+* G2040 - Astronomy Laboratories
+* G2050 - Forensics Laboratories
+* G2060 - Bench Laboratories
+* ... *(Refer to the full standard implementation schema for other classifications)*
+
+// ==== GeneralSpaceUsageType
+// Code list identically specified as GeneralSpaceFunctionType.
+//
+// === TransitionSpace
+//
+// ==== TransitionSpaceClassType
+// * 1000 - Horizontal Transition
+// * 1010 - Vertical Transition
+
+
+=== TransferSpace
+
+==== TransferSpaceCategoryType
+* C1000 - Door
+* C1010 - Vestibule
+* C1020 - Sally port
+* A1000 - Vestibule
+* A1020 - Gate
+
+==== TransferSpaceFunctionType
+* C1000 - Door
+* C1010 - Vestibule
+* C1060 - Sally port
+* A1000 - Entry Vestibule
+* A1010 - Exterior door
+* A1020 - Gate
+* A1030 - Emergency door
+

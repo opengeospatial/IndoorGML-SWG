@@ -1,32 +1,369 @@
 [appendix,obligation="normative"]
 == Conformance Class Abstract Test Suite
 
-[NOTE]
+// [NOTE]
+// ====
+// Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
+// ====
+//
+// === Conformance Class A
+//
+// [requeriment,type="verification"]
+// ====
+//
+// [requirement,type="general",label="Test id"]
+// ======
+// conf/service/profile/basic-wps
+// ======
+//
+// [recommendation,type="general",label="Test purpose"]
+// ======
+// Verify that the server implements the Basic WPS conformance class.
+// ======
+//
+// [requirement,type="general",label="Test method"]
+// ======
+// Verify that the server implements the Synchronous WPS and/or the Asynchronous WPS conformance class. Verify that the requests and responses to a supported operation are syntactically correct. Verify that the service supports the Synchronous WPS Conformance class, the Asynchronous WPS Conformance class or both. Verify that all process offerings implement the native process model. Verify the following list of conformance tests:
+//
+// - Conformance test 1
+// - Conformance test 2
+// ======
+
+=== Conformance Class Core
+[conformance_class]
 ====
-Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/conf/core
+target:: http://www.opengis.net/spec/indoorgml-2/2.0/json/req/core
+classification:: Target Type:Implementation Specification
+// dependency::
+abstract-test:: /conf/core/element
+abstract-test:: /conf/core/indoorjson
+abstract-test:: /conf/core/indoorfeature
+abstract-test:: /conf/core/thematiclayer
+abstract-test:: /conf/core/primalspacelayer
+abstract-test:: /conf/core/cellspace
+abstract-test:: /conf/core/cellboundary
+abstract-test:: /conf/core/dualspacelayer
+abstract-test:: /conf/core/node
+abstract-test:: /conf/core/edge
+abstract-test:: /conf/core/interlayerconnection
 ====
 
-=== Conformance Class A
-
-[requeriment,type="verification"]
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/element
+target:: /req/core/element
+test-purpose:: Verify that instance documents using the IndoorGML Core JSON elements validate against the JSON schema specified in  <<annex_indoorjson_core_schema, indoorjson.core.schema.json>>.
+test-method:: Validate the instance document against the indoorjson.core.schema.json schema to verify the above requirement. The process may be using an appropriate software tool for validation or be a manual process that checks all definitions from the JSON schema specification.
 ====
 
-[requirement,type="general",label="Test id"]
-======
-conf/service/profile/basic-wps
-======
 
-[recommendation,type="general",label="Test purpose"]
-======
-Verify that the server implements the Basic WPS conformance class.
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/indoorjson
+target:: /req/core/indoorjson
+test-purpose:: For each IndoorJSON object verify that if the IndoorJSON object (and inherited objects) is contained `id` and `featuretype` members.
+test-method:: Inspect the instance document to verify the above requirement.
+====
 
-[requirement,type="general",label="Test method"]
-======
-Verify that the server implements the Synchronous WPS and/or the Asynchronous WPS conformance class. Verify that the requests and responses to a supported operation are syntactically correct. Verify that the service supports the Synchronous WPS Conformance class, the Asynchronous WPS Conformance class or both. Verify that all process offerings implement the native process model. Verify the following list of conformance tests:
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/indoorfeature
+target:: /req/core/indoorfeature
+test-purpose:: For the following members of *IndoorFeatures* object, verify that:
++
+--
+* The *IndoorFeatures* object is contained at least one *ThematicLayer* object as item of `layers` value. +
+* The `featuretype` value is "IndoorFeatures". +
+* If the `layerConnections` value is not null, it contains the set of *InterLayerConnection* objects.
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
 
-- Conformance test 1
-- Conformance test 2
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/thematiclayer
+target:: /req/core/thematiclayer
+test-purpose:: For the following members of *ThematicLayer* object, verify that:
++
+--
+* The `semanticExtension` value (boolean) is declared based on whether there is an extension module that contains additional semantic information. +
+* The `theme` value is one of the following: "Virtual", "Physical", "Tags", or "Unknown" +
+* The `featuretype` value is "ThematicLayer" +
+* If the `primalSpcae` value is not null, it contains the *PrimalSpaceLayer* object. +
+* If the `dualSpace` value is not null, it contains the *DualSpace* object.
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
 
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/primalspacelayer
+target:: /req/core/primalspacelayer
+test-purpose:: For the following members of *PrimalSpaceLayer* object, verify that:
++
+--
+* The *PrimalSpaceLayer* object is contained at least one *CellSpace* object as item of `cellSpaceMember` value. +
+* The geometries of each *CellSpace* object contained in `cellSpaceMember` do not intersect with one another. +
+* The geometries of each *CellBoundary* object contained in `cellBounaryMember` do not intersect with one another. +
+* The `featuretype` value is "PrimalSpaceLayer".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+[[conf-cellspace]]
+====
+[%metadata]
+identifier:: /conf/core/cellspace
+target:: /req/core/cellspace
+test-purpose:: For the following members of *CellSpace* object, verify that:
++
+--
+* The `poi` value (boolean) is declared based on whether it is a point of interest space. +
+* If the `duality` value is not null, it contains the `id` value of the *Node* object in the same instance document. +
+* If the `boundedBy` value is not null, it contains the `id` value of the *CellBoundary* object in the same instance document. +
+* The geometries of each *CellBoundary* object contained in `boundedBy` value do not exceed the extent of the `cellSpaceGeom` value. +
+* The `featuretype` value is one of the following: "CellSpace", "NonNavigableSpace", or "ObjectSpace".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+[[conf-cellboundary]]
+====
+[%metadata]
+identifier:: /conf/core/cellboundary
+target:: /req/core/cellboundary
+test-purpose:: For the following members of *CellBoundary* object, verify that:
++
+--
+* The `isVirtual` value (boolean) is declared based on whether it is virtual boundary. +
+* If the `duality` value is not null, it contains the `id` value of the *Edge* object in the same instance document. +
+* The `featuretype` value is one of the following: "CellBoundary", or "NonNavigableBoundary".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/dualspacelayer
+target:: /req/core/dualspacelayer
+test-purpose:: For the following members of *DualSpaceLayer* object, verify that:
++
+--
+* The *DualSpaceLayer* object is contained at least one *Node* object as item of `nodeMember` value. +
+* The `isLogical` value (boolean) is declared based on whether the provided graph is a geometric or a logical. +
+* If the `isLogical` value is False, the geometry of each *Node* object contained in `nodeMember` is spatially located within their corresponding *CellSpace*. +
+* The `isDirected` value (boolean) is declared based on the provided graph is directed. +
+* If the `edgeMember` value is not null, it contains the *Edge* object. +
+* The `featuretype` value is "DualSpaceLayer".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/node
+target:: /req/core/node
+test-purpose:: For the following members of *Node* object, verify that:
++
+--
+* The `duality` value contains the `id` value of the *CellSpace* object in the same instance document. +
+* If the `connects` value is not null, it contains the `id` value of the *Edge* object in the same instance document. +
+* The `featuretype` value is "Node".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/edge
+target:: /req/core/edge
+test-purpose:: For the following members of *Edge* object, verify that:
++
+--
+* The `connects` value contains two `id` values (start and end) of the *Node* object in the same instance document. +
+* If the parent *DualSpace* object's `isDirected` value is True, the `connects` value interpreted as ordered sequence (start to end). +
+* If the `duality` value is not null, it contains the `id` value of the *CellBoundary* object in the same instance document. +
+* The start and end coordinates of the *Edge* geometry and geometry of the *Nodes* included in `connects` is the same.
+* The `featuretype` value is "Edge".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/interlayerconnection
+target:: /req/core/interlayerconnection
+test-purpose:: For the following members of *InterLayerConnection* object, verify that:
++
+--
+* The `connectedLayers` value contains two `id` values of the *ThematicLayer* object in the same instance document. +
+* If the value of `connectedNodes` is not null, it contains the `id` values of *Node* objects in the same instance document, and each *Node* object is contained within a *ThematicLayer* object specified in `connectedLayers`. In this case, the values of `connectedLayers` and `connectedNodes` are matched in order.  +
+* If the value of `connectedCells` is not null, it contains the `id` values of *CellSpace* objects in the same instance document, and each *CellSpace* object is contained within a *ThematicLayer* object specified in `connectedLayers`. In this case, the values of `connectedLayers` and `connectedNodes` are matched in order.  +
+* The `typeOfTopoExpression` value is one of the following: "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", or "OTHERS" +
+* The `featuretype` value is "InterLayerConnection".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+=== Conformance Class Navigation Extension
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/conf/navi
+target:: http://www.opengis.net/spec/indoorgml-2/2.0/json/req/navi
+classification:: Target Type:Implementation Specification
+// dependency::
+abstract-test:: /conf/navi/element
+abstract-test:: /conf/navi/navigablespace
+abstract-test:: /conf/navi/generalspace
+abstract-test:: /conf/navi/transferspace
+abstract-test:: /conf/navi/nonnavigablespace
+abstract-test:: /conf/navi/objectspace
+abstract-test:: /conf/navi/navigableboundary
+abstract-test:: /conf/navi/nonnavigableboundary
+abstract-test:: /conf/navi/route
+====
+// ====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/element
+target:: /req/navi/element
+test-purpose:: Verify that instance documents using the IndoorGML Core JSON elements validate against the JSON schema specified in  <<annex_indoorjson_navi_schema, indoorjson.navi.schema.json>>.
+test-method:: Validate the instance document against the indoorjson.navi.schema.json schema to verify the above requirement. The process may be using an appropriate software tool for validation or be a manual process that checks all definitions from the JSON schema specification.
+====
+
+[abstract_test]
+[[conf-navigablespace]]
+====
+[%metadata]
+identifier:: /conf/navi/navigablespace
+target:: /req/navi/navigablespace
+test-purpose:: For the following members of *NavigableSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-cellspace,/conf/core/cellspace>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `locomotionType` value is one of the following: "Flying", "Rolling", "Walking", or "Unspecified" +
+* The `featuretype` value is "NavigableSpace".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/generalspace
+target:: /req/navi/generalspace
+test-purpose:: For the following members of *GeneralSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-navigablespace,/conf/navi/navigablespace>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `function` value is one of the following: "Administration","Business, trade","Education, training","Recreation","Laboratory","Storage", or "Security" +
+* The `featuretype` value is "GeneralSpace".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/transferspace
+target:: /req/navi/transferspace
+test-purpose:: For the following members of *TransferSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-navigablespace,/conf/navi/navigablespace>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `category` value is one of the following: "Door" or "Window" +
+* The `function` value is one of the following: "AnchorSpace" or "ConnectionSpace" +
+* The `featuretype` value is "TransferSpace".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+[[conf-nonnavigablespace]]
+====
+[%metadata]
+identifier:: /conf/navi/nonnavigablespace
+target:: /req/navi/nonnavigablespace
+test-purpose:: For the following members of *NonNavigableSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-cellspace,/conf/core/cellspace>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `featuretype` value is one of the following: "NonNavigableSpace" or "ObjectSpace".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/objectspace
+target:: /req/navi/objectspace
+test-purpose:: For the following members of *NonNavigableSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-nonnavigablespace,/conf/navi/nonnavigablespace>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `featuretype` value is "ObjectSpace".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/navigableboundary
+target:: /req/navi/navigableboundary
+test-purpose:: For the following members of *NavigableSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-cellboundary,/conf/core/cellboundary>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `navigableBoundaryFunction` value is one of the following: "AnchorBoundary" or "ConnectionBoundary"
+* The `featuretype` value is "NavigableBoundary".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/nonnavigableboundary
+target:: /req/navi/nonnavigableboundary
+test-purpose:: For the following members of *NonNavigableSpace* object, verify that:
++
+--
+* Check the validation criteria for “<<conf-cellboundary,/conf/core/cellboundary>>” based on the inheritance relationship, excluding `featuretype`. +
+* The `featuretype` value is "NonNavigableBoundary".
+--
+test-method:: Inspect the instance document to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/route
+target:: /req/navi/route
+test-purpose:: For the following members of *Route* object, verify that:
++
+--
+* The `routeNode` contains the `id` values of *Node* objects in the same instance document, and each *Node* object is contained within the same *DualSpace* object. +
+* The `routeEdge` contains the `id` values of *Edge* objects in the same instance document, and each *Edge* object is contained within the same *DualSpace* object. +
+* The *Edge* objects whose `connected` values contain two consecutive IDs within `routeNode` are included in the `routeEdge` value. +
+* The `connected` values of *Edge* objects corresponding to two consecutive IDs within `routeEdge` contain the ID of the same *Node* object.
+--
+test-method:: Inspect the instance document to verify the above requirement.
 ====

@@ -1,7 +1,7 @@
 
-== Overview of IndoorJSON
+== Overview of the JSON Encoding
 
-IndoorJSON implements the conceptual classes of <<ogc22-045r5,IndoorGML 2.0 Part 1>> as JSON objects.
+The JavaScript Object Notation (JSON) encoding of IndoorGML 2.0 (IndoorJSON) implements the conceptual classes of <<ogc22-045r5,IndoorGML 2.0 Part 1>> as JSON objects.
 The conceptual model remains normative for semantics, while this document defines the JSON representation.
 
 === Design Principle
@@ -13,27 +13,26 @@ IndoorJSON is based on the following encoding principles.
 IndoorJSON Core preserve the IndoorGML 2.0 core conceptual model structure, as shown in the below figure.
 
 [[fig-core-indoorgml]]
-.IndoorGML 2.0 core module structure
-image::../figures/indoorgml_core_structure.svg[align="center"]
+.IndoorGML 2.0 core module structure UML
+image::../figures/core-module-uml.png[align="center"]
 
 The IndoorJSON Core schema follows <<fig-core-indoorgml>>.
-Each class is defined individually, and depending on their relationships, they can hold other classes as property values or array values.
+Each class is defined individually, and depending on its relationships, it can hold other classes' IDs as property values or array values.
 For example, <<section-indoorfeatures,`*IndoorFeatures*`>> have `layers` property for <<section-thematiclayer,`*ThematicLayer*`>> and `layerConnections` property for <<section-interlayerconnection,`*InterLayerConnection*`>>.
 
 IndoorJSON Navigation preserve the IndoorGML 2.0 navigation conceptual model structure, as shown in the below figure.
 
 [[fig-navi-indoorgml]]
-.IndoorGML 2.0 navigation module structure
-image::../figures/indoorgml_navi_structure.svg[align="center"]
+.IndoorGML 2.0 navigation module structure UML
+image::../figures/navi-module-uml.png[align="center"]
 
 The IndoorJSON Navigation schema follows <<fig-navi-indoorgml>>.
-In the figure, the arrows represent inheritance.
 Each class is defined individually.
 Depending on the inheritance relationship, a child class inherits the properties of its parent class.
 
 ==== JSON-FG-compatible geometry
 
-IndoorJSON use JSON-FG-compatible geometry objects for the geometry representation.
+IndoorJSON use <<ogc21-045r1,JSON-FG>>-compatible geometry objects for the geometry representation.
 This is necessary because indoor spaces require 3D geometry, including solid geometry.
 The current IndoorJSON core schema references JSON-FG geometry schemas for `geometry2D` and `geometry3D`, including *Polygon* and *Polyhedron* for `CellSpace`.
 

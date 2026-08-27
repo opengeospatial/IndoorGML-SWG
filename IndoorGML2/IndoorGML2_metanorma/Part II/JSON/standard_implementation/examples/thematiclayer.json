@@ -1,8 +1,22 @@
 {
-  "id": "TL-1",
+  "id": "TL-Pedestrian",
   "featureType": "ThematicLayer",
   "semanticExtension": false,
   "theme": "Physical",
-  "primalSpace": {...},
-  "dualSpace": {...}
+  "primalSpace": {
+    "id": "PS-1",
+    "featureType": "PrimalSpaceLayer",
+    "creationDatetime": "2025-10-30T13:00:00",
+    "cellSpaceMember": [...],
+    "cellBoundaryMember": [...]
+  },
+  "dualSpace": {
+    "id": "DS-1",
+    "featureType": "DualSpaceLayer",
+    "creationDatetime": "2025-10-30T13:00:00",
+    "isLogical": false,
+    "isDirected": false,
+    "nodeMember": [...],
+    "edgeMember": [...]
+  }
 }

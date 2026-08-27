@@ -1,13 +1,332 @@
-
 [[annex-a]]
-[annex,obligation=normative]
-== Abstract Test Suites for IndoorGML Instance Documents
+[appendix,obligation=normative]
+== Conformance Class Abstract Test Suite
 
-=== Test Cases for mandatory conformance requirements
+=== Conformance Class Core
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/conf/core
+target:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/req/core
+classification:: Target Type:Implementation Specification
+abstract-test:: /conf/core/global
+abstract-test:: /conf/core/indoorfeatures
+abstract-test:: /conf/core/thematiclayer
+abstract-test:: /conf/core/primalspacelayer
+abstract-test:: /conf/core/cellspace
+abstract-test:: /conf/core/cellboundary
+abstract-test:: /conf/core/dualspacelayer
+abstract-test:: /conf/core/node
+abstract-test:: /conf/core/edge
+abstract-test:: /conf/core/interlayerconnection
+====
 
-==== Valid IndoorGML instance document
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/global
+target:: /req/core/global
+test-purpose:: Verify that instance XML documents validate against the IndoorGML 2.0 Core XML schema (`IndoorGML_core.xsd`) and OGC GML 3.2.1 schemas.
+test-method:: Validate the XML instance document against `IndoorGML_core.xsd` and supporting GML 3.2.1 schemas using an XML Schema validator or appropriate validation software.
+====
 
-* *Test purpose:* Verify the validity of the IndoorGML instance document against the XML Schema definition of each IndoorGML module that is part of the IndoorGML profile employed by the instance document. This may be any combination of IndoorGML extension modules in conjunction with the IndoorGML core module.
-* *Test method:* Validate the IndoorGML XML instance document against the XML Schema definitions of all employed IndoorGML modules. The process may be using an appropriate software tool for validation or be a manual process that checks all relevant definitions from the respective XML Schema specification of the employed IndoorGML modules.
-* *Reference:* Annex B
-* *Test type:* Basic Test
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/indoorfeatures
+target:: /req/core/indoorfeatures
+test-purpose:: Verify that an `*IndoorFeatures*` element contains at least one `layers` property referencing or containing a `*ThematicLayer*` element, that optional `layerConnections` properties contain or reference `*InterLayerConnection*` elements, and that a unique `gml:id` is present.
+test-method:: Inspect the instance document to verify that the `layers` property has at least one valid `*ThematicLayer*` instance, that `layerConnections` contain valid `*InterLayerConnection*` instances, and that `gml:id` is unique.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/thematiclayer
+target:: /req/core/thematiclayer
+test-purpose:: Verify that for each `*ThematicLayer*` element:
++
+--
+* `semanticExtension` is a valid boolean value (`true` or `false`).
+* `theme` contains a valid value (`"Tags"`, `"Virtual"`, `"Unknown"`, `"Physical"`, or `"other: \w{2,}"`).
+* If present, `primalSpace` references or contains a valid `*PrimalSpaceLayer*` element.
+* If present, `dualSpace` references or contains a valid `*DualSpaceLayer*` element.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify the above properties.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/primalspacelayer
+target:: /req/core/primalspacelayer
+test-purpose:: Verify that for each `*PrimalSpaceLayer*` element:
++
+--
+* At least one `cellSpaceMember` property containing or referencing a `*CellSpace*` element is present.
+* The geometries of all `*CellSpace*` members belonging to the same `*PrimalSpaceLayer*` do not intersect each other.
+* The geometries of all `*CellBoundary*` members belonging to the same `*PrimalSpaceLayer*` do not intersect each other.
+* If present, `creationDate` and `terminationDate` are valid `xs:dateTime` strings.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document and perform spatial intersection analysis on member geometries to verify non-overlapping constraints.
+====
+
+[abstract_test]
+[[conf-cellspace]]
+====
+[%metadata]
+identifier:: /conf/core/cellspace
+target:: /req/core/cellspace
+test-purpose:: Verify that for each `*CellSpace*` element:
++
+--
+* `PoI` is a valid boolean value (`true` or `false`).
+* If present, `duality` references or contains a corresponding `*Node*` element in dual space.
+* If present, each `boundedBy` references or contains a corresponding `*CellBoundary*` element.
+* The geometry of each bounding `*CellBoundary*` does not exceed the geometric extent of the `*CellSpace*`.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document and verify geometric boundary containment against the cell space geometry.
+====
+
+[abstract_test]
+[[conf-cellboundary]]
+====
+[%metadata]
+identifier:: /conf/core/cellboundary
+target:: /req/core/cellboundary
+test-purpose:: Verify that for each `*CellBoundary*` element:
++
+--
+* `isVirtual` is a valid boolean value (`true` or `false`).
+* If present, `duality` references or contains a corresponding `*Edge*` element in dual space.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify the above properties.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/dualspacelayer
+target:: /req/core/dualspacelayer
+test-purpose:: Verify that for each `*DualSpaceLayer*` element:
++
+--
+* `isLogical` and `isDirected` are valid boolean values (`true` or `false`).
+* When `isLogical` is `false`, the geometry of each `*Node*` in `nodeMember` is spatially located inside the geometry of its corresponding `*CellSpace*`.
+* At least one `nodeMember` property containing or referencing a `*Node*` element is present.
+* If present, `edgeMember` properties contain or reference `*Edge*` elements.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document and perform point-in-polygon / point-in-solid geometric tests when `isLogical` is `false`.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/node
+target:: /req/core/node
+test-purpose:: Verify that for each `*Node*` element:
++
+--
+* `duality` references or contains the corresponding `*CellSpace*` element in the primal space.
+* If present, each `connects` property references or contains a connected `*Edge*` element.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify cross-references between nodes, edges, and cell spaces.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/edge
+target:: /req/core/edge
+test-purpose:: Verify that for each `*Edge*` element:
++
+--
+* Exactly two `connects` properties referencing or containing connected `*Node*` elements are present.
+* If the parent `*DualSpaceLayer*` has `isDirected = true`, the order of `connects` is interpreted as directional (start to end node).
+* A valid `weight` value of type `xs:double` is present.
+* If `geometry` is present, the curve does not self-intersect, and its start and end coordinates match the positions of the connected `*Node*` instances.
+* If present, `duality` references or contains the corresponding `*CellBoundary*` element.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document and verify geometric coordinate alignment with connected node positions.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/interlayerconnection
+target:: /req/core/interlayerconnection
+test-purpose:: Verify that for each `*InterLayerConnection*` element:
++
+--
+* Exactly two `connectedLayers` properties referencing distinct `*ThematicLayer*` elements are present.
+* `typeOfTopoExpression` is one of the valid enumeration or pattern values (`"Contains"`, `"Overlaps"`, `"Equals"`, `"Within"`, `"Crosses"`, `"Other"`, or `"other: \w{2,}"`).
+* If present, `connectedCells` contains exactly two references to `*CellSpace*` elements belonging respectively to the first and second connected thematic layers.
+* If present, `connectedNodes` contains exactly two references to `*Node*` elements belonging respectively to the first and second connected thematic layers.
+* The order of `connectedLayers`, `connectedCells`, and `connectedNodes` corresponds pairwise to the same indices.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify layer and object cross-references and topological expression values.
+====
+
+
+=== Conformance Class Navigation Extension
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/conf/navi
+target:: http://www.opengis.net/spec/indoorgml-2/2.0/xml/req/navi
+classification:: Target Type:Implementation Specification
+abstract-test:: /conf/navi/global
+abstract-test:: /conf/navi/navigablespace
+abstract-test:: /conf/navi/generalspace
+abstract-test:: /conf/navi/transferspace
+abstract-test:: /conf/navi/navigableboundary
+abstract-test:: /conf/navi/nonnavigablespace
+abstract-test:: /conf/navi/objectspace
+abstract-test:: /conf/navi/nonnavigableboundary
+abstract-test:: /conf/navi/route
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/global
+target:: /req/navi/global
+test-purpose:: Verify that instance XML documents using the Navigation module validate against `IndoorGML_navi.xsd`, `IndoorGML_core.xsd`, and OGC GML 3.2.1 schemas.
+test-method:: Validate the XML instance document against the schemas using an XML Schema validator or appropriate validation software.
+====
+
+[abstract_test]
+[[conf-navigablespace]]
+====
+[%metadata]
+identifier:: /conf/navi/navigablespace
+target:: /req/navi/navigablespace
+test-purpose:: Verify that for each `*NavigableSpace*` element:
++
+--
+* All validation criteria for <<conf-cellspace,`/conf/core/cellspace`>> are satisfied.
+* `locomotionType` contains a valid value (`"Walking"`, `"Flying"`, `"Rolling"`, `"Unspecified"`, or `"other: \w{2,}"`).
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify locomotionType and inherited CellSpace properties.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/generalspace
+target:: /req/navi/generalspace
+test-purpose:: Verify that for each `*GeneralSpace*` element:
++
+--
+* All validation criteria for <<conf-navigablespace,`/conf/navi/navigablespace`>> are satisfied.
+* `function` contains a valid value (`"Administration"`, `"Business, trade"`, `"Education, training"`, `"Recreation"`, `"Laboratory"`, `"Storage"`, `"Security"`, or `"other: \w{2,}"`).
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify function type and inherited properties.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/transferspace
+target:: /req/navi/transferspace
+test-purpose:: Verify that for each `*TransferSpace*` element:
++
+--
+* All validation criteria for <<conf-navigablespace,`/conf/navi/navigablespace`>> are satisfied.
+* `function` contains a valid value (`"ConnectionSpace"`, `"AnchorSpace"`, or `"other: \w{2,}"`).
+* `type` contains a valid value (`"Door"`, `"Window"`, or `"other: \w{2,}"`).
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify function, opening type, and inherited properties.
+====
+
+[abstract_test]
+[[conf-navigableboundary]]
+====
+[%metadata]
+identifier:: /conf/navi/navigableboundary
+target:: /req/navi/navigableboundary
+test-purpose:: Verify that for each `*NavigableBoundary*` element:
++
+--
+* All validation criteria for <<conf-cellboundary,`/conf/core/cellboundary`>> are satisfied.
+* `NavigableBoundaryFunction` contains a valid value (`"ConnectionBoundary"`, `"AncorBoundary"` / `"AnchorBoundary"`, or `"other: \w{2,}"`).
+* If present, `boundaryOrientation` is a valid boolean value (`true` or `false`).
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify boundary function and orientation.
+====
+
+[abstract_test]
+[[conf-nonnavigablespace]]
+====
+[%metadata]
+identifier:: /conf/navi/nonnavigablespace
+target:: /req/navi/nonnavigablespace
+test-purpose:: Verify that for each `*NonNavigableSpace*` element:
++
+--
+* All validation criteria for <<conf-cellspace,`/conf/core/cellspace`>> are satisfied.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify conformity with CellSpace requirements.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/objectspace
+target:: /req/navi/objectspace
+test-purpose:: Verify that for each `*ObjectSpace*` element:
++
+--
+* All validation criteria for <<conf-nonnavigablespace,`/conf/navi/nonnavigablespace`>> are satisfied.
+* The geometry does not overlap with any other `*CellSpace*` or its specialized classes in the same `*PrimalSpaceLayer*`.
+* If present, `containedFeatures` is a valid non-negative integer.
+* If present, `description` is a valid string.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document and verify non-overlapping geometric relationships in the primal space.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/nonnavigableboundary
+target:: /req/navi/nonnavigableboundary
+test-purpose:: Verify that for each `*NonNavigableBoundary*` element:
++
+--
+* All validation criteria for <<conf-cellboundary,`/conf/core/cellboundary`>> are satisfied.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document to verify conformity with CellBoundary requirements.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/route
+target:: /req/navi/route
+test-purpose:: Verify that for each `*Route*` element:
++
+--
+* At least two `routeNode` properties and at least one `routeEdge` property are present.
+* Each `routeNode` references or contains a `*Node*` element within the same dual space.
+* Each `routeEdge` references or contains an `*Edge*` element within the same dual space.
+* `routeNode` and `routeEdge` sequences represent an ordered contiguous path where each consecutive pair of nodes is connected by the corresponding edge, and consecutive edges share a common node.
+* If present, `creationDate` is a valid `xs:dateTime` string.
+* A unique `gml:id` attribute is present.
+--
+test-method:: Inspect the instance document and perform graph continuity validation along the route path.
+====

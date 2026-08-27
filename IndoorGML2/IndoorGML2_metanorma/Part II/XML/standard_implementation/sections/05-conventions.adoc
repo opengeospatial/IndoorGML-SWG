@@ -44,14 +44,14 @@ The following terms and concepts are used as specified in the W3C XML specificat
 // * XSD - XML Schema Definition
 
 
-=== UML Notation
-
-The diagrams that appear in this standard are presented using the Unified Modeling Language (UML) static structure diagram.
-
-In this standard, the following standard UML class stereotypes and data types are used:
-
-* `«Interface»`: A definition of a set of operations supported by objects having this interface. An Interface class cannot contain any attributes.
-* `«DataType»`: A descriptor of a set of values that lack identity.
-* `«CodeList»`: A flexible enumeration that uses string values for expressing a list of potential values.
-
-Standard data types used include `CharacterString`, `Integer`, `Double`, and `Float`.
+// === UML Notation
+// 
+// The diagrams that appear in this standard are presented using the Unified Modeling Language (UML) static structure diagram.
+// 
+// In this standard, the following standard UML class stereotypes and data types are used:
+// 
+// * `«Interface»`: A definition of a set of operations supported by objects having this interface. An Interface class cannot contain any attributes.
+// * `«DataType»`: A descriptor of a set of values that lack identity.
+// * `«CodeList»`: A flexible enumeration that uses string values for expressing a list of potential values.
+// 
+// Standard data types used include `CharacterString`, `Integer`, `Double`, and `Float`.

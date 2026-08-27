@@ -6,8 +6,19 @@
       {
         "type": "object",
         "properties": {
-          "category": { "enum": ["Door","Window"]},
-          "function": { "enum": ["AnchorSpace","ConnectionSpace"]}
+          "featureType": { "enum": ["TransferSpace"] },
+          "category": {
+            "anyOf": [
+              { "enum": ["Door","Window"] },
+              { "type": "string", "minLength": 1 }
+            ]
+          },
+          "function": {
+            "anyOf": [
+              { "enum": ["AnchorSpace","ConnectionSpace"] },
+              { "type": "string", "minLength": 1 }
+            ]
+          }
         },
         "required": ["category","function"]
       }

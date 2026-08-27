@@ -17,7 +17,7 @@ is inserted automatically by Metanorma using the agreed standardised language, a
 // [example]
 // Here's an example of an example term.
 
-[conceptual model]
+[[conceptual_model]]
 === conceptual model
 
 model that defines concepts of a universe of discourse
@@ -27,7 +27,7 @@ model that defines concepts of a universe of discourse
 
 === conceptual schema
 
-formal description of a <<conceptual model,conceptual model>>
+formal description of a <<conceptual_model,conceptual model>>
 
 [.source]
 <<iso19101-1>>

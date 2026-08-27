@@ -5,6 +5,9 @@
 [%unnumbered]
 [width="90%",options="header"]
 |===
-|Date |Release |Editor | Primary clauses modified |Description
-|2026-06-03 |0.1 |Taehoon Kim |all |initial version
+|Date       |Release |Editor    |Primary clauses modified |Description
+|2026-06-03 |0.1 |Taehoon Kim   |all                    |Initial draft
+|2026-08-01 |0.2 |Taehoon Kim   |Clause 7, 8, Annex A   |Add ATS
+|2026-08-18 |0.5 |Taehoon Kim   |all                    |Reflecting the feedback from the editorial meeting
+
 |===

@@ -1,8 +1,9 @@
 {
+  "id": "IFs",
   "featureType": "IndoorFeatures",
   "layers": [
     {
-      "id": "TL-1",
+      "id": "TL-Pedestrian",
       "featureType": "ThematicLayer",
       "semanticExtension": false,
       "theme": "Physical",
@@ -15,8 +16,11 @@
     {
       "id": "ILC-1",
       "featureType": "InterLayerConnection",
-      "connectedLayers": ["TL-1", "TL-2"],
-      "connectedNodes": ["N1", "N101"]
-    }
+      "connectedLayers": ["TL-Pedestrian", "TL-Wheelchair"],
+      "connectedCells": ["R1", "R1-1"],
+      "connectedNodes": ["N-R1", "N-R1-1"],
+      "typeOfTopoExpression": "CONTAINS"
+    },
+    ...
   ]
 }
