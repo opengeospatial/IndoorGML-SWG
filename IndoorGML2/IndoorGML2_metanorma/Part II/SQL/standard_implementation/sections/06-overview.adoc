@@ -4,22 +4,20 @@
 The SQL encoding of IndoorGML 2.0 implements the conceptual classes of <<ogc22-045r5,IndoorGML 2.0 Part 1>> as relational database tables.
 The conceptual model remains normative for semantics, while this document defines the SQL representation.
 
-=== Design Principle
-
 The SQL encoding is based on the following encoding principles.
 
-==== Conceptual model preservation
+=== Conceptual model preservation
 
-The SQL encoding of the IndoorGML core module preserves the IndoorGML 2.0 core conceptual model structure, as shown in <<fig-core-indoorgml>>.
+The SQL encoding of the IndoorGML core module preserves the IndoorGML 2.0 core conceptual model structure as close as possible, as shown in <<fig-core-indoorgml>>.
 
 [[fig-core-indoorgml]]
 .IndoorGML 2.0 core module structure
 image::../figures/core-module-uml.png[align="center"]
 
 Each feature class is mapped to one or more relational tables, and associations are represented using foreign key columns or junction tables.
-For example, the `IndoorFeatures` table is related to `ThematicLayer` rows through the `IndoorFeaturesID` foreign key, and `InterLayerConnection` rows are linked to `ThematicLayer`, `Node`, and `CellSpace` rows through the `InterLayerConnection_ThematicLayer`, `InterLayerConnection_Node`, and `InterLayerConnection_CellSpace` junction tables.
+For example, the `IndoorFeatures` table is related to `ThematicLayer` rows through the `IndoorFeaturesID` foreign key, and an `InterLayerConnection` row references two thematic layers, and optionally a pair of nodes and a pair of cell spaces, through the `connectedLayers_1` / `connectedLayers_2`, `connectedNodes_1` / `connectedNodes_2`, and `connectedCells_1` / `connectedCells_2` foreign-key columns.
 
-The SQL encoding of the IndoorGML navigation module preserves the IndoorGML 2.0 navigation conceptual model structure, as shown in <<fig-navi-indoorgml>>.
+The SQL encoding of the IndoorGML navigation module preserves the IndoorGML 2.0 navigation conceptual model structure as close as possible, as shown in <<fig-navi-indoorgml>>.
 
 [[fig-navi-indoorgml]]
 .IndoorGML 2.0 navigation module structure
@@ -27,8 +25,20 @@ image::../figures/navi-module-uml.png[align="center"]
 
 Navigation feature classes extend core tables using table inheritance patterns implemented through foreign key references to `CellSpace` and `CellBoundary`.
 
-==== UML-to-SQL generation workflow
+=== UML-to-SQL generation workflow
 
 The SQL encoding schema is derived from the IndoorGML 2.0 UML model and is designed on the basis of PostgreSQL with PostGIS as the reference database platform.
 SQL `CREATE TABLE` statements are first generated from the UML model using Enterprise Architecture tooling, and the resulting DDL is then corrected to align with the conceptual model.
-Typical corrections include converting identifier columns from integer to string (`varchar`), replacing EA code list tables with PostgreSQL `ENUM` types named after the UML code list types, flattening geometry DataTypes onto owning feature tables as path-named PostGIS columns (for example, `cellSpaceGeom_geometry2D` / `cellSpaceGeom_geometry3D`), replacing EA tables for `ExternalReferenceType` / `ExternalObjectReferenceType` with PostgreSQL composite types, storing `connects` as `jsonb` arrays on `Node` and `Edge`, storing `routeNode` and `routeEdge` as ordered `jsonb` arrays on `Route` to preserve traversal sequence, adding missing properties (for example, the `layers` member on `IndoorFeatures`), and updating relationship cardinalities and junction tables.
+Typical corrections include:
+
+* converting identifier properties from integer columns to string (`varchar`) columns;
+* replacing EA code list tables with PostgreSQL `ENUM` types named after the UML code list types;
+* flattening geometry DataType properties onto owning feature tables as path-named PostGIS columns (for example, `cellSpaceGeom_Geometry2D` / `cellSpaceGeom_Geometry3D`);
+* replacing EA tables for `ExternalReferenceType` / `ExternalObjectReferenceType` with PostgreSQL composite types used as property columns;
+* storing the `Node.connects` property as a `jsonb` array of connected `Edge` identifiers;
+* storing the `Edge` endpoint properties as `connects_node1` / `connects_node2` foreign keys to `Node`;
+* storing the `InterLayerConnection` associations as paired foreign keys (`connectedLayers_1` / `connectedLayers_2`, `connectedNodes_1` / `connectedNodes_2`, `connectedCells_1` / `connectedCells_2`);
+* storing the `routeNode` and `routeEdge` properties as ordered `jsonb` arrays on `Route` to preserve traversal sequence;
+* adding missing properties (for example, the `layers` property on `IndoorFeatures`);
+* updating relationship cardinalities and junction tables.
+

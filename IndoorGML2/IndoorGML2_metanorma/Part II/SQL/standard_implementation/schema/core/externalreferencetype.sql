@@ -3,11 +3,11 @@
    Apply before creating CellSpace / CellBoundary. */
 
 CREATE TYPE "ExternalObjectReferenceType" AS (
-    "Name" varchar(100),
-    "Uri" text
+    "name" varchar(100),
+    "uri" text
 );
 
 CREATE TYPE "ExternalReferenceType" AS (
-    "ExternalObject" "ExternalObjectReferenceType",
-    "InformationSystem" text
+    "externalObject" "ExternalObjectReferenceType",
+    "informationSystem" text
 );

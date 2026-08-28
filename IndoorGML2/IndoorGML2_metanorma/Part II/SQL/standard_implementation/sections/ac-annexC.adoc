@@ -1,0 +1,15 @@
+[[annex_core_enums]]
+[appendix,obligation="normative"]
+== Core code list types
+
+The following PostgreSQL `ENUM` types represent IndoorGML core code lists:
+
+* `ThemeLayerValue` for the `ThematicLayer.theme` column;
+* `TopoExpressionValue` for the `InterLayerConnection.typeOfTopoExpression` column.
+
+[[core-enums-schema]]
+.A SQL schema of the core code list types
+[source,sql]
+----
+include::../schema/core/enums.sql[]
+----

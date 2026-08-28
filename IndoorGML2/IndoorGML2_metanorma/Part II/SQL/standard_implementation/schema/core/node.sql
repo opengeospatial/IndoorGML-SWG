@@ -1,11 +1,15 @@
 CREATE TABLE "Node"
 (
-    "Geometry" geometry NULL,
+    "geometry" geometry NULL,
     "NodeID" varchar(100) NOT NULL,
-    "duality" varchar(100) NULL,
+    "duality" varchar(100) NOT NULL,
     "DualSpaceLayerID" varchar(100) NOT NULL,
     connects jsonb NULL,
     CONSTRAINT "PK_Node" PRIMARY KEY ("NodeID"),
+    CONSTRAINT "chk_Node_geometry_point" CHECK (
+        "geometry" IS NULL
+        OR GeometryType("geometry") = 'POINT'
+    ),
     CONSTRAINT "FK_Node_duality"
         FOREIGN KEY ("duality") REFERENCES "CellSpace" ("CellSpaceID"),
     CONSTRAINT "FK_Node_DualSpaceLayer"

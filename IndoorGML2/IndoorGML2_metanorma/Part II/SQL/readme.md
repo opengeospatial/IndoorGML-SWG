@@ -10,7 +10,7 @@ The SQL encoding of IndoorGML 2.0 maps the Part 1 conceptual model to a PostgreS
 SQL/
 ├── readme.md
 ├── examples/
-│   └── indoorjson2_dummy.sql          # Sample INSERT statements
+│   └── indoorjson2_dummy.sql          # Sample INSERT statements for a minimal core graph
 └── standard_implementation/
     ├── document.adoc                  # OGC Part 2c standard draft (Metanorma)
     ├── document.pdf
@@ -29,10 +29,11 @@ SQL/
 ## Key encoding choices
 
 - **PostgreSQL 14+ with PostGIS** — geometry columns use the `geometry` type.
-- **Flattened geometry DataTypes** — e.g. `cellSpaceGeom_geometry2D` / `cellSpaceGeom_geometry3D` on `CellSpace` (no separate geometry-type tables).
+- **Flattened geometry DataTypes** — e.g. `cellSpaceGeom_Geometry2D` / `cellSpaceGeom_Geometry3D` on `CellSpace` (no separate geometry-type tables).
 - **Composite types** — `ExternalObjectReferenceType` / `ExternalReferenceType` via `CREATE TYPE` (not tables).
 - **ENUM types** — UML code lists are mapped to PostgreSQL `ENUM` types (not lookup tables).
-- **`jsonb` arrays** — `Node.connects` / `Edge.connects` for graph adjacency; `Route.routeNode` / `Route.routeEdge` for ordered traversal sequences.
+- **`jsonb` arrays** — `Node.connects` for incident Edge IDs; `Route.routeNode` / `Route.routeEdge` for ordered traversal sequences.
+- **Edge endpoints** — `Edge.connects_node1` / `Edge.connects_node2` as foreign keys to `Node.NodeID`.
 - **Junction tables** — `InterLayerConnection_*` for many-to-many associations.
 
 ## Reference implementation
