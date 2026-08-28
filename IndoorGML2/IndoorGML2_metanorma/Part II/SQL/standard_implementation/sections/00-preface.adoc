@@ -46,4 +46,5 @@ All questions regarding this submission should be directed to the editor or the 
 |Taehoon Kim |National Institute of Advanced Industrial Science and Technology |kim.taehoon@aist.go.jp |Yes
 |Abdoulaye Diakite |CityGeometrix Pty Ltd |abdou@citygeometrix.com |Yes
 |Ki-Joune Li |Pusan National University |lik@pnu.edu |Yes
+|Ruihang Xie |University of New South Wales |ruihang.xie@unsw.edu.au |No
 |===

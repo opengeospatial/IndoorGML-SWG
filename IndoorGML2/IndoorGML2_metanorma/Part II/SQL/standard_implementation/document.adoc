@@ -20,7 +20,7 @@
 :comment: ### Date on which the standard was published; mandatory
 :published-date: 2026-XX-XX
 :comment: ### External link referencing the document; optional. If not provided, a default value is created following this structure: "http://www.opengis.net/doc/{abbrevation of doctype}/{abbrev}/{version}",
-:external-id: http://www.opengis.net/doc/IS/indoorsql/1.0
+:external-id: http://www.opengis.net/doc/IS/indoorsql/2.0
 :comment: ### Author one
 :fullname: Sisi Zlatanova
 :affiliation: University of New South Wales
@@ -76,6 +76,7 @@ include::sections/aa-annexA.adoc[]
 include::sections/ab-annexB.adoc[]
 include::sections/ac-annexC.adoc[]
 include::sections/ad-annexD.adoc[]
+include::sections/ae-annexE.adoc[]
 
 // Revision history
 include::sections/ah-history.adoc[]

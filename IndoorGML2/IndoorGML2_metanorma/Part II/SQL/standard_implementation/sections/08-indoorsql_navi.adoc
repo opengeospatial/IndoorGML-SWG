@@ -7,6 +7,8 @@
 identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/navi
 subject:: Implementation Specification
 inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
+inherit:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/core
+requirement:: /req/navi/global
 requirement:: /req/navi/navigablespace
 requirement:: /req/navi/generalspace
 requirement:: /req/navi/transferspace
@@ -15,11 +17,23 @@ requirement:: /req/navi/navigableboundary
 requirement:: /req/navi/route
 ====
 
+[[section-navi-general]]
+=== General requirements for encoding standards
+
 The navigation SQL encoding schema extends the core SQL encoding schema with tables for navigation-related feature classes.
 
-NOTE: Navigation feature classes have not yet been validated with actual datasets in the preliminary implementation.
+[[req-navi-global]]
+[requirement]
+.Requirement for global SQL schema of the navigation module
+====
+[%metadata]
+identifier:: /req/navi/global
+part:: A database representing an IndoorGML 2.0 Navigation module dataset SHALL implement the SQL schema defined in this standard (including `IndoorGML_navi.sql` and `IndoorGML_core.sql`).
+====
 
 Navigation code list `ENUM` types used by the navigation module tables are specified in <<annex_navi_enums>>.
+An informative example CodeList derived from OmniClass is provided in <<annex-e>>.
+That CodeList does not extend the closed `ENUM` types of the reference schema.
 
 [[section-navigablespace]]
 === NavigableSpace
@@ -186,14 +200,14 @@ The `Route` table represents a navigation route as an ordered sequence of nodes 
 In this SQL encoding, `routeNode` and `routeEdge` are stored as `jsonb` arrays on the `Route` row.
 This design keeps the full traversal order in one place and makes it easier to maintain, reorder, or replace the node and edge sequence of a route without managing separate ordered junction-table rows.
 The array index corresponds to position in the route: `routeNode[0]` is the first node, `routeNode[1]` is the second node, and `routeEdge` follows the same rule for edges.
-At least one of `routeNode` or `routeEdge` shall be present and non-empty to express a valid `Route`.
+Both `routeNode` and `routeEdge` SHALL be present and non-empty: `routeNode` SHALL contain at least two `NodeID` values, and `routeEdge` SHALL contain at least one `EdgeID` value.
 
 The `Route` table shall contain:
 
 * `RouteID` as the primary key
 * optionally, `creationDate`
-* optionally, `routeNode` as a `jsonb` array of ordered `NodeID` values
-* optionally, `routeEdge` as a `jsonb` array of ordered `EdgeID` values
+* `routeNode` as a `jsonb` array of ordered `NodeID` values (mandatory)
+* `routeEdge` as a `jsonb` array of ordered `EdgeID` values (mandatory)
 
 [[route-schema]]
 .A SQL schema of the Route table
@@ -208,6 +222,7 @@ include::../schema/navi/route.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/route
-part:: A `Route` table SHALL store ordered node identifiers in the `routeNode` column.
-part:: A `Route` table SHALL store ordered edge identifiers in the `routeEdge` column.
+part:: A `Route` table SHALL store ordered node identifiers in the `routeNode` column as a JSON array of at least two `NodeID` values.
+part:: A `Route` table SHALL store ordered edge identifiers in the `routeEdge` column as a JSON array of at least one `EdgeID` value.
+part:: Both `routeNode` and `routeEdge` SHALL be present and non-empty on every `Route` row.
 ====

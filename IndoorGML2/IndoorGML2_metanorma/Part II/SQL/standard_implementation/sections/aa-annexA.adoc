@@ -8,6 +8,7 @@
 identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/conf/sql/core
 target:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/core
 classification:: Target Type:Implementation Specification
+abstract-test:: /conf/core/global
 abstract-test:: /conf/core/indoorsql
 abstract-test:: /conf/core/indoorfeature
 abstract-test:: /conf/core/thematiclayer
@@ -18,6 +19,15 @@ abstract-test:: /conf/core/dualspacelayer
 abstract-test:: /conf/core/node
 abstract-test:: /conf/core/edge
 abstract-test:: /conf/core/interlayerconnection
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/global
+target:: /req/core/global
+test-purpose:: Verify that a database implementing IndoorGML 2.0 Core implements the SQL schema defined in this standard (`IndoorGML_core.sql`), including the PostGIS geometry types specified in Clause 5.
+test-method:: Inspect the database schema against `IndoorGML_core.sql` to verify the above requirement.
 ====
 
 [abstract_test]
@@ -72,9 +82,9 @@ test-purpose:: For the following columns of the `CellSpace` table, verify that:
 --
 * The `PoI` column declares whether it is a point of interest space. +
 * The `duality` column references the `NodeID` of the corresponding `Node`. +
-* No row has both `cellSpaceGeom_Geometry2D` and `cellSpaceGeom_Geometry3D` non-null. +
 * Every non-null `cellSpaceGeom_Geometry2D` value has the geometry type `POLYGON` or `MULTIPOLYGON`. +
-* Every non-null `cellSpaceGeom_Geometry3D` value has the geometry type `POLYHEDRALSURFACE` or `TIN`.
+* Every non-null `cellSpaceGeom_Geometry3D` value has the geometry type `POLYHEDRALSURFACE` or `TIN`. +
+* Every non-null `cellSpaceGeom_Geometry3D` value has three coordinate dimensions and satisfies `CG_IsSolid(CG_MakeSolid(...))`.
 --
 test-method:: Inspect the database schema and instance data to verify the above requirement.
 ====
@@ -88,7 +98,6 @@ test-purpose:: For the following columns of the `CellBoundary` table, verify tha
 +
 --
 * The `isVirtual` column specifies whether the boundary is virtual. +
-* No row has both `cellBoundaryGeom_Geometry1D` and `cellBoundaryGeom_Geometry2D` non-null. +
 * Every non-null `cellBoundaryGeom_Geometry1D` value has the geometry type `LINESTRING` or `MULTILINESTRING`. +
 * Every non-null `cellBoundaryGeom_Geometry2D` value has the geometry type `POLYGON` or `MULTIPOLYGON`.
 --
@@ -145,7 +154,16 @@ test-method:: Inspect the database schema and instance data to verify the above 
 [%metadata]
 identifier:: /conf/core/interlayerconnection
 target:: /req/core/interlayerconnection
-test-purpose:: Verify that an `InterLayerConnection` table references `ThematicLayer` rows through the `InterLayerConnection_ThematicLayer` junction table.
+test-purpose:: For the following columns of the `InterLayerConnection` table, verify that:
++
+--
+* The `connectedLayers_1` and `connectedLayers_2` columns reference the two connected `ThematicLayer` rows. +
+* The `typeOfTopoExpression` column stores the topological relationship, with subject on the `_1` side. +
+* The `typeOfTopoExpression` value is one of "Contains", "Overlaps", "Equals", "Within", "Crosses", or "Other". +
+* The paired `connectedLayers_*`, `connectedNodes_*`, and `connectedCells_*` columns are ordered and mapped to the same indices. +
+* When connected nodes are provided, both `connectedNodes_1` and `connectedNodes_2` are populated. +
+* When connected cell spaces are provided, both `connectedCells_1` and `connectedCells_2` are populated.
+--
 test-method:: Inspect the database schema and instance data to verify the above requirement.
 ====
 
@@ -156,12 +174,22 @@ test-method:: Inspect the database schema and instance data to verify the above 
 identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/conf/sql/navi
 target:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/navi
 classification:: Target Type:Implementation Specification
+abstract-test:: /conf/navi/global
 abstract-test:: /conf/navi/navigablespace
 abstract-test:: /conf/navi/generalspace
 abstract-test:: /conf/navi/transferspace
 abstract-test:: /conf/navi/objectspace
 abstract-test:: /conf/navi/navigableboundary
 abstract-test:: /conf/navi/route
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/global
+target:: /req/navi/global
+test-purpose:: Verify that a database implementing the IndoorGML 2.0 Navigation module implements the SQL schema defined in this standard (`IndoorGML_navi.sql` and `IndoorGML_core.sql`).
+test-method:: Inspect the database schema against `IndoorGML_navi.sql` and `IndoorGML_core.sql` to verify the above requirement.
 ====
 
 [abstract_test]
@@ -217,8 +245,9 @@ target:: /req/navi/route
 test-purpose:: For the following columns of the `Route` table, verify that:
 +
 --
-* Ordered node identifiers are stored in the `routeNode` column. +
-* Ordered edge identifiers are stored in the `routeEdge` column.
+* Ordered node identifiers are stored in the `routeNode` column as a JSON array of at least two values. +
+* Ordered edge identifiers are stored in the `routeEdge` column as a JSON array of at least one value. +
+* Both `routeNode` and `routeEdge` are present and non-empty.
 --
 test-method:: Inspect the database schema and instance data to verify the above requirement.
 ====

@@ -10,7 +10,7 @@ The SQL encoding of IndoorGML 2.0 maps the Part 1 conceptual model to a PostgreS
 SQL/
 ├── readme.md
 ├── examples/
-│   └── indoorjson2_dummy.sql          # Sample INSERT statements
+│   └── indoorjson2_dummy.sql          # Sample INSERT statements for a minimal core graph
 └── standard_implementation/
     ├── document.adoc                  # OGC Part 2c standard draft (Metanorma)
     ├── document.pdf

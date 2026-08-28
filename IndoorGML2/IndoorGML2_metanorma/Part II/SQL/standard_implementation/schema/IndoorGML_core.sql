@@ -6,6 +6,8 @@
 
 CREATE EXTENSION IF NOT EXISTS postgis
 ;
+CREATE EXTENSION IF NOT EXISTS postgis_sfcgal
+;
 /* Drop Tables */
 
 DROP TABLE IF EXISTS "CellBoundary" CASCADE
@@ -118,9 +120,6 @@ CREATE TABLE "CellBoundary"
 	"CellBoundaryID" varchar(100) NOT NULL,
 	"boundedBy" varchar(100) NULL,
 	"PrimalSpaceLayerID" varchar(100) NOT NULL,
-	CONSTRAINT "chk_CellBoundary_geom_xor" CHECK (
-		NOT ("cellBoundaryGeom_Geometry1D" IS NOT NULL AND "cellBoundaryGeom_Geometry2D" IS NOT NULL)
-	),
 	CONSTRAINT "chk_CellBoundary_geom1d_curve" CHECK (
 		"cellBoundaryGeom_Geometry1D" IS NULL
 		OR GeometryType("cellBoundaryGeom_Geometry1D") IN ('LINESTRING', 'MULTILINESTRING')
@@ -143,16 +142,17 @@ CREATE TABLE "CellSpace"
 	"CellSpaceID" varchar(100) NOT NULL,
 	"PrimalSpaceLayerID" varchar(100) NOT NULL,
 	"duality" varchar(100) NOT NULL,
-	CONSTRAINT "chk_CellSpace_geom_xor" CHECK (
-		NOT ("cellSpaceGeom_Geometry2D" IS NOT NULL AND "cellSpaceGeom_Geometry3D" IS NOT NULL)
-	),
 	CONSTRAINT "chk_CellSpace_geom2d_surface" CHECK (
 		"cellSpaceGeom_Geometry2D" IS NULL
 		OR GeometryType("cellSpaceGeom_Geometry2D") IN ('POLYGON', 'MULTIPOLYGON')
 	),
 	CONSTRAINT "chk_CellSpace_geom3d_solid" CHECK (
 		"cellSpaceGeom_Geometry3D" IS NULL
-		OR GeometryType("cellSpaceGeom_Geometry3D") IN ('POLYHEDRALSURFACE', 'TIN')
+		OR (
+			GeometryType("cellSpaceGeom_Geometry3D") IN ('POLYHEDRALSURFACE', 'TIN')
+			AND ST_NDims("cellSpaceGeom_Geometry3D") = 3
+			AND CG_IsSolid(CG_MakeSolid("cellSpaceGeom_Geometry3D"))
+		)
 	)
 )
 ;
@@ -196,28 +196,21 @@ CREATE TABLE "InterLayerConnection"
 	"typeOfTopoExpression" "TopoExpressionValue" NOT NULL,
 	"comment" text NULL,
 	"InterLayerConnectionID" varchar(100) NOT NULL,
-	"IndoorFeaturesID" varchar(100) NULL
-)
-;
-
-CREATE TABLE "InterLayerConnection_CellSpace"
-(
-	"connectedCells" varchar(100) NULL,
-	"InterLayerConnectionID" varchar(100) NULL
-)
-;
-
-CREATE TABLE "InterLayerConnection_Node"
-(
-	"connectedNodes" varchar(100) NULL,
-	"InterLayerConnectionID" varchar(100) NULL
-)
-;
-
-CREATE TABLE "InterLayerConnection_ThematicLayer"
-(
-	"connectedLayers" varchar(100) NULL,
-	"InterLayerConnectionID" varchar(100) NULL
+	"IndoorFeaturesID" varchar(100) NULL,
+	"connectedLayers_1" varchar(100) NOT NULL,
+	"connectedLayers_2" varchar(100) NOT NULL,
+	"connectedNodes_1" varchar(100) NULL,
+	"connectedNodes_2" varchar(100) NULL,
+	"connectedCells_1" varchar(100) NULL,
+	"connectedCells_2" varchar(100) NULL,
+	CONSTRAINT "chk_InterLayerConnection_connectedNodes_pair" CHECK (
+		("connectedNodes_1" IS NULL AND "connectedNodes_2" IS NULL)
+		OR ("connectedNodes_1" IS NOT NULL AND "connectedNodes_2" IS NOT NULL)
+	),
+	CONSTRAINT "chk_InterLayerConnection_connectedCells_pair" CHECK (
+		("connectedCells_1" IS NULL AND "connectedCells_2" IS NULL)
+		OR ("connectedCells_1" IS NOT NULL AND "connectedCells_2" IS NOT NULL)
+	)
 )
 ;
 
@@ -333,28 +326,28 @@ ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_layer
 	FOREIGN KEY ("IndoorFeaturesID") REFERENCES "IndoorFeatures" ("IndoorFeaturesID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "InterLayerConnection_CellSpace" ADD CONSTRAINT "FK_InterLayerConnection_CellSpace_connectedCells"
-	FOREIGN KEY ("connectedCells") REFERENCES "CellSpace" ("CellSpaceID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_connectedLayers_1"
+	FOREIGN KEY ("connectedLayers_1") REFERENCES "ThematicLayer" ("ThematicLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "InterLayerConnection_CellSpace" ADD CONSTRAINT "FK_InterLayerConnection_CellSpace_InterLayerConnection"
-	FOREIGN KEY ("InterLayerConnectionID") REFERENCES "InterLayerConnection" ("InterLayerConnectionID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_connectedLayers_2"
+	FOREIGN KEY ("connectedLayers_2") REFERENCES "ThematicLayer" ("ThematicLayerID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_Node_connectedNodes"
-	FOREIGN KEY ("connectedNodes") REFERENCES "Node" ("NodeID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_connectedNodes_1"
+	FOREIGN KEY ("connectedNodes_1") REFERENCES "Node" ("NodeID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "InterLayerConnection_Node" ADD CONSTRAINT "FK_InterLayerConnection_Node_InterLayerConnection"
-	FOREIGN KEY ("InterLayerConnectionID") REFERENCES "InterLayerConnection" ("InterLayerConnectionID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_connectedNodes_2"
+	FOREIGN KEY ("connectedNodes_2") REFERENCES "Node" ("NodeID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "InterLayerConnection_ThematicLayer" ADD CONSTRAINT "FK_InterLayerConnection_ThematicLayer_connectedLayers"
-	FOREIGN KEY ("connectedLayers") REFERENCES "ThematicLayer" ("ThematicLayerID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_connectedCells_1"
+	FOREIGN KEY ("connectedCells_1") REFERENCES "CellSpace" ("CellSpaceID") ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE "InterLayerConnection_ThematicLayer" ADD CONSTRAINT "FK_InterLayerConnection_ThematicLayer_InterLayerConnection"
-	FOREIGN KEY ("InterLayerConnectionID") REFERENCES "InterLayerConnection" ("InterLayerConnectionID") ON DELETE No Action ON UPDATE No Action
+ALTER TABLE "InterLayerConnection" ADD CONSTRAINT "FK_InterLayerConnection_connectedCells_2"
+	FOREIGN KEY ("connectedCells_2") REFERENCES "CellSpace" ("CellSpaceID") ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE "Node" ADD CONSTRAINT "FK_Node_duality"

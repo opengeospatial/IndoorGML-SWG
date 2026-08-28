@@ -74,8 +74,9 @@ NOTE: Implementations on other SQL platforms (for example, Oracle Spatial) MAY c
 
 NOTE: IndoorGML `GM_Solid` (UML `CellSpaceGeometryType.Geometry3D` / column `cellSpaceGeom_Geometry3D`) has no native solid primitive in PostGIS.
 It is therefore stored in a bare PostGIS `geometry` column as a closed boundary shell, typically `POLYHEDRALSURFACE Z` or `TIN Z`.
-A table `CHECK` constraint on `CellSpace` restricts non-null `cellSpaceGeom_Geometry3D` values to those geometry types.
-Volume and solid-topology operations (for example, `ST_Volume`, `ST_MakeSolid`, `ST_IsSolid`) require the optional PostGIS SFCGAL extension (`postgis_sfcgal`).
+A table `CHECK` constraint on `CellSpace` restricts non-null `cellSpaceGeom_Geometry3D` values to those geometry types, requires three coordinate dimensions (`ST_NDims(...) = 3`), and requires that the value is a solid after `CG_MakeSolid(...)`, as tested by `CG_IsSolid(CG_MakeSolid(...))`.
+These SFCGAL functions are provided by the `postgis_sfcgal` extension (PostGIS 3.5.0 and later).
+Volume and solid-topology operations use the same `CG_` functions (`CG_Volume`, `CG_MakeSolid`, `CG_IsSolid`).
 Other SQL platforms MAY map the same logical column to a native solid type where available (for example, Oracle `SDO_GEOMETRY` solid).
 
 === Complex DataType storage
@@ -98,7 +99,7 @@ A `Route` represents an ordered navigation path through the dual-space graph.
 The ordered `routeNode` and `routeEdge` members are stored as `jsonb` arrays on the `Route` table rather than in separate junction tables.
 This encoding preserves the sequence of nodes and edges in a single row and simplifies maintenance of route order during import, update, and export.
 Array position expresses traversal order; the first element is the first node or edge in the route, the second element is the next, and so on.
-At least one of `routeNode` or `routeEdge` must be present for a valid `Route` row.
+Both `routeNode` and `routeEdge` SHALL be present and non-empty on every `Route` row.
 
 Example:
 

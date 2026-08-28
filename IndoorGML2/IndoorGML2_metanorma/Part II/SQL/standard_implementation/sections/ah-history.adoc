@@ -11,12 +11,6 @@
 |2026-07-02 |0.3 |Zhiyong Wang |5, 6 |add Part 2c-specific symbols and abbreviated terms table (clause 5); replace vague figure references with numbered cross-references in clause 6.1.1 and remove redundant follow-up sentences; rebuild document.pdf and document.html
 |2026-07-30 |0.4 |Zhiyong Wang |5, 6, 7 |flatten geometry DataTypes to path-named PostGIS columns; encode ExternalReference DataTypes as PostgreSQL composite types; PascalCase table names; edition 0.0.9
 |2026-08-16 |0.5 |Zhiyong Wang |front matter, 5, 6, 7, 8, annex C |update document number to 26-044; replace `Edge.connects` jsonb with `connects_node1` / `connects_node2` foreign keys to `Node`; move Core code list types from Clause 7.1 to Annex C; define `ObjectSpace.Containedfeatures` as integer; edition 0.5.0
-|2026-08-17 |0.5 |Zhiyong Wang |annex A |redefine Abstract Test Suite with one abstract test per requirement using Metanorma conformance_class / abstract_test format aligned with IndoorJSON Part II
-|2026-08-17 |0.5 |Zhiyong Wang |5, 6, 7, 8, annex A/C, schema |align SQL attribute names/casing with UML (e.g. isDirected, creationDate, cellSpaceGeom_Geometry2D, boundedBy); edition 0.5.0
-|2026-08-17 |0.5 |Zhiyong Wang |7, 8, annex A, schema |mark UML-mandatory attributes and associations as NOT NULL (e.g. isLogical, isDirected, PoI, weight, connects_node1/2, duality)
-|2026-08-17 |0.5 |Zhiyong Wang |5, 7, schema |document PostGIS GM_Solid encoding as POLYHEDRALSURFACE Z / TIN Z with CellSpace Geometry3D CHECK constraint
-|2026-08-17 |0.5 |Zhiyong Wang |5, 7, annex A/B, schema |add permitted geometry type table, geometry-type CHECK constraints for CellSpace, CellBoundary, Node and Edge, and corresponding normative requirement parts and abstract tests
-|2026-08-17 |0.5 |Zhiyong Wang |abstract |revise Abstract to describe PostgreSQL as an object-relational DBMS, store and maintain models, and access via API or web services
-|2026-08-17 |0.5 |Zhiyong Wang |3, 5, 7, 8 |remove IndoorJSON cross-references and JSON-FG requirement-class inheritance; keep general JSON and GeoJSON bibliography entries
-|2026-08-17 |0.5 |Zhiyong Wang |3, 4 |add data type to Terms and Definitions and cite ISO 19103
+|2026-08-17 |0.5 |Zhiyong Wang |abstract, 3, 4, 5, 6, 7, 8, annex A/B/C, schema |redefine Abstract Test Suite with one abstract test per requirement; align SQL attribute names and casing with UML; mark UML-mandatory attributes as NOT NULL; document GM_Solid encoding as POLYHEDRALSURFACE Z / TIN Z with geometry-type CHECK constraints; revise Abstract; add data type to Terms and Definitions and cite ISO 19103
+|2026-08-28 |0.5 |Zhiyong Wang |6, 8, annex D, annex E |add informative Annex E Example of CodeList (OmniClass); remove clause 6.1 Design Principle and promote former 6.1.1/6.1.2 to 6.1/6.2; retain encoding-principles sentence; shorten Annex E note
 |===

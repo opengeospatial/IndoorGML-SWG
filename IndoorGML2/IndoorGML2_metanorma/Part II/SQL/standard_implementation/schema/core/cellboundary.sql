@@ -8,9 +8,6 @@ CREATE TABLE "CellBoundary"
     "boundedBy" varchar(100) NULL,
     "PrimalSpaceLayerID" varchar(100) NOT NULL,
     CONSTRAINT "PK_CellBoundary" PRIMARY KEY ("CellBoundaryID"),
-    CONSTRAINT "chk_CellBoundary_geom_xor" CHECK (
-        NOT ("cellBoundaryGeom_Geometry1D" IS NOT NULL AND "cellBoundaryGeom_Geometry2D" IS NOT NULL)
-    ),
     CONSTRAINT "chk_CellBoundary_geom1d_curve" CHECK (
         "cellBoundaryGeom_Geometry1D" IS NULL
         OR GeometryType("cellBoundaryGeom_Geometry1D") IN ('LINESTRING', 'MULTILINESTRING')
