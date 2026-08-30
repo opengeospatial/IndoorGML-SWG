@@ -48,7 +48,7 @@ test-purpose:: Verify that for each `*ThematicLayer*` element:
 +
 --
 * `semanticExtension` is a valid boolean value (`true` or `false`).
-* `theme` contains a valid value (`"Tags"`, `"Virtual"`, `"Unknown"`, `"Physical"`, or `"other: \w{2,}"`).
+* `theme` contains a valid value (`"Tags"`, `"Virtual"`, `"Unknown"`, `"Physical"`, or `"other: \w{2,}"` such as `"other: WiFi"`).
 * If present, `primalSpace` references or contains a valid `*PrimalSpaceLayer*` element.
 * If present, `dualSpace` references or contains a valid `*DualSpaceLayer*` element.
 * A unique `gml:id` attribute is present.
@@ -166,10 +166,10 @@ test-purpose:: Verify that for each `*InterLayerConnection*` element:
 +
 --
 * Exactly two `connectedLayers` properties referencing distinct `*ThematicLayer*` elements are present.
-* `typeOfTopoExpression` is one of the valid enumeration or pattern values (`"Contains"`, `"Overlaps"`, `"Equals"`, `"Within"`, `"Crosses"`, `"Other"`, or `"other: \w{2,}"`).
+* `typeOfTopoExpression` is one of the valid enumeration or pattern values (`"Contains"`, `"Overlaps"`, `"Equals"`, `"Within"`, `"Crosses"`, `"Other"`, or `"other: \w{2,}"` such as `"other: Touches"`).
 * If present, `connectedCells` contains exactly two references to `*CellSpace*` elements belonging respectively to the first and second connected thematic layers.
 * If present, `connectedNodes` contains exactly two references to `*Node*` elements belonging respectively to the first and second connected thematic layers.
-* The order of `connectedLayers`, `connectedCells`, and `connectedNodes` corresponds pairwise to the same indices.
+* The sequence of `connectedLayers`, `connectedCells`, and `connectedNodes` properties is ordered such that the first element represents the subject of the topological relationship, and the second element represents the object, corresponding pairwise to the same indices.
 * A unique `gml:id` attribute is present.
 --
 test-method:: Inspect the instance document to verify layer and object cross-references and topological expression values.
@@ -213,7 +213,7 @@ test-purpose:: Verify that for each `*NavigableSpace*` element:
 +
 --
 * All validation criteria for <<conf-cellspace,`/conf/core/cellspace`>> are satisfied.
-* `locomotionType` contains a valid value (`"Walking"`, `"Flying"`, `"Rolling"`, `"Unspecified"`, or `"other: \w{2,}"`).
+* `locomotionType` contains a valid value (`"Walking"`, `"Flying"`, `"Rolling"`, `"Unspecified"`, or `"other: \w{2,}"` such as `"other: Drone"`).
 * A unique `gml:id` attribute is present.
 --
 test-method:: Inspect the instance document to verify locomotionType and inherited CellSpace properties.
@@ -228,7 +228,7 @@ test-purpose:: Verify that for each `*GeneralSpace*` element:
 +
 --
 * All validation criteria for <<conf-navigablespace,`/conf/navi/navigablespace`>> are satisfied.
-* `function` contains a valid value (`"Administration"`, `"Business, trade"`, `"Education, training"`, `"Recreation"`, `"Laboratory"`, `"Storage"`, `"Security"`, or `"other: \w{2,}"`).
+* `function` contains a valid value (`"Administration"`, `"Business, trade"`, `"Education, training"`, `"Recreation"`, `"Laboratory"`, `"Storage"`, `"Security"`, or `"other: \w{2,}"` such as `"other: Cafeteria"`).
 * A unique `gml:id` attribute is present.
 --
 test-method:: Inspect the instance document to verify function type and inherited properties.
@@ -243,8 +243,8 @@ test-purpose:: Verify that for each `*TransferSpace*` element:
 +
 --
 * All validation criteria for <<conf-navigablespace,`/conf/navi/navigablespace`>> are satisfied.
-* `function` contains a valid value (`"ConnectionSpace"`, `"AnchorSpace"`, or `"other: \w{2,}"`).
-* `type` contains a valid value (`"Door"`, `"Window"`, or `"other: \w{2,}"`).
+* `function` contains a valid value (`"ConnectionSpace"`, `"AnchorSpace"`, or `"other: \w{2,}"` such as `"other: InterbuildingSpace"`).
+* `type` contains a valid value (`"Door"`, `"Window"`, or `"other: \w{2,}"` such as `"other: Turnstile"`).
 * A unique `gml:id` attribute is present.
 --
 test-method:: Inspect the instance document to verify function, opening type, and inherited properties.
@@ -260,7 +260,7 @@ test-purpose:: Verify that for each `*NavigableBoundary*` element:
 +
 --
 * All validation criteria for <<conf-cellboundary,`/conf/core/cellboundary`>> are satisfied.
-* `NavigableBoundaryFunction` contains a valid value (`"ConnectionBoundary"`, `"AncorBoundary"` / `"AnchorBoundary"`, or `"other: \w{2,}"`).
+* `NavigableBoundaryFunction` contains a valid value (`"ConnectionBoundary"`, `"AncorBoundary"` / `"AnchorBoundary"`, or `"other: \w{2,}"` such as `"other: VirtualBoundary"`).
 * If present, `boundaryOrientation` is a valid boolean value (`true` or `false`).
 * A unique `gml:id` attribute is present.
 --

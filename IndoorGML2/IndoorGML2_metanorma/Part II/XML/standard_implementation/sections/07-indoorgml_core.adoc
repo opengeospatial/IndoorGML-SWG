@@ -23,6 +23,14 @@ requirement:: /req/core/interlayerconnection
 [[section-core-general]]
 === General requirements for encoding standard
 
+The IndoorGML Core module defines the foundational features and data structures for representing indoor spaces. It is composed of three main parts:
+
+* The primal space, describing cellular space subdivisions and their boundaries;
+* The dual space, carrying network graph information (nodes and edges); and
+* The inter-layer connections, describing topological relationships between thematic layers.
+
+An instance XML document representing an IndoorGML 2.0 Core dataset SHALL be well-formed XML and conform to the XML schemas defined in this standard and OGC GML 3.2.1.
+
 [[req-core-global]]
 [requirement]
 .Requirement for global XML schema validation
@@ -38,6 +46,12 @@ part:: An instance XML document representing an IndoorGML 2.0 Core dataset SHALL
 
 The `*IndoorFeatures*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#section-indoorgml-core[IndoorFeatures], representing the root container feature for an indoor dataset.
 It aggregates one or more thematic layers and may optionally include interlayer connections.
+
+The `*IndoorFeatures*` element shall contain:
+
+* `gml:id` attribute
+* `layers` property containing or referencing <<section-thematiclayer,`*ThematicLayer*`>> elements
+* optionally, `layerConnections` property containing or referencing <<section-interlayerconnection, `*InterLayerConnection*`>> elements
 
 [[indoorfeatures-schema]]
 .XML schema for the IndoorFeatures element
@@ -127,6 +141,14 @@ part:: An `*IndoorFeatures*` element SHALL contain a unique `gml:id` attribute.
 
 The `*ThematicLayer*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-thematiclayer[ThematicLayer], which represents one contextual decomposition of indoor space (e.g. physical layer, navigation layer, sensor layer).
 
+The `*ThematicLayer*` element shall contain:
+
+* `gml:id` attribute
+* `semanticExtension` element indicating whether there is an extension module with additional semantic information
+* `theme` element determining what type of model representation can be expected
+* optionally, `primalSpace` property for the <<section-primalspacelayer, `*PrimalSpaceLayer*`>> element
+* optionally, `dualSpace` property for the <<section-dualspacelayer, `*DualSpaceLayer*`>> element
+
 [[thematiclayer-schema]]
 .XML schema for the ThematicLayer element
 [%unnumbered]
@@ -200,7 +222,7 @@ The `*ThematicLayer*` element is an instance of https://docs.ogc.org/is/22-045r5
 identifier:: /req/core/thematiclayer
 part:: A `*ThematicLayer*` element SHALL declare whether there is an extension module with additional semantic information using the `semanticExtension` element (`true` or `false`).
 part:: A `*ThematicLayer*` element SHALL determine what type of model representation is expected using the `theme` element.
-part:: The `theme` value SHALL be one of the following: `"Tags"`, `"Virtual"`, `"Unknown"`, `"Physical"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: The `theme` value SHALL be one of the following: `"Tags"`, `"Virtual"`, `"Unknown"`, `"Physical"`, or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: WiFi"` or `"other: Sensor"`).
 part:: When present, the `primalSpace` property of a `*ThematicLayer*` element SHALL contain or reference (via `xlink:href`) a <<section-primalspacelayer,`*PrimalSpaceLayer*`>> element.
 part:: When present, the `dualSpace` property of a `*ThematicLayer*` element SHALL contain or reference (via `xlink:href`) a <<section-dualspacelayer,`*DualSpaceLayer*`>> element.
 part:: A `*ThematicLayer*` element SHALL contain a unique `gml:id` attribute.
@@ -211,6 +233,14 @@ part:: A `*ThematicLayer*` element SHALL contain a unique `gml:id` attribute.
 === PrimalSpaceLayer
 
 The `*PrimalSpaceLayer*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-primalspacelayer[PrimalSpaceLayer], which contains spatial objects representing indoor subdivisions in primal space.
+
+The `*PrimalSpaceLayer*` element shall contain:
+
+* `gml:id` attribute
+* `cellSpaceMember` property for representing <<section-cellspace,`*CellSpace*`>> elements
+* optionally, `cellBoundaryMember` property for representing <<section-cellboundary,`*CellBoundary*`>> elements
+* optionally, `creationDate` element
+* optionally, `terminationDate` element
 
 [[primalspacelayer-schema]]
 .XML schema for the PrimalSpaceLayer element
@@ -291,6 +321,17 @@ part:: A `*PrimalSpaceLayer*` element SHALL contain a unique `gml:id` attribute.
 === CellSpace
 
 The `*CellSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellspace[CellSpace], which represents a unit of indoor space such as a room, corridor, stairwell, elevator cabin, or zone.
+
+The `*CellSpace*` element shall contain:
+
+* `gml:id` attribute
+* `PoI` element specifying whether this `*CellSpace*` is a point of interest
+* optionally, `cellSpaceName` element for the name assigned to the space
+* optionally, `level` element
+* optionally, `duality` property mapped to the corresponding <<section-node,`*Node*`>> element in the dual space
+* optionally, `cellSpaceGeom` element specifying the 2D or 3D geometry of the cell space
+* optionally, `boundedBy` property referencing the linked <<section-cellboundary,`*CellBoundary*`>> elements
+* optionally, `externalReference` property for representing <<section-externalreference,`*ExternalReference*`>> elements
 
 [[cellspace-schema]]
 .XML schema for the CellSpace element
@@ -377,6 +418,14 @@ part:: A `*CellSpace*` element SHALL contain a unique `gml:id` attribute.
 
 The `*CellBoundary*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-cellboundary[CellBoundary], representing a physical or virtual boundary of a cell space.
 
+The `*CellBoundary*` element shall contain:
+
+* `gml:id` attribute
+* `isVirtual` element indicating whether a `*CellBoundary*` corresponds to a virtual surface (`true`) or a physical one (`false`)
+* optionally, `duality` property mapped to the corresponding <<section-edge,`*Edge*`>> element
+* optionally, `cellBoundaryGeom` element specifying the 1D or 2D geometry of the cell boundary
+* optionally, `externalReference` property for representing <<section-externalreference,`*ExternalReference*`>> elements
+
 [[cellboundary-schema]]
 .XML schema for the CellBoundary element
 [%unnumbered]
@@ -453,6 +502,16 @@ part:: A `*CellBoundary*` element SHALL contain a unique `gml:id` attribute.
 === DualSpaceLayer
 
 The `*DualSpaceLayer*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-dualspacelayer[DualSpaceLayer], representing the graph structure (nodes and edges) corresponding to a primal space layer.
+
+The `*DualSpaceLayer*` element shall contain:
+
+* `gml:id` attribute
+* `isLogical` element indicating whether the graph is logical (`true`) or geometric (`false`)
+* `isDirected` element specifying whether the graph is directed
+* `nodeMember` property for representing <<section-node,`*Node*`>> elements
+* optionally, `edgeMember` property for representing <<section-edge,`*Edge*`>> elements
+* optionally, `creationDate` element
+* optionally, `terminationDate` element
 
 [[dualspacelayer-schema]]
 .XML schema for the DualSpaceLayer element
@@ -545,6 +604,13 @@ part:: A `*DualSpaceLayer*` element SHALL contain a unique `gml:id` attribute.
 
 The `*Node*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-node[Node], representing a state or graph vertex in the dual space.
 
+The `*Node*` element shall contain:
+
+* `gml:id` attribute
+* `duality` property referencing the corresponding <<section-cellspace,`*CellSpace*`>> element
+* optionally, `geometry` element representing the position of the node
+* optionally, `connects` property referencing connected <<section-edge,`*Edge*`>> elements
+
 [[node-schema]]
 .XML schema for the Node element
 [%unnumbered]
@@ -606,6 +672,14 @@ part:: A `*Node*` element SHALL contain a unique `gml:id` attribute.
 === Edge
 
 The `*Edge*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-edge[Edge], which represents an adjacency, connectivity, or navigability relationship between two nodes in dual space.
+
+The `*Edge*` element shall contain:
+
+* `gml:id` attribute
+* `weight` element which can be used in graph-based applications
+* `connects` property referencing exactly two connected <<section-node,`*Node*`>> elements
+* optionally, `duality` property referencing the corresponding <<section-cellboundary,`*CellBoundary*`>> element
+* optionally, `geometry` element representing the curve of the edge
 
 [[edge-schema]]
 .XML schema for the Edge element
@@ -675,6 +749,23 @@ part:: An `*Edge*` element SHALL contain a unique `gml:id` attribute.
 === InterLayerConnection
 
 The `*InterLayerConnection*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-interlayerconnection[InterLayerConnection], which describes a topological relationship between objects in different thematic layers.
+
+The `*InterLayerConnection*` element shall contain:
+
+* `gml:id` attribute
+* `connectedLayers` property mapped to exactly two <<section-thematiclayer,`*ThematicLayer*`>> elements
+* `typeOfTopoExpression` element specifying the topological relationship
+* optionally, `connectedNodes` property mapped to two <<section-node,`*Node*`>> elements
+* optionally, `connectedCells` property mapped to two <<section-cellspace,`*CellSpace*`>> elements
+* optionally, `comment` element
+
+The `typeOfTopoExpression` element represents the topological relationship between connected elements across different thematic layers, with values including `"Contains"`, `"Overlaps"`, `"Equals"`, `"Within"`, `"Crosses"`, and `"Other"`.
+These topological values are conceptualized as verbs in a Subject-Verb-Object (SVO) sentence structure:
+
+* When `connectedCells` (or `connectedNodes`) are specified, the topological relationship primarily applies to those specific cell spaces (or nodes). That is, the first referenced cell or node acts as the Subject, and the second referenced cell or node acts as the Object (e.g., _Cell A of Layer 1 Contains Cell B of Layer 2_, even if Layer 1 as a whole does not fully contain Layer 2).
+* In the absence of `connectedCells` and `connectedNodes`, the topological relationship applies directly between the two whole thematic layers, where the first referenced layer in `connectedLayers` is the Subject and the second is the Object (e.g., _Layer 1 Contains Layer 2_).
+
+Consequently, the sequence of elements across `connectedLayers`, `connectedCells`, and `connectedNodes` properties shall strictly maintain this pairwise SVO order, where index 1 always represents the Subject (or the element from the Subject layer) and index 2 represents the Object (or the element from the Object layer).
 
 [[interlayerconnection-schema]]
 .XML schema for the InterLayerConnection element
@@ -747,11 +838,11 @@ The `*InterLayerConnection*` element is an instance of https://docs.ogc.org/is/2
 [%metadata]
 identifier:: /req/core/interlayerconnection
 part:: An `*InterLayerConnection*` element SHALL contain exactly two `connectedLayers` properties referencing (via `xlink:href`) or containing two distinct <<section-thematiclayer,`*ThematicLayer*`>> elements.
-part:: An `*InterLayerConnection*` element SHALL specify the topological relationship using the `typeOfTopoExpression` element.
-part:: The `typeOfTopoExpression` value SHALL be one of the following: `"Contains"`, `"Overlaps"`, `"Equals"`, `"Within"`, `"Crosses"`, `"Other"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: An `*InterLayerConnection*` element SHALL specify the topological relationship using the `typeOfTopoExpression` element, which applies primarily to the referenced `connectedCells` (or `connectedNodes`), or to the `connectedLayers` when no cells or nodes are referenced.
+part:: The `typeOfTopoExpression` value SHALL be one of the following: `"Contains"`, `"Overlaps"`, `"Equals"`, `"Within"`, `"Crosses"`, `"Other"`, or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: Touches"`).
 part:: When present, `connectedCells` SHALL contain exactly two properties referencing (via `xlink:href`) or containing <<section-cellspace,`*CellSpace*`>> elements belonging to the primal space layers of the first and second connected thematic layers, respectively.
 part:: When present, `connectedNodes` SHALL contain exactly two properties referencing (via `xlink:href`) or containing <<section-node,`*Node*`>> elements belonging to the dual space layers of the first and second connected thematic layers, respectively.
-part:: The sequence of `connectedLayers`, `connectedCells`, and `connectedNodes` properties SHALL be ordered and correspond pairwise to the same indices.
+part:: The sequence of elements in the `connectedLayers`, `connectedCells`, and `connectedNodes` properties SHALL be ordered such that the first element always represents the subject of the topological relationship, and the second element represents the object, ensuring they pairwise correspond at the same indices.
 part:: An `*InterLayerConnection*` element SHALL contain a unique `gml:id` attribute.
 ====
 

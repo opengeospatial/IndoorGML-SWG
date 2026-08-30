@@ -438,10 +438,13 @@ The `*InterLayerConnection*` object shall contain:
 * optionally, `connectedCells` can be mapped to the `id` value of the two <<section-cellspace,`*CellSpace*`>> objects
 * optionally, `comment`
 
-The `typeOfTopoExpression` member represents the topological relationship between two layers.
-The `typeOfTopoExpression` values including "CONTAINS", "OVERLAPS", "EQUALS", "WITHIN", "CROSSES", and "OTHERS", according to the conceptual model.
-Those topological values are in the form of verbs for which the subject is the first instance of the `connectedLayers` member.
-The values of the `connectedLayers`, `connectedNodes`, and `connectedCells` members shall be ordered and mapped to the same indices.
+The `typeOfTopoExpression` member represents the topological relationship between connected elements across different thematic layers, with values including `"CONTAINS"`, `"OVERLAPS"`, `"EQUALS"`, `"WITHIN"`, `"CROSSES"`, and `"OTHERS"`.
+These topological values are conceptualized as verbs in a Subject-Verb-Object (SVO) sentence structure:
+
+* When `connectedCells` (or `connectedNodes`) are specified, the topological relationship primarily applies to those specific cell spaces (or nodes). That is, the first referenced cell (or node) acts as the Subject, and the second referenced cell (or node) acts as the Object (e.g., _Cell A of Layer 1 Contains Cell B of Layer 2_, even if Layer 1 as a whole does not fully contain Layer 2).
+* In the absence of `connectedCells` and `connectedNodes`, the topological relationship applies directly between the two whole thematic layers, where the first referenced layer in `connectedLayers` is the Subject and the second is the Object (e.g., _Layer 1 Contains Layer 2_).
+
+Consequently, the sequence of elements across `connectedLayers`, `connectedCells`, and `connectedNodes` members shall strictly maintain this pairwise SVO order, where index 1 always represents the Subject (or the element from the Subject layer) and index 2 represents the Object (or the element from the Object layer).
 
 [[interlayerconnection-schema]]
 .A JSON schema of the InterLayerConnection

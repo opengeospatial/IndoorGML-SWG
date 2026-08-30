@@ -60,7 +60,7 @@ include::sections/08-indoorgml_navi.adoc[]
 include::sections/aa-annexA.adoc[]
 include::sections/ab-annexB.adoc[]
 include::sections/ac-annexC.adoc[]
-include::sections/ad-annexD.adoc[]
+// include::sections/ad-annexD.adoc[]
 
 // Revision history
 include::sections/ah-history.adoc[]

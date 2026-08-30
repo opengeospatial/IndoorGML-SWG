@@ -1,194 +1,182 @@
 
 [[annex-c]]
-[appendix,obligation=informative]
+[appendix,obligation="informative"]
 == Example of CodeList
 
-For mapping indoor space features to IndoorNavigation module classes, space features have to be classified by functions and usages of space. Each space class has attributes for functions, usages, and classes of space. Because misspellings or different names for the same notion brings the problems in data interoperability, in order to overcome the typo errors, an example of CodeList is provided in this annex to specify the attribute values including space class types, space function types and space usage types. The CodeLists are defined from OmniClass (Table 13 and Table 14) created and used by the North American architectural, engineering and construction (AEC) industry.
+For mapping indoor space features to IndoorNavigation module classes, space features have to be classified by functions and usages of space.
+// Each space class has attributes for functions, usages, and classes of space.
+Because misspellings or different names for the same notion brings the problems in data interoperability, in order to overcome the typo errors, an example of CodeList is provided in this annex to specify the attribute values including space category types and space function types.
+The CodeLists are defined from OmniClass (Table 13 and Table 14) created and used by the North American architectural, engineering and construction (AEC) industry.
 
 === GeneralSpace
 
-==== GeneralSpaceClassType
-Code list derived from OmniClass Table 13 and CityGML:
-
-* 1000 - Administration
-* 1010 - Business, trade
-* 1020 - Education, training
-* 1030 - Recreation
-* 1040 - Art, performance
-* 1050 - Healthcare
-* 1060 - Laboratory
-* 1070 - Service
-* 1080 - Production
-* 1090 - Storage
-* 1100 - Security
-* 1110 - Accommodation, Waste management
+// ==== GeneralSpaceClassType
+// Code list derived from OmniClass Table 13 and CityGML:
+//
+// * 1000 - Administration
+// * 1010 - Business, trade
+// * 1020 - Education, training
+// * 1030 - Recreation
+// * 1040 - Art, performance
+// * 1050 - Healthcare
+// * 1060 - Laboratory
+// * 1070 - Service
+// * 1080 - Production
+// * 1090 - Storage
+// * 1100 - Security
+// * 1110 - Accommodation, Waste management
 
 ==== GeneralSpaceFunctionType
 Code list derived from OmniClass Table 13:
 
-* 1000 - Elevator Machine Room
-* 1010 - Fire Command Center
-* 1020 - Men’s Restroom
-* 1030 - Unisex Restroom
-* 1040 - Refrigerant Machinery Room
-* 1050 - Incinerator Room
-* 1060 - Gas Room
-* 1070 - Liquid Use, Dispensing and Mixing Room
-* 1080 - Electrical Room
-* 1090 - Telecommunications Room
-* 1100 - Hazardous Waste Storage
-* 1110 - Building Manager Office
-* 1120 - Guard Stations
-* 1130 - Women’s Restroom
-* 1140 - Furnace Room
-* 1150 - Fuel Room
-* 1160 - Liquid Storage Room
-* 1170 - Hydrogen Cutoff Room
-* 1180 - Switch Room
-* 1190 - Classrooms
-* 1200 - Assembly Hall
-* 1210 - Physics Teaching Laboratory
-* 1220 - Open Class Laboratory
-* 1230 - Laboratory Service Space
-* 1240 - Computer Lab
-* 1250 - Training Support Space
-* 1260 - Study Room
-* 1270 - Evidence Room
-* 1280 - Witness Stand
-* 1290 - Robing Area
-* 1300 - Council Chambers
-* 1310 - Armory
-* 1320 - General Performance Spaces
-* 1330 - Orchestra Pit
-* 1340 - Performance Hall
-* 1350 - Audience Space
-* 1360 - Audience Seating Space
-* 1370 - Projection Booth
-* 1380 - Stage Wings
-* 1390 - Art Gallery
-* 1400 - Sculpture Garden
-* 1410 - Recording Studio
-* 1420 - Photo Lab
-* 1430 - Library
-* 1440 - Mediation Chapel
-* 1450 - Reflection Space
-* 1460 - Chapel
-* 1470 - Shrine
-* 1480 - Confessional Space
-* 1490 - Tabernacle
-* 1500 - Choir Loft
-* 1510 - Marriage Sanctuary
-* 1520 - Mental Health Quiet Room
-* 1530 - Bone Densitometry Room
-* 1540 - CT Simulator Room
-* 1550 - Head Radiographic Room
-* 1560 - Mobile Imaging System Alcove
-* 1570 - MRI System Component Room
-* 1580 - PET/CT Simulator Room
-* 1590 - Radiographic Room
-* 1600 - Stereotactic Mammography Room
-* 1610 - Ultrasound/Optical Coherence Tomography Room
-* 1620 - Angiographic Control Room
-* 1630 - Angiographic Procedure Control Area
-* 1640 - Silver Collection Area
-* 1650 - Computer Image Processing Area
-* 1660 - CT Control Area
-* 1670 - Image Quality Control Room
-* 1680 - X-Ray, Plane Film Storage Space
-* 1690 - MRI Control Room
-* 1700 - MRI Viewing Room
-* 1710 - Radiographic Control Room
-* 1720 - Tele-Radiology/Tele-Medicine Room
-* 1730 - Radiation Diagnostic and Therapy Spaces
-* 1740 - Health Physics Laboratory
-* 1750 - Linear Accelerator Entrance Maze, Healthcare
-* 1760 - Radioactive Waste Storage Room, Healthcare
-* 1770 - Nuclear Medicine Scanning Room
-* 1780 - Patient Dose/Thyroid Uptake Room
-* 1790 - Radiopharmacy
-* 1800 - Radiation Therapy, Mold Fabrication Shop
-* 1810 - Hearth and Lung Diagnostic and Treatment Spaces
-* 1820 - Cardiac Catheter Instrument Room
-* 1830 - Cardiac Catheter Control Room
-* 1840 - Cardiac Electrophysiology Room
-* 1850 - Echocardiograph Room
-* 1860 - Extended Pulmonary Function Testing Laboratory
-* 1870 - Pacemaker ICD Interrogation Room
-* 1880 - Procedure Viewing Area
-* 1890 - Pulmonary Function Treadmill Room
-* 1900 - Respiratory Therapy Clean-up Room
-* 1910 - General Diagnostic Procedure and Treatment Spaces
-* 1920 - Endoscopy/Gastroenterology Spaces
-* 1930 - Clinical Laboratory Spaces
-* 1940 - Pharmacy Spaces
-* 1950 - Rehabilitation Spaces
-* 1960 - Medical Research and Development Spaces
-* 1970 - Chemistry Laboratories
-* 1980 - Physical Sciences Laboratories
-* 1990 - Earth and Environmental Sciences Laboratories
-* 2000 - Psychology Laboratories
-* 2010 - Dry Laboratories
-* 2020 - Wet Laboratories
-* 2030 - Biosciences Laboratories
-* 2040 - Astronomy Laboratories
-* 2050 - Forensics Laboratories
-* 2060 - Bench Laboratories
+* T1000 - Corridor
+* T1010 - Breezeway
+* T1020 - Box Lobby
+* T1030 - Elevator Lobby
+* T1040 - Landing
+* T1050 - Aisle
+* T1060 - Ramp
+* T1070 - Concourse
+* T1080 - Moving walkway
+* T1090 - Entry Lobby
+* T1100 - Jet way
+* T1110 - Elevator Shaft
+* T1120 - Stair
+* T1130 - Chute
+* G1000 - Elevator Machine Room
+* G1010 - Fire Command Center
+* G1020 - Men’s Restroom
+* G1030 - Unisex Restroom
+* G1040 - Refrigerant Machinery Room
+* G1050 - Incinerator Room
+* G1060 - Gas Room
+* G1070 - Liquid Use, Dispensing and Mixing Room
+* G1080 - Electrical Room
+* G1090 - Telecommunications Room
+* G1100 - Hazardous Waste Storage
+* G1110 - Building Manager Office
+* G1120 - Guard Stations
+* G1130 - Women’s Restroom
+* G1140 - Furnace Room
+* G1150 - Fuel Room
+* G1160 - Liquid Storage Room
+* G1170 - Hydrogen Cutoff Room
+* G1180 - Switch Room
+* G1190 - Classrooms
+* G1200 - Assembly Hall
+* G1210 - Physics Teaching Laboratory
+* G1220 - Open Class Laboratory
+* G1230 - Laboratory Service Space
+* G1240 - Computer Lab
+* G1250 - Training Support Space
+* G1260 - Study Room
+* G1270 - Evidence Room
+* G1280 - Witness Stand
+* G1290 - Robing Area
+* G1300 - Council Chambers
+* G1310 - Armory
+* G1320 - General Performance Spaces
+* G1330 - Orchestra Pit
+* G1340 - Performance Hall
+* G1350 - Audience Space
+* G1360 - Audience Seating Space
+* G1370 - Projection Booth
+* G1380 - Stage Wings
+* G1390 - Art Gallery
+* G1400 - Sculpture Garden
+* G1410 - Recording Studio
+* G1420 - Photo Lab
+* G1430 - Library
+* G1440 - Mediation Chapel
+* G1450 - Reflection Space
+* G1460 - Chapel
+* G1470 - Shrine
+* G1480 - Confessional Space
+* G1490 - Tabernacle
+* G1500 - Choir Loft
+* G1510 - Marriage Sanctuary
+* G1520 - Mental Health Quiet Room
+* G1530 - Bone Densitometry Room
+* G1540 - CT Simulator Room
+* G1550 - Head Radiographic Room
+* G1560 - Mobile Imaging System Alcove
+* G1570 - MRI System Component Room
+* G1580 - PET/CT Simulator Room
+* G1590 - Radiographic Room
+* G1600 - Stereotactic Mammography Room
+* G1610 - Ultrasound/Optical Coherence Tomography Room
+* G1620 - Angiographic Control Room
+* G1630 - Angiographic Procedure Control Area
+* G1640 - Silver Collection Area
+* G1650 - Computer Image Processing Area
+* G1660 - CT Control Area
+* G1670 - Image Quality Control Room
+* G1680 - X-Ray, Plane Film Storage Space
+* G1690 - MRI Control Room
+* G1700 - MRI Viewing Room
+* G1710 - Radiographic Control Room
+* G1720 - Tele-Radiology/Tele-Medicine Room
+* G1730 - Radiation Diagnostic and Therapy Spaces
+* G1740 - Health Physics Laboratory
+* G1750 - Linear Accelerator Entrance Maze, Healthcare
+* G1760 - Radioactive Waste Storage Room, Healthcare
+* G1770 - Nuclear Medicine Scanning Room
+* G1780 - Patient Dose/Thyroid Uptake Room
+* G1790 - Radiopharmacy
+* G1800 - Radiation Therapy, Mold Fabrication Shop
+* G1810 - Hearth and Lung Diagnostic and Treatment Spaces
+* G1820 - Cardiac Catheter Instrument Room
+* G1830 - Cardiac Catheter Control Room
+* G1840 - Cardiac Electrophysiology Room
+* G1850 - Echocardiograph Room
+* G1860 - Extended Pulmonary Function Testing Laboratory
+* G1870 - Pacemaker ICD Interrogation Room
+* G1880 - Procedure Viewing Area
+* G1890 - Pulmonary Function Treadmill Room
+* G1900 - Respiratory Therapy Clean-up Room
+* G1910 - General Diagnostic Procedure and Treatment Spaces
+* G1920 - Endoscopy/Gastroenterology Spaces
+* G1930 - Clinical Laboratory Spaces
+* G1940 - Pharmacy Spaces
+* G1950 - Rehabilitation Spaces
+* G1960 - Medical Research and Development Spaces
+* G1970 - Chemistry Laboratories
+* G1980 - Physical Sciences Laboratories
+* G1990 - Earth and Environmental Sciences Laboratories
+* G2000 - Psychology Laboratories
+* G2010 - Dry Laboratories
+* G2020 - Wet Laboratories
+* G2030 - Biosciences Laboratories
+* G2040 - Astronomy Laboratories
+* G2050 - Forensics Laboratories
+* G2060 - Bench Laboratories
 * ... *(Refer to the full standard implementation schema for other classifications)*
 
-==== GeneralSpaceUsageType
-Code list identically specified as GeneralSpaceFunctionType.
+// ==== GeneralSpaceUsageType
+// Code list identically specified as GeneralSpaceFunctionType.
+//
+// === TransitionSpace
+//
+// ==== TransitionSpaceClassType
+// * 1000 - Horizontal Transition
+// * 1010 - Vertical Transition
 
-=== TransitionSpace
 
-==== TransitionSpaceClassType
-* 1000 - Horizontal Transition
-* 1010 - Vertical Transition
+=== TransferSpace
 
-==== TransitionSpaceFunctionType
-* 1000 - Corridor
-* 1010 - Breezeway
-* 1020 - Box Lobby
-* 1030 - Elevator Lobby
-* 1040 - Landing
-* 1050 - Aisle
-* 1060 - Ramp
-* 1070 - Concourse
-* 1080 - Moving walkway
-* 1090 - Entry Lobby
-* 1100 - Jet way
-* 1110 - Elevator Shaft
-* 1120 - Stair
-* 1130 - Chute
+==== TransferSpaceCategoryType
+* C1000 - Door
+* C1010 - Vestibule
+* C1020 - Sally port
+* A1000 - Vestibule
+* A1020 - Gate
 
-==== TransitionSpaceUsageType
-Code list identically specified as TransitionSpaceFunctionType.
+==== TransferSpaceFunctionType
+* C1000 - Door
+* C1010 - Vestibule
+* C1060 - Sally port
+* A1000 - Entry Vestibule
+* A1010 - Exterior door
+* A1020 - Gate
+* A1030 - Emergency door
 
-=== ConnectionSpace
-
-==== ConnectionSpaceClassType
-* 1000 - Door
-* 1010 - Vestibule
-* 1020 - Sally port
-
-==== ConnectionSpaceFunctionType
-* 1000 - Door
-* 1010 - Vestibule
-* 1060 - Sally port
-
-==== ConnectionSpaceUsageType
-Code list identically specified as ConnectionSpaceFunctionType.
-
-=== AnchorSpace
-
-==== AnchorSpaceClassType
-* 1000 - Vestibule
-* 1020 - Gate
-
-==== AnchorSpaceFunctionType
-* 1000 - Entry Vestibule
-* 1010 - Exterior door
-* 1020 - Gate
-* 1030 - Emergency door
-
-==== AnchorSpaceUsageType
-Code list identically specified as AnchorSpaceFunctionType.

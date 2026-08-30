@@ -22,6 +22,10 @@ requirement:: /req/navi/route
 [[section-navi-general]]
 === General requirements for encoding standards
 
+The IndoorGML Navigation extension module provides semantic information and specialized feature types to support indoor navigation applications. It extends the Core module by classifying indoor spaces and boundaries into navigable and non-navigable categories, and by providing representations for designated navigation routes.
+
+An instance XML document representing an IndoorGML 2.0 Navigation module dataset SHALL be well-formed XML and conform to the XML schemas defined in this standard (`IndoorGML_navi.xsd`, `IndoorGML_core.xsd`) and OGC GML 3.2.1.
+
 [[req-navi-global]]
 [requirement]
 .Requirement for navigation module XML schema validation
@@ -36,6 +40,11 @@ part:: An instance XML document representing an IndoorGML 2.0 Navigation module 
 === NavigableSpace
 
 The `*NavigableSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-navigablespace[NavigableSpace], representing a space where an agent or user can move freely (e.g. corridor, door, lobby, hallway, room).
+
+The `*NavigableSpace*` element shall contain:
+
+* all properties inherited from the <<section-cellspace,`*CellSpace*`>> element
+* `locomotionType` element indicating the allowed locomotion mode in indoor space
 
 [[navigablespace-schema]]
 .XML schema for the NavigableSpace element
@@ -99,7 +108,7 @@ The `*NavigableSpace*` element is an instance of https://docs.ogc.org/is/22-045r
 identifier:: /req/navi/navigablespace
 part:: A `*NavigableSpace*` element SHALL conform to all schema and semantic requirements of <<section-cellspace,`*CellSpace*`>>.
 part:: A `*NavigableSpace*` element SHALL specify the allowed locomotion mode using the `locomotionType` element.
-part:: The `locomotionType` value SHALL be one of the following: `"Walking"`, `"Flying"`, `"Rolling"`, `"Unspecified"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: The `locomotionType` value SHALL be one of the following: `"Walking"`, `"Flying"`, `"Rolling"`, `"Unspecified"`, or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: Drone"` or `"other: Segway"`).
 part:: A `*NavigableSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
@@ -108,6 +117,11 @@ part:: A `*NavigableSpace*` element SHALL contain a unique `gml:id` attribute.
 === GeneralSpace
 
 The `*GeneralSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-generalspace[GeneralSpace], representing a navigable space that agents can occupy for extended periods and which can serve as starting or destination points in navigation.
+
+The `*GeneralSpace*` element shall contain:
+
+* all properties inherited from the <<section-navigablespace,`*NavigableSpace*`>> element
+* `function` element specifying details about the functional purpose of the space
 
 [[generalspace-schema]]
 .XML schema for the GeneralSpace element
@@ -175,7 +189,7 @@ The `*GeneralSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/
 identifier:: /req/navi/generalspace
 part:: A `*GeneralSpace*` element SHALL conform to all schema and semantic requirements of <<section-navigablespace,`*NavigableSpace*`>>.
 part:: A `*GeneralSpace*` element SHALL specify the functional purpose of the space using the `function` element.
-part:: The `function` value SHALL be one of the following: `"Administration"`, `"Business, trade"`, `"Education, training"`, `"Recreation"`, `"Laboratory"`, `"Storage"`, `"Security"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: The `function` value SHALL be one of the following: `"Administration"`, `"Business, trade"`, `"Education, training"`, `"Recreation"`, `"Laboratory"`, `"Storage"`, `"Security"`, or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: Cafeteria"`).
 part:: A `*GeneralSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
@@ -184,6 +198,15 @@ part:: A `*GeneralSpace*` element SHALL contain a unique `gml:id` attribute.
 === TransferSpace
 
 The `*TransferSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-transferspace[TransferSpace], representing a navigable space that provides passage between general spaces (e.g. doors, windows, gates).
+
+The `*TransferSpace*` element shall contain:
+
+* all properties inherited from the <<section-navigablespace,`*NavigableSpace*`>> element
+* `function` element describing whether the space is an "AnchorSpace" or a "ConnectionSpace"
+* `type` element specifying opening categories (e.g., Door or Window)
+
+Note that an AnchorSpace is a space that allows for the connection between the indoor and the outdoor.
+A ConnectionSpace is a space connecting two indoor or two outdoor spaces.
 
 [[transferspace-schema]]
 .XML schema for the TransferSpace element
@@ -262,8 +285,8 @@ The `*TransferSpace*` element is an instance of https://docs.ogc.org/is/22-045r5
 identifier:: /req/navi/transferspace
 part:: A `*TransferSpace*` element SHALL conform to all schema and semantic requirements of <<section-navigablespace,`*NavigableSpace*`>>.
 part:: A `*TransferSpace*` element SHALL specify its passage function using the `function` element and its opening category using the `type` element.
-part:: The `function` value SHALL be one of the following: `"ConnectionSpace"` (connecting two indoor or two outdoor spaces), `"AnchorSpace"` (enabling connection between indoor and outdoor spaces), or a user-defined value matching the pattern `"other: \w{2,}"`.
-part:: The `type` value SHALL be one of the following: `"Door"`, `"Window"`, or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: The `function` value SHALL be one of the following: `"ConnectionSpace"` (connecting two indoor or two outdoor spaces), `"AnchorSpace"` (enabling connection between indoor and outdoor spaces), or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: InterbuildingSpace"`).
+part:: The `type` value SHALL be one of the following: `"Door"`, `"Window"`, or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: Turnstile"` or `"other: Elevator"`).
 part:: A `*TransferSpace*` element SHALL contain a unique `gml:id` attribute.
 ====
 
@@ -272,6 +295,15 @@ part:: A `*TransferSpace*` element SHALL contain a unique `gml:id` attribute.
 === NavigableBoundary
 
 The `*NavigableBoundary*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-navigableboundary[NavigableBoundary], representing a boundary of a navigable space that provides transition or connection information.
+
+The `*NavigableBoundary*` element shall contain:
+
+* all properties inherited from the <<section-cellboundary,`*CellBoundary*`>> element
+* `NavigableBoundaryFunction` element describing whether the boundary is an "AnchorBoundary" or a "ConnectionBoundary"
+* optionally, `boundaryOrientation` element indicating whether to use the geometry represented by `cellBoundaryGeom` as-is (`true`) or in reverse (`false`)
+
+Note that an AnchorBoundary is the boundary of an AnchorSpace that enables the connection between indoor and outdoor spaces.
+A ConnectionBoundary is the boundary of a ConnectionSpace that connects two indoor spaces or two outdoor spaces.
 
 [[navigableboundary-schema]]
 .XML schema for the NavigableBoundary element
@@ -337,7 +369,7 @@ The `*NavigableBoundary*` element is an instance of https://docs.ogc.org/is/22-0
 identifier:: /req/navi/navigableboundary
 part:: A `*NavigableBoundary*` element SHALL conform to all schema and semantic requirements of <<section-cellboundary,`*CellBoundary*`>>.
 part:: A `*NavigableBoundary*` element SHALL specify its boundary function using the `NavigableBoundaryFunction` element.
-part:: The `NavigableBoundaryFunction` value SHALL be one of the following: `"ConnectionBoundary"` (boundary connecting two indoor or two outdoor spaces), `"AncorBoundary"` (boundary enabling transition between indoor and outdoor spaces), or a user-defined value matching the pattern `"other: \w{2,}"`.
+part:: The `NavigableBoundaryFunction` value SHALL be one of the following: `"ConnectionBoundary"` (boundary connecting two indoor or two outdoor spaces), `"AncorBoundary"` (boundary enabling transition between indoor and outdoor spaces), or a user-defined value matching the pattern `"other: \w{2,}"` (e.g., `"other: VirtualBoundary"`).
 part:: When present, `boundaryOrientation` SHALL specify whether the boundary geometry is used with standard orientation (`true`) or reversed orientation (`false`).
 part:: A `*NavigableBoundary*` element SHALL contain a unique `gml:id` attribute.
 ====
@@ -347,6 +379,10 @@ part:: A `*NavigableBoundary*` element SHALL contain a unique `gml:id` attribute
 === NonNavigableSpace
 
 The `*NonNavigableSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-nonnavigablespace[NonNavigableSpace], representing an indoor space subdivision occupied by obstacles or restricted from agent traversal.
+
+The `*NonNavigableSpace*` element shall contain:
+
+* all properties inherited from the <<section-cellspace,`*CellSpace*`>> element
 
 [[nonnavigablespace-schema]]
 .XML schema for the NonNavigableSpace element
@@ -396,6 +432,12 @@ part:: A `*NonNavigableSpace*` element SHALL contain a unique `gml:id` attribute
 === ObjectSpace
 
 The `*ObjectSpace*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-objectspace[ObjectSpace], representing a specialized non-navigable space that encapsulates physical objects or furniture within an indoor environment.
+
+The `*ObjectSpace*` element shall contain:
+
+* all properties inherited from the <<section-nonnavigablespace,`*NonNavigableSpace*`>> element
+* optionally, `description` element providing descriptive text regarding the contained objects
+* optionally, `containedFeatures` element representing the number of objects encapsulated within the `*ObjectSpace*`
 
 [[objectspace-schema]]
 .XML schema for the ObjectSpace element
@@ -456,6 +498,10 @@ part:: An `*ObjectSpace*` element SHALL contain a unique `gml:id` attribute.
 
 The `*NonNavigableBoundary*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-nonnavigableboundary[NonNavigableBoundary], representing the boundary between two non-navigable spaces or between a navigable space and a non-navigable space.
 
+The `*NonNavigableBoundary*` element shall contain:
+
+* all properties inherited from the <<section-cellboundary,`*CellBoundary*`>> element
+
 [[nonnavigableboundary-schema]]
 .XML schema for the NonNavigableBoundary element
 [%unnumbered]
@@ -504,6 +550,13 @@ part:: A `*NonNavigableBoundary*` element SHALL contain a unique `gml:id` attrib
 === Route
 
 The `*Route*` element is an instance of https://docs.ogc.org/is/22-045r5/22-045r5.html#subsection-route[Route], representing a designated navigation path through an indoor space composed of an ordered sequence of nodes and connecting edges in dual space.
+
+The `*Route*` element shall contain:
+
+* `gml:id` attribute
+* `routeNode` properties containing ordered sequences of <<section-node,`*Node*`>> references to describe the different parts of the route path
+* `routeEdge` properties containing ordered sequences of <<section-edge,`*Edge*`>> references to describe the different parts of the route path
+* optionally, `creationDate` element indicating when a specific route was created
 
 [[route-schema]]
 .XML schema for the Route element
