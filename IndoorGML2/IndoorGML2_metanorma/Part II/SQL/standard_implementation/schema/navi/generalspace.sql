@@ -1,6 +1,6 @@
 CREATE TABLE "GeneralSpace"
 (
-    "Function" "GeneralSpaceFunctionType" NULL,
+    "function" "GeneralSpaceFunctionType" NOT NULL,
     "GeneralSpaceID" varchar(100) NOT NULL,
     CONSTRAINT "PK_GeneralSpace" PRIMARY KEY ("GeneralSpaceID"),
     CONSTRAINT "FK_GeneralSpace_NavigableSpace"

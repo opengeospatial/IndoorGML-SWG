@@ -1,4 +1,5 @@
 INSERT INTO "IndoorFeatures" ("IndoorFeaturesID", "layers")
-VALUES ('IF-1', 'TL-1');
+VALUES ('IFs', 'TL-Pedestrian');
 
--- Additional thematic layers and inter-layer connections may be inserted here.
+-- ThematicLayer rows (TL-Pedestrian, TL-Wheelchair) and InterLayerConnection rows
+-- reference this indoor dataset through IndoorFeaturesID.

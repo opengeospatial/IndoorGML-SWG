@@ -16,6 +16,18 @@ formal description of a <<conceptual model,conceptual model>>
 [.source]
 <<iso19101-1>>
 
+=== data type
+
+set of values that lack identity
+
+NOTE: A data type is a class with no operations whose primary purpose is to hold information.
+In the IndoorGML 2.0 Conceptual Model, data types are denoted by the stereotype «DataType».
+
+NOTE: In this SQL encoding, non-geometric UML DataTypes are encoded as PostgreSQL composite types, and geometry DataTypes are flattened onto owning feature tables as PostGIS `geometry` columns (see <<section-conventions>>).
+
+[.source]
+<<iso19103>>
+
 === feature
 
 abstraction of real world phenomena

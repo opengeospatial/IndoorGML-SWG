@@ -1,17 +1,26 @@
 CREATE TABLE "CellSpace"
 (
-    "cellSpaceGeom_geometry2D" geometry NULL,
-    "cellSpaceGeom_geometry3D" geometry NULL,
-    "CellSpaceName" varchar(100) NULL,
+    "cellSpaceGeom_Geometry2D" geometry NULL,
+    "cellSpaceGeom_Geometry3D" geometry NULL,
+    "cellSpaceName" varchar(100) NULL,
     "externalReference" "ExternalReferenceType" NULL,
-    "Level" varchar(100) NULL,
-    "Poi" boolean NULL,
+    "level" varchar(100) NULL,
+    "PoI" boolean NOT NULL,
     "CellSpaceID" varchar(100) NOT NULL,
     "PrimalSpaceLayerID" varchar(100) NOT NULL,
-    "duality" varchar(100) NULL,
+    "duality" varchar(100) NOT NULL,
     CONSTRAINT "PK_CellSpace" PRIMARY KEY ("CellSpaceID"),
-    CONSTRAINT "chk_CellSpace_geom_xor" CHECK (
-        NOT ("cellSpaceGeom_geometry2D" IS NOT NULL AND "cellSpaceGeom_geometry3D" IS NOT NULL)
+    CONSTRAINT "chk_CellSpace_geom2d_surface" CHECK (
+        "cellSpaceGeom_Geometry2D" IS NULL
+        OR GeometryType("cellSpaceGeom_Geometry2D") IN ('POLYGON', 'MULTIPOLYGON')
+    ),
+    CONSTRAINT "chk_CellSpace_geom3d_solid" CHECK (
+        "cellSpaceGeom_Geometry3D" IS NULL
+        OR (
+            GeometryType("cellSpaceGeom_Geometry3D") IN ('POLYHEDRALSURFACE', 'TIN')
+            AND ST_NDims("cellSpaceGeom_Geometry3D") = 3
+            AND CG_IsSolid(CG_MakeSolid("cellSpaceGeom_Geometry3D"))
+        )
     ),
     CONSTRAINT "FK_CellSpace_cellSpaceMember"
         FOREIGN KEY ("PrimalSpaceLayerID") REFERENCES "PrimalSpaceLayer" ("PrimalSpaceLayerID")

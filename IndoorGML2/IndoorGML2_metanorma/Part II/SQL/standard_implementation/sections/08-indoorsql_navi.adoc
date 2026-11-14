@@ -7,8 +7,8 @@
 identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/navi
 subject:: Implementation Specification
 inherit:: http://www.opengis.net/spec/indoorgml/2.0/req
-inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/core
-inherit:: http://www.opengis.net/spec/json-fg-1/1.0/req/polyhedra
+inherit:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/core
+requirement:: /req/navi/global
 requirement:: /req/navi/navigablespace
 requirement:: /req/navi/generalspace
 requirement:: /req/navi/transferspace
@@ -17,27 +17,23 @@ requirement:: /req/navi/navigableboundary
 requirement:: /req/navi/route
 ====
 
+[[section-navi-general]]
+=== General requirements for encoding standards
+
 The navigation SQL encoding schema extends the core SQL encoding schema with tables for navigation-related feature classes.
 
-NOTE: Navigation feature classes have not yet been validated with actual datasets in the preliminary implementation.
+[[req-navi-global]]
+[requirement]
+.Requirement for global SQL schema of the navigation module
+====
+[%metadata]
+identifier:: /req/navi/global
+part:: A database representing an IndoorGML 2.0 Navigation module dataset SHALL implement the SQL schema defined in this standard (including `IndoorGML_navi.sql` and `IndoorGML_core.sql`).
+====
 
-[[section-navi-enums]]
-=== Navigation code list types
-
-The following PostgreSQL `ENUM` types represent IndoorGML navigation code lists:
-
-* `LocomotionAccessType` for `NavigableSpace.Locomotiontype`;
-* `GeneralSpaceFunctionType` for `GeneralSpace.Function`;
-* `TransferSpaceFunctionType` for `TransferSpace.Function`;
-* `TransferSpaceCategoryType` for `TransferSpace.Type`;
-* `NavigableBoundaryFunctionType` for `NavigableBoundary.NavigableBoundaryFunction`.
-
-[[navi-enums-schema]]
-.A SQL schema of the navigation code list types:
-[source,sql]
-----
-include::../schema/navi/enums.sql[]
-----
+Navigation code list `ENUM` types used by the navigation module tables are specified in <<annex_navi_enums>>.
+An informative example CodeList derived from OmniClass is provided in <<annex-e>>.
+That CodeList does not extend the closed `ENUM` types of the reference schema.
 
 [[section-navigablespace]]
 === NavigableSpace
@@ -47,10 +43,10 @@ The `NavigableSpace` table extends `CellSpace` with navigation-specific attribut
 The `NavigableSpace` table shall contain:
 
 * `NavigableSpaceID` as a primary key and foreign key to `CellSpace`
-* `Locomotiontype` of type `LocomotionAccessType`, with values including "Walking", "Flying", "Rolling", and "Unspecified"
+* `locomotionType` of type `LocomotionAccessType`, with values including "Walking", "Flying", "Rolling", and "Unspecified"
 
 [[navigablespace-schema]]
-.A SQL schema of the NavigableSpace table:
+.A SQL schema of the NavigableSpace table
 [source,sql]
 ----
 include::../schema/navi/navigablespace.sql[]
@@ -62,7 +58,7 @@ include::../schema/navi/navigablespace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/navigablespace
-part:: A `NavigableSpace` table SHALL reference a <<section-cellspace,CellSpace>> row and SHALL contain a `Locomotiontype` column.
+part:: A `NavigableSpace` table SHALL reference a <<section-cellspace,CellSpace>> row and SHALL contain a `locomotionType` column.
 ====
 
 [[section-generalspace]]
@@ -73,10 +69,10 @@ The `GeneralSpace` table extends `NavigableSpace` with a function attribute.
 The `GeneralSpace` table shall contain:
 
 * `GeneralSpaceID` as a primary key and foreign key to `NavigableSpace`
-* `Function` of type `GeneralSpaceFunctionType`, with values including "Administration", "Business, trade", "Education, training", "Recreation", "Laboratory", "Storage", and "Security"
+* `function` of type `GeneralSpaceFunctionType`, with values including "Administration", "Business, trade", "Education, training", "Recreation", "Laboratory", "Storage", and "Security"
 
 [[generalspace-schema]]
-.A SQL schema of the GeneralSpace table:
+.A SQL schema of the GeneralSpace table
 [source,sql]
 ----
 include::../schema/navi/generalspace.sql[]
@@ -88,7 +84,7 @@ include::../schema/navi/generalspace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/generalspace
-part:: A `GeneralSpace` table SHALL contain a `Function` column.
+part:: A `GeneralSpace` table SHALL contain a `function` column.
 ====
 
 [[section-transferspace]]
@@ -99,11 +95,11 @@ The `TransferSpace` table extends `NavigableSpace` with transfer-specific attrib
 The `TransferSpace` table shall contain:
 
 * `TransferSpaceID` as a primary key and foreign key to `NavigableSpace`
-* `Type` of type `TransferSpaceCategoryType`, with values "Door" and "Window"
-* `Function` of type `TransferSpaceFunctionType`, with values "AnchorSpace" and "ConnectionSpace"
+* `category` of type `TransferSpaceCategoryType`, with values "Door" and "Window"
+* `function` of type `TransferSpaceFunctionType`, with values "AnchorSpace" and "ConnectionSpace"
 
 [[transferspace-schema]]
-.A SQL schema of the TransferSpace table:
+.A SQL schema of the TransferSpace table
 [source,sql]
 ----
 include::../schema/navi/transferspace.sql[]
@@ -115,7 +111,7 @@ include::../schema/navi/transferspace.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/transferspace
-part:: A `TransferSpace` table SHALL contain `Type` and `Function` columns.
+part:: A `TransferSpace` table SHALL contain `category` and `function` columns.
 ====
 
 [[section-nonnavigablespace]]
@@ -124,7 +120,7 @@ part:: A `TransferSpace` table SHALL contain `Type` and `Function` columns.
 The `NonNavigableSpace` table extends `CellSpace` for spaces that are not navigable.
 
 [[nonnavigablespace-schema]]
-.A SQL schema of the NonNavigableSpace table:
+.A SQL schema of the NonNavigableSpace table
 [source,sql]
 ----
 include::../schema/navi/nonnavigablespace.sql[]
@@ -138,11 +134,11 @@ The `ObjectSpace` table extends `NonNavigableSpace` with object-specific attribu
 The `ObjectSpace` table shall contain:
 
 * `ObjectSpaceID` as a primary key and foreign key to `NonNavigableSpace`
-* optionally, `Containedfeatures`
-* optionally, `Description`
+* optionally, `containedFeatures` as an integer count of contained objects
+* optionally, `description`
 
 [[objectspace-schema]]
-.A SQL schema of the ObjectSpace table:
+.A SQL schema of the ObjectSpace table
 [source,sql]
 ----
 include::../schema/navi/objectspace.sql[]
@@ -163,7 +159,7 @@ part:: An `ObjectSpace` table SHALL reference a `NonNavigableSpace` row.
 The `NonNavigableBoundary` table extends `CellBoundary` for boundaries that are not navigable.
 
 [[nonnavigableboundary-schema]]
-.A SQL schema of the NonNavigableBoundary table:
+.A SQL schema of the NonNavigableBoundary table
 [source,sql]
 ----
 include::../schema/navi/nonnavigableboundary.sql[]
@@ -177,11 +173,11 @@ The `NavigableBoundary` table extends `CellBoundary` with navigation-specific bo
 The `NavigableBoundary` table shall contain:
 
 * `NavigableBoundaryID` as a primary key and foreign key to `CellBoundary`
-* optionally, `Boundaryorientation`
+* optionally, `boundaryOrientation`
 * `NavigableBoundaryFunction` of type `NavigableBoundaryFunctionType`, with values "AnchorBoundary" and "ConnectionBoundary"
 
 [[navigableboundary-schema]]
-.A SQL schema of the NavigableBoundary table:
+.A SQL schema of the NavigableBoundary table
 [source,sql]
 ----
 include::../schema/navi/navigableboundary.sql[]
@@ -204,16 +200,17 @@ The `Route` table represents a navigation route as an ordered sequence of nodes 
 In this SQL encoding, `routeNode` and `routeEdge` are stored as `jsonb` arrays on the `Route` row.
 This design keeps the full traversal order in one place and makes it easier to maintain, reorder, or replace the node and edge sequence of a route without managing separate ordered junction-table rows.
 The array index corresponds to position in the route: `routeNode[0]` is the first node, `routeNode[1]` is the second node, and `routeEdge` follows the same rule for edges.
+Both `routeNode` and `routeEdge` SHALL be present and non-empty: `routeNode` SHALL contain at least two `NodeID` values, and `routeEdge` SHALL contain at least one `EdgeID` value.
 
 The `Route` table shall contain:
 
 * `RouteID` as the primary key
-* optionally, `Creationdate`
-* optionally, `routeNode` as a `jsonb` array of ordered `NodeID` values
-* optionally, `routeEdge` as a `jsonb` array of ordered `EdgeID` values
+* optionally, `creationDate`
+* `routeNode` as a `jsonb` array of ordered `NodeID` values (mandatory)
+* `routeEdge` as a `jsonb` array of ordered `EdgeID` values (mandatory)
 
 [[route-schema]]
-.A SQL schema of the Route table:
+.A SQL schema of the Route table
 [source,sql]
 ----
 include::../schema/navi/route.sql[]
@@ -225,6 +222,7 @@ include::../schema/navi/route.sql[]
 ====
 [%metadata]
 identifier:: /req/navi/route
-part:: A `Route` table SHALL store ordered node identifiers in the `routeNode` column.
-part:: A `Route` table SHALL store ordered edge identifiers in the `routeEdge` column.
+part:: A `Route` table SHALL store ordered node identifiers in the `routeNode` column as a JSON array of at least two `NodeID` values.
+part:: A `Route` table SHALL store ordered edge identifiers in the `routeEdge` column as a JSON array of at least one `EdgeID` value.
+part:: Both `routeNode` and `routeEdge` SHALL be present and non-empty on every `Route` row.
 ====

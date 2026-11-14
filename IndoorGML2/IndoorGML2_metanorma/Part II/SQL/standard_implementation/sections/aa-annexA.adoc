@@ -1,54 +1,253 @@
 [appendix,obligation="normative"]
 == Conformance Class Abstract Test Suite
 
-[NOTE]
-====
-Ensure that there is a conformance class for each requirements class and a test for each requirement (identified by requirement name and number)
-====
-
 === Conformance Class Core
-
-[requirement,type="verification"]
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/conf/sql/core
+target:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/core
+classification:: Target Type:Implementation Specification
+abstract-test:: /conf/core/global
+abstract-test:: /conf/core/indoorsql
+abstract-test:: /conf/core/indoorfeature
+abstract-test:: /conf/core/thematiclayer
+abstract-test:: /conf/core/primalspacelayer
+abstract-test:: /conf/core/cellspace
+abstract-test:: /conf/core/cellboundary
+abstract-test:: /conf/core/dualspacelayer
+abstract-test:: /conf/core/node
+abstract-test:: /conf/core/edge
+abstract-test:: /conf/core/interlayerconnection
 ====
 
-[requirement,type="general",label="Test id"]
-======
-conf/indoorsql/core/schema
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/global
+target:: /req/core/global
+test-purpose:: Verify that a database implementing IndoorGML 2.0 Core implements the SQL schema defined in this standard (`IndoorGML_core.sql`), including the PostGIS geometry types specified in Clause 5.
+test-method:: Inspect the database schema against `IndoorGML_core.sql` to verify the above requirement.
+====
 
-[recommendation,type="general",label="Test purpose"]
-======
-Verify that the database schema implements all core SQL encoding tables and constraints.
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/indoorsql
+target:: /req/core/indoorsql
+test-purpose:: Verify that each feature table of the SQL encoding contains a string primary key column for the feature identifier.
+test-method:: Inspect the database schema to verify the above requirement.
+====
 
-[requirement,type="general",label="Test method"]
-======
-Verify that all core tables defined in <<section-indoorsql-core>> exist with the required columns, primary keys, and foreign key constraints.
-Verify that identifier columns use string types.
-Verify that geometry columns use the PostGIS `geometry` type, including path-named columns such as `cellSpaceGeom_geometry2D` / `cellSpaceGeom_geometry3D`.
-Verify that `ExternalReferenceType` and `ExternalObjectReferenceType` exist as PostgreSQL composite types and that `externalReference` columns use `ExternalReferenceType`.
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/indoorfeature
+target:: /req/core/indoorfeature
+test-purpose:: Verify that an `IndoorFeatures` table is related to at least one `ThematicLayer` row through a foreign key.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
 
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/thematiclayer
+target:: /req/core/thematiclayer
+test-purpose:: For the following columns of the `ThematicLayer` table, verify that:
++
+--
+* The `semanticExtension` column declares whether there is an extension module with additional semantic information. +
+* The `theme` column determines what type of model representation can be expected. +
+* The `theme` value is one of "Virtual", "Physical", "Tags", and "Unknown".
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/primalspacelayer
+target:: /req/core/primalspacelayer
+test-purpose:: Verify that a `PrimalSpaceLayer` table is related to one or more `CellSpace` rows.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/cellspace
+target:: /req/core/cellspace
+test-purpose:: For the following columns of the `CellSpace` table, verify that:
++
+--
+* The `PoI` column declares whether it is a point of interest space. +
+* The `duality` column references the `NodeID` of the corresponding `Node`. +
+* Every non-null `cellSpaceGeom_Geometry2D` value has the geometry type `POLYGON` or `MULTIPOLYGON`. +
+* Every non-null `cellSpaceGeom_Geometry3D` value has the geometry type `POLYHEDRALSURFACE` or `TIN`. +
+* Every non-null `cellSpaceGeom_Geometry3D` value has three coordinate dimensions and satisfies `CG_IsSolid(CG_MakeSolid(...))`.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/cellboundary
+target:: /req/core/cellboundary
+test-purpose:: For the following columns of the `CellBoundary` table, verify that:
++
+--
+* The `isVirtual` column specifies whether the boundary is virtual. +
+* Every non-null `cellBoundaryGeom_Geometry1D` value has the geometry type `LINESTRING` or `MULTILINESTRING`. +
+* Every non-null `cellBoundaryGeom_Geometry2D` value has the geometry type `POLYGON` or `MULTIPOLYGON`.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/dualspacelayer
+target:: /req/core/dualspacelayer
+test-purpose:: For the following columns and associations of the `DualSpaceLayer` table, verify that:
++
+--
+* The `isLogical` column specifies whether the provided graph is geometric or logical. +
+* The `isDirected` column specifies whether the provided graph is directed. +
+* The `DualSpaceLayer` table is related to one or more `Node` rows.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/node
+target:: /req/core/node
+test-purpose:: For the following columns of the `Node` table, verify that:
++
+--
+* The `duality` column references the `CellSpaceID` of the corresponding `CellSpace`. +
+* Connected edge identifiers are stored in the `connects` column. +
+* Every non-null `geometry` value has the geometry type `POINT`.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/edge
+target:: /req/core/edge
+test-purpose:: For the following columns of the `Edge` table, verify that:
++
+--
+* Connected `Node` rows are referenced using the `connects_node1` and `connects_node2` columns. +
+* A `weight` column is present. +
+* Every non-null `geometry` value has the geometry type `LINESTRING` or `MULTILINESTRING`.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/core/interlayerconnection
+target:: /req/core/interlayerconnection
+test-purpose:: For the following columns of the `InterLayerConnection` table, verify that:
++
+--
+* The `connectedLayers_1` and `connectedLayers_2` columns reference the two connected `ThematicLayer` rows. +
+* The `typeOfTopoExpression` column stores the topological relationship, with subject on the `_1` side. +
+* The `typeOfTopoExpression` value is one of "Contains", "Overlaps", "Equals", "Within", "Crosses", or "Other". +
+* The paired `connectedLayers_*`, `connectedNodes_*`, and `connectedCells_*` columns are ordered and mapped to the same indices. +
+* When connected nodes are provided, both `connectedNodes_1` and `connectedNodes_2` are populated. +
+* When connected cell spaces are provided, both `connectedCells_1` and `connectedCells_2` are populated.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
 ====
 
 === Conformance Class Navigation
-
-[requirement,type="verification"]
+[conformance_class]
+====
+[%metadata]
+identifier:: http://www.opengis.net/spec/indoorgml-2/2.0/conf/sql/navi
+target:: http://www.opengis.net/spec/indoorgml-2/2.0/sql/req/navi
+classification:: Target Type:Implementation Specification
+abstract-test:: /conf/navi/global
+abstract-test:: /conf/navi/navigablespace
+abstract-test:: /conf/navi/generalspace
+abstract-test:: /conf/navi/transferspace
+abstract-test:: /conf/navi/objectspace
+abstract-test:: /conf/navi/navigableboundary
+abstract-test:: /conf/navi/route
 ====
 
-[requirement,type="general",label="Test id"]
-======
-conf/indoorsql/navi/schema
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/global
+target:: /req/navi/global
+test-purpose:: Verify that a database implementing the IndoorGML 2.0 Navigation module implements the SQL schema defined in this standard (`IndoorGML_navi.sql` and `IndoorGML_core.sql`).
+test-method:: Inspect the database schema against `IndoorGML_navi.sql` and `IndoorGML_core.sql` to verify the above requirement.
+====
 
-[recommendation,type="general",label="Test purpose"]
-======
-Verify that the database schema implements all navigation SQL encoding tables and constraints.
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/navigablespace
+target:: /req/navi/navigablespace
+test-purpose:: Verify that a `NavigableSpace` table references a `CellSpace` row and contains a `locomotionType` column.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
 
-[requirement,type="general",label="Test method"]
-======
-Verify that all navigation tables defined in <<section-indoorsql-navi>> exist with the required columns and foreign key references to core tables.
-======
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/generalspace
+target:: /req/navi/generalspace
+test-purpose:: Verify that a `GeneralSpace` table contains a `function` column.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
 
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/transferspace
+target:: /req/navi/transferspace
+test-purpose:: Verify that a `TransferSpace` table contains `category` and `function` columns.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/objectspace
+target:: /req/navi/objectspace
+test-purpose:: Verify that an `ObjectSpace` table references a `NonNavigableSpace` row.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/navigableboundary
+target:: /req/navi/navigableboundary
+test-purpose:: Verify that a `NavigableBoundary` table contains a `NavigableBoundaryFunction` column.
+test-method:: Inspect the database schema and instance data to verify the above requirement.
+====
+
+[abstract_test]
+====
+[%metadata]
+identifier:: /conf/navi/route
+target:: /req/navi/route
+test-purpose:: For the following columns of the `Route` table, verify that:
++
+--
+* Ordered node identifiers are stored in the `routeNode` column as a JSON array of at least two values. +
+* Ordered edge identifiers are stored in the `routeEdge` column as a JSON array of at least one value. +
+* Both `routeNode` and `routeEdge` are present and non-empty.
+--
+test-method:: Inspect the database schema and instance data to verify the above requirement.
 ====

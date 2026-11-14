@@ -1,5 +1,9 @@
 [appendix,obligation="normative"]
+[[annex_schemas]]
 == Schemas
+
+NOTE: The DDL listings in this annex are expressed for the PostgreSQL/PostGIS reference platform.
+Implementations on other SQL platforms (for example, Oracle Spatial) MAY apply an equivalent mapping that preserves the logical table structure, keys, associations, and cardinalities defined by this Standard (see <<section-conventions>>).
 
 [[annex_indoorsql_core_schema]]
 === SQL Schema of IndoorGML Core

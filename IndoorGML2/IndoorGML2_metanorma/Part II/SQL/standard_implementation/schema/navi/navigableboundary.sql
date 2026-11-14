@@ -1,7 +1,7 @@
 CREATE TABLE "NavigableBoundary"
 (
-    "NavigableBoundaryFunction" "NavigableBoundaryFunctionType" NULL,
-    "Boundaryorientation" boolean NULL,
+    "NavigableBoundaryFunction" "NavigableBoundaryFunctionType" NOT NULL,
+    "boundaryOrientation" boolean NULL,
     "NavigableBoundaryID" varchar(100) NOT NULL,
     CONSTRAINT "PK_NavigableBoundary" PRIMARY KEY ("NavigableBoundaryID"),
     CONSTRAINT "FK_NavigableBoundary_CellBoundary"
